@@ -49,7 +49,10 @@
     }
 }
 \ExplSyntaxOff
-\robustify\tilde
+%\robustify\tilde
+
+\newcommand{\undovskip}{\relax\ifvmode\unskip\fi}
+\newenvironment{tab}{\center\undovskip\vspace{.1\baselineskip}\tabular}{\endtabular\endcenter\undovskip\vspace{.1\baselineskip}}
 
 \begin{document}
 \twocolumn\raggedbottom
@@ -64,8 +67,7 @@
 Infinite series $\lie{A}_{n\geq 1}$, $\lie{B}_{n\geq 1}$, $\lie{C}_{n\geq 1}$, $\lie{D}_{n\geq 2}$ with
 $\lie{A}_1=\lie{B}_1=\lie{C}_1$, $\lie{B}_2=\lie{C}_2$, $\lie{D}_2=\lie{A}_1\oplus \lie{A}_1$, $\lie{D}_3=\lie{A}_3$.
 Five exceptions with $\dim(\lie{E}_6)=78$, $\dim(\lie{E}_7)=133$, $\dim(\lie{E}_8)=248$, $\dim(\lie{F}_4)=52$, $\dim(\lie{G}_2)=14$.
-\begin{center}
-\begin{tabular}{*{3}{>{$}l<{$}}l}\toprule
+\begin{tab}{*{3}{>{$}l<{$}}l}\toprule
   \text{Type} & \text{Dimension} & \text{Lie algebra} \\\midrule
   \lie{A}_n & n(n+2) & \lie{sl}(n+1,\ring{C}) =\{\text{traceless}\} \\
   \lie{B}_n & n(2n+1) & \lie{so}(2n+1,\ring{C}) =\{\text{antisymmetric}\} \\
@@ -74,8 +76,7 @@ Five exceptions with $\dim(\lie{E}_6)=78$, $\dim(\lie{E}_7)=133$, $\dim(\lie{E}_
   \\
   \lie{D}_n & n(2n-1) & \lie{so}(2n,\ring{C}) =\{\text{antisymmetric}\} \\
   \bottomrule
-\end{tabular}
-\end{center}
+\end{tab}
 
 \paragraph{Real case.}  Let
 $\lie{sl}(n)=\lie{sl}(n,\ring{R})$,
@@ -85,8 +86,7 @@ $\lie{so}^*(2n)=\lie{o}(n,\ring{H})$,
 $\lie{usp}(2m,2n)=\lie{u}(m,n,\ring{H})$.
 A Lie algebra is \defined{compact} if it exponentiates to a compact Lie group.
 In $\lie{E}_{r(s)}$, $s$ is the number of $(\text{non-compact})-(\text{compact})$ generators.
-\begin{center}
-\begin{tabular}{@{}c@{ }lll}\toprule
+\begin{tab}{@{}c@{ }lll}\toprule
 & Real form & \hspace{-1em}Max compact subalgebra & Range \\
 \midrule
 \multirow{4}{*}{\rotatebox{90}{$sl(n)$}}
@@ -131,8 +131,7 @@ In $\lie{E}_{r(s)}$, $s$ is the number of $(\text{non-compact})-(\text{compact})
   $\lie{F}_{4(4)}$ & $\lie{usp}(6)\oplus \lie{su}(2)$ \\
   \end{tabular}
 }\\\bottomrule
-\end{tabular}
-\end{center}
+\end{tab}
 
 \paragraph{Accidental isomorphisms.}
 \begin{center}
@@ -168,8 +167,7 @@ the bosonic algebra acts on the fermionic generators in a completely reducible r
 This excludes Cartan-type superalgebras $\lie{W}(n)$, $\lie{S}(n)$, $\lie{\tilde S}(n)$ and $\lie{H}(n)$.
 In this table, $m,n\geq 1$ and we do not list purely bosonic Lie algebras.
 The factor $\ring{C}$ of $\lie{sl}(m|n)$ must be removed if $m=n$.
-\begin{center}
-\begin{tabular}{lll}\toprule
+\begin{tab}{lll}\toprule
 & Bosonic algebra & Fermionic repr. \\\midrule
 $\lie{sl}(m|n)$ & $\lie{sl}(m,\ring{C})\oplus \lie{sl}(n,\ring{C})\oplus\ring{C}$ & $(m,\overline{n})\oplus(\overline{m},n)$ \\
 $\lie{osp}(m|2n)$ & $\lie{so}(m,\ring{C}) \oplus \lie{sp}(2n)$ & $(m,2n)$ \\
@@ -179,16 +177,13 @@ $\lie{G}(3)$ & $\lie{G}_2\oplus \lie{sl}(2,\ring{C})$ & $(7,2)$ \\
 $\lie{P}(m)$ & $\lie{sl}(m+1,\ring{C})$ & $\text{sym}\oplus(\text{antisym})^*$ \\
 $\lie{Q}(m)$ & $\lie{sl}(m+1,\ring{C})$ & adjoint\\
 \bottomrule
-\end{tabular}
-\end{center}
+\end{tab}
 
 \paragraph{Real forms of Lie superalgebras,}
 starting from their compact form ($p=q=0$).  $\lie{P}(m)$ has no compact form.
 Here, $m,n\geq 1$, $0\leq p\leq m/2$, $0\leq q\leq n/2$.
 The forms $\lie{su}^*$, $\lie{osp}^*$, $\lie{Q}^*$ only exist for even rank; $\lie{sl}'$ only if $m=n$.
-\begin{center}
-\vspace{-.5\baselineskip}
-\begin{tabular}{*{2}{>{$}l<{$}}}\toprule
+\begin{tab}{*{2}{>{$}l<{$}}}\toprule
 \text{Real form} & \text{Bosonic algebra}  \\ \midrule
 \lie{su}(m-p,p|n-q,q) & \lie{su}(m-p,p)\oplus \lie{su}(n-q,q)\oplus \lie{u}(1)^{\mathsection}\\
 \lie{sl}(m|n) & \lie{sl}(m)\oplus \lie{sl}(n)\oplus \lie{so}(1,1)^{\mathsection} \\
@@ -211,9 +206,7 @@ The forms $\lie{su}^*$, $\lie{osp}^*$, $\lie{Q}^*$ only exist for even rank; $\l
 \lie{Q}(m) & \lie{sl}(m+1) \\
 \lie{Q}^*(m) \quad (m \text{ odd}) & \lie{su}^*(m+1) \\
 \bottomrule
-\end{tabular}
-\vspace{-.7\baselineskip}
-\end{center}
+\end{tab}
 
 $^{\mathsection}$
 For $m=n$, $\lie{u}(1)$ and $\lie{so}(1,1)$ factors are absent.
@@ -233,29 +226,23 @@ and $\lie{D}^p(2,1,\alpha=1)=\lie{osp}(4-p,p|2)$.
 \section{Spinors}
 
 \paragraph{Clifford algebra.}  Let $h_{ab}$ be diagonal with $s$~`$+1$' and $t$~`$-1$', and $d=s+t$.  The Clifford algebra $\{\Gamma_a,\Gamma_b\}=2h_{ab}$ has real dimension~$2^d$ and is isomorphic to a matrix algebra $M_{2^{\#}}(\bullet)$ with
-\begin{center}
-\vspace{-.5\baselineskip}
-\begin{tabular}{>{$}r<{$}*{8}{>{$}c<{$}}}\toprule
+\begin{tab}{>{$}r<{$}*{8}{>{$}c<{$}}}\toprule
 s-t \bmod{8} & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 \\
 \bullet \text{\quad is} & \ring{R}& \ring{R}\oplus\ring{R} & \ring{R} & \ring{C} & \ring{H} & \ring{H}\oplus\ring{H} & \ring{H} &\ring{C}\\\bottomrule
-\end{tabular}
-\end{center}
+\end{tab}
 %with $\bullet = [\ring{R}, \ring{R}\oplus\ring{R}, \ring{R}, \ring{C}, \ring{H}, \ring{H}\oplus\ring{H}, \ring{H}, \ring{C}][s-t\bmod{8}]$.
 
 
 \paragraph{Charge conjugation.}  $(-\eta)\Gamma_a^T=\mathcal{C}\Gamma_a\mathcal{C}^{-1}$ are conjugate for $\eta=\pm 1$ because they obey the same algebra.  Get $\mathcal{C}^T=-\varepsilon \mathcal{C}$ with $\varepsilon=\pm 1$ by transposing twice.
 Let $\Gamma^{(n)}=\Gamma_{a_1\ldots a_n}$.
 Using $\left(\mathcal{C}\Gamma^{(n)}\right) ^T= -\epsilon(-)^{n(n-1)/2}(-\eta)^n \mathcal{C}\Gamma^{(n)}$ find which $n\bmod{4}$ give symmetric $\mathcal{C}\Gamma^{(n)}$.  The sum of $\binom{d}{n}$ must be $2^{\lfloor d/2\rfloor} (2^{\lfloor d/2\rfloor} + 1) / 2$.  This fixes $\epsilon, \eta$.  Odd $d$ require $\eta=(-1)^{d(d+1)/2}$ to preserve $\Gamma^{(d)}$.  Even~$d$ allow two choices of signs: consult the rows $d\pm 1$.
-\vspace{-\baselineskip}
-\begin{center}
-\begin{tabular}[t]{rccc}\toprule
+\begin{tab}{rccc}\toprule
 $d\bmod 8$ & $n$ & $\epsilon$ & $\eta$ \\\midrule\addlinespace[7pt]
 \multirow{2}{*}[11pt]{\rlap{0$\langle$}}\multirow{2}{*}{2$\langle$}1   & 0, 1 & $-1$ & $-1$\\
 \multirow{2}{*}{4$\langle$}3   & 1, 2 & $+1$ & $+1$\\
 \multirow{2}{*}{6$\langle$}5   & 2, 3 & $+1$ & $-1$\\
 \phantom{0$\langle$}7   & 0, 3 & $-1$ & $+1$\\\bottomrule
-\end{tabular}
-\end{center}
+\end{tab}
 
 \paragraph{Reduced spinors.}
 $M_{ab}\in \lie{so}(s,t)$ acts as $\gamma_a \gamma_b$ on representations of the Clifford algebra.
@@ -268,9 +255,7 @@ the case $s-t\equiv\pm 2$ requires $\eta=\mp (-1)^{d/2}$.
 When $s-t\equiv 3,4,5$, a set of $2n$ spinors can be symplectic Majorana: $(\lambda^I)^*=B\Omega_{IJ}\lambda^J$ for $\Omega=((0,\mathbbm{1}_n);(-\mathbbm{1}_n,0))$.
 (Symplectic) Majorana--Weyl spinors exist for $s-t\equiv 0,4\bmod{8}$.
 The table also includes the real dimension of the minimal spinor.
-\begin{center}
-\vspace{-.5\baselineskip}
-\begin{tabular}{c*{4}{>{ }l@{ }r<{ }}}\toprule
+\begin{tab}{c*{4}{>{ }l@{ }r<{ }}}\toprule
 d &\multicolumn{2}{c}{$t\equiv 0$} &\multicolumn{2}{c}{$1$}
 & \multicolumn{2}{c}{$2$} & \multicolumn{2}{c}{$3\bmod{4}$} \\ \midrule
 1 & M     & 1 & M    & 1 &       &   & &   \\
@@ -285,21 +270,17 @@ d &\multicolumn{2}{c}{$t\equiv 0$} &\multicolumn{2}{c}{$1$}
 10& M$^-$ & 32& MW   & 16 & M$^+$& 32 & sW   & 32 \\
 11& s     & 64& M    & 32 & M    & 32 & s    & 64 \\
 12& sW    & 64& M$^+$& 64 & MW   & 32 & M$^-$ & 64\\\bottomrule
-\end{tabular}
-\end{center}
+\end{tab}
 
 \paragraph{Flavour symmetries} of $N$ minimal spinors.
 This is also the $R$-symmetry of the $N$-extended superalgebra.
 For (symplectic) Majorana Weyl spinors, specify $N=(N_L,N_R)$ left/right-handed.
-\begin{center}
-\vspace{-.5\baselineskip}
-\begin{tabular}{l@{}>{$}l<{$}}\toprule
+\begin{tab}{l@{}>{$}l<{$}}\toprule
 M & \hspace{-2pt}\begin{cases} \lie{u}(N)&\text{if $d$ even}\\\lie{so}(N)&\text{if $d$ odd}\end{cases}\\
 MW & : \lie{so}(N_L)\times \lie{so}(N_R) \\
 s & : \lie{usp}(N) \\
 sW & : \lie{usp}(N_L)\times \lie{usp}(N_R)\\\bottomrule
-\end{tabular}
-\end{center}
+\end{tab}
 
 \paragraph{Products of spinor representations.}
 For odd $d=2m+1$, let $\mathcal{S}$ be a spinor representation of complex dimension $2^{m}$.
@@ -307,31 +288,24 @@ The symmetric product $S^2\mathcal{S}$ consists of $k$-forms with $k\equiv m\bmo
 Since $k$-forms and $(d-k)$-forms are the same representation, other descriptions can be given.
 For the antisymmetric product $\Lambda^2\mathcal{S}$, take $k\equiv m-1\bmod{4}$.
 See the list of forms in the table.
-\begin{center}
-\vspace{-.5\baselineskip}
-\begin{tabular}{>{$}l<{$}*{6}{>{$}l<{$}}}\toprule
+\begin{tab}{>{$}l<{$}*{6}{>{$}l<{$}}}\toprule
 d & 1 & 3 & 5 & 7 & 9 & 11\\
 \dim_{\ring{C}}\mathcal{S} & 1 & 2 & 4 & 8 & 16 & 32\\\midrule
 S^2\mathcal{S} & 0 & 1 & 2 & 0,3 & 0,1,4 & 1,2,5\\
 \Lambda^2\mathcal{S} & . & 0 & 0,1 & 1,2 & 2,3 & 0,3,4\\\bottomrule
-\end{tabular}
-\end{center}
+\end{tab}
 For even $d=2m$, let $\mathcal{S}_{\pm}$ be the Weyl spinor representations of complex dimension $2^{m-1}$.
 The tensor product $\mathcal{S}_{+}\otimes\mathcal{S}_{-}$ consists of $(m-1-2j)$-forms for $0\leq j\leq (m-1)/2$.
 The symmetric products $S^2\mathcal{S}_{\pm}$ decompose into the (anti)-self-dual $m$-forms and $(m-4j)$-forms for $0<j\leq m/4$.
 The antisymmetric products $\Lambda^2\mathcal{S}_{\pm}$ decompose into $(m-2-4j)$-forms for $0\leq j\leq (m-2)/4$.
-\begin{center}
-\vspace{-.5\baselineskip}
-\begin{tabular}{>{$}l<{$}*{6}{>{$}l<{$}}}\toprule
+\begin{tab}{>{$}l<{$}*{6}{>{$}l<{$}}}\toprule
 d & 2 & 4 & 6 & 8 & 10 & 12\\
 \dim_{\ring{C}}\mathcal{S}_{\pm} & 1 & 2 & 4 & 8 & 16 & 32\\\midrule
 S^2\mathcal{S}_{\pm} & 1^{\dagger} & 2^{\dagger} & 3^{\dagger} & 0,4^{\dagger} & 1,5^{\dagger} & 2,6^{\dagger}\\
 \Lambda^2\mathcal{S}_{\pm} & . & 0 & 1 & 2 & 3 & 0,4\\
 \mathcal{S}_{+}\otimes\mathcal{S}_{-} & 0 & 1 & 0,2 & 1,3 & 0,2,4 & 1,3,5\\
 \bottomrule
-\end{tabular}
-\vspace{-.5\baselineskip}
-\end{center}
+\end{tab}
 Note that
 $\begin{aligned}[t]
 S^2(\mathcal{S}_{+}\oplus\mathcal{S}_{-})&=S^2\mathcal{S}_{+}\oplus(\mathcal{S}_{+}\otimes\mathcal{S}_{-})\oplus S^2\mathcal{S}_{-}\\
@@ -373,9 +347,7 @@ Since $S^2 Q$ has $1$, $2$, and $5$-forms, there are $2$-form and $5$-form centr
 The bosonic part is $\lie{so}(d,2)$ and $R$-symmetries.
 As a supermatrix: $\begin{pmatrix}\lie{so}(d,2)& Q+S\\ Q-S&R\end{pmatrix}$ or $\lie{so}(d,2)\leftrightarrow R$.  Note that $\{Q,S\}$ contains~$R$.
 For $d=2$, the finite conformal algebra is $\lie{so}(2,2)=\lie{so}(2,1)\oplus \lie{so}(2,1)$, sum of two $d=1$ algebras, so the superalgebra is sum of two $d=1$ superalgebras.
-\begin{center}
-\vspace{-.5\baselineskip}
-\begin{tabular}{lllc}\toprule
+\begin{tab}{lllc}\toprule
 $d$& Superalgebra& $R$-symmetries & \#Q+\#S\\ \midrule
 $1$&  $\lie{osp}(N|2)$ & $\lie{o}(N)$    & $2N$ \\
    &  $\lie{su}(N|1,1)$  &$\lie{su}(N)\oplus \lie{u}(1)$ for $N\neq 2$ &$ 4N$ \\
@@ -390,8 +362,7 @@ $4$&$ \lie{su}(2,2|N)  $ &$\lie{su}(N)\oplus \lie{u}(1)$ for $N\neq 4$&$ 8N$\\
 $5$&$ \lie{F}^2(4)       $ &$ \lie{su}(2) $ & 16 \\       \midrule
 $6$&$ \lie{osp}(8^*|N) $ &$  \lie{usp}(N)\ \ (N $ even)& $8N$ \\
 \bottomrule
-\end{tabular}
-\end{center}
+\end{tab}
 
 
 \section{Supermultiplets with spins $\leq 1$}
@@ -430,11 +401,12 @@ $6$&$ \lie{osp}(8^*|N) $ &$  \lie{usp}(N)\ \ (N $ even)& $8N$ \\
 % manifold~$X$: a $G$-subbundle of the $GL(n,\ring{R})$-principal bundle
 % of tangent frames.
 
-% \definition A \defined{Riemannian manifold} is a manifold with an
-% $O(\dim_{\ring{R}}X)$ structure.  Any manifold admits such a structure
+% \definition A manifold with
+%  $O(\dim_{\ring{R}}X)$ structure \defined{Riemannian} if it has  is a manifold with an
+% .  Any manifold admits such a structure
 % because $O(n)$ is a deformation retract of $GL(n)$.
 
-% \definition
+% \definition An \defined{almost complex manifold}
 
 \bigskip
 \vfill
