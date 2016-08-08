@@ -3,8 +3,8 @@
 \usepackage{amsfonts,amssymb,mathtools,array,booktabs,multirow,bbm,hyperref}
 \usepackage{latexsym}
 %%% Sorry the next two lines are a bit horrible
-\def\mysection #1#2{\medskip\pagebreak[1]\noindent\textbf{\large #1.\ #2}\smallskip}
-\def\myparagraph #1{\textbf{#1}}
+\renewcommand{\section}[1]{\stepcounter{section}\medskip\pagebreak[1]\noindent\textbf{\large\arabic{section}.\ #1}\smallskip}
+\renewcommand{\paragraph}[1]{\textbf{#1}}
 
 \begin{document}
 \twocolumn\raggedbottom
@@ -13,9 +13,9 @@
 
 \noindent ``Ed.'': Bruno Le Floch, Princeton University, \today.
 
-\mysection{1}{Lie (super)algebras}
+\section{Lie (super)algebras}
 
-\myparagraph{Simple complex Lie algebras.}
+\paragraph{Simple complex Lie algebras.}
 Infinite series $A_{n\geq 1}$, $B_{n\geq 1}$, $C_{n\geq 1}$, $D_{n\geq 2}$ with
 $A_1=B_1=C_1$, $B_2=C_2$, $D_2=A_1\oplus A_1$, $D_3=A_3$.
 Five exceptions with $\dim(E_6)=78$, $\dim(E_7)=133$, $\dim(E_8)=248$, $\dim(F_4)=52$, $\dim(G_2)=14$.
@@ -33,7 +33,7 @@ Five exceptions with $\dim(E_6)=78$, $\dim(E_7)=133$, $\dim(E_8)=248$, $\dim(F_4
 \end{tabular}
 \end{center}
 
-\myparagraph{Real forms.}  Denote
+\paragraph{Real forms.}  Denote
 $sl(n)=sl(n,\mathbb{R})$,
 $sp(2n)=sp(2n,\mathbb{R})$,
 $su^*(2n)=sl(n,\mathbb{H})$,
@@ -91,7 +91,7 @@ In $E_{r(s)}$, $s$ is the number of $(\text{non-compact})-(\text{compact})$ gene
 \end{tabular}
 \end{center}
 
-\myparagraph{Accidental isomorphisms.}
+\paragraph{Accidental isomorphisms.}
 \begin{center}
 \vspace{-1.5\baselineskip}
 \begin{minipage}[t]{.55\linewidth}
@@ -120,7 +120,7 @@ so^*(8)&=so(6,2)
 \end{minipage}
 \end{center}
 
-\myparagraph{Classical Lie superalgebras:}
+\paragraph{Classical Lie superalgebras:}
 the bosonic algebra acts on the fermionic generators in a completely reducible representation.
 This excludes Cartan-type superalgebras $W(n)$, $S(n)$, $\tilde S(n)$ and $H(n)$.
 In this table, $m,n\geq 1$ and we do not list purely bosonic Lie algebras.
@@ -140,7 +140,7 @@ $Q(m)$ & $sl(m+1,\mathbb{C})$ & adjoint\\
 \end{tabular}
 \end{center}
 
-\myparagraph{Real forms of Lie superalgebras,}
+\paragraph{Real forms of Lie superalgebras,}
 starting from their ``compact'' form ($p=q=0$).  $P(m)$ has no ``compact'' form.
 Here, $m,n\geq 1$, $0\leq p\leq m/2$, $0\leq q\leq n/2$.
 The forms $su^*$, $osp^*$, $Q^*$ only exist for even rank; $sl'$ only if $m=n$.
@@ -183,13 +183,13 @@ For $D^0$ and $D^2$, $\alpha$ is real.  For $D^1$, $\alpha=1+ia$ with $a$ real.
 
 \smallskip
 
-\myparagraph{Some isomorphisms:}
+\paragraph{Some isomorphisms:}
 $su(1,1|1)=sl(2|1)=osp(2|2)$
 and $su(2|1)=osp(2^*|2,0)$.  For $\alpha=1$, $D^p(2,1,1)=osp(4-p,p|2)$.
 
-\mysection{2}{Spinors}
+\section{Spinors}
 
-\myparagraph{Clifford algebra.}  Let $h_{ab}$ be diagonal with $s$~`$+1$' and $t$~`$-1$', and $d=s+t$.  The Clifford algebra $\{\Gamma_a,\Gamma_b\}=2h_{ab}$ has real dimension~$2^d$ and is isomorphic to a matrix algebra $M_{2^{\#}}(\bullet)$ with
+\paragraph{Clifford algebra.}  Let $h_{ab}$ be diagonal with $s$~`$+1$' and $t$~`$-1$', and $d=s+t$.  The Clifford algebra $\{\Gamma_a,\Gamma_b\}=2h_{ab}$ has real dimension~$2^d$ and is isomorphic to a matrix algebra $M_{2^{\#}}(\bullet)$ with
 \begin{center}
 \vspace{-.5\baselineskip}
 \begin{tabular}{>{$}r<{$}*{8}{>{$}c<{$}}}\toprule
@@ -200,7 +200,7 @@ s-t \bmod{8} & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 \\
 %with $\bullet = [\mathbb{R}, \mathbb{R}\oplus\mathbb{R}, \mathbb{R}, \mathbb{C}, \mathbb{H}, \mathbb{H}\oplus\mathbb{H}, \mathbb{H}, \mathbb{C}][s-t\bmod{8}]$.
 
 
-\myparagraph{Charge conjugation.}  $(-\eta)\Gamma_a^T=\mathcal{C}\Gamma_a\mathcal{C}^{-1}$ are conjugate for $\eta=\pm 1$ because they obey the same algebra.  Get $\mathcal{C}^T=-\varepsilon \mathcal{C}$ with $\varepsilon=\pm 1$ by transposing twice.
+\paragraph{Charge conjugation.}  $(-\eta)\Gamma_a^T=\mathcal{C}\Gamma_a\mathcal{C}^{-1}$ are conjugate for $\eta=\pm 1$ because they obey the same algebra.  Get $\mathcal{C}^T=-\varepsilon \mathcal{C}$ with $\varepsilon=\pm 1$ by transposing twice.
 Let $\Gamma^{(n)}=\Gamma_{a_1\ldots a_n}$.
 Using $\left(\mathcal{C}\Gamma^{(n)}\right) ^T= -\epsilon(-)^{n(n-1)/2}(-\eta)^n \mathcal{C}\Gamma^{(n)}$ find which $n\bmod{4}$ give symmetric $\mathcal{C}\Gamma^{(n)}$.  The sum of $\binom{d}{n}$ must be $2^{\lfloor d/2\rfloor} (2^{\lfloor d/2\rfloor} + 1) / 2$.  This fixes $\epsilon, \eta$.  Odd $d$ require $\eta=(-1)^{d(d+1)/2}$ to preserve $\Gamma^{(d)}$.  Even~$d$ allow two choices of signs: consult the rows $d\pm 1$.
 \vspace{-\baselineskip}
@@ -214,7 +214,7 @@ $d\bmod 8$ & $n$ & $\epsilon$ & $\eta$ \\\midrule\addlinespace[7pt]
 \end{tabular}
 \end{center}
 
-\myparagraph{Reduced spinors.}
+\paragraph{Reduced spinors.}
 $M_{ab}\in so(s,t)$ acts as $\gamma_a \gamma_b$ on representations of the Clifford algebra.
 But the $2^{\lceil d/2\rceil}$-dimensional representation is not irreducible as a representation of $so(s,t)$.
 
@@ -245,7 +245,7 @@ d &\multicolumn{2}{c}{$t\equiv 0$} &\multicolumn{2}{c}{$1$}
 \end{tabular}
 \end{center}
 
-\myparagraph{Flavour symmetries} of $N$ minimal spinors.
+\paragraph{Flavour symmetries} of $N$ minimal spinors.
 This is also the $R$-symmetry of the $N$-extended superalgebra.
 For (symplectic) Majorana Weyl spinors, specify $N=(N_L,N_R)$ left/right-handed.
 \begin{center}
@@ -258,7 +258,7 @@ sW & : usp(N_L)\times usp(N_R)\\\bottomrule
 \end{tabular}
 \end{center}
 
-\myparagraph{Products of spinor representations.}
+\paragraph{Products of spinor representations.}
 For odd $d=2m+1$, let $\mathcal{S}$ be a spinor representation of complex dimension $2^{m}$.
 The symmetric product $S^2\mathcal{S}$ consists of $k$-forms with $k\equiv m\bmod{4}$.
 Since $k$-forms and $(d-k)$-forms are the same representation, other descriptions can be given.
@@ -295,14 +295,14 @@ S^2(\mathcal{S}_{+}\oplus\mathcal{S}_{-})&=S^2\mathcal{S}_{+}\oplus(\mathcal{S}_
 \Lambda^2(\mathcal{S}_{+}\oplus\mathcal{S}_{-})&=\Lambda^2\mathcal{S}_{+}\oplus(\mathcal{S}_{+}\otimes\mathcal{S}_{-})\oplus \Lambda^2\mathcal{S}_{-}
 \end{aligned}$
 
-\mysection{3}{Supersymmetry algebras}
+\section{Supersymmetry algebras}
 
-\myparagraph{The Poincar\'e algebra} is $\mathbb{R}^{s,t} \rtimes so(s,t)$, the semi-direct product of translations by rotations.
+\paragraph{The Poincar\'e algebra} is $\mathbb{R}^{s,t} \rtimes so(s,t)$, the semi-direct product of translations by rotations.
 Namely, $[P_{a},P_{b}]=0$, $[M_{ab},P_{c}]=2ih_{c[a}P_{b]}$, and $[M_{ab},M^{cd}]=4ih_{[a}^{[c}M_{b]}^{d]}$.
 
 \smallskip
 
-\myparagraph{Super-Poincar\'e algebra.}
+\paragraph{Super-Poincar\'e algebra.}
 Add supercharges in some spinor representation~$Q$ of the Poincar\'e algebra (so $[P_{a},Q]=0$).
 Their anticommutator transforms in the representation $S^2 Q$ and should include the one-form~$P$.
 Depending on $s,t$ they can include other $k$-forms~$Z$, called central charges because $[P,Z]=[Z,Z]=0$.
@@ -312,7 +312,7 @@ The supertranslations consist of $(\mathbb{R}^{s,t}\times Z).Q$.
 
 \smallskip
 
-\myparagraph{Example: M-theory algebra.}  $d=10+1$ super-Poincar\'e algebra with $Q=\text{Majorana}$.
+\paragraph{Example: M-theory algebra.}  $d=10+1$ super-Poincar\'e algebra with $Q=\text{Majorana}$.
 Since $S^2 Q$ has $1$, $2$, and $5$-forms, there are $2$-form and $5$-form central charges $Z_{(2)}$ and~$Z_{(5)}$
 (under which M2 and M5 branes are charged):
 \vspace{-.5\baselineskip}
@@ -326,7 +326,7 @@ Since $S^2 Q$ has $1$, $2$, and $5$-forms, there are $2$-form and $5$-form centr
 
 \smallskip
 
-\myparagraph{Superconformal algebras} are the same as super $AdS_{d+1}$.
+\paragraph{Superconformal algebras} are the same as super $AdS_{d+1}$.
 The bosonic part is $so(d,2)$ and $R$-symmetries.
 As a supermatrix: $\begin{pmatrix}so(d,2)& Q+S\\ Q-S&R\end{pmatrix}$ or $so(d,2)\leftrightarrow R$.  Note that $\{Q,S\}$ contains~$R$.
 For $d=2$, the finite conformal algebra is $so(2,2)=so(2,1)\oplus so(2,1)$, sum of two $d=1$ algebras, so the superalgebra is sum of two $d=1$ superalgebras.
@@ -351,19 +351,19 @@ $6$&$ osp(8^*|N) $ &$  usp(N)\ \ (N $ even)& $8N$ \\
 \end{center}
 
 
-\mysection{4}{Supermultiplets with spins $\leq 1$}
+\section{Supermultiplets with spins $\leq 1$}
 
-\myparagraph{For $16$ supercharges}, there is only the vector.
+\paragraph{For $16$ supercharges}, there is only the vector.
 
-\myparagraph{For $8$ supercharges}, vector and hyper.
+\paragraph{For $8$ supercharges}, vector and hyper.
 
-\myparagraph{For $4$ supercharges}, vector, chiral, linear multiplets.
+\paragraph{For $4$ supercharges}, vector, chiral, linear multiplets.
 
-\myparagraph{For $2$ supercharges}, vector, chiral, linear, Fermi, \ldots{}
+\paragraph{For $2$ supercharges}, vector, chiral, linear, Fermi, \ldots{}
 
-%\mysection{5}{List of theories}
+%\section{List of theories}
 %
-%\myparagraph{Pure supergravities} in $4\leq d\leq 11$.  Gravity is topological in $d=3$.  The maximum number of supercharges $Q=32$ forbids $d>11$.  A priori, all $Q=4k$ are possible.  Focus on $32, 16, 8, 4$.
+%\paragraph{Pure supergravities} in $4\leq d\leq 11$.  Gravity is topological in $d=3$.  The maximum number of supercharges $Q=32$ forbids $d>11$.  A priori, all $Q=4k$ are possible.  Focus on $32, 16, 8, 4$.
 %\begin{center}\begin{tabular}{lcccc}\toprule
 %$d$ &$Q=32$& $16$  &$8$  & $4$  \\ \midrule
 %11& \checkmark & &&  \\
