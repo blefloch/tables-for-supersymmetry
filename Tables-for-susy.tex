@@ -1,10 +1,55 @@
 \documentclass[10pt,letterpaper]{article}
-\usepackage{savetrees}
+%\usepackage{savetrees}
+\usepackage[margin=1.2cm]{geometry}
+\setlength{\parskip}{0pt}
+\setlength{\baselineskip}{10pt}
+\usepackage{microtype}
 \usepackage{amsfonts,amssymb,mathtools,array,booktabs,multirow,bbm,hyperref}
 \usepackage{latexsym}
+\usepackage{expl3}
+\usepackage{etoolbox}
 %%% Sorry the next two lines are a bit horrible
 \renewcommand{\section}[1]{\stepcounter{section}\medskip\pagebreak[1]\noindent\textbf{\large\arabic{section}.\ #1}\smallskip}
-\renewcommand{\paragraph}[1]{\textbf{#1}}
+\renewcommand{\paragraph}[1]{\par\noindent\textbf{#1}}
+\newcommand{\definition}{\par\textbf{Def:} \ignorespaces}
+\newcommand{\defined}[1]{\emph{#1}}
+
+\newcommand{\myA}{}
+\newcommand{\myB}{}
+\newcommand{\ring}[1]{\mathbb{#1}}
+\ExplSyntaxOn
+\newcommand{\lie}[1]{
+  \mathfrak {
+    \str_case:nnF {#1}
+      {
+        { sl } { sl }
+        { so } { so }
+        { su } { su }
+        { u } { u }
+        { o } { o }
+        { sp } { sp }
+        { usp } { usp }
+        { osp } { osp }
+        { A } { a }
+        { B } { b }
+        { C } { c }
+        { D } { d }
+        { E } { e }
+        { F } { f }
+        { G } { g }
+        { P } { p }
+        { Q } { q }
+        { UQ } { uq }
+        { W } { w }
+        { S } { s }
+        { \tilde S } { \tilde s }
+        { \tilde{S} } { \tilde{s} }
+        { H } { h }
+      } { \ERROR #1 }
+    }
+}
+\ExplSyntaxOff
+\robustify\tilde
 
 \begin{document}
 \twocolumn\raggedbottom
@@ -13,79 +58,77 @@
 
 \noindent ``Ed.'': Bruno Le Floch, Princeton University, \today.
 
-\section{Lie (super)algebras}
+\section{Simple Lie (super)algebras}
 
-\paragraph{Simple complex Lie algebras.}
-Infinite series $A_{n\geq 1}$, $B_{n\geq 1}$, $C_{n\geq 1}$, $D_{n\geq 2}$ with
-$A_1=B_1=C_1$, $B_2=C_2$, $D_2=A_1\oplus A_1$, $D_3=A_3$.
-Five exceptions with $\dim(E_6)=78$, $\dim(E_7)=133$, $\dim(E_8)=248$, $\dim(F_4)=52$, $\dim(G_2)=14$.
+\paragraph{Complex case.}
+Infinite series $\lie{A}_{n\geq 1}$, $\lie{B}_{n\geq 1}$, $\lie{C}_{n\geq 1}$, $\lie{D}_{n\geq 2}$ with
+$\lie{A}_1=\lie{B}_1=\lie{C}_1$, $\lie{B}_2=\lie{C}_2$, $\lie{D}_2=\lie{A}_1\oplus \lie{A}_1$, $\lie{D}_3=\lie{A}_3$.
+Five exceptions with $\dim(\lie{E}_6)=78$, $\dim(\lie{E}_7)=133$, $\dim(\lie{E}_8)=248$, $\dim(\lie{F}_4)=52$, $\dim(\lie{G}_2)=14$.
 \begin{center}
-\vspace{-.3\baselineskip}
 \begin{tabular}{*{3}{>{$}l<{$}}l}\toprule
-  \text{Type} & \text{Dimension} & \text{Lie algebra} \\\midrule 
-  A_n & n(n+2) & sl(n+1,\mathbb{C}) =\{\text{traceless}\} \\
-  B_n & n(2n+1) & so(2n+1,\mathbb{C}) =\{\text{antisymmetric}\} \\
-  C_n & n(2n+1) & sp(2n,\mathbb{C})
+  \text{Type} & \text{Dimension} & \text{Lie algebra} \\\midrule
+  \lie{A}_n & n(n+2) & \lie{sl}(n+1,\ring{C}) =\{\text{traceless}\} \\
+  \lie{B}_n & n(2n+1) & \lie{so}(2n+1,\ring{C}) =\{\text{antisymmetric}\} \\
+  \lie{C}_n & n(2n+1) & \lie{sp}(2n,\ring{C})
 	=\left\{\left(\begin{smallmatrix}0&\mathbbm{1}_n\\-\mathbbm{1}_n&0\end{smallmatrix}\right)\times\text{symmetric}\right\}
   \\
-  D_n & n(2n-1) & so(2n,\mathbb{C}) =\{\text{antisymmetric}\} \\
+  \lie{D}_n & n(2n-1) & \lie{so}(2n,\ring{C}) =\{\text{antisymmetric}\} \\
   \bottomrule
 \end{tabular}
 \end{center}
 
-\paragraph{Real forms.}  Denote
-$sl(n)=sl(n,\mathbb{R})$,
-$sp(2n)=sp(2n,\mathbb{R})$,
-$su^*(2n)=sl(n,\mathbb{H})$,
-$so^*(2n)=o(n,\mathbb{H})$,
-$usp(2m,2n)=u(m,n,\mathbb{H})$.
-A Lie algebra is ``compact'' if it exponentiates to a compact Lie group.
-In $E_{r(s)}$, $s$ is the number of $(\text{non-compact})-(\text{compact})$ generators.
+\paragraph{Real case.}  Let
+$\lie{sl}(n)=\lie{sl}(n,\ring{R})$,
+$\lie{sp}(2n)=\lie{sp}(2n,\ring{R})$,
+$\lie{su}^*(2n)=\lie{sl}(n,\ring{H})$,
+$\lie{so}^*(2n)=\lie{o}(n,\ring{H})$,
+$\lie{usp}(2m,2n)=\lie{u}(m,n,\ring{H})$.
+A Lie algebra is \defined{compact} if it exponentiates to a compact Lie group.
+In $\lie{E}_{r(s)}$, $s$ is the number of $(\text{non-compact})-(\text{compact})$ generators.
 \begin{center}
-\vspace{-.3\baselineskip}
 \begin{tabular}{@{}c@{ }lll}\toprule
-& Real form & \hspace{-1em}Max ``compact'' subalgebra & Range \\
+& Real form & \hspace{-1em}Max compact subalgebra & Range \\
 \midrule
 \multirow{4}{*}{\rotatebox{90}{$sl(n)$}}
-& $su(n)$ & ``compact'' & \\
-& $sl(n)$ & $so(n)$ & \\
-& $su(n-p,p)$ & $su(n-p)\oplus su(p)\oplus u(1)$ & $0<p<n$ \\
-& $su^*(n)$ & $usp(n)$ & $n$ even \\
+& $\lie{su}(n)$ & compact & \\
+& $\lie{sl}(n)$ & $\lie{so}(n)$ & \\
+& $\lie{su}(n-p,p)$ & $\lie{su}(n-p)\oplus \lie{su}(p)\oplus \lie{u}(1)$ & $0<p<n$ \\
+& $\lie{su}^*(n)$ & $\lie{usp}(n)$ & $n$ even \\
 \midrule
-\multirow{3}{*}{\rotatebox{90}{$so(n)$}}
-& $so(n)$& ``compact'' & \\
-& $so(p,n-p)$& $so(p)\oplus so(n-p)$ & $0<p<n$ \\
-& $so^*(2n)$   & $u(n)$ & $n$ even \\
+\multirow{3}{*}{\rotatebox{90}{$\lie{so}(n)$}}
+& $\lie{so}(n)$& compact & \\
+& $\lie{so}(p,n-p)$& $\lie{so}(p)\oplus \lie{so}(n-p)$ & $0<p<n$ \\
+& $\lie{so}^*(2n)$   & $\lie{u}(n)$ & $n$ even \\
 \midrule
-\multirow{3}{*}{\rotatebox{90}{$sp(2n)$}}
-& $usp(2n)$ & ``compact'' & \\
-& $sp(2n)$  & $u(n)$ & \\
-& $usp(2n-2p,2p)$ & $usp(2n-2p)\oplus usp(2p)$ & $0<p<n$ \\
+\multirow{3}{*}{\rotatebox{90}{$\lie{sp}(2n)$}}
+& $\lie{usp}(2n)$ & compact & \\
+& $\lie{sp}(2n)$  & $\lie{u}(n)$ & \\
+& $\lie{usp}(2n-2p,2p)$ & $\lie{usp}(2n-2p)\oplus \lie{usp}(2p)$ & $0<p<n$ \\
 \midrule
 \multicolumn{4}{c}{%
   \begin{tabular}[c]{ll}
-  $E_{6(-78)}$ & ``compact'' \\
-  $E_{6(-26)}$ & $F_4$ \\
-  $E_{6(-14)}$ & $so(10)\oplus so(2)$\\
-  $E_{6(2)}$ & $su(6)\oplus su(2)$\\
-  $E_{6(6)}$ & $usp(8)$\\
+  $\lie{E}_{6(-78)}$ & compact \\
+  $\lie{E}_{6(-26)}$ & $F_4$ \\
+  $\lie{E}_{6(-14)}$ & $\lie{so}(10)\oplus \lie{so}(2)$\\
+  $\lie{E}_{6(2)}$ & $\lie{su}(6)\oplus \lie{su}(2)$\\
+  $\lie{E}_{6(6)}$ & $\lie{usp}(8)$\\
   \midrule
-  $E_{7(-133)}$& ``compact'' \\
-  $E_{7(-25)}$& $E_{6,-78}\oplus so(2)$ \\
-  $E_{7(-5)}$& $so(12)\oplus su(2)$ \\
-  $E_{7(7)}$& $su(8)$
+  $\lie{E}_{7(-133)}$& compact \\
+  $\lie{E}_{7(-25)}$& $\lie{E}_{6,-78}\oplus \lie{so}(2)$ \\
+  $\lie{E}_{7(-5)}$& $\lie{so}(12)\oplus \lie{su}(2)$ \\
+  $\lie{E}_{7(7)}$& $\lie{su}(8)$
   \end{tabular}\quad
   \begin{tabular}[c]{ll}
-  $E_{8(-248)}$& ``compact''\\
-  $E_{8(-24)}$&$E_{7,-133}\oplus su(2)$\\
-  $E_{8(8)}$&$so(16)$\\
+  $\lie{E}_{8(-248)}$& compact\\
+  $\lie{E}_{8(-24)}$&$\lie{E}_{7,-133}\oplus \lie{su}(2)$\\
+  $\lie{E}_{8(8)}$&$\lie{so}(16)$\\
   \midrule
-  $G_{2(-14)}$ & ``compact'' \\
-  $G_{2(2)}$ & $su(2)\oplus su(2)$ \\
+  $\lie{G}_{2(-14)}$ & compact \\
+  $\lie{G}_{2(2)}$ & $\lie{su}(2)\oplus \lie{su}(2)$ \\
   \midrule
-  $F_{4(-52)}$ & ``compact'' \\
-  $F_{4(-20)}$ & $so(9)$ \\
-  $F_{4(4)}$ & $usp(6)\oplus su(2)$ \\
+  $\lie{F}_{4(-52)}$ & compact \\
+  $\lie{F}_{4(-20)}$ & $\lie{so}(9)$ \\
+  $\lie{F}_{4(4)}$ & $\lie{usp}(6)\oplus \lie{su}(2)$ \\
   \end{tabular}
 }\\\bottomrule
 \end{tabular}
@@ -93,99 +136,99 @@ In $E_{r(s)}$, $s$ is the number of $(\text{non-compact})-(\text{compact})$ gene
 
 \paragraph{Accidental isomorphisms.}
 \begin{center}
-\vspace{-1.5\baselineskip}
+\vspace{-2.5\baselineskip}
 \begin{minipage}[t]{.55\linewidth}
 \begin{align*}
-so(2)&= u(1), \quad so(1,1)=\mathbb{R}\\
-so(3)&= su(2)=su^*(2)\\
-so(2,1) &=su(1,1)=sl(2)=sp(2)\\
-so(4)&=su(2)\oplus su(2)\\
-so(3,1)&=sl(2,\mathbb{C})=sp(2,\mathbb{C})\\
-so(2,2)&=sl(2)\oplus sl(2)\\
-so^*(4)&=su(1,1)\oplus su(2)\\
-so(5)&=usp(4)
+\lie{so}(2)&= \lie{u}(1), \quad \lie{so}(1,1)=\ring{R}\\
+\lie{so}(3)&= \lie{su}(2)=\lie{su}^*(2)\\
+\lie{so}(2,1) &=\lie{su}(1,1)=\lie{sl}(2)=\lie{sp}(2)\\
+\lie{so}(4)&=\lie{su}(2)\oplus \lie{su}(2)\\
+\lie{so}(3,1)&=\lie{sl}(2,\ring{C})=\lie{sp}(2,\ring{C})\\
+\lie{so}(2,2)&=\lie{sl}(2)\oplus \lie{sl}(2)\\
+\lie{so}^*(4)&=\lie{su}(1,1)\oplus \lie{su}(2)\\
+\lie{so}(5)&=\lie{usp}(4)
 \end{align*}
 \end{minipage}%
 \begin{minipage}[t]{.45\linewidth}
 \begin{align*}
-so(4,1)&=usp(2,2)\\
-so(3,2)&=sp(4)\\
-so(6)&=su(4)\\
-so(5,1)&=su^*(4)\\
-so(4,2)&=su(2,2)\\
-so(3,3)&=sl(4)\\
-so^*(6)&=su(3,1)\\
-so^*(8)&=so(6,2)
+\lie{so}(4,1)&=\lie{usp}(2,2)\\
+\lie{so}(3,2)&=\lie{sp}(4)\\
+\lie{so}(6)&=\lie{su}(4)\\
+\lie{so}(5,1)&=\lie{su}^*(4)\\
+\lie{so}(4,2)&=\lie{su}(2,2)\\
+\lie{so}(3,3)&=\lie{sl}(4)\\
+\lie{so}^*(6)&=\lie{su}(3,1)\\
+\lie{so}^*(8)&=\lie{so}(6,2)
 \end{align*}
 \end{minipage}
 \end{center}
 
 \paragraph{Classical Lie superalgebras:}
 the bosonic algebra acts on the fermionic generators in a completely reducible representation.
-This excludes Cartan-type superalgebras $W(n)$, $S(n)$, $\tilde S(n)$ and $H(n)$.
+This excludes Cartan-type superalgebras $\lie{W}(n)$, $\lie{S}(n)$, $\lie{\tilde S}(n)$ and $\lie{H}(n)$.
 In this table, $m,n\geq 1$ and we do not list purely bosonic Lie algebras.
-The factor $\mathbb{C}$ of $sl(m|n)$ must be removed if $m=n$.
+The factor $\ring{C}$ of $\lie{sl}(m|n)$ must be removed if $m=n$.
 \begin{center}
-\vspace{-.5\baselineskip}
 \begin{tabular}{lll}\toprule
 & Bosonic algebra & Fermionic repr. \\\midrule
-$sl(m|n)$ & $sl(m,\mathbb{C})\oplus sl(n,\mathbb{C})\oplus\mathbb{C}$ & $(m,\overline{n})\oplus(\overline{m},n)$ \\
-$osp(m|2n)$ & $so(m,\mathbb{C}) \oplus sp(2n)$ & $(m,2n)$ \\
-$D(2,1,\alpha)$ & $sl(2,\mathbb{C})^3$ & $(2,2,2)$ \\
-$F(4)$ & $so(7,\mathbb{C})\oplus sl(2,\mathbb{C})$ & $(8,2)$ \\
-$G(3)$ & $G_2\oplus sl(2,\mathbb{C})$ & $(7,2)$ \\
-$P(m)$ & $sl(m+1,\mathbb{C})$ & $\text{sym}\oplus(\text{antisym})^*$ \\
-$Q(m)$ & $sl(m+1,\mathbb{C})$ & adjoint\\
+$\lie{sl}(m|n)$ & $\lie{sl}(m,\ring{C})\oplus \lie{sl}(n,\ring{C})\oplus\ring{C}$ & $(m,\overline{n})\oplus(\overline{m},n)$ \\
+$\lie{osp}(m|2n)$ & $\lie{so}(m,\ring{C}) \oplus \lie{sp}(2n)$ & $(m,2n)$ \\
+$\lie{D}(2,1,\alpha)$ & $\lie{sl}(2,\ring{C})^3$ & $(2,2,2)$ \\
+$\lie{F}(4)$ & $\lie{so}(7,\ring{C})\oplus \lie{sl}(2,\ring{C})$ & $(8,2)$ \\
+$\lie{G}(3)$ & $\lie{G}_2\oplus \lie{sl}(2,\ring{C})$ & $(7,2)$ \\
+$\lie{P}(m)$ & $\lie{sl}(m+1,\ring{C})$ & $\text{sym}\oplus(\text{antisym})^*$ \\
+$\lie{Q}(m)$ & $\lie{sl}(m+1,\ring{C})$ & adjoint\\
 \bottomrule
 \end{tabular}
 \end{center}
 
 \paragraph{Real forms of Lie superalgebras,}
-starting from their ``compact'' form ($p=q=0$).  $P(m)$ has no ``compact'' form.
+starting from their compact form ($p=q=0$).  $\lie{P}(m)$ has no compact form.
 Here, $m,n\geq 1$, $0\leq p\leq m/2$, $0\leq q\leq n/2$.
-The forms $su^*$, $osp^*$, $Q^*$ only exist for even rank; $sl'$ only if $m=n$.
+The forms $\lie{su}^*$, $\lie{osp}^*$, $\lie{Q}^*$ only exist for even rank; $\lie{sl}'$ only if $m=n$.
 \begin{center}
 \vspace{-.5\baselineskip}
 \begin{tabular}{*{2}{>{$}l<{$}}}\toprule
 \text{Real form} & \text{Bosonic algebra}  \\ \midrule
-su(m-p,p|n-q,q) & su(m-p,p)\oplus su(n-q,q)\oplus u(1)^{\mathsection}\\
-sl(m|n) & sl(m)\oplus sl(n)\oplus so(1,1)^{\mathsection} \\
-sl'(n|n) \quad\, (m=n)& sl(n,\mathbb{C})\\
-su^*(m|n) \:\: (m,n \text{ even}) & su^*(m)\oplus su^*(n)\oplus so(1,1)^{\mathsection}\\
+\lie{su}(m-p,p|n-q,q) & \lie{su}(m-p,p)\oplus \lie{su}(n-q,q)\oplus \lie{u}(1)^{\mathsection}\\
+\lie{sl}(m|n) & \lie{sl}(m)\oplus \lie{sl}(n)\oplus \lie{so}(1,1)^{\mathsection} \\
+\lie{sl}'(n|n) \quad\, (m=n)& \lie{sl}(n,\ring{C})\\
+\lie{su}^*(m|n) \:\: (m,n \text{ even}) & \lie{su}^*(m)\oplus \lie{su}^*(n)\oplus \lie{so}(1,1)^{\mathsection}\\
 \midrule
-osp(m-p,p|2n) & so(m-p,p)\oplus sp(2n) \\
-\multicolumn{2}{l}{$osp^*(m|2n-2q,2q)$ ($m$ even)\quad $so^*(m)\oplus usp(2n-2q,2q)$} \\
+\lie{osp}(m-p,p|2n) & \lie{so}(m-p,p)\oplus \lie{sp}(2n) \\
+\multicolumn{2}{l}{$\lie{osp}^*(m|2n-2q,2q)$ ($m$ even)\quad $\lie{so}^*(m)\oplus \lie{usp}(2n-2q,2q)$} \\
 \midrule
-D^p(2,1,\alpha) \;^{\mathparagraph} & so(4-p,p)\oplus sl(2)\quad (p=0,1,2)\\
+\lie{D}^p(2,1,\alpha) \;^{\mathparagraph} & \lie{so}(4-p,p)\oplus \lie{sl}(2)\quad (p=0,1,2)\\
 \midrule
-F^p(4) \text{ for $p=0,3$} & so(7-p,p)\oplus sl(2) \\
-F^p(4) \text{ for $p=1,2$} & so(7-p,p)\oplus su(2) \\
+\lie{F}^p(4) \text{ for $p=0,3$} & \lie{so}(7-p,p)\oplus \lie{sl}(2) \\
+\lie{F}^p(4) \text{ for $p=1,2$} & \lie{so}(7-p,p)\oplus \lie{su}(2) \\
 \midrule
-G_s(3) \text{ for $s=-14,2$} & G_{2(s)}\oplus sl(2) \\
+\lie{G}_s(3) \text{ for $s=-14,2$} & \lie{G}_{2(s)}\oplus sl(2) \\
 \midrule
-P(m) & sl(m+1) \\
+\lie{P}(m) & \lie{sl}(m+1) \\
 \midrule
-UQ(m-p,p) & su(m+1-p,p) \\
-Q(m) & sl(m+1) \\
-Q^*(m) \quad (m \text{ odd}) & su^*(m+1) \\
+\lie{UQ}(m-p,p) & \lie{su}(m+1-p,p) \\
+\lie{Q}(m) & \lie{sl}(m+1) \\
+\lie{Q}^*(m) \quad (m \text{ odd}) & \lie{su}^*(m+1) \\
 \bottomrule
 \end{tabular}
 \vspace{-.7\baselineskip}
 \end{center}
 
 $^{\mathsection}$
-For $m=n$, $u(1)$ and $so(1,1)$ factors are absent.
+For $m=n$, $\lie{u}(1)$ and $\lie{so}(1,1)$ factors are absent.
 Additionally, one can project down to a single bosonic factor.
 
 $^{\mathparagraph}$
-The three $sl(2)$ bosonic factors of $D(2,1,\alpha)$ appear with weights $1$, $\alpha$ and $-1-\alpha$ in fermion anticommutators.
-For $D^0$ and $D^2$, $\alpha$ is real.  For $D^1$, $\alpha=1+ia$ with $a$ real.
+The three $\lie{sl}(2)$ bosonic factors of $\lie{D}(2,1,\alpha)$ appear with weights $1$, $\alpha$ and $-1-\alpha$ in fermion anticommutators.
+For $\lie{D}^0$ and $\lie{D}^2$, $\alpha$ is real.  For $\lie{D}^1$, $\alpha=1+ia$ with $a$ real.
 
 \smallskip
 
 \paragraph{Some isomorphisms:}
-$su(1,1|1)=sl(2|1)=osp(2|2)$
-and $su(2|1)=osp(2^*|2,0)$.  For $\alpha=1$, $D^p(2,1,1)=osp(4-p,p|2)$.
+$\lie{su}(1,1|1)=\lie{sl}(2|1)=\lie{osp}(2|2)$
+and $\lie{su}(2|1)=\lie{osp}(2^*|2,0)$
+and $\lie{D}^p(2,1,\alpha=1)=\lie{osp}(4-p,p|2)$.
 
 \section{Spinors}
 
@@ -194,10 +237,10 @@ and $su(2|1)=osp(2^*|2,0)$.  For $\alpha=1$, $D^p(2,1,1)=osp(4-p,p|2)$.
 \vspace{-.5\baselineskip}
 \begin{tabular}{>{$}r<{$}*{8}{>{$}c<{$}}}\toprule
 s-t \bmod{8} & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 \\
-\bullet \text{\quad is} & \mathbb{R}& \mathbb{R}\oplus\mathbb{R} & \mathbb{R} & \mathbb{C} & \mathbb{H} & \mathbb{H}\oplus\mathbb{H} & \mathbb{H} &\mathbb{C}\\\bottomrule
+\bullet \text{\quad is} & \ring{R}& \ring{R}\oplus\ring{R} & \ring{R} & \ring{C} & \ring{H} & \ring{H}\oplus\ring{H} & \ring{H} &\ring{C}\\\bottomrule
 \end{tabular}
 \end{center}
-%with $\bullet = [\mathbb{R}, \mathbb{R}\oplus\mathbb{R}, \mathbb{R}, \mathbb{C}, \mathbb{H}, \mathbb{H}\oplus\mathbb{H}, \mathbb{H}, \mathbb{C}][s-t\bmod{8}]$.
+%with $\bullet = [\ring{R}, \ring{R}\oplus\ring{R}, \ring{R}, \ring{C}, \ring{H}, \ring{H}\oplus\ring{H}, \ring{H}, \ring{C}][s-t\bmod{8}]$.
 
 
 \paragraph{Charge conjugation.}  $(-\eta)\Gamma_a^T=\mathcal{C}\Gamma_a\mathcal{C}^{-1}$ are conjugate for $\eta=\pm 1$ because they obey the same algebra.  Get $\mathcal{C}^T=-\varepsilon \mathcal{C}$ with $\varepsilon=\pm 1$ by transposing twice.
@@ -215,7 +258,7 @@ $d\bmod 8$ & $n$ & $\epsilon$ & $\eta$ \\\midrule\addlinespace[7pt]
 \end{center}
 
 \paragraph{Reduced spinors.}
-$M_{ab}\in so(s,t)$ acts as $\gamma_a \gamma_b$ on representations of the Clifford algebra.
+$M_{ab}\in \lie{so}(s,t)$ acts as $\gamma_a \gamma_b$ on representations of the Clifford algebra.
 But the $2^{\lceil d/2\rceil}$-dimensional representation is not irreducible as a representation of $so(s,t)$.
 
 In even~$d$, Weyl (or chiral) spinors $\Gamma^{(d)}\lambda=\pm\lambda$ have $2^{d/2-1}$ real components.
@@ -251,10 +294,10 @@ For (symplectic) Majorana Weyl spinors, specify $N=(N_L,N_R)$ left/right-handed.
 \begin{center}
 \vspace{-.5\baselineskip}
 \begin{tabular}{l@{}>{$}l<{$}}\toprule
-M & \hspace{-2pt}\begin{cases} u(N)&\text{if $d$ even}\\so(N)&\text{if $d$ odd}\end{cases}\\
-MW & : so(N_L)\times so(N_R) \\
-s & : usp(N) \\
-sW & : usp(N_L)\times usp(N_R)\\\bottomrule
+M & \hspace{-2pt}\begin{cases} \lie{u}(N)&\text{if $d$ even}\\\lie{so}(N)&\text{if $d$ odd}\end{cases}\\
+MW & : \lie{so}(N_L)\times \lie{so}(N_R) \\
+s & : \lie{usp}(N) \\
+sW & : \lie{usp}(N_L)\times \lie{usp}(N_R)\\\bottomrule
 \end{tabular}
 \end{center}
 
@@ -268,7 +311,7 @@ See the list of forms in the table.
 \vspace{-.5\baselineskip}
 \begin{tabular}{>{$}l<{$}*{6}{>{$}l<{$}}}\toprule
 d & 1 & 3 & 5 & 7 & 9 & 11\\
-\dim_{\mathbb{C}}\mathcal{S} & 1 & 2 & 4 & 8 & 16 & 32\\\midrule
+\dim_{\ring{C}}\mathcal{S} & 1 & 2 & 4 & 8 & 16 & 32\\\midrule
 S^2\mathcal{S} & 0 & 1 & 2 & 0,3 & 0,1,4 & 1,2,5\\
 \Lambda^2\mathcal{S} & . & 0 & 0,1 & 1,2 & 2,3 & 0,3,4\\\bottomrule
 \end{tabular}
@@ -281,7 +324,7 @@ The antisymmetric products $\Lambda^2\mathcal{S}_{\pm}$ decompose into $(m-2-4j)
 \vspace{-.5\baselineskip}
 \begin{tabular}{>{$}l<{$}*{6}{>{$}l<{$}}}\toprule
 d & 2 & 4 & 6 & 8 & 10 & 12\\
-\dim_{\mathbb{C}}\mathcal{S}_{\pm} & 1 & 2 & 4 & 8 & 16 & 32\\\midrule
+\dim_{\ring{C}}\mathcal{S}_{\pm} & 1 & 2 & 4 & 8 & 16 & 32\\\midrule
 S^2\mathcal{S}_{\pm} & 1^{\dagger} & 2^{\dagger} & 3^{\dagger} & 0,4^{\dagger} & 1,5^{\dagger} & 2,6^{\dagger}\\
 \Lambda^2\mathcal{S}_{\pm} & . & 0 & 1 & 2 & 3 & 0,4\\
 \mathcal{S}_{+}\otimes\mathcal{S}_{-} & 0 & 1 & 0,2 & 1,3 & 0,2,4 & 1,3,5\\
@@ -297,7 +340,7 @@ S^2(\mathcal{S}_{+}\oplus\mathcal{S}_{-})&=S^2\mathcal{S}_{+}\oplus(\mathcal{S}_
 
 \section{Supersymmetry algebras}
 
-\paragraph{The Poincar\'e algebra} is $\mathbb{R}^{s,t} \rtimes so(s,t)$, the semi-direct product of translations by rotations.
+\paragraph{The Poincar\'e algebra} is $\ring{R}^{s,t} \rtimes \lie{so}(s,t)$, the semi-direct product of translations by rotations.
 Namely, $[P_{a},P_{b}]=0$, $[M_{ab},P_{c}]=2ih_{c[a}P_{b]}$, and $[M_{ab},M^{cd}]=4ih_{[a}^{[c}M_{b]}^{d]}$.
 
 \smallskip
@@ -306,9 +349,9 @@ Namely, $[P_{a},P_{b}]=0$, $[M_{ab},P_{c}]=2ih_{c[a}P_{b]}$, and $[M_{ab},M^{cd}
 Add supercharges in some spinor representation~$Q$ of the Poincar\'e algebra (so $[P_{a},Q]=0$).
 Their anticommutator transforms in the representation $S^2 Q$ and should include the one-form~$P$.
 Depending on $s,t$ they can include other $k$-forms~$Z$, called central charges because $[P,Z]=[Z,Z]=0$.
-The super-Poincar\'e algebra is $((\mathbb{R}^{s,t}\times Z).Q)\rtimes (so(s,t)\times R)$, where the $R$-symmetry acts on~$Q$.
-This Lie superalgebra is graded: $\operatorname{gr}(\mathbb{R}^{s,t}\times Z)=-2$, $\operatorname{gr}(Q)=-1$, and $\operatorname{gr}(so(s,t)\times R)=0$.
-The supertranslations consist of $(\mathbb{R}^{s,t}\times Z).Q$.
+The super-Poincar\'e algebra is $((\ring{R}^{s,t}\times Z).Q)\rtimes (\lie{so}(s,t)\times R)$, where the $R$-symmetry acts on~$Q$.
+This Lie superalgebra is graded: $\operatorname{gr}(\ring{R}^{s,t}\times Z)=-2$, $\operatorname{gr}(Q)=-1$, and $\operatorname{gr}(\lie{so}(s,t)\times R)=0$.
+The supertranslations consist of $(\ring{R}^{s,t}\times Z).Q$.
 
 \smallskip
 
@@ -322,30 +365,30 @@ Since $S^2 Q$ has $1$, $2$, and $5$-forms, there are $2$-form and $5$-form centr
 \end{align*}
 \vspace{-1\baselineskip}
 
-\noindent Altogether the M-theory algebra is $osp(1|32)$.
+\noindent Altogether the M-theory algebra is $\lie{osp}(1|32)$.
 
 \smallskip
 
 \paragraph{Superconformal algebras} are the same as super $AdS_{d+1}$.
-The bosonic part is $so(d,2)$ and $R$-symmetries.
-As a supermatrix: $\begin{pmatrix}so(d,2)& Q+S\\ Q-S&R\end{pmatrix}$ or $so(d,2)\leftrightarrow R$.  Note that $\{Q,S\}$ contains~$R$.
-For $d=2$, the finite conformal algebra is $so(2,2)=so(2,1)\oplus so(2,1)$, sum of two $d=1$ algebras, so the superalgebra is sum of two $d=1$ superalgebras.
+The bosonic part is $\lie{so}(d,2)$ and $R$-symmetries.
+As a supermatrix: $\begin{pmatrix}\lie{so}(d,2)& Q+S\\ Q-S&R\end{pmatrix}$ or $\lie{so}(d,2)\leftrightarrow R$.  Note that $\{Q,S\}$ contains~$R$.
+For $d=2$, the finite conformal algebra is $\lie{so}(2,2)=\lie{so}(2,1)\oplus \lie{so}(2,1)$, sum of two $d=1$ algebras, so the superalgebra is sum of two $d=1$ superalgebras.
 \begin{center}
 \vspace{-.5\baselineskip}
 \begin{tabular}{lllc}\toprule
 $d$& Superalgebra& $R$-symmetries & \#Q+\#S\\ \midrule
-$1$&  $osp(N|2)$ & $o(N)$    & $2N$ \\
-   &  $su(N|1,1)$  &$su(N)\oplus u(1)$ for $N\neq 2$ &$ 4N$ \\
-   &  $su(2|1,1)           $    &$su(2)              $ &$ 8   $\\
-   &  $osp(4^*|2N)         $    &$su(2)\oplus usp(2N)$ &$ 8N  $\\
-   &  $G(3)                $    &$G_2                $ &$ 14  $\\
-   &  $F^0(4)                $    &$so(7)              $ &$ 16  $\\
-   &  $D^0(2,1,\alpha)     $    &$su(2)\oplus su(2)  $ &$  8  $\\  \midrule
-$3$&$ osp(N|4)   $ &$ so(N) $&$ 4N $\\   \midrule
-$4$&$ su(2,2|N)  $ &$su(N)\oplus u(1)$ for $N\neq 4$&$ 8N$\\
-   &$ su(2,2|4)  $ &$  su(4)$ & 32\\  \midrule
-$5$&$ F^2(4)       $ &$ su(2) $ & 16 \\       \midrule
-$6$&$ osp(8^*|N) $ &$  usp(N)\ \ (N $ even)& $8N$ \\
+$1$&  $\lie{osp}(N|2)$ & $\lie{o}(N)$    & $2N$ \\
+   &  $\lie{su}(N|1,1)$  &$\lie{su}(N)\oplus \lie{u}(1)$ for $N\neq 2$ &$ 4N$ \\
+   &  $\lie{su}(2|1,1)           $    &$\lie{su}(2)              $ &$ 8   $\\
+   &  $\lie{osp}(4^*|2N)         $    &$\lie{su}(2)\oplus \lie{usp}(2N)$ &$ 8N  $\\
+   &  $\lie{G}(3)                $    &$\lie{G}_2                $ &$ 14  $\\
+   &  $\lie{F}^0(4)                $    &$\lie{so}(7)              $ &$ 16  $\\
+   &  $\lie{D}^0(2,1,\alpha)     $    &$\lie{su}(2)\oplus \lie{su}(2)  $ &$  8  $\\  \midrule
+$3$&$ \lie{osp}(N|4)   $ &$ \lie{so}(N) $&$ 4N $\\   \midrule
+$4$&$ \lie{su}(2,2|N)  $ &$\lie{su}(N)\oplus \lie{u}(1)$ for $N\neq 4$&$ 8N$\\
+   &$ \lie{su}(2,2|4)  $ &$  \lie{su}(4)$ & 32\\  \midrule
+$5$&$ \lie{F}^2(4)       $ &$ \lie{su}(2) $ & 16 \\       \midrule
+$6$&$ \lie{osp}(8^*|N) $ &$  \lie{usp}(N)\ \ (N $ even)& $8N$ \\
 \bottomrule
 \end{tabular}
 \end{center}
@@ -379,6 +422,19 @@ $6$&$ osp(8^*|N) $ &$  usp(N)\ \ (N $ even)& $8N$ \\
 %4 &$N=8$ &$N=4$ & $N=2$
 %&$N=1$\\\bottomrule
 %\end{tabular}\end{center}
+
+
+% \section{Types of manifolds}
+
+% \definition A \defined{$G$-structure} on an n-dimensional real
+% manifold~$X$: a $G$-subbundle of the $GL(n,\ring{R})$-principal bundle
+% of tangent frames.
+
+% \definition A \defined{Riemannian manifold} is a manifold with an
+% $O(\dim_{\ring{R}}X)$ structure.  Any manifold admits such a structure
+% because $O(n)$ is a deformation retract of $GL(n)$.
+
+% \definition
 
 \bigskip
 \vfill
