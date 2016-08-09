@@ -1,23 +1,59 @@
 \documentclass[10pt,letterpaper]{article}
 %\usepackage{savetrees}
 \usepackage[margin=1.2cm]{geometry}
-\setlength{\parskip}{0pt}
+\setlength{\parskip}{2pt plus 2pt minus 2pt}
 \setlength{\baselineskip}{10pt}
 \usepackage{microtype}
-\usepackage{amsfonts,amssymb,mathtools,array,booktabs,multirow,bbm,hyperref}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{bbm}
+\usepackage{hyperref}
 \usepackage{latexsym}
 \usepackage{expl3}
+\usepackage{tikz}
+\usetikzlibrary{matrix}
+\usepackage{stackengine}
 \usepackage{etoolbox}
+
+\hypersetup{unicode}
+\hypersetup{linktoc = all}                % hyperref settings
+\hypersetup{pdfborderstyle={/S/U/W 0.5}}  % hyperref settings
+\pdfstringdefDisableCommands{%
+  \def\({}%
+  \def\){}%
+  \def\\{}%
+  \def\infty{\042\036}%
+  \def\Tr{Tr }%
+}
+
+
+
 %%% Sorry the next two lines are a bit horrible
 \renewcommand{\section}[1]{\stepcounter{section}\medskip\pagebreak[1]\noindent\textbf{\large\arabic{section}.\ #1}\smallskip}
 \renewcommand{\paragraph}[1]{\par\noindent\textbf{#1}}
-\newcommand{\definition}{\par\textbf{Def:} \ignorespaces}
-\newcommand{\defined}[1]{\emph{#1}}
+\newcommand{\definition}{\par\noindent\textbf{Def.} \ignorespaces}
+\newcommand{\proposition}{\par\noindent\textbf{Prop.} \ignorespaces}
+%\newcommand{\defined}[1]{\emph{#1}}
+\newcommand{\dd}[2][]{\mathop{\mathrm{d}\mkern0mu\relax#1#2}}%\mkern avoids \mathop{d} (vertical placement issue)
+\newcommand{\ie}{i.e.\@}
+\makeatletter
+\newcommand{\etc}{etc.\@\@ifnextchar.{\@gobble}{}}
+\makeatother
 
-\newcommand{\myA}{}
-\newcommand{\myB}{}
 \newcommand{\ring}[1]{\mathbb{#1}}
 \ExplSyntaxOn
+\newcommand{\Lie}[1]{
+  \mathrm {
+    \clist_if_in:nnF
+      { GL , SL , SO , SU , U , O , Sp , USp , OSp , Spin , A , B , C , D , E , F , G , P , Q , UQ , W , S , \tilde S , \tilde{S} , H }
+      {#1} { \UnknownLie }
+    #1
+  }
+}
 \newcommand{\lie}[1]{
   \mathfrak {
     \str_case:nnF {#1}
@@ -46,18 +82,18 @@
         { \tilde{S} } { \tilde{s} }
         { H } { h }
       } { \ERROR #1 }
-    }
+  }
 }
 \ExplSyntaxOff
 %\robustify\tilde
 
 \newcommand{\undovskip}{\relax\ifvmode\unskip\fi}
-\newenvironment{tab}{\center\undovskip\vspace{.1\baselineskip}\tabular}{\endtabular\endcenter\undovskip\vspace{.1\baselineskip}}
+\newenvironment{tab}[1]{\center\undovskip\vspace{.1\baselineskip}\tabular{#1}\toprule}{\crcr\bottomrule\endtabular\endcenter\undovskip\vspace{.1\baselineskip plus .3\baselineskip}}
 
 \begin{document}
 \twocolumn\raggedbottom
 
-\noindent\textbf{\Large Tables for supersymmetry.} Based on [1-2].
+\noindent\textbf{\Large Tables for supersymmetry.} Based on [1-3].
 
 \noindent ``Ed.'': Bruno Le Floch, Princeton University, \today.
 
@@ -67,7 +103,7 @@
 Infinite series $\lie{A}_{n\geq 1}$, $\lie{B}_{n\geq 1}$, $\lie{C}_{n\geq 1}$, $\lie{D}_{n\geq 2}$ with
 $\lie{A}_1=\lie{B}_1=\lie{C}_1$, $\lie{B}_2=\lie{C}_2$, $\lie{D}_2=\lie{A}_1\oplus \lie{A}_1$, $\lie{D}_3=\lie{A}_3$.
 Five exceptions with $\dim(\lie{E}_6)=78$, $\dim(\lie{E}_7)=133$, $\dim(\lie{E}_8)=248$, $\dim(\lie{F}_4)=52$, $\dim(\lie{G}_2)=14$.
-\begin{tab}{*{3}{>{$}l<{$}}l}\toprule
+\begin{tab}{*{3}{>{$}l<{$}}l}
   \text{Type} & \text{Dimension} & \text{Lie algebra} \\\midrule
   \lie{A}_n & n(n+2) & \lie{sl}(n+1,\ring{C}) =\{\text{traceless}\} \\
   \lie{B}_n & n(2n+1) & \lie{so}(2n+1,\ring{C}) =\{\text{antisymmetric}\} \\
@@ -75,18 +111,17 @@ Five exceptions with $\dim(\lie{E}_6)=78$, $\dim(\lie{E}_7)=133$, $\dim(\lie{E}_
 	=\left\{\left(\begin{smallmatrix}0&\mathbbm{1}_n\\-\mathbbm{1}_n&0\end{smallmatrix}\right)\times\text{symmetric}\right\}
   \\
   \lie{D}_n & n(2n-1) & \lie{so}(2n,\ring{C}) =\{\text{antisymmetric}\} \\
-  \bottomrule
 \end{tab}
 
 \paragraph{Real case.}  Let
 $\lie{sl}(n)=\lie{sl}(n,\ring{R})$,
-$\lie{sp}(2n)=\lie{sp}(2n,\ring{R})$,
+%$\lie{sp}(2n)=\lie{sp}(2n,\ring{R})$,
 $\lie{su}^*(2n)=\lie{sl}(n,\ring{H})$,
 $\lie{so}^*(2n)=\lie{o}(n,\ring{H})$,
 $\lie{usp}(2m,2n)=\lie{u}(m,n,\ring{H})$.
-A Lie algebra is \defined{compact} if it exponentiates to a compact Lie group.
+A Lie algebra is compact if it exponentiates to a compact Lie group.
 In $\lie{E}_{r(s)}$, $s$ is the number of $(\text{non-compact})-(\text{compact})$ generators.
-\begin{tab}{@{}c@{ }lll}\toprule
+\begin{tab}{@{}c@{ }lll}
 & Real form & \hspace{-1em}Max compact subalgebra & Range \\
 \midrule
 \multirow{4}{*}{\rotatebox{90}{$sl(n)$}}
@@ -100,9 +135,9 @@ In $\lie{E}_{r(s)}$, $s$ is the number of $(\text{non-compact})-(\text{compact})
 & $\lie{so}(p,n-p)$& $\lie{so}(p)\oplus \lie{so}(n-p)$ & $0<p<n$ \\
 & $\lie{so}^*(2n)$   & $\lie{u}(n)$ & $n$ even \\
 \midrule
-\multirow{3}{*}{\rotatebox{90}{$\lie{sp}(2n)$}}
+\multirow{3}{*}{\rotatebox{90}{$\lie{sp}(2n,\ring{R})\!\!$}}
 & $\lie{usp}(2n)$ & compact & \\
-& $\lie{sp}(2n)$  & $\lie{u}(n)$ & \\
+& $\lie{sp}(2n,\ring{R})$  & $\lie{u}(n)$ & \\
 & $\lie{usp}(2n-2p,2p)$ & $\lie{usp}(2n-2p)\oplus \lie{usp}(2p)$ & $0<p<n$ \\
 \midrule
 \multicolumn{4}{c}{%
@@ -130,7 +165,7 @@ In $\lie{E}_{r(s)}$, $s$ is the number of $(\text{non-compact})-(\text{compact})
   $\lie{F}_{4(-20)}$ & $\lie{so}(9)$ \\
   $\lie{F}_{4(4)}$ & $\lie{usp}(6)\oplus \lie{su}(2)$ \\
   \end{tabular}
-}\\\bottomrule
+}\\
 \end{tab}
 
 \paragraph{Accidental isomorphisms.}
@@ -140,7 +175,7 @@ In $\lie{E}_{r(s)}$, $s$ is the number of $(\text{non-compact})-(\text{compact})
 \begin{align*}
 \lie{so}(2)&= \lie{u}(1), \quad \lie{so}(1,1)=\ring{R}\\
 \lie{so}(3)&= \lie{su}(2)=\lie{su}^*(2)\\
-\lie{so}(2,1) &=\lie{su}(1,1)=\lie{sl}(2)=\lie{sp}(2)\\
+\lie{so}(2,1) &=\lie{su}(1,1)=\lie{sl}(2)=\lie{sp}(2,\mathrlap{\ring{R})}\\
 \lie{so}(4)&=\lie{su}(2)\oplus \lie{su}(2)\\
 \lie{so}(3,1)&=\lie{sl}(2,\ring{C})=\lie{sp}(2,\ring{C})\\
 \lie{so}(2,2)&=\lie{sl}(2)\oplus \lie{sl}(2)\\
@@ -151,7 +186,7 @@ In $\lie{E}_{r(s)}$, $s$ is the number of $(\text{non-compact})-(\text{compact})
 \begin{minipage}[t]{.45\linewidth}
 \begin{align*}
 \lie{so}(4,1)&=\lie{usp}(2,2)\\
-\lie{so}(3,2)&=\lie{sp}(4)\\
+\lie{so}(3,2)&=\lie{sp}(4,\ring{R})\\
 \lie{so}(6)&=\lie{su}(4)\\
 \lie{so}(5,1)&=\lie{su}^*(4)\\
 \lie{so}(4,2)&=\lie{su}(2,2)\\
@@ -167,30 +202,29 @@ the bosonic algebra acts on the fermionic generators in a completely reducible r
 This excludes Cartan-type superalgebras $\lie{W}(n)$, $\lie{S}(n)$, $\lie{\tilde S}(n)$ and $\lie{H}(n)$.
 In this table, $m,n\geq 1$ and we do not list purely bosonic Lie algebras.
 The factor $\ring{C}$ of $\lie{sl}(m|n)$ must be removed if $m=n$.
-\begin{tab}{lll}\toprule
+\begin{tab}{lll}
 & Bosonic algebra & Fermionic repr. \\\midrule
 $\lie{sl}(m|n)$ & $\lie{sl}(m,\ring{C})\oplus \lie{sl}(n,\ring{C})\oplus\ring{C}$ & $(m,\overline{n})\oplus(\overline{m},n)$ \\
-$\lie{osp}(m|2n)$ & $\lie{so}(m,\ring{C}) \oplus \lie{sp}(2n)$ & $(m,2n)$ \\
+$\lie{osp}(m|2n)$ & $\lie{so}(m,\ring{C}) \oplus \lie{sp}(2n,\ring{R})$ & $(m,2n)$ \\
 $\lie{D}(2,1,\alpha)$ & $\lie{sl}(2,\ring{C})^3$ & $(2,2,2)$ \\
 $\lie{F}(4)$ & $\lie{so}(7,\ring{C})\oplus \lie{sl}(2,\ring{C})$ & $(8,2)$ \\
 $\lie{G}(3)$ & $\lie{G}_2\oplus \lie{sl}(2,\ring{C})$ & $(7,2)$ \\
 $\lie{P}(m)$ & $\lie{sl}(m+1,\ring{C})$ & $\text{sym}\oplus(\text{antisym})^*$ \\
 $\lie{Q}(m)$ & $\lie{sl}(m+1,\ring{C})$ & adjoint\\
-\bottomrule
 \end{tab}
 
 \paragraph{Real forms of Lie superalgebras,}
 starting from their compact form ($p=q=0$).  $\lie{P}(m)$ has no compact form.
 Here, $m,n\geq 1$, $0\leq p\leq m/2$, $0\leq q\leq n/2$.
 The forms $\lie{su}^*$, $\lie{osp}^*$, $\lie{Q}^*$ only exist for even rank; $\lie{sl}'$ only if $m=n$.
-\begin{tab}{*{2}{>{$}l<{$}}}\toprule
+\begin{tab}{*{2}{>{$}l<{$}}}
 \text{Real form} & \text{Bosonic algebra}  \\ \midrule
 \lie{su}(m-p,p|n-q,q) & \lie{su}(m-p,p)\oplus \lie{su}(n-q,q)\oplus \lie{u}(1)^{\mathsection}\\
 \lie{sl}(m|n) & \lie{sl}(m)\oplus \lie{sl}(n)\oplus \lie{so}(1,1)^{\mathsection} \\
 \lie{sl}'(n|n) \quad\, (m=n)& \lie{sl}(n,\ring{C})\\
 \lie{su}^*(m|n) \:\: (m,n \text{ even}) & \lie{su}^*(m)\oplus \lie{su}^*(n)\oplus \lie{so}(1,1)^{\mathsection}\\
 \midrule
-\lie{osp}(m-p,p|2n) & \lie{so}(m-p,p)\oplus \lie{sp}(2n) \\
+\lie{osp}(m-p,p|2n) & \lie{so}(m-p,p)\oplus \lie{sp}(2n,\ring{R}) \\
 \multicolumn{2}{l}{$\lie{osp}^*(m|2n-2q,2q)$ ($m$ even)\quad $\lie{so}^*(m)\oplus \lie{usp}(2n-2q,2q)$} \\
 \midrule
 \lie{D}^p(2,1,\alpha) \;^{\mathparagraph} & \lie{so}(4-p,p)\oplus \lie{sl}(2)\quad (p=0,1,2)\\
@@ -205,7 +239,6 @@ The forms $\lie{su}^*$, $\lie{osp}^*$, $\lie{Q}^*$ only exist for even rank; $\l
 \lie{UQ}(m-p,p) & \lie{su}(m+1-p,p) \\
 \lie{Q}(m) & \lie{sl}(m+1) \\
 \lie{Q}^*(m) \quad (m \text{ odd}) & \lie{su}^*(m+1) \\
-\bottomrule
 \end{tab}
 
 $^{\mathsection}$
@@ -226,9 +259,9 @@ and $\lie{D}^p(2,1,\alpha=1)=\lie{osp}(4-p,p|2)$.
 \section{Spinors}
 
 \paragraph{Clifford algebra.}  Let $h_{ab}$ be diagonal with $s$~`$+1$' and $t$~`$-1$', and $d=s+t$.  The Clifford algebra $\{\Gamma_a,\Gamma_b\}=2h_{ab}$ has real dimension~$2^d$ and is isomorphic to a matrix algebra $M_{2^{\#}}(\bullet)$ with
-\begin{tab}{>{$}r<{$}*{8}{>{$}c<{$}}}\toprule
+\begin{tab}{>{$}r<{$}*{8}{>{$}c<{$}}}
 s-t \bmod{8} & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 \\
-\bullet \text{\quad is} & \ring{R}& \ring{R}\oplus\ring{R} & \ring{R} & \ring{C} & \ring{H} & \ring{H}\oplus\ring{H} & \ring{H} &\ring{C}\\\bottomrule
+\bullet \text{\quad is} & \ring{R}& \ring{R}\oplus\ring{R} & \ring{R} & \ring{C} & \ring{H} & \ring{H}\oplus\ring{H} & \ring{H} &\ring{C}\\
 \end{tab}
 %with $\bullet = [\ring{R}, \ring{R}\oplus\ring{R}, \ring{R}, \ring{C}, \ring{H}, \ring{H}\oplus\ring{H}, \ring{H}, \ring{C}][s-t\bmod{8}]$.
 
@@ -236,12 +269,12 @@ s-t \bmod{8} & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 \\
 \paragraph{Charge conjugation.}  $(-\eta)\Gamma_a^T=\mathcal{C}\Gamma_a\mathcal{C}^{-1}$ are conjugate for $\eta=\pm 1$ because they obey the same algebra.  Get $\mathcal{C}^T=-\varepsilon \mathcal{C}$ with $\varepsilon=\pm 1$ by transposing twice.
 Let $\Gamma^{(n)}=\Gamma_{a_1\ldots a_n}$.
 Using $\left(\mathcal{C}\Gamma^{(n)}\right) ^T= -\epsilon(-)^{n(n-1)/2}(-\eta)^n \mathcal{C}\Gamma^{(n)}$ find which $n\bmod{4}$ give symmetric $\mathcal{C}\Gamma^{(n)}$.  The sum of $\binom{d}{n}$ must be $2^{\lfloor d/2\rfloor} (2^{\lfloor d/2\rfloor} + 1) / 2$.  This fixes $\epsilon, \eta$.  Odd $d$ require $\eta=(-1)^{d(d+1)/2}$ to preserve $\Gamma^{(d)}$.  Even~$d$ allow two choices of signs: consult the rows $d\pm 1$.
-\begin{tab}{rccc}\toprule
+\begin{tab}{rccc}
 $d\bmod 8$ & $n$ & $\epsilon$ & $\eta$ \\\midrule\addlinespace[7pt]
 \multirow{2}{*}[11pt]{\rlap{0$\langle$}}\multirow{2}{*}{2$\langle$}1   & 0, 1 & $-1$ & $-1$\\
 \multirow{2}{*}{4$\langle$}3   & 1, 2 & $+1$ & $+1$\\
 \multirow{2}{*}{6$\langle$}5   & 2, 3 & $+1$ & $-1$\\
-\phantom{0$\langle$}7   & 0, 3 & $-1$ & $+1$\\\bottomrule
+\phantom{0$\langle$}7   & 0, 3 & $-1$ & $+1$\\
 \end{tab}
 
 \paragraph{Reduced spinors.}
@@ -255,7 +288,7 @@ the case $s-t\equiv\pm 2$ requires $\eta=\mp (-1)^{d/2}$.
 When $s-t\equiv 3,4,5$, a set of $2n$ spinors can be symplectic Majorana: $(\lambda^I)^*=B\Omega_{IJ}\lambda^J$ for $\Omega=((0,\mathbbm{1}_n);(-\mathbbm{1}_n,0))$.
 (Symplectic) Majorana--Weyl spinors exist for $s-t\equiv 0,4\bmod{8}$.
 The table also includes the real dimension of the minimal spinor.
-\begin{tab}{c*{4}{>{ }l@{ }r<{ }}}\toprule
+\begin{tab}{c*{4}{>{ }l@{ }r<{ }}}
 d &\multicolumn{2}{c}{$t\equiv 0$} &\multicolumn{2}{c}{$1$}
 & \multicolumn{2}{c}{$2$} & \multicolumn{2}{c}{$3\bmod{4}$} \\ \midrule
 1 & M     & 1 & M    & 1 &       &   & &   \\
@@ -269,17 +302,17 @@ d &\multicolumn{2}{c}{$t\equiv 0$} &\multicolumn{2}{c}{$1$}
 9 & M     & 16& M    & 16 & s    & 32 & s    & 32 \\
 10& M$^-$ & 32& MW   & 16 & M$^+$& 32 & sW   & 32 \\
 11& s     & 64& M    & 32 & M    & 32 & s    & 64 \\
-12& sW    & 64& M$^+$& 64 & MW   & 32 & M$^-$ & 64\\\bottomrule
+12& sW    & 64& M$^+$& 64 & MW   & 32 & M$^-$ & 64\\
 \end{tab}
 
 \paragraph{Flavour symmetries} of $N$ minimal spinors.
 This is also the $R$-symmetry of the $N$-extended superalgebra.
 For (symplectic) Majorana Weyl spinors, specify $N=(N_L,N_R)$ left/right-handed.
-\begin{tab}{l@{}>{$}l<{$}}\toprule
+\begin{tab}{l@{}>{$}l<{$}}
 M & \hspace{-2pt}\begin{cases} \lie{u}(N)&\text{if $d$ even}\\\lie{so}(N)&\text{if $d$ odd}\end{cases}\\
 MW & : \lie{so}(N_L)\times \lie{so}(N_R) \\
 s & : \lie{usp}(N) \\
-sW & : \lie{usp}(N_L)\times \lie{usp}(N_R)\\\bottomrule
+sW & : \lie{usp}(N_L)\times \lie{usp}(N_R)\\
 \end{tab}
 
 \paragraph{Products of spinor representations.}
@@ -288,23 +321,22 @@ The symmetric product $S^2\mathcal{S}$ consists of $k$-forms with $k\equiv m\bmo
 Since $k$-forms and $(d-k)$-forms are the same representation, other descriptions can be given.
 For the antisymmetric product $\Lambda^2\mathcal{S}$, take $k\equiv m-1\bmod{4}$.
 See the list of forms in the table.
-\begin{tab}{>{$}l<{$}*{6}{>{$}l<{$}}}\toprule
+\begin{tab}{>{$}l<{$}*{6}{>{$}l<{$}}}
 d & 1 & 3 & 5 & 7 & 9 & 11\\
 \dim_{\ring{C}}\mathcal{S} & 1 & 2 & 4 & 8 & 16 & 32\\\midrule
 S^2\mathcal{S} & 0 & 1 & 2 & 0,3 & 0,1,4 & 1,2,5\\
-\Lambda^2\mathcal{S} & . & 0 & 0,1 & 1,2 & 2,3 & 0,3,4\\\bottomrule
+\Lambda^2\mathcal{S} & . & 0 & 0,1 & 1,2 & 2,3 & 0,3,4\\
 \end{tab}
 For even $d=2m$, let $\mathcal{S}_{\pm}$ be the Weyl spinor representations of complex dimension $2^{m-1}$.
 The tensor product $\mathcal{S}_{+}\otimes\mathcal{S}_{-}$ consists of $(m-1-2j)$-forms for $0\leq j\leq (m-1)/2$.
 The symmetric products $S^2\mathcal{S}_{\pm}$ decompose into the (anti)-self-dual $m$-forms and $(m-4j)$-forms for $0<j\leq m/4$.
 The antisymmetric products $\Lambda^2\mathcal{S}_{\pm}$ decompose into $(m-2-4j)$-forms for $0\leq j\leq (m-2)/4$.
-\begin{tab}{>{$}l<{$}*{6}{>{$}l<{$}}}\toprule
+\begin{tab}{>{$}l<{$}*{6}{>{$}l<{$}}}
 d & 2 & 4 & 6 & 8 & 10 & 12\\
 \dim_{\ring{C}}\mathcal{S}_{\pm} & 1 & 2 & 4 & 8 & 16 & 32\\\midrule
 S^2\mathcal{S}_{\pm} & 1^{\dagger} & 2^{\dagger} & 3^{\dagger} & 0,4^{\dagger} & 1,5^{\dagger} & 2,6^{\dagger}\\
 \Lambda^2\mathcal{S}_{\pm} & . & 0 & 1 & 2 & 3 & 0,4\\
 \mathcal{S}_{+}\otimes\mathcal{S}_{-} & 0 & 1 & 0,2 & 1,3 & 0,2,4 & 1,3,5\\
-\bottomrule
 \end{tab}
 Note that
 $\begin{aligned}[t]
@@ -347,7 +379,7 @@ Since $S^2 Q$ has $1$, $2$, and $5$-forms, there are $2$-form and $5$-form centr
 The bosonic part is $\lie{so}(d,2)$ and $R$-symmetries.
 As a supermatrix: $\begin{pmatrix}\lie{so}(d,2)& Q+S\\ Q-S&R\end{pmatrix}$ or $\lie{so}(d,2)\leftrightarrow R$.  Note that $\{Q,S\}$ contains~$R$.
 For $d=2$, the finite conformal algebra is $\lie{so}(2,2)=\lie{so}(2,1)\oplus \lie{so}(2,1)$, sum of two $d=1$ algebras, so the superalgebra is sum of two $d=1$ superalgebras.
-\begin{tab}{lllc}\toprule
+\begin{tab}{lllc}
 $d$& Superalgebra& $R$-symmetries & \#Q+\#S\\ \midrule
 $1$&  $\lie{osp}(N|2)$ & $\lie{o}(N)$    & $2N$ \\
    &  $\lie{su}(N|1,1)$  &$\lie{su}(N)\oplus \lie{u}(1)$ for $N\neq 2$ &$ 4N$ \\
@@ -361,7 +393,6 @@ $4$&$ \lie{su}(2,2|N)  $ &$\lie{su}(N)\oplus \lie{u}(1)$ for $N\neq 4$&$ 8N$\\
    &$ \lie{su}(2,2|4)  $ &$  \lie{su}(4)$ & 32\\  \midrule
 $5$&$ \lie{F}^2(4)       $ &$ \lie{su}(2) $ & 16 \\       \midrule
 $6$&$ \lie{osp}(8^*|N) $ &$  \lie{usp}(N)\ \ (N $ even)& $8N$ \\
-\bottomrule
 \end{tab}
 
 
@@ -378,7 +409,7 @@ $6$&$ \lie{osp}(8^*|N) $ &$  \lie{usp}(N)\ \ (N $ even)& $8N$ \\
 %\section{List of theories}
 %
 %\paragraph{Pure supergravities} in $4\leq d\leq 11$.  Gravity is topological in $d=3$.  The maximum number of supercharges $Q=32$ forbids $d>11$.  A priori, all $Q=4k$ are possible.  Focus on $32, 16, 8, 4$.
-%\begin{center}\begin{tabular}{lcccc}\toprule
+%\begin{tab}{lcccc}
 %$d$ &$Q=32$& $16$  &$8$  & $4$  \\ \midrule
 %11& \checkmark & &&  \\
 %10& $\stackrel{ IIB}{(2,0)}\ \stackrel{ IIA}{(1,1)}$ &
@@ -391,22 +422,132 @@ $6$&$ \lie{osp}(8^*|N) $ &$  \lie{usp}(N)\ \ (N $ even)& $8N$ \\
 %$(1,0)$ &\\
 %5 & \checkmark & \checkmark & \checkmark &\\
 %4 &$N=8$ &$N=4$ & $N=2$
-%&$N=1$\\\bottomrule
-%\end{tabular}\end{center}
+%&$N=1$\\
+%\end{tab}
 
 
-% \section{Types of manifolds}
+\section{Types of manifolds}
 
-% \definition A \defined{$G$-structure} on an n-dimensional real
-% manifold~$X$: a $G$-subbundle of the $GL(n,\ring{R})$-principal bundle
-% of tangent frames.
+% todo: symmetric spaces? https://en.wikipedia.org/wiki/Symmetric_space
 
-% \definition A manifold with
-%  $O(\dim_{\ring{R}}X)$ structure \defined{Riemannian} if it has  is a manifold with an
-% .  Any manifold admits such a structure
-% because $O(n)$ is a deformation retract of $GL(n)$.
+\paragraph{A $G$-structure} on a manifold~$X$ (with
+$n=\dim_{\ring{R}}X$) is a $G$-subbundle of the
+$\Lie{GL}(n,\ring{R})$-principal bundle $\Lie{GL}(TX)$ of tangent
+frames, namely a global section of $\Lie{GL}(TX)/G$.
 
-% \definition An \defined{almost complex manifold}
+A manifold is oriented if it has a $\Lie{GL}^+(n,\ring{R})=\{\det>0\}$
+structure.  Similar definitions for Riemannian manifolds \etc:
+\begin{tab}{@{ }l@{ \ }l@{ \ }l@{ }}
+  Manifold type & $G$-structure & Other characterization \\
+  \midrule
+  Riemannian & $\Lie{O}(n)$ & Symmetric metric $g>0$ \\
+  Almost symplectic & $\Lie{Sp}(2n/2,\ring{R})$ & Non-degenerate $\omega\in\Omega^2X$\\
+  Almost complex & $\Lie{GL}(n/2,\ring{C})$ & $J:TX\to TX$, $J^2=-1$ \\
+  Almost Hermitian & $\Lie{U}(n/2)$ & Two compatible $(\omega,J,g)$ \\
+\end{tab}
+Any two of $(\omega,J,g)$ fix the third by $\omega_{ik} = J_{i}{}^{j}
+g_{jk}$ if they are compatible: $J_{i}{}^{j}J_{l}{}^{k}\omega_{jk} =
+\omega_{il}$ or $J_{i}{}^{j}J_{l}{}^{k}g_{jk} = g_{il}$ namely $\omega$
+or $g$ is $J$-invariant, or $\omega_{ij}g^{jk}\omega_{kl} = - g_{il}$.
+On a holomorphic chart, $\omega = \frac{i}{2} h_{\beta\bar{\gamma}}
+\dd{z^\beta} \wedge \dd{\bar{z}^{\bar{\gamma}}}$ and $g = \frac{1}{2}
+h_{\beta\bar{\gamma}} (\dd{z^\beta} \otimes \dd{\bar{z}^{\bar{\gamma}}}
++ \dd{\bar{z}^{\bar{\gamma}}} \otimes \dd{z^\beta})$.
+
+Since $\Lie{GL}(n,\ring{R})/O(n)$ is contractible, any manifold admits
+(non-canonically) a Riemannian structure, namely a smooth choice of
+which frames are orthonormal, \ie, a Riemannian metric~$g$.  Similarly
+$\Lie{GL}(n/2,\ring{C})/U(n/2)$ is contractible so almost complex
+manifolds admit almost Hermitian structures.
+
+\paragraph{A $G$-structure is $k$-integrable} (resp.\@ integrable) near
+$x\in X$ if it can be trivialized to order~$k$ (resp.\@ all orders) in a
+neighborhood of~$x$.  We automatically have $0$-integrability.
+
+Any Riemannian structure is $1$-integrable thanks to Riemann normal
+coordinates.  Integrability is equivalent to the Riemann curvature
+vanishing.
+
+An almost complex structure is complex if (equivalently) it is integrable; it is $1$-integrable; it has a vanishing Nijenhuis tensor $N_J:\Lambda^2 X\to TX$ defined on vector fields $u$, $v$
+by the Lie brackets $N_J(u,v)=-J^2[u,v]+J[Ju,v]+J[u,Jv]-[Ju,Jv]$;
+the Lie bracket of $(1,0)$ vector fields is a $(1,0)$ vector field;
+$\dd{}=\partial+\bar{\partial}:\Omega^{(p,q)}X\to\Omega^{(p+1,q)}X\oplus\Omega^{(p,q+1)}X$ has no $(p+2,q-1)$ or $(p-1,q+2)$ components;
+or $\bar{\partial}^2=0$.
+
+A symplectic structure is an integrable almost symplectic structure.
+Equivalently, it is $1$-integrable: $\dd{\omega}=0$.  Altogether,
+\begin{tab}{c}
+\begin{tikzpicture}
+  \matrix (m) [matrix of nodes,row sep=1em,column sep=1em,minimum width=2em] {
+     general & & \stackanchor{almost}{symplectic} & & symplectic \\
+     & \clap{Riemannian} & & & \\
+     \stackanchor{almost}{complex} & & \stackanchor{almost}{Hermitian} & & \stackanchor{almost}{K\"ahler} \\
+     & & & & \\
+     complex & & Hermitian & & K\"ahler\\};
+  \path[-stealth]
+    (m-1-1) edge node [above] {$\omega$} (m-1-3)
+    (m-1-1) edge node [left] {$\exists g$} (m-2-2)
+    (m-1-1) edge node [left] {$J$} (m-3-1)
+    (m-1-3) edge node [above] {$\dd{\omega}=0$} (m-1-5)
+    (m-1-3) edge node [right] {$J$/$g$} (m-3-3)
+    (m-1-5) edge node [right] {$J$} (m-3-5)
+    (m-2-2) edge node [left] {$J$/$\omega$} (m-3-3)
+    (m-3-1) edge node [below] {$\omega$/$g$} (m-3-3)
+            edge node [right] {$N_J=0$} (m-5-1)
+    (m-3-3) edge node [above] {$\dd{\omega}=0$} (m-3-5)
+            edge node [right] {$N_J=0$} (m-5-3)
+    (m-3-5) edge node [right] {$N_J=0$} (m-5-5)
+    (m-5-1) edge node [above] {$\omega$} (m-5-3)
+    (m-5-3) edge node [above] {$\dd{\omega}=0$} (m-5-5)
+    ;
+  \pgfresetboundingbox
+  \path [use as bounding box] (m-3-1.west |- m-1-3.north) rectangle (m-1-5.east |- m-5-3.south);
+\end{tikzpicture}
+\end{tab}
+
+% A $\Lie{G}_2$-manifold is a $7$-dimensional manifold with a
+% $1$-integrable $\Lie{G}_2\to\Lie{GL}(7)$ structure namely the
+% corresponding definite 3-form $\omega$ should be covariantly constant
+% with respect to the induced Riemannian metric (due to
+% $\Lie{G}_2\subset O(7)$.  Equivalently it is a Riemannian $7$-manifold
+% with special holonomy $\subseteq\Lie{G}_2$.
+
+An almost Hermitian manifold is K\"ahler if (equivalently) its
+$U(n/2)$-structure is $1$-integrable; $\dd{\omega}=0$ and $N_J=0$;
+$\nabla\omega=0$; $\nabla J=0$; or the holonomy group is in $U(n/2)$.
+
+
+\paragraph{The holonomy group} at $x\in X$ of a connection~$\nabla$ on a
+bundle $E\to X$ is the group of symmetries of~$E_x$ arising from
+parallel transport along closed curves based at~$x$.
+
+For Riemannian manifolds~$X$ the holonomy group is defined as that of
+the Levi-Civita connection on the tangent bundle.  It is a subgroup of
+$\Lie{O}(n)$ \big(or $\Lie{SO}(n)$ for $X$~orientable\big) since
+parallel transport preserves orthogonality ($\nabla g=0$).
+
+If the holonomy group acts reducibly on the tangent space then~$X$ is
+locally a product; if $X$~is geodesically complete this holds globally.
+Otherwise, assuming~$X$ is simply connected and not locally a symmetric
+space, \href{https://ncatlab.org/nlab/show/Berger\%27s+theorem}{Berger's
+  theorem} allows
+\begin{tab}{lll}
+  Holonomy & Manifold type & dim\\
+  \midrule
+  $\Lie{SO}(n)$ & orientable & $n$ \\
+  $\Lie{U}(m)$ & K\"ahler & $2m$ \\
+  $\Lie{SU}(m)$ & Calabi--Yau & $2m$ \\
+  $\bigl(\Lie{Sp}(k)\times\Lie{Sp}(1)\bigr)/\ring{Z}_2$ & quaternionic K\"ahler & $4k$ \\
+  $\Lie{Sp}(k)$ & hyper-K\"ahler & $4k$ \\
+  $\Lie{Spin}(7)$ & $\Lie{Spin}(7)$ manifold & $8$ \\
+  $\Lie{G}_2$ & $\Lie{G}_2$ manifold & $7$ \\
+\end{tab}
+% todo: what Sp?
+% more at https://en.wikipedia.org/wiki/Holonomy
+% perhaps http://projecteuclid.org/euclid.jdg/1090351387 interesting?
+
+% more on http://mathworld.wolfram.com/Hyper-KaehlerManifold.html
+
 
 \bigskip
 \vfill
@@ -421,4 +562,10 @@ $6$&$ \lie{osp}(8^*|N) $ &$  \lie{usp}(N)\ \ (N $ even)& $8N$ \\
 
 [2] Various Wikipedia articles.
 
+[3] Various ncatlab.org articles.
+
 \end{document}
+
+% Local Variables:
+% TeX-PDF-mode: t
+% End:
