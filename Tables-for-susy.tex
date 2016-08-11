@@ -43,6 +43,10 @@
 \makeatletter
 \newcommand{\etc}{etc.\@\@ifnextchar.{\@gobble}{}}
 \makeatother
+\newcommand{\I}{i}
+\newcommand{\Wedge}{\bigwedge}
+\newcommand{\del}{\partial}
+\newcommand{\delbar}{\overline{\partial}}
 
 \newcommand{\ring}[1]{\mathbb{#1}}
 \ExplSyntaxOn
@@ -319,29 +323,29 @@ sW & : \lie{usp}(N_L)\times \lie{usp}(N_R)\\
 For odd $d=2m+1$, let $\mathcal{S}$ be a spinor representation of complex dimension $2^{m}$.
 The symmetric product $S^2\mathcal{S}$ consists of $k$-forms with $k\equiv m\bmod{4}$.
 Since $k$-forms and $(d-k)$-forms are the same representation, other descriptions can be given.
-For the antisymmetric product $\Lambda^2\mathcal{S}$, take $k\equiv m-1\bmod{4}$.
+For the antisymmetric product $\Wedge^2\mathcal{S}$, take $k\equiv m-1\bmod{4}$.
 See the list of forms in the table.
 \begin{tab}{>{$}l<{$}*{6}{>{$}l<{$}}}
 d & 1 & 3 & 5 & 7 & 9 & 11\\
 \dim_{\ring{C}}\mathcal{S} & 1 & 2 & 4 & 8 & 16 & 32\\\midrule
 S^2\mathcal{S} & 0 & 1 & 2 & 0,3 & 0,1,4 & 1,2,5\\
-\Lambda^2\mathcal{S} & . & 0 & 0,1 & 1,2 & 2,3 & 0,3,4\\
+\Wedge^2\mathcal{S} & . & 0 & 0,1 & 1,2 & 2,3 & 0,3,4\\
 \end{tab}
 For even $d=2m$, let $\mathcal{S}_{\pm}$ be the Weyl spinor representations of complex dimension $2^{m-1}$.
 The tensor product $\mathcal{S}_{+}\otimes\mathcal{S}_{-}$ consists of $(m-1-2j)$-forms for $0\leq j\leq (m-1)/2$.
 The symmetric products $S^2\mathcal{S}_{\pm}$ decompose into the (anti)-self-dual $m$-forms and $(m-4j)$-forms for $0<j\leq m/4$.
-The antisymmetric products $\Lambda^2\mathcal{S}_{\pm}$ decompose into $(m-2-4j)$-forms for $0\leq j\leq (m-2)/4$.
+The antisymmetric products $\Wedge^2\mathcal{S}_{\pm}$ decompose into $(m-2-4j)$-forms for $0\leq j\leq (m-2)/4$.
 \begin{tab}{>{$}l<{$}*{6}{>{$}l<{$}}}
 d & 2 & 4 & 6 & 8 & 10 & 12\\
 \dim_{\ring{C}}\mathcal{S}_{\pm} & 1 & 2 & 4 & 8 & 16 & 32\\\midrule
 S^2\mathcal{S}_{\pm} & 1^{\dagger} & 2^{\dagger} & 3^{\dagger} & 0,4^{\dagger} & 1,5^{\dagger} & 2,6^{\dagger}\\
-\Lambda^2\mathcal{S}_{\pm} & . & 0 & 1 & 2 & 3 & 0,4\\
+\Wedge^2\mathcal{S}_{\pm} & . & 0 & 1 & 2 & 3 & 0,4\\
 \mathcal{S}_{+}\otimes\mathcal{S}_{-} & 0 & 1 & 0,2 & 1,3 & 0,2,4 & 1,3,5\\
 \end{tab}
 Note that
 $\begin{aligned}[t]
 S^2(\mathcal{S}_{+}\oplus\mathcal{S}_{-})&=S^2\mathcal{S}_{+}\oplus(\mathcal{S}_{+}\otimes\mathcal{S}_{-})\oplus S^2\mathcal{S}_{-}\\
-\Lambda^2(\mathcal{S}_{+}\oplus\mathcal{S}_{-})&=\Lambda^2\mathcal{S}_{+}\oplus(\mathcal{S}_{+}\otimes\mathcal{S}_{-})\oplus \Lambda^2\mathcal{S}_{-}
+\Wedge^2(\mathcal{S}_{+}\oplus\mathcal{S}_{-})&=\Wedge^2\mathcal{S}_{+}\oplus(\mathcal{S}_{+}\otimes\mathcal{S}_{-})\oplus \Wedge^2\mathcal{S}_{-}
 \end{aligned}$
 
 \section{Supersymmetry algebras}
@@ -449,7 +453,7 @@ Any two of $(\omega,J,g)$ fix the third by $\omega_{ik} = J_{i}{}^{j}
 g_{jk}$ if they are compatible: $J_{i}{}^{j}J_{l}{}^{k}\omega_{jk} =
 \omega_{il}$ or $J_{i}{}^{j}J_{l}{}^{k}g_{jk} = g_{il}$ namely $\omega$
 or $g$ is $J$-invariant, or $\omega_{ij}g^{jk}\omega_{kl} = - g_{il}$.
-On a holomorphic chart, $\omega = \frac{i}{2} h_{\beta\bar{\gamma}}
+On a holomorphic chart, $\omega = \frac{\I}{2} h_{\beta\bar{\gamma}}
 \dd{z^\beta} \wedge \dd{\bar{z}^{\bar{\gamma}}}$ and $g = \frac{1}{2}
 h_{\beta\bar{\gamma}} (\dd{z^\beta} \otimes \dd{\bar{z}^{\bar{\gamma}}}
 + \dd{\bar{z}^{\bar{\gamma}}} \otimes \dd{z^\beta})$.
@@ -460,6 +464,16 @@ which frames are orthonormal, \ie, a Riemannian metric~$g$.  Similarly
 $\Lie{GL}(n/2,\ring{C})/U(n/2)$ is contractible so almost complex
 manifolds admit almost Hermitian structures.
 
+On an almost complex manifold, $(p,q)$-forms are wedge products
+$\Omega^{(p,q)}X = \Wedge^p\bigl(\Omega^{(1,0)}X\bigr) \wedge
+\Wedge^q\bigl(\Omega^{(0,1)}X\bigr)$ where $J$~acts by $\pm\I$ on
+$\Omega^1 X = \Omega^{(1,0)} X \oplus \Omega^{(0,1)} X$.  The exterior
+derivative is $\dd{} = \dd[^{2,-1}]{} + \dd[^{1,0}]{} + \dd[^{0,1}]{} +
+\dd[^{-1,2}]{}$ with
+$\dd[^{i,j}]{}:\Omega^{(p,q)}\to\Omega^{(p+i,q+j)}$.  Dolbeault
+differential operators are $\del=\dd[^{1,0}]{}$ and
+$\delbar=\dd[^{0,1}]{}$.
+
 \paragraph{A $G$-structure is $k$-integrable} (resp.\@ integrable) near
 $x\in X$ if it can be trivialized to order~$k$ (resp.\@ all orders) in a
 neighborhood of~$x$.  We automatically have $0$-integrability.
@@ -468,11 +482,12 @@ Any Riemannian structure is $1$-integrable thanks to Riemann normal
 coordinates.  Integrability is equivalent to the Riemann curvature
 vanishing.
 
-An almost complex structure is complex if (equivalently) it is integrable; it is $1$-integrable; it has a vanishing Nijenhuis tensor $N_J:\Lambda^2 X\to TX$ defined on vector fields $u$, $v$
-by the Lie brackets $N_J(u,v)=-J^2[u,v]+J[Ju,v]+J[u,Jv]-[Ju,Jv]$;
-the Lie bracket of $(1,0)$ vector fields is a $(1,0)$ vector field;
-$\dd{}=\partial+\bar{\partial}:\Omega^{(p,q)}X\to\Omega^{(p+1,q)}X\oplus\Omega^{(p,q+1)}X$ has no $(p+2,q-1)$ or $(p-1,q+2)$ components;
-or $\bar{\partial}^2=0$.
+An almost complex structure is complex if (equivalently) it is
+integrable; it is $1$-integrable; it has a vanishing Nijenhuis tensor
+$N_J:\Wedge^2 X\to TX$ defined on vector fields $u$, $v$ by the Lie
+brackets $N_J(u,v)=-J^2[u,v]+J[Ju,v]+J[u,Jv]-[Ju,Jv]$; the Lie bracket
+of $(1,0)$ vector fields is a $(1,0)$ vector field; $\dd{}=\del+\delbar$
+namely $\dd[^{2,-1}]{}=0=\dd[^{-1,2}]{}$; or $\delbar^2=0$.
 
 A symplectic structure is an integrable almost symplectic structure.
 Equivalently, it is $1$-integrable: $\dd{\omega}=0$.  Altogether,
