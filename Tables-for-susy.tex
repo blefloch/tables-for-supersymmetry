@@ -1,8 +1,7 @@
 \documentclass[10pt,letterpaper]{article}
 %\usepackage{savetrees}
 \usepackage[margin=1.2cm]{geometry}
-\setlength{\parskip}{2pt plus 2pt minus 2pt}
-\setlength{\baselineskip}{10pt}
+\usepackage{xcolor}
 \usepackage{microtype}
 \usepackage{amsfonts}
 \usepackage{amssymb}
@@ -18,6 +17,8 @@
 \usetikzlibrary{matrix}
 \usepackage{stackengine}
 \usepackage{etoolbox}
+\usepackage{mathabx}
+\usepackage{graphicx}
 
 \hypersetup{unicode}
 \hypersetup{linktoc = all}                % hyperref settings
@@ -26,29 +27,49 @@
   \def\({}%
   \def\){}%
   \def\\{}%
+  \def\leq{\042\144}%
   \def\infty{\042\036}%
   \def\Tr{Tr }%
 }
 
-
-
+\makeatletter
+%\renewcommand{\section}{\@startsection {section}{1}{\z@ }{-3.5ex \@plus -1ex \@minus -.2ex}{2.3ex \@plus .2ex}{\normalfont \Large \bfseries }}
+\renewcommand{\section}{\pagebreak[1]\@startsection {section}{1}{\z@ }{-\medskipamount}{\smallskipamount}{\normalfont \large \bfseries }}
+\makeatother
 %%% Sorry the next two lines are a bit horrible
-\renewcommand{\section}[1]{\stepcounter{section}\medskip\pagebreak[1]\noindent\textbf{\large\arabic{section}.\ #1}\smallskip}
+%\renewcommand{\section}[1]{\stepcounter{section}\medskip\pagebreak[1]\noindent\textbf{\large\arabic{section}.\ #1}\smallskip}
 \renewcommand{\paragraph}[1]{\par\noindent\textbf{#1}}
-\newcommand{\definition}{\par\noindent\textbf{Def.} \ignorespaces}
-\newcommand{\proposition}{\par\noindent\textbf{Prop.} \ignorespaces}
+%\newcommand{\definition}{\par\noindent\textbf{Def.} \ignorespaces}
+%\newcommand{\proposition}{\par\noindent\textbf{Prop.} \ignorespaces}
+\setlength{\parskip}{2pt plus 2pt minus 2pt}
+\setlength{\baselineskip}{10pt}
+
+\newcommand{\actson}{\mathrel{\reflectbox{$\righttoleftarrow$}}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 %\newcommand{\defined}[1]{\emph{#1}}
 \newcommand{\dd}[2][]{\mathop{\mathrm{d}\mkern0mu\relax#1#2}}%\mkern avoids \mathop{d} (vertical placement issue)
 \newcommand{\ie}{i.e.\@}
 \makeatletter
-\newcommand{\etc}{etc.\@\@ifnextchar.{\@gobble}{}}
+\newcommand{\etc}{etc.\@ifnextchar.{\@gobble}{\@}}
 \makeatother
 \newcommand{\I}{i}
 \newcommand{\Wedge}{\bigwedge}
 \newcommand{\del}{\partial}
 \newcommand{\delbar}{\overline{\partial}}
+\newcommand{\Nsusy}{{\mathcal{N}}}
+\newcommand{\repr}[1]{\mathbb{#1}}
+\newcommand{\todo}[1]{\emph{todo: #1}}
+\newcommand{\cyclic}[1]{\ZZ_{#1}}
+\newcommand{\ZZ}{\mathbb{Z}} % integers
+\newcommand{\QQ}{\mathbb{Q}} % rationals
+\newcommand{\RR}{\mathbb{R}} % reals
+\newcommand{\CC}{\mathbb{C}} % complex
+\newcommand{\HH}{\mathbb{H}} % quaternions
+\newcommand{\PP}{\mathbb{P}} % projective
+\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
 
-\newcommand{\ring}[1]{\mathbb{#1}}
 \ExplSyntaxOn
 \newcommand{\Lie}[1]{
   \mathrm {
@@ -91,8 +112,10 @@
 \ExplSyntaxOff
 %\robustify\tilde
 
-\newcommand{\undovskip}{\relax\ifvmode\unskip\fi}
+\newcommand{\undovskip}{\relax\ifvmode\ifdim\lastskip>0pt\relax\vskip-\lastskip\fi\fi}
 \newenvironment{tab}[1]{\center\undovskip\vspace{.1\baselineskip}\tabular{#1}\toprule}{\crcr\bottomrule\endtabular\endcenter\undovskip\vspace{.1\baselineskip plus .3\baselineskip}}
+
+
 
 \begin{document}
 \twocolumn\raggedbottom
@@ -109,20 +132,20 @@ $\lie{A}_1=\lie{B}_1=\lie{C}_1$, $\lie{B}_2=\lie{C}_2$, $\lie{D}_2=\lie{A}_1\opl
 Five exceptions with $\dim(\lie{E}_6)=78$, $\dim(\lie{E}_7)=133$, $\dim(\lie{E}_8)=248$, $\dim(\lie{F}_4)=52$, $\dim(\lie{G}_2)=14$.
 \begin{tab}{*{3}{>{$}l<{$}}l}
   \text{Type} & \text{Dimension} & \text{Lie algebra} \\\midrule
-  \lie{A}_n & n(n+2) & \lie{sl}(n+1,\ring{C}) =\{\text{traceless}\} \\
-  \lie{B}_n & n(2n+1) & \lie{so}(2n+1,\ring{C}) =\{\text{antisymmetric}\} \\
-  \lie{C}_n & n(2n+1) & \lie{sp}(2n,\ring{C})
+  \lie{A}_n & n(n+2) & \lie{sl}(n+1,\CC) =\{\text{traceless}\} \\
+  \lie{B}_n & n(2n+1) & \lie{so}(2n+1,\CC) =\{\text{antisymmetric}\} \\
+  \lie{C}_n & n(2n+1) & \lie{sp}(2n,\CC)
 	=\left\{\left(\begin{smallmatrix}0&\mathbbm{1}_n\\-\mathbbm{1}_n&0\end{smallmatrix}\right)\times\text{symmetric}\right\}
   \\
-  \lie{D}_n & n(2n-1) & \lie{so}(2n,\ring{C}) =\{\text{antisymmetric}\} \\
+  \lie{D}_n & n(2n-1) & \lie{so}(2n,\CC) =\{\text{antisymmetric}\} \\
 \end{tab}
 
-\paragraph{Real case.}  Let
-$\lie{sl}(n)=\lie{sl}(n,\ring{R})$,
-%$\lie{sp}(2n)=\lie{sp}(2n,\ring{R})$,
-$\lie{su}^*(2n)=\lie{sl}(n,\ring{H})$,
-$\lie{so}^*(2n)=\lie{o}(n,\ring{H})$,
-$\lie{usp}(2m,2n)=\lie{u}(m,n,\ring{H})$.
+\paragraph{Real case.}\hspace{0pt minus 1pt}  Let
+$\lie{sl}(n)=\lie{sl}(n,\RR)$,
+%$\lie{sp}(2n)=\lie{sp}(2n,\RR)$,
+$\lie{su}^*(2n)=\lie{sl}(n,\HH)$,
+$\lie{so}^*(2n)=\lie{o}(n,\HH)$,
+$\lie{usp}(2m,2n)=\lie{u}(m,n,\HH)$.
 A Lie algebra is compact if it exponentiates to a compact Lie group.
 In $\lie{E}_{r(s)}$, $s$ is the number of $(\text{non-compact})-(\text{compact})$ generators.
 \begin{tab}{@{}c@{ }lll}
@@ -139,9 +162,9 @@ In $\lie{E}_{r(s)}$, $s$ is the number of $(\text{non-compact})-(\text{compact})
 & $\lie{so}(p,n-p)$& $\lie{so}(p)\oplus \lie{so}(n-p)$ & $0<p<n$ \\
 & $\lie{so}^*(2n)$   & $\lie{u}(n)$ & $n$ even \\
 \midrule
-\multirow{3}{*}{\rotatebox{90}{$\lie{sp}(2n,\ring{R})\!\!$}}
+\multirow{3}{*}{\rotatebox{90}{$\!\!\!\lie{sp}(2n,\RR)\!\!$}}
 & $\lie{usp}(2n)$ & compact & \\
-& $\lie{sp}(2n,\ring{R})$  & $\lie{u}(n)$ & \\
+& $\lie{sp}(2n,\RR)$  & $\lie{u}(n)$ & \\
 & $\lie{usp}(2n-2p,2p)$ & $\lie{usp}(2n-2p)\oplus \lie{usp}(2p)$ & $0<p<n$ \\
 \midrule
 \multicolumn{4}{c}{%
@@ -177,11 +200,11 @@ In $\lie{E}_{r(s)}$, $s$ is the number of $(\text{non-compact})-(\text{compact})
 \vspace{-2.5\baselineskip}
 \begin{minipage}[t]{.55\linewidth}
 \begin{align*}
-\lie{so}(2)&= \lie{u}(1), \quad \lie{so}(1,1)=\ring{R}\\
+\lie{so}(2)&= \lie{u}(1), \quad \lie{so}(1,1)=\RR\\
 \lie{so}(3)&= \lie{su}(2)=\lie{su}^*(2)\\
-\lie{so}(2,1) &=\lie{su}(1,1)=\lie{sl}(2)=\lie{sp}(2,\mathrlap{\ring{R})}\\
+\lie{so}(2,1) &=\lie{su}(1,1)=\lie{sl}(2)=\lie{sp}(2,\mathrlap{\RR)}\\
 \lie{so}(4)&=\lie{su}(2)\oplus \lie{su}(2)\\
-\lie{so}(3,1)&=\lie{sl}(2,\ring{C})=\lie{sp}(2,\ring{C})\\
+\lie{so}(3,1)&=\lie{sl}(2,\CC)=\lie{sp}(2,\CC)\\
 \lie{so}(2,2)&=\lie{sl}(2)\oplus \lie{sl}(2)\\
 \lie{so}^*(4)&=\lie{su}(1,1)\oplus \lie{su}(2)\\
 \lie{so}(5)&=\lie{usp}(4)
@@ -190,7 +213,7 @@ In $\lie{E}_{r(s)}$, $s$ is the number of $(\text{non-compact})-(\text{compact})
 \begin{minipage}[t]{.45\linewidth}
 \begin{align*}
 \lie{so}(4,1)&=\lie{usp}(2,2)\\
-\lie{so}(3,2)&=\lie{sp}(4,\ring{R})\\
+\lie{so}(3,2)&=\lie{sp}(4,\RR)\\
 \lie{so}(6)&=\lie{su}(4)\\
 \lie{so}(5,1)&=\lie{su}^*(4)\\
 \lie{so}(4,2)&=\lie{su}(2,2)\\
@@ -205,16 +228,16 @@ In $\lie{E}_{r(s)}$, $s$ is the number of $(\text{non-compact})-(\text{compact})
 the bosonic algebra acts on the fermionic generators in a completely reducible representation.
 This excludes Cartan-type superalgebras $\lie{W}(n)$, $\lie{S}(n)$, $\lie{\tilde S}(n)$ and $\lie{H}(n)$.
 In this table, $m,n\geq 1$ and we do not list purely bosonic Lie algebras.
-The factor $\ring{C}$ of $\lie{sl}(m|n)$ must be removed if $m=n$.
+The factor $\CC$ of $\lie{sl}(m|n)$ must be removed if $m=n$.
 \begin{tab}{lll}
 & Bosonic algebra & Fermionic repr. \\\midrule
-$\lie{sl}(m|n)$ & $\lie{sl}(m,\ring{C})\oplus \lie{sl}(n,\ring{C})\oplus\ring{C}$ & $(m,\overline{n})\oplus(\overline{m},n)$ \\
-$\lie{osp}(m|2n)$ & $\lie{so}(m,\ring{C}) \oplus \lie{sp}(2n,\ring{R})$ & $(m,2n)$ \\
-$\lie{D}(2,1,\alpha)$ & $\lie{sl}(2,\ring{C})^3$ & $(2,2,2)$ \\
-$\lie{F}(4)$ & $\lie{so}(7,\ring{C})\oplus \lie{sl}(2,\ring{C})$ & $(8,2)$ \\
-$\lie{G}(3)$ & $\lie{G}_2\oplus \lie{sl}(2,\ring{C})$ & $(7,2)$ \\
-$\lie{P}(m)$ & $\lie{sl}(m+1,\ring{C})$ & $\text{sym}\oplus(\text{antisym})^*$ \\
-$\lie{Q}(m)$ & $\lie{sl}(m+1,\ring{C})$ & adjoint\\
+$\lie{sl}(m|n)$ & $\lie{sl}(m,\CC)\oplus \lie{sl}(n,\CC)\oplus\CC$ & $(m,\overline{n})\oplus(\overline{m},n)$ \\
+$\lie{osp}(m|2n)$ & $\lie{so}(m,\CC) \oplus \lie{sp}(2n,\RR)$ & $(m,2n)$ \\
+$\lie{D}(2,1,\alpha)$ & $\lie{sl}(2,\CC)^3$ & $(2,2,2)$ \\
+$\lie{F}(4)$ & $\lie{so}(7,\CC)\oplus \lie{sl}(2,\CC)$ & $(8,2)$ \\
+$\lie{G}(3)$ & $\lie{G}_2\oplus \lie{sl}(2,\CC)$ & $(7,2)$ \\
+$\lie{P}(m)$ & $\lie{sl}(m+1,\CC)$ & $\text{sym}\oplus(\text{antisym})^*$ \\
+$\lie{Q}(m)$ & $\lie{sl}(m+1,\CC)$ & adjoint\\
 \end{tab}
 
 \paragraph{Real forms of Lie superalgebras,}
@@ -225,10 +248,10 @@ The forms $\lie{su}^*$, $\lie{osp}^*$, $\lie{Q}^*$ only exist for even rank; $\l
 \text{Real form} & \text{Bosonic algebra}  \\ \midrule
 \lie{su}(m-p,p|n-q,q) & \lie{su}(m-p,p)\oplus \lie{su}(n-q,q)\oplus \lie{u}(1)^{\mathsection}\\
 \lie{sl}(m|n) & \lie{sl}(m)\oplus \lie{sl}(n)\oplus \lie{so}(1,1)^{\mathsection} \\
-\lie{sl}'(n|n) \quad\, (m=n)& \lie{sl}(n,\ring{C})\\
+\lie{sl}'(n|n) \quad\, (m=n)& \lie{sl}(n,\CC)\\
 \lie{su}^*(m|n) \:\: (m,n \text{ even}) & \lie{su}^*(m)\oplus \lie{su}^*(n)\oplus \lie{so}(1,1)^{\mathsection}\\
 \midrule
-\lie{osp}(m-p,p|2n) & \lie{so}(m-p,p)\oplus \lie{sp}(2n,\ring{R}) \\
+\lie{osp}(m-p,p|2n) & \lie{so}(m-p,p)\oplus \lie{sp}(2n,\RR) \\
 \multicolumn{2}{l}{$\lie{osp}^*(m|2n-2q,2q)$ ($m$ even)\quad $\lie{so}^*(m)\oplus \lie{usp}(2n-2q,2q)$} \\
 \midrule
 \lie{D}^p(2,1,\alpha) \;^{\mathparagraph} & \lie{so}(4-p,p)\oplus \lie{sl}(2)\quad (p=0,1,2)\\
@@ -260,14 +283,16 @@ $\lie{su}(1,1|1)=\lie{sl}(2|1)=\lie{osp}(2|2)$
 and $\lie{su}(2|1)=\lie{osp}(2^*|2,0)$
 and $\lie{D}^p(2,1,\alpha=1)=\lie{osp}(4-p,p|2)$.
 
+% todo: section on Lie groups here
+
 \section{Spinors}
 
 \paragraph{Clifford algebra.}  Let $h_{ab}$ be diagonal with $s$~`$+1$' and $t$~`$-1$', and $d=s+t$.  The Clifford algebra $\{\Gamma_a,\Gamma_b\}=2h_{ab}$ has real dimension~$2^d$ and is isomorphic to a matrix algebra $M_{2^{\#}}(\bullet)$ with
 \begin{tab}{>{$}r<{$}*{8}{>{$}c<{$}}}
 s-t \bmod{8} & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 \\
-\bullet \text{\quad is} & \ring{R}& \ring{R}\oplus\ring{R} & \ring{R} & \ring{C} & \ring{H} & \ring{H}\oplus\ring{H} & \ring{H} &\ring{C}\\
+\bullet \text{\quad is} & \RR& \RR\oplus\RR & \RR & \CC & \HH & \HH\oplus\HH & \HH &\CC\\
 \end{tab}
-%with $\bullet = [\ring{R}, \ring{R}\oplus\ring{R}, \ring{R}, \ring{C}, \ring{H}, \ring{H}\oplus\ring{H}, \ring{H}, \ring{C}][s-t\bmod{8}]$.
+%with $\bullet = [\RR, \RR\oplus\RR, \RR, \CC, \HH, \HH\oplus\HH, \HH, \CC][s-t\bmod{8}]$.
 
 
 \paragraph{Charge conjugation.}  $(-\eta)\Gamma_a^T=\mathcal{C}\Gamma_a\mathcal{C}^{-1}$ are conjugate for $\eta=\pm 1$ because they obey the same algebra.  Get $\mathcal{C}^T=-\varepsilon \mathcal{C}$ with $\varepsilon=\pm 1$ by transposing twice.
@@ -327,7 +352,7 @@ For the antisymmetric product $\Wedge^2\mathcal{S}$, take $k\equiv m-1\bmod{4}$.
 See the list of forms in the table.
 \begin{tab}{>{$}l<{$}*{6}{>{$}l<{$}}}
 d & 1 & 3 & 5 & 7 & 9 & 11\\
-\dim_{\ring{C}}\mathcal{S} & 1 & 2 & 4 & 8 & 16 & 32\\\midrule
+\dim_{\CC}\mathcal{S} & 1 & 2 & 4 & 8 & 16 & 32\\\midrule
 S^2\mathcal{S} & 0 & 1 & 2 & 0,3 & 0,1,4 & 1,2,5\\
 \Wedge^2\mathcal{S} & . & 0 & 0,1 & 1,2 & 2,3 & 0,3,4\\
 \end{tab}
@@ -337,7 +362,7 @@ The symmetric products $S^2\mathcal{S}_{\pm}$ decompose into the (anti)-self-dua
 The antisymmetric products $\Wedge^2\mathcal{S}_{\pm}$ decompose into $(m-2-4j)$-forms for $0\leq j\leq (m-2)/4$.
 \begin{tab}{>{$}l<{$}*{6}{>{$}l<{$}}}
 d & 2 & 4 & 6 & 8 & 10 & 12\\
-\dim_{\ring{C}}\mathcal{S}_{\pm} & 1 & 2 & 4 & 8 & 16 & 32\\\midrule
+\dim_{\CC}\mathcal{S}_{\pm} & 1 & 2 & 4 & 8 & 16 & 32\\\midrule
 S^2\mathcal{S}_{\pm} & 1^{\dagger} & 2^{\dagger} & 3^{\dagger} & 0,4^{\dagger} & 1,5^{\dagger} & 2,6^{\dagger}\\
 \Wedge^2\mathcal{S}_{\pm} & . & 0 & 1 & 2 & 3 & 0,4\\
 \mathcal{S}_{+}\otimes\mathcal{S}_{-} & 0 & 1 & 0,2 & 1,3 & 0,2,4 & 1,3,5\\
@@ -350,7 +375,7 @@ S^2(\mathcal{S}_{+}\oplus\mathcal{S}_{-})&=S^2\mathcal{S}_{+}\oplus(\mathcal{S}_
 
 \section{Supersymmetry algebras}
 
-\paragraph{The Poincar\'e algebra} is $\ring{R}^{s,t} \rtimes \lie{so}(s,t)$, the semi-direct product of translations by rotations.
+\paragraph{The Poincar\'e algebra} is $\RR^{s,t} \rtimes \lie{so}(s,t)$, the semi-direct product of translations by rotations.
 Namely, $[P_{a},P_{b}]=0$, $[M_{ab},P_{c}]=2ih_{c[a}P_{b]}$, and $[M_{ab},M^{cd}]=4ih_{[a}^{[c}M_{b]}^{d]}$.
 
 \smallskip
@@ -359,9 +384,9 @@ Namely, $[P_{a},P_{b}]=0$, $[M_{ab},P_{c}]=2ih_{c[a}P_{b]}$, and $[M_{ab},M^{cd}
 Add supercharges in some spinor representation~$Q$ of the Poincar\'e algebra (so $[P_{a},Q]=0$).
 Their anticommutator transforms in the representation $S^2 Q$ and should include the one-form~$P$.
 Depending on $s,t$ they can include other $k$-forms~$Z$, called central charges because $[P,Z]=[Z,Z]=0$.
-The super-Poincar\'e algebra is $((\ring{R}^{s,t}\times Z).Q)\rtimes (\lie{so}(s,t)\times R)$, where the $R$-symmetry acts on~$Q$.
-This Lie superalgebra is graded: $\operatorname{gr}(\ring{R}^{s,t}\times Z)=-2$, $\operatorname{gr}(Q)=-1$, and $\operatorname{gr}(\lie{so}(s,t)\times R)=0$.
-The supertranslations consist of $(\ring{R}^{s,t}\times Z).Q$.
+The super-Poincar\'e algebra is $((\RR^{s,t}\times Z).Q)\rtimes (\lie{so}(s,t)\times R)$, where the $R$-symmetry acts on~$Q$.
+This Lie superalgebra is graded: $\operatorname{gr}(\RR^{s,t}\times Z)=-2$, $\operatorname{gr}(Q)=-1$, and $\operatorname{gr}(\lie{so}(s,t)\times R)=0$.
+The supertranslations consist of $(\RR^{s,t}\times Z).Q$.
 
 \smallskip
 
@@ -400,7 +425,7 @@ $6$&$ \lie{osp}(8^*|N) $ &$  \lie{usp}(N)\ \ (N $ even)& $8N$ \\
 \end{tab}
 
 
-\section{Supermultiplets with spins $\leq 1$}
+\section{Supermultiplets with spins \(\leq 1\)}
 
 \paragraph{For $16$ supercharges}, there is only the vector.
 
@@ -435,19 +460,20 @@ $6$&$ \lie{osp}(8^*|N) $ &$  \lie{usp}(N)\ \ (N $ even)& $8N$ \\
 % todo: symmetric spaces? https://en.wikipedia.org/wiki/Symmetric_space
 
 \paragraph{A $G$-structure} on a manifold~$X$ (with
-$n=\dim_{\ring{R}}X$) is a $G$-subbundle of the
-$\Lie{GL}(n,\ring{R})$-principal bundle $\Lie{GL}(TX)$ of tangent
+$n=\dim_{\RR}X$) is a $G$-subbundle of the
+$\Lie{GL}(n,\RR)$-principal bundle $\Lie{GL}(TX)$ of tangent
 frames, namely a global section of $\Lie{GL}(TX)/G$.
 
-A manifold is oriented if it has a $\Lie{GL}^+(n,\ring{R})=\{\det>0\}$
+A manifold is oriented if it has a $\Lie{GL}^+(n,\RR)=\{\det>0\}$
 structure.  Similar definitions for Riemannian manifolds \etc:
 \begin{tab}{@{ }l@{ \ }l@{ \ }l@{ }}
   Manifold type & $G$-structure & Other characterization \\
   \midrule
   Riemannian & $\Lie{O}(n)$ & Symmetric metric $g>0$ \\
-  Almost symplectic & $\Lie{Sp}(2n/2,\ring{R})$ & Non-degenerate $\omega\in\Omega^2X$\\
-  Almost complex & $\Lie{GL}(n/2,\ring{C})$ & $J:TX\to TX$, $J^2=-1$ \\
+  Almost symplectic & $\Lie{Sp}(2n/2,\RR)$ & Non-degenerate $\omega\in\Omega^2X$\\
+  Almost complex & $\Lie{GL}(n/2,\CC)$ & $J:TX\to TX$, $J^2=-1$ \\
   Almost Hermitian & $\Lie{U}(n/2)$ & Two compatible $(\omega,J,g)$ \\
+  \rlap{Almost hypercomplex} & & Action $\HH\actson TX$ \\
 \end{tab}
 Any two of $(\omega,J,g)$ fix the third by $\omega_{ik} = J_{i}{}^{j}
 g_{jk}$ if they are compatible: $J_{i}{}^{j}J_{l}{}^{k}\omega_{jk} =
@@ -458,10 +484,10 @@ On a holomorphic chart, $\omega = \frac{\I}{2} h_{\beta\bar{\gamma}}
 h_{\beta\bar{\gamma}} (\dd{z^\beta} \otimes \dd{\bar{z}^{\bar{\gamma}}}
 + \dd{\bar{z}^{\bar{\gamma}}} \otimes \dd{z^\beta})$.
 
-Since $\Lie{GL}(n,\ring{R})/O(n)$ is contractible, any manifold admits
+Since $\Lie{GL}(n,\RR)/O(n)$ is contractible, any manifold admits
 (non-canonically) a Riemannian structure, namely a smooth choice of
 which frames are orthonormal, \ie, a Riemannian metric~$g$.  Similarly
-$\Lie{GL}(n/2,\ring{C})/U(n/2)$ is contractible so almost complex
+$\Lie{GL}(n/2,\CC)/U(n/2)$ is contractible so almost complex
 manifolds admit almost Hermitian structures.
 
 On an almost complex manifold, $(p,q)$-forms are wedge products
@@ -531,6 +557,15 @@ An almost Hermitian manifold is K\"ahler if (equivalently) its
 $U(n/2)$-structure is $1$-integrable; $\dd{\omega}=0$ and $N_J=0$;
 $\nabla\omega=0$; $\nabla J=0$; or the holonomy group is in $U(n/2)$.
 
+\todo{Volume form on an almost Hermitian matrix: $\omega^n/n!$.}
+
+\todo{Hypercomplex structure, that is, three compatible complex
+  structures $I$, $J$, $K$.  Almost hypercomplex structure when
+  non-integrable?}
+
+\todo{The product of any reductive (connected? simply-connected?)
+  compact Lie group by some appropriate torus admits a left-invariant
+  hypercomplex structure.}
 
 \paragraph{The holonomy group} at $x\in X$ of a connection~$\nabla$ on a
 bundle $E\to X$ is the group of symmetries of~$E_x$ arising from
@@ -547,21 +582,102 @@ Otherwise, assuming~$X$ is simply connected and not locally a symmetric
 space, \href{https://ncatlab.org/nlab/show/Berger\%27s+theorem}{Berger's
   theorem} allows
 \begin{tab}{lll}
-  Holonomy & Manifold type & dim\\
+  Holonomy & Manifold type & $\dim_{\RR}$\\
   \midrule
   $\Lie{SO}(n)$ & orientable & $n$ \\
   $\Lie{U}(m)$ & K\"ahler & $2m$ \\
-  $\Lie{SU}(m)$ & Calabi--Yau & $2m$ \\
-  $\bigl(\Lie{Sp}(k)\times\Lie{Sp}(1)\bigr)/\ring{Z}_2$ & quaternionic K\"ahler & $4k$ \\
+  $\Lie{SU}(m)$ & Calabi--Yau CY$_m$ & $2m$ \\
+  $\bigl(\Lie{Sp}(k)\times\Lie{Sp}(1)\bigr)/\cyclic{2}$ & quaternionic K\"ahler & $4k$ \\
   $\Lie{Sp}(k)$ & hyper-K\"ahler & $4k$ \\
   $\Lie{Spin}(7)$ & $\Lie{Spin}(7)$ manifold & $8$ \\
   $\Lie{G}_2$ & $\Lie{G}_2$ manifold & $7$ \\
 \end{tab}
-% todo: what Sp?
+% todo: Sp(k)=U(k,\HH)? is this USp?
+% todo: write Sp(k)<SU(2k).
 % more at https://en.wikipedia.org/wiki/Holonomy
 % perhaps http://projecteuclid.org/euclid.jdg/1090351387 interesting?
 
+% Todo double check Kähler ⊃ Calabi-Yau ⊃ hyper-Kähler.
+
+
 % more on http://mathworld.wolfram.com/Hyper-KaehlerManifold.html
+
+\paragraph{Symmetric spaces} \todo{list missing}
+
+\paragraph{K3 surfaces} are the only CY$_2$: they have holonomy
+$\Lie{SU}(2)$.
+
+\paragraph{Yau's theorem.}  Fix a complex structure on a compact complex
+manifold~$X$ of $\dim_{\CC}X>1$ and vanishing real first Chern class.
+Any real class $H^{1,1}(X,\CC)$ of positive norm contains a unique
+K\"ahler form whose metric is Ricci flat.
+
+\section{Data for supersymmetric gauge theories}
+
+\paragraph{3d $\Nsusy=4$:} complex reductive group~$G$ and
+finite-dimensional symplectic representation~$\repr{M}$ of~$G$.
+%% according to Kodera-Nakajima 1608.00875
+
+\section{String theory dualities}
+
+In this table ``type~IIA'' \etc{} refer to string theories not supergravities
+\begin{tab}{l@{ $\Leftrightarrow$ }l}
+  F-theory on K3 & $\Lie{E}_8\times\Lie{E}_8$ heterotic on~$T^2$ \\
+  M-theory on K3 & heterotic or type~I on~$T^3$ \\
+  Type~IIA on K3 & heterotic or type~I on~$T^4$ \\
+  M-theory on $\Lie{G}_2$-manifolds\footnote{Apply K3 duality fiber-wise.} & heterotic or type~I on CY$_3$\\
+  M-theory on K3\footnote{Apparently there is also a similar F-theory/heterotic duality.} & type~IIA on $T^3/\cyclic{2}$\\
+\end{tab}
+
+\appendix
+
+\section{K\"ahler \(4\)-manifolds}
+ % see 1206.1070 for detailed exposition
+
+\paragraph{K3~surfaces} are (the only besides~$T^4$) compact complex
+surfaces of trivial canonical bundle.  They have $h^{1,0}=0$ (in
+contrast to~$T^4$ which has \todo{value}).  Their first Chern class
+$c_1\in H^2(X,\ZZ)$ thus vanishes.  By Yau's theorem there exists a
+Ricci flat metric, whose holonomy is then $\Lie{SU}(2)=\Lie{Sp}(1)$ by
+Berger's classification.
+% todo: which Sp?
+K3~surfaces are thus Calabi--Yau (CY$_2$) and hyper-K\"ahler (hK$_4$).
+Their moduli space is connected and they are all diffeomorphic.
+
+\paragraph{Examples of K3~surfaces.} Quartic hypersurface in~$\PP^4$.
+Kummer surface namely resolution of $T^4/\cyclic{2}$.
+
+% todo: maybe move closer to Yau's theorem in "Types of manifolds"?
+\paragraph{Non-simply connected} Ricci-flat K\"ahler manifolds may fail
+to be CY$_n$ when the restricted holonomy group is $\Lie{SU}(n)$ but the
+global holonomy group is disconnected.  For example an Enriques surface
+K3$/\cyclic{2}$ has a non-trivial canonical bundle.
+
+\paragraph{Gravitational instantons.}  Ricci-flat metrics on hk$_4$ have
+self-dual curvature and are called gravitational instantons.
+% todo: only type of grav inst?
+Compact hK$_4$ are K3 and~$T^4$.  Non-compact hK$_4$ are asymptotically
+locally Euclidean (ALE) spaces asymptotic to $\HH/\Gamma$ for a finite
+subgroup $\Gamma<Sp(1)$.  Many such ALE spaces are local resolutions of
+orbifold singularities of K3~surfaces.
+
+\paragraph{} \todo{Taub-NUT spaces, multi-Taub-NUT spaces,
+  Eguchi--Hanson spaces, Gibbons--Hawking multicenter spaces.  Write
+  metric.}  \todo{Non-explicitly: Atiyah--Hitchin space (moduli space of
+  two $SU(2)$ 't~Hooft-Polyakov monopoles in~4d).}
+
+\todo{The only compact CY$_2$ are $T^4$ and K3~surfaces.}
+
+\todo{The only compact hypercomplex $4$-manifolds are $T^4$,
+  K3~surfaces, and the Hopf surface ($(\HH\setminus 0)/(q^\ZZ)$ for a
+  quaternion $\abs{q}>1$; it is diffeomorphic to $S^3\times S^1$).}
+
+% todo: what is the (co)homology of $X\times Y$?
+
+% todo: In\"on\"u--Wigner contraction (for Lie superalgebras too)
+
+% todo: vortices, monopoles, instantons (Abrikosov--Nielsen--Olesen
+% vortex, 't~Hooft--Polyakov monopole, \ldots{}).
 
 
 \bigskip
