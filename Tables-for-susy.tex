@@ -69,7 +69,8 @@
 \makeatletter
 \newcommand{\etc}{etc.\@ifnextchar.{\@gobble}{\@}}
 \makeatother
-\newcommand{\I}{i}
+\newcommand{\I}{\mathrm{i}}
+\newcommand{\E}{\mathrm{e}}
 \newcommand{\Wedge}{\bigwedge}
 \newcommand{\del}{\partial}
 \newcommand{\delbar}{\overline{\partial}}
@@ -85,6 +86,7 @@
 \newcommand{\PP}{\mathbb{P}} % projective
 \DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
 \DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\plexp}{plexp}
 
 \ExplSyntaxOn
 \newcommand{\Lie}[1]{
@@ -143,6 +145,14 @@
 \section{Special functions}
 
 % todo: Euler's Gamma function, elliptic Gamma function, hyperbolic Gamma function, Barnes' double-Gamma function, multiple sine, Upsilon, Dedekind eta function, Jacobi theta functions,
+
+\paragraph{Plethystic exponential.}  Let $\mathbf{m}\subset R[[x_1,\ldots,x_n]]$ be series with no constant term over a ring~$R$.  Then $\plexp:\mathbf{m}\to 1+\mathbf{m}$ obeys $\plexp[x_i^p]=1/(1-x_i^p)$ and $\plexp[\lambda f]=\plexp[f]^\lambda$ for $\lambda\in R$.  It maps an index of single-particle states $f(x)$ to that of multiparticle states $\plexp f(x)=\exp\sum_{k\geq 1}\frac{1}{k}f(x_1^k,\ldots,x_n^k)$.
+
+\paragraph{Dedekind eta function.}  Modular form of weight~$\frac{1}{2}$ given by $\eta(\tau)=q^{1/24}\prod_{k\geq 1} (1-q^k)=q^{1/24}\plexp[\frac{-q}{1-q}]$ where $q=\E^{2\pi\I\tau}$.
+
+\paragraph{Theta function.}  $\vartheta_1(x;q)=-\I x^{1/2}q^{1/8}\plexp[-\frac{q+xq+1/x}{1-q}]=-\I x^{1/2}q^{1/8}\prod_{k\geq 1} (1-q^k)(1-xq^k)(1-q^{k-1}/x)$.
+
+
 
 \section{Lie algebras and groups}
 
