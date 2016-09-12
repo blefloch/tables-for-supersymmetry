@@ -33,11 +33,10 @@
 }
 
 \makeatletter
-%\renewcommand{\section}{\@startsection {section}{1}{\z@ }{-3.5ex \@plus -1ex \@minus -.2ex}{2.3ex \@plus .2ex}{\normalfont \Large \bfseries }}
 \renewcommand{\section}{\pagebreak[1]\@startsection {section}{1}{\z@ }{-\medskipamount}{\smallskipamount}{\normalfont \large \bfseries }}
+\renewcommand{\subsection}{\pagebreak[0]\@startsection {subsection}{2}{\z@ }{-\smallskipamount}{1sp}{\normalfont \bfseries }}
 \makeatother
 %%% Sorry the next two lines are a bit horrible
-%\renewcommand{\section}[1]{\stepcounter{section}\medskip\pagebreak[1]\noindent\textbf{\large\arabic{section}.\ #1}\smallskip}
 \renewcommand{\paragraph}[1]{\par\noindent\textbf{#1}}
 %\newcommand{\definition}{\par\noindent\textbf{Def.} \ignorespaces}
 %\newcommand{\proposition}{\par\noindent\textbf{Prop.} \ignorespaces}
@@ -141,12 +140,25 @@
 
 \noindent ``Ed.'': Bruno Le Floch, Princeton University, \today.
 
-\section{Simple Lie (super)algebras}
+\section{Special functions}
+
+% todo: Euler's Gamma function, elliptic Gamma function, hyperbolic Gamma function, Barnes' double-Gamma function, multiple sine, Upsilon, Dedekind eta function, Jacobi theta functions,
+
+\section{Lie algebras and groups}
+
+\subsection{Simple Lie (super)algebras}
 
 \paragraph{Complex case.}
 Infinite series $\lie{A}_{n\geq 1}$, $\lie{B}_{n\geq 1}$, $\lie{C}_{n\geq 1}$, $\lie{D}_{n\geq 2}$ with
 $\lie{A}_1=\lie{B}_1=\lie{C}_1$, $\lie{B}_2=\lie{C}_2$, $\lie{D}_2=\lie{A}_1\oplus \lie{A}_1$, $\lie{D}_3=\lie{A}_3$.
-Five exceptions with $\dim(\lie{E}_6)=78$, $\dim(\lie{E}_7)=133$, $\dim(\lie{E}_8)=248$, $\dim(\lie{F}_4)=52$, $\dim(\lie{G}_2)=14$.
+Five exceptions with
+%
+dimensions
+\begin{tabular}{|ccccc|}
+ $\lie{E}_6$ & $\lie{E}_7$ & $\lie{E}_8$ & $\lie{F}_4$ & $\lie{G}_2$ \\
+ $78$ & $133$ & $248$ & $52$ & $14$ \\[-1ex]
+\end{tabular} .
+% $\dim(\lie{E}_6)=78$, $\dim(\lie{E}_7)=133$, $\dim(\lie{E}_8)=248$, $\dim(\lie{F}_4)=52$, $\dim(\lie{G}_2)=14$.
 \begin{tab}{*{3}{>{$}l<{$}}l}
   \text{Type} & \text{Dimension} & \text{Lie algebra} \\\midrule
   \lie{A}_n & n(n+2) & \lie{sl}(n+1,\CC) =\{\text{traceless}\} \\
@@ -176,7 +188,7 @@ In $\lie{E}_{r(s)}$, $s$ is the number of $(\text{non-compact})-(\text{compact})
 \multirow{3}{*}{\rotatebox{90}{$\lie{so}(n)$}}
 & $\lie{so}(n)$& compact & \\
 & $\lie{so}(p,n-p)$& $\lie{so}(p)\oplus \lie{so}(n-p)$ & $0<p<n$ \\
-& $\lie{so}^*(2n)$   & $\lie{u}(n)$ & $n$ even \\
+& $\lie{so}^*(n)$   & $\lie{u}(n/2)$ & $n$ even \\
 \midrule
 \multirow{3}{*}{\rotatebox{90}{$\lie{sp}(2n)$}}
 & $\lie{usp}(2n)$ & compact & \\
@@ -186,7 +198,7 @@ In $\lie{E}_{r(s)}$, $s$ is the number of $(\text{non-compact})-(\text{compact})
 \multicolumn{4}{c}{%
   \begin{tabular}[c]{ll}
   $\lie{E}_{6(-78)}$ & compact \\
-  $\lie{E}_{6(-26)}$ & $F_4$ \\
+  $\lie{E}_{6(-26)}$ & $\Lie{F}_4$ \\
   $\lie{E}_{6(-14)}$ & $\lie{so}(10)\oplus \lie{so}(2)$\\
   $\lie{E}_{6(2)}$ & $\lie{su}(6)\oplus \lie{su}(2)$\\
   $\lie{E}_{6(6)}$ & $\lie{usp}(8)$\\
@@ -300,12 +312,15 @@ and $\lie{su}(2|1)=\lie{osp}(2^*|2,0)$
 and $\lie{D}^p(2,1,\alpha=1)=\lie{osp}(4-p,p|2)$.
 % todo: complete this list
 
-% todo: section on representations of complex Lie algebras
-% todo: representations of real Lie algebras
+\subsection{Simple Lie (super)groups}
 
-% todo: section on Lie groups here
-% todo: Name "USp(2n)=Sp(n)" the compact symplectic group
+% todo: Name "\Lie{USp}(2n)=\Lie{Sp}(n)" the compact symplectic group
 % todo: Ph. Spindel, A. Sevrin, W. Troost, A. Van Proeyen (1988), D. Joyce (1992) construct (all) left-invariant hypercomplex structures on (simply-connected?) compact (reductive?) Lie groups: any simple Lie groups become ``left-invariantly hypercomplex'' once multiplied by an appropriate torus.
+
+\subsection{Representations of Lie (super)algebras/groups}
+
+% todo: representations of complex Lie algebras
+% todo: representations of real Lie algebras
 
 \section{Spinors}
 
@@ -330,7 +345,7 @@ $d\bmod 8$ & $n$ & $\epsilon$ & $\eta$ \\\midrule\addlinespace[7pt]
 
 \paragraph{Reduced spinors.}
 $M_{ab}\in \lie{so}(s,t)$ acts as $\gamma_a \gamma_b$ on representations of the Clifford algebra.
-But the $2^{\lceil d/2\rceil}$-dimensional representation is not irreducible as a representation of $so(s,t)$.
+But the $2^{\lceil d/2\rceil}$-dimensional representation is not irreducible as a representation of $\lie{so}(s,t)$.
 
 In even~$d$, Weyl (or chiral) spinors $\Gamma^{(d)}\lambda=\pm\lambda$ have $2^{d/2-1}$ real components.
 Let $B$~be defined by $\Gamma_a^*=-\eta(-1)^t B\Gamma_a B^{-1}$.
@@ -447,7 +462,28 @@ $6$&$ \lie{osp}(8^*|N) $ &$  \lie{usp}(N)\ \ (N $ even)& $8N$ \\
 \end{tab}
 
 
-\section{Supermultiplets with spins \(\leq 1\)}
+\paragraph{Dimensional reduction} of Euclidean/Lorentzian supersymmetry
+algebras.  10d $\Nsusy=1$ $\to$ 6d $\Nsusy=(1,1)$ or $(2,0)$? $\to$ 5d
+$\Nsusy=2$ $\to$ 4d $\Nsusy=4$ $\to$ 3d $\Nsusy=8$.  Also 6d
+$\Nsusy=(1,0)$ $\to$ 5d $\Nsusy=1$ $\to$ 4d $\Nsusy=2$ $\to$ 3d
+$\Nsusy=4$ $\to$ 2d $\Nsusy=(4,4)$.  Also 4d $\Nsusy=1$ $\to$ 3d
+$\Nsusy=2$ $\to$ 2d $\Nsusy=(2,2)$.
+
+% todo: check
+% todo: check Euclidean vs Lorentzian
+% todo: complete
+
+\paragraph{Explicit supersymmetry algebras}
+4d $\Nsusy=2$ $\{Q_\alpha^A,\overline{Q}_{\dot{\alpha}}^B\} =
+\epsilon^{AB}P_{\alpha\dot{\alpha}}$
+
+\paragraph{Supersymmetry on symmetric curved spaces}
+4d $\Nsusy=2$ supersymmetry on~$S^4$ is $\lie{osp}(2|4)$.
+2d $\Nsusy=(2,2)$ supersymmetry on~$S^2$ is $\lie{osp}(2|2)$.
+
+\section{Supermultiplets}
+
+\subsection{Supermultiplets with spins \(\leq 1\)}
 
 \paragraph{For $16$ supercharges}, there is only the vector.
 
@@ -457,27 +493,40 @@ $6$&$ \lie{osp}(8^*|N) $ &$  \lie{usp}(N)\ \ (N $ even)& $8N$ \\
 
 \paragraph{For $2$ supercharges}, vector, chiral, linear, Fermi, \ldots{}
 
-%\section{List of theories}
-%
-%\paragraph{Pure supergravities} in $4\leq d\leq 11$.  Gravity is topological in $d=3$.  The maximum number of supercharges $Q=32$ forbids $d>11$.  A priori, all $Q=4k$ are possible.  Focus on $32, 16, 8, 4$.
-%\begin{tab}{lcccc}
-%$d$ &$Q=32$& $16$  &$8$  & $4$  \\ \midrule
-%11& \checkmark & &&  \\
-%10& $\stackrel{ IIB}{(2,0)}\ \stackrel{ IIA}{(1,1)}$ &
-%$\stackrel{I}{(1,0)}$
-%& & \\
-%9 & \checkmark & \checkmark &&\\
-%8 & \checkmark & \checkmark &&\\
-%7 & \checkmark & \checkmark &&\\
-%6 & $(2,2)$& $(2,0) \ (1,1)$ &
-%$(1,0)$ &\\
-%5 & \checkmark & \checkmark & \checkmark &\\
-%4 &$N=8$ &$N=4$ & $N=2$
-%&$N=1$\\
-%\end{tab}
 
 
-\section{Types of manifolds}
+\section{List of theories}
+
+\subsection{Supersymmetric gauge theories}
+
+\paragraph{3d $\Nsusy=4$:} complex reductive group~$G$ and
+finite-dimensional symplectic representation~$\repr{M}$ of~$G$.
+%% according to Kodera-Nakajima 1608.00875
+
+\subsection{Other theories}
+
+\paragraph{Pure supergravities} in $4\leq d\leq 11$.  Gravity is topological in $d=3$.  The maximum number of supercharges $Q=32$ forbids $d>11$.  A priori, all $Q=4k$ are possible.  Focus on $32, 16, 8, 4$.
+\begin{tab}{lcccc}
+$d$ &$Q=32$& $16$  &$8$  & $4$  \\ \midrule
+11& \checkmark & &&  \\
+10& $\stackrel{ IIB}{(2,0)}\ \stackrel{ IIA}{(1,1)}$ &
+$\stackrel{I}{(1,0)}$
+& & \\
+9 & \checkmark & \checkmark &&\\
+8 & \checkmark & \checkmark &&\\
+7 & \checkmark & \checkmark &&\\
+6 & $(2,2)$& $(2,0) \ (1,1)$ &
+$(1,0)$ &\\
+5 & \checkmark & \checkmark & \checkmark &\\
+4 &$N=8$ &$N=4$ & $N=2$
+&$N=1$\\
+\end{tab}
+
+\section{Manifolds}
+
+\subsection{Riemannian geometry}
+
+\subsection{Types of manifolds: G-structures, holonomy}
 
 \paragraph{Structure group.} A $G$-structure on a manifold~$X$ (with
 $n=\dim_{\RR}X$) is a $G$-subbundle of the
@@ -486,26 +535,27 @@ frames, namely a global section of $\Lie{GL}(TX)/G$.
 
 A manifold is oriented if it has a $\Lie{GL}^+(n,\RR)=\{\det>0\}$
 structure.  Similar definitions for Riemannian manifolds \etc:
-\begin{tab}{@{ }l@{ \ }l@{ \ }l@{ }}
-  Manifold type & $G$-structure & Other characterization\tabfoot{1} \\
+\begin{tab}{@{ }l@{ \ }l@{\hspace{-2em}}r@{ }}
+  $G$-structure & Manifold type & Other characterization\tabfoot{1} \\
   \midrule
-  Riemannian & $\Lie{O}(n)$ & Symmetric metric $g>0$ \\
-  Almost complex & $\Lie{GL}(n/2,\CC)$ & $\CC\actson TX$ (\ie, $J^2=-1$) \\
-  Almost symplectic & $\Lie{Sp}(2n/2,\RR)$ & Non-degenerate $\omega\in\Omega^2X$\\
-  Almost Hermitian & $\Lie{U}(n/2)$ & Two compatible $(\omega,J,g)$\tabfoot{3} \\
-  \rlap{Almost hypercomplex\tabfoot{2} $\Lie{U}^*(n/2)$} & & $\HH\actson TX$ \\
+  $\Lie{O}(n)$ & Riemannian & Symmetric metric $g>0$ \\
+  $\Lie{GL}(n/2,\CC)$ & Almost complex & $\CC\actson TX$ (\ie, $J^2=-1$) \\
+  $\Lie{Sp}(2n/2,\RR)$ & Almost symplectic & Non-degenerate $\omega\in\Omega^2X$\\
+  $\Lie{U}(n/2)$ & Almost Hermitian & Two compatible $(g,J,\omega)$\tabfoot{2} \\
+  \midrule
+  \rlap{$\Lie{U}^*(n/2)\Lie{USp}(2)$} & \hspace{1.5em}\rlap{Almost quaternionic\tabfoot{3}} & $\HH\actson TX$ \\
+  $\Lie{U}^*(n/2)$ & Almost hypercomplex\tabfoot{3} & $J_1,J_2,J_3\actson TX$ \\
+  \rlap{$\Lie{USp}(n/2)\Lie{USp}(2)$} & \hspace{1.5em}\rlap{Almost quaternion-Hermitian} & $(g,\HH,\omega_{1,2,3})$ \\
+  $\Lie{USp}(n/2)$ & Almost hyper-Hermitian & $(g,J_{1,2,3},\omega_{1,2,3})$ \\
 \end{tab}
-\noindent\tabfoot{1} All sections are global.  For instance an almost complex
-structure is a global section $J$~of $\End TX$ with $J^2=-1$.
+\noindent\tabfoot{1}
+All sections are global.  For instance an almost complex structure is a
+global section $J$~of $\End TX$ with $J^2=-1$.
 
-% todo: in the table, which of almost (quaternionic|hyper)(complex|Hermitian) to include?
+% [http://mathoverflow.net/a/52510/36972] second Stiefel-Whitney class of an almost quaternionic manifold of real dimension 8n vanishes
 
-\noindent\tabfoot{2} Almost hypercomplex manifolds, also called
-quaternionic, require global $J_1,J_2,J_3:TX\to TX$ with
-$J_i^2=J_1J_2J_3=-1$.
-
-\noindent\tabfoot{3}
-Any two of $(\omega,J,g)$ fix the third by $\omega_{ik} = J_{i}{}^{j}
+\noindent\tabfoot{2}
+Any two of $(g,J,\omega)$ fix the third by $\omega_{ik} = J_{i}{}^{j}
 g_{jk}$ if they are compatible: $J_{i}{}^{j}J_{l}{}^{k}\omega_{jk} =
 \omega_{il}$ or $J_{i}{}^{j}J_{l}{}^{k}g_{jk} = g_{il}$ namely $\omega$
 or $g$ is $J$-invariant, or $\omega_{ij}g^{jk}\omega_{kl} = - g_{il}$.
@@ -515,7 +565,6 @@ $(1,0)$ and $(0,1)$ forms, $\omega = \frac{\I}{2} h_{\beta\bar{\gamma}}
 \, e^\beta \! \wedge \bar{e}^{\bar{\gamma}}$ and $g = \frac{1}{2}
 h_{\beta\bar{\gamma}} (e^\beta \otimes \bar{e}^{\bar{\gamma}} +
 \bar{e}^{\bar{\gamma}} \otimes e^\beta)$.
-
 
 On an almost complex manifold, $(p,q)$-forms are wedge products
 $\Omega^{(p,q)}X = \Wedge^p\bigl(\Omega^{(1,0)}X\bigr) \wedge
@@ -531,9 +580,15 @@ An almost symplectic $2m$-manifold admits the volume form $\omega^m/m!$.
 On an almost Hermitian manifold~$X$ it is equal to the Riemannian volume
 form and belongs to $\Omega^{(m,m)}X$.
 
-\paragraph{Integrability.} A $G$-structure is $k$-integrable (resp.\@ integrable) near
-$x\in X$ if it can be trivialized to order~$k$ (resp.\@ all orders) in a
-neighborhood of~$x$.  We automatically have $0$-integrability.
+\noindent\tabfoot{3}
+While almost quaternionic manifolds have a 3d subbundle of $\End TX$
+locally spanned by $J_1,J_2,J_3$ with $J_i^2=J_1J_2J_3=-1$, almost
+hypercomplex manifolds require $J_1,J_2,J_3$ to be global.
+
+\paragraph{Integrability.} A $G$-structure is $k$-integrable (resp.\@
+integrable) near $x\in X$ if it can be trivialized to order~$k$ (resp.\@
+all orders) in a neighborhood of~$x$.  We automatically have
+$0$-integrability.
 
 Any Riemannian structure is $1$-integrable thanks to Riemann normal
 coordinates.  Integrability is equivalent to the Riemann curvature
@@ -577,47 +632,24 @@ Equivalently, it is $1$-integrable: $\dd{\omega}=0$.  Altogether,
   \path [use as bounding box] (m-3-1.west |- m-1-3.north) rectangle (m-1-5.east |- m-4-3.south);
 \end{tikzpicture}
 \end{tab}
-(Almost) hyper-(complex/Hermitian/K\"ahler) manifolds are defined by
-replacing~$J$ by a triplet with
-$J_i^2=J_1J_2J_3=-1$.  (Almost)
-quaternionic-(complex/Hermitian/K\"ahler) allow the $J_i$ to be locally
-defined but spanning a globally defined 3d~subbundle of $\End TX$.
-% ref: math/0105206
-
-% \noindent
-% (Almost) quaternionic-(complex/Hermitian/K\"ahler) manifolds are defined
-% by replacing~$J$ by a 3d~subbundle of $\End TX$
-% with a local basis of sections~$J_i$ obeying $J_i^2=J_1J_2J_3=-1$.
-% (Almost) hyper-(complex/Hermitian/K\"ahler) manifolds require global
-% sections~$J_i$.
-
-
-% \noindent
-% Analogous manifolds with $J$~replaced by three almost complex structures
-% with $J_1J_2=J_3$, are called (almost)
-% hyper-(complex/Hermitian/K\"ahler).  Allowing the $J_i$ to only be local
-% but spanning a globally defined three-dimensional subbundle of $\End TX$
-% yields (almost) quaternionic-(complex/Hermitian/K\"ahler) manifolds.
-
-% the (almost) complex
-
-%  with the action
-% of~$\mathbb{C}$ on tangent spaces replaced by an action the of
-% quaternions~$\mathbb{H}$, namely three (almost) complex structures $I$,
-% $J$, $K$ with $IJ=K$.  The manifolds are called (almost) hypercomplex,
-% (almost) .
+(Almost)\,quaternionic/quaternion\-Hermitian/quaternion\-K\"ahler and
+(almost)\,hyper\-complex/hyper\-Hermitian/hyper\-K\"ahler manifolds are
+defined by replacing~$J$ by a 3d~subbundle of $\End TX$ or by global
+sections $J_1,J_2,J_3$ as in the table of $G$-structures.
+% ref: math/0307118 classification of "Almost Hermitian Structures and Quaternionic Geometries" (Francisco Martín Cabrera and Andrew Swann)
+% ref: math/0105206 useful definitions in "Hyper-Hermitian quaternionic Kähler manifolds" (Bogdan Alexandrov)
 
 \noindent\tabfoot{1}
-Since $\Lie{GL}(n,\RR)/O(n)$ is contractible, any manifold admits
-(non-canonically) an $O(n)$-structure, namely a smooth choice of
+Since $\Lie{GL}(n,\RR)/\Lie{O}(n)$ is contractible, any manifold admits
+(non-canonically) an $\Lie{O}(n)$-structure, namely a smooth choice of
 which frames are orthonormal, \ie, a Riemannian metric~$g$.  Similarly
-$\Lie{GL}(n/2,\CC)/U(n/2)$ is contractible so almost complex
+$\Lie{GL}(n/2,\CC)/\Lie{U}(n/2)$ is contractible so almost complex
 manifolds admit almost Hermitian structures.
 
 \noindent\tabfoot{2}
 An almost Hermitian manifold is K\"ahler if (equivalently) its
-$U(n/2)$-structure is $1$-integrable; $\dd{\omega}=0$ and $N_J=0$;
-$\nabla\omega=0$; $\nabla J=0$; or the holonomy group is in $U(n/2)$.
+$\Lie{U}(n/2)$-structure is $1$-integrable; $\dd{\omega}=0$ and $N_J=0$;
+$\nabla\omega=0$; $\nabla J=0$; or the holonomy group is in $\Lie{U}(n/2)$.
 Locally, $\omega=\I\del\delbar\rho$ for some real-valued K\"ahler
 potentials~$\rho$, and $\omega$~is invariant under K\"ahler transformations
 $\rho\to\rho+f(z)+\bar{f}(\bar{z})$.
@@ -653,19 +685,19 @@ $\Lie{SO}(n)$
   $\Lie{Spin}(7)$ & $\Lie{Spin}(7)$ manifold & $8$ \\
   $\Lie{G}_2$ & $\Lie{G}_2$ manifold & $7$ \\
 \end{tab}
-% todo: write Sp(k)<SU(2k).
-% more at https://en.wikipedia.org/wiki/Holonomy
-% perhaps http://projecteuclid.org/euclid.jdg/1090351387 interesting?
+% todo: more at https://en.wikipedia.org/wiki/Holonomy
+% todo: perhaps http://projecteuclid.org/euclid.jdg/1090351387 interesting?
 %
 Note that $\Lie{U}(m)\supset\Lie{SU}(m)\supset\Lie{USp}(m)$ implies that
 all hyperK\"ahler manifolds are Calabi--Yau and thus K\"ahler.
 In general, quaternionic-K\"ahler manifolds are not K\"ahler.
 
+% todo:
 % A $\Lie{G}_2$-manifold is a $7$-dimensional manifold with a
 % $1$-integrable $\Lie{G}_2\to\Lie{GL}(7)$ structure namely the
 % corresponding definite 3-form $\omega$ should be covariantly constant
 % with respect to the induced Riemannian metric (due to
-% $\Lie{G}_2\subset O(7)$.  Equivalently it is a Riemannian $7$-manifold
+% $\Lie{G}_2\subset \Lie{SO}(7)$.  Equivalently it is a Riemannian $7$-manifold
 % with holonomy group~$\subseteq\Lie{G}_2$.
 
 A \href{http://en.wikipedia.org/wiki/Calabi-Yau_manifold}{Calabi--Yau
@@ -686,12 +718,19 @@ finite cover with trivial holomorphic canonical bundle; $X$~has a finite
 cover equal to the product of a torus and a simply connected manifold
 with trivial holomorphic canonical bundle.
 
+% todo: every Kähler manifold is spin (or at least spinc)
+
+% todo: every hyperKähler manifold is Ricci-flat
+
+% todo: every hyperKähler manifold is Calabi--Yau
+
+% todo: ``Calabi proved a partial converse which says that a compact holomorphically symplectic Kähler manifold admits a unique hyper-Kähler metric with respect to any of its Kähler forms.'' (Mathworld)
 
 % todo: more on http://mathworld.wolfram.com/Hyper-KaehlerManifold.html
 
 % todo: more on Laplacians on Kähler manifolds at Wikipedia
 
-% todo: HyperK\"ahler manifolds admit a holomorphic symplectic form
+% todo: HyperK\"ahler manifolds admit holomorphic symplectic forms (i.e. non-degenerate closed holomorphic $2$-form) $\omega_2+\I\omega_3$
 
 % todo: Kodaira's classification of complex surfaces
 
@@ -711,6 +750,8 @@ with trivial holomorphic canonical bundle.
 
 % Compact hyperHermitian $4$-manifolds are conformal to tori, Hopf or K3. [ DOI: 10.2307/2046051 , Stable URL: http://www.jstor.org/stable/2046051 ]
 
+\paragraph{Spin structures} \todo{see\quad \url{http://mathoverflow.net/questions/220502/}}
+
 \paragraph{Symmetric spaces} \todo{list missing}
 
 % todo: symmetric spaces? https://en.wikipedia.org/wiki/Symmetric_space
@@ -725,13 +766,9 @@ K\"ahler form whose metric is Ricci flat.
 
 (from Wikipedia on Calabi conjecture: ``The Calabi conjecture states that a compact Kähler manifold has a unique Kähler metric in the same class whose Ricci form is any given 2-form representing the first Chern class.'')
 
-\section{Data for supersymmetric gauge theories}
+\section{Dualities}
 
-\paragraph{3d $\Nsusy=4$:} complex reductive group~$G$ and
-finite-dimensional symplectic representation~$\repr{M}$ of~$G$.
-%% according to Kodera-Nakajima 1608.00875
-
-\section{String theory dualities}
+\subsection{String theory dualities}
 
 In this table ``type~IIA'' \etc{} refer to string theories not supergravities
 \begin{tab}{l@{ $\Leftrightarrow$ }l}
@@ -744,7 +781,9 @@ In this table ``type~IIA'' \etc{} refer to string theories not supergravities
 
 \appendix
 
-\section{K\"ahler \(4\)-manifolds}
+\section{Appendix}
+
+\subsection{K\"ahler \(4\)-manifolds}
  % see 1206.1070 for detailed exposition
 
 \paragraph{K3~surfaces} are (the only besides~$T^4$) compact complex
@@ -771,13 +810,13 @@ self-dual curvature and are called gravitational instantons.
 % todo: only type of grav inst?
 Compact hK$_4$ are K3 and~$T^4$.  Non-compact hK$_4$ are asymptotically
 locally Euclidean (ALE) spaces asymptotic to $\HH/\Gamma$ for a finite
-subgroup $\Gamma<Sp(1)$.  Many such ALE spaces are local resolutions of
+subgroup $\Gamma<\Lie{USp}(2)$.  Many such ALE spaces are local resolutions of
 orbifold singularities of K3~surfaces.
 
 \paragraph{} \todo{Taub-NUT spaces, multi-Taub-NUT spaces,
   Eguchi--Hanson spaces, Gibbons--Hawking multicenter spaces.  Write
   metric.}  \todo{Non-explicitly: Atiyah--Hitchin space (moduli space of
-  two $SU(2)$ 't~Hooft-Polyakov monopoles in~4d).}
+  two $\Lie{SU}(2)$ 't~Hooft-Polyakov monopoles in~4d).}
 
 \todo{The only compact CY$_2$ are $T^4$ and K3~surfaces.}
 
