@@ -19,10 +19,45 @@
 \usepackage{etoolbox}
 %\usepackage{mathabx}
 \usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{etoc}
+
+\newcommand*{\myetocenumeratesetup}{}
+\protected\def\myetocenumeratesetup{%
+  \setlist[enumerate]{label=\etocnumber,
+    topsep=0pt,parsep=0pt,partopsep=0pt,itemsep=0pt,
+    rightmargin=0pt,
+    leftmargin=0pt,
+    labelindent=0pt,
+    labelsep=0pt,
+    align=left,
+  }%
+  \sloppy\raggedright}
+% leftmargin + itemindent = labelindent + labelwidth + labelsep
+
+\setcounter{tocdepth}{5}
+\etocmulticolstyle[2]{\myetocenumeratesetup\setlength{\columnsep}{10pt}\setlength{\columnseprule}{.4pt}}
+\etocsetstyle{section}
+  {\begin{enumerate}[labelwidth=14pt,leftmargin=14pt]}
+  {\footnotesize\normalfont\bfseries\item}
+  {\etocname{}\nobreak\hfill\etocpage}
+  {\end{enumerate}}
+\etocsetstyle{subsection}
+  {}
+  {\scriptsize\normalfont\item}
+  {\etocname{} \hbox{}\nobreak\hfill\etocpage}
+  {}
+\etocsetstyle{subsubsection}{\ERROR}{}{}{}
+\etocsetstyle{paragraph}
+  {\begin{enumerate}[leftmargin=-8pt]}
+  {\tiny\normalfont\item}
+  {\etocname{}}
+  {\end{enumerate}}
+\etocsetstyle{subparagraph}{\ERROR}{}{}{}
 
 \hypersetup{unicode}
 \hypersetup{linktoc = all}                % hyperref settings
-\hypersetup{pdfborderstyle={/S/U/W 0.5}}  % hyperref settings
+\hypersetup{hidelinks = true}
 \pdfstringdefDisableCommands{%
   \def\({}%
   \def\){}%
@@ -35,9 +70,10 @@
 \makeatletter
 \renewcommand{\section}{\pagebreak[1]\@startsection {section}{1}{\z@ }{-\medskipamount}{\smallskipamount}{\normalfont \large \bfseries }}
 \renewcommand{\subsection}{\pagebreak[0]\@startsection {subsection}{2}{\z@ }{-\smallskipamount}{1sp}{\normalfont \bfseries }}
+\renewcommand{\paragraph}[1]{\@startsection {paragraph}{4}{\z@ }{-\smallskipamount}{-1sp}{\normalfont \bfseries }{#1}\hspace{0pt}}
 \makeatother
 %%% Sorry the next two lines are a bit horrible
-\renewcommand{\paragraph}[1]{\par\noindent\textbf{#1}}
+%\renewcommand{\paragraph}[1]{\par\noindent\textbf{#1}}
 %\newcommand{\definition}{\par\noindent\textbf{Def.} \ignorespaces}
 %\newcommand{\proposition}{\par\noindent\textbf{Prop.} \ignorespaces}
 \setlength{\parskip}{2pt plus 2pt minus 2pt}
@@ -138,9 +174,12 @@
 \begin{document}
 \twocolumn\raggedbottom
 
-\noindent\textbf{\Large Tables for supersymmetry.} Based on [1-3].
+\noindent\textbf{\Large Tables for supersymmetry.}
 
-\noindent ``Ed.'': Bruno Le Floch, Princeton University, \today.
+\noindent Bruno Le Floch, Princeton University, \today.
+
+\let\contentsname\empty
+{\tiny\tableofcontents\par}\undovskip
 
 \section{Special functions}
 
@@ -332,6 +371,12 @@ and $\lie{D}^p(2,1,\alpha=1)=\lie{osp}(4-p,p|2)$.
 % todo: representations of complex Lie algebras
 % todo: representations of real Lie algebras
 
+\subsection{Homotopy groups $\pi_n$ of Lie (super)groups}
+
+% todo: many things
+$\pi_4(SU(2))=\mathbb{Z}_2$
+
+
 \section{Spinors}
 
 \paragraph{Clifford algebra.}  Let $h_{ab}$ be diagonal with $s$~`$+1$' and $t$~`$-1$', and $d=s+t$.  The Clifford algebra $\{\Gamma_a,\Gamma_b\}=2h_{ab}$ has real dimension~$2^d$ and is isomorphic to a matrix algebra $M_{2^{\#}}(\bullet)$ with
@@ -493,7 +538,7 @@ $\Nsusy=2$ $\to$ 2d $\Nsusy=(2,2)$.
 
 \section{Supermultiplets}
 
-\subsection{Supermultiplets with spins \(\leq 1\)}
+\subsection{Spin \(\leq 1\) supermultiplets}
 
 \paragraph{For $16$ supercharges}, there is only the vector.
 
@@ -512,6 +557,14 @@ $\Nsusy=2$ $\to$ 2d $\Nsusy=(2,2)$.
 \paragraph{3d $\Nsusy=4$:} complex reductive group~$G$ and
 finite-dimensional symplectic representation~$\repr{M}$ of~$G$.
 %% according to Kodera-Nakajima 1608.00875
+
+\subsection[Two-dimensional CFT]{Two-dimensional conformal field theories}
+
+\paragraph{Liouville CFT} has $c=1+6(b+1/b)^2$ and primary operators with $h(\alpha)=\alpha(b+1/b-\alpha)$ for ``momentum'' $\alpha\in \frac{1}{2}(b+1/b)+i\RR$.
+
+\paragraph{Minimal model} $\mathcal{M}_{p,q}$ for $p>q$ coprime is a quotient of $b=i\sqrt{p/q}$ Liouville CFT.  It has $c=1-\frac{6(p-q)^2}{pq}$ and primary operators with $h_{r,s}=\frac{(pr-qs)^2-(p-q)^2}{4pq}$ for $0<r<q$ and $0<s<p$.
+
+\paragraph{Unitary minimal model} $\mathcal{M}_{k+2,k+1}$ is coset $\frac{\hat{\lie{su}}(2)_{k-1}\times\hat{\lie{su}}(2)_1}{\hat{\lie{su}}(2)_k}$
 
 \subsection{Other theories}
 
