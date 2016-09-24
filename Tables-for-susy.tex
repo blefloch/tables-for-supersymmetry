@@ -63,15 +63,19 @@
   \def\({}%
   \def\){}%
   \def\\{}%
+  \def\pi{\003\300}%
+  \edef\sb{\string _}%
   \def\leq{\042\144}%
   \def\infty{\042\036}%
   \def\Tr{Tr }%
 }
 
+\setcounter{secnumdepth}{2}
 \makeatletter
 \renewcommand{\section}{\pagebreak[1]\@startsection {section}{1}{\z@ }{-\medskipamount}{\smallskipamount}{\normalfont \large \bfseries }}
 \renewcommand{\subsection}{\pagebreak[0]\@startsection {subsection}{2}{\z@ }{-\smallskipamount}{1sp}{\normalfont \bfseries }}
-\renewcommand{\paragraph}[1]{\@startsection {paragraph}{4}{\z@ }{-\smallskipamount}{-1sp}{\normalfont \bfseries }{#1}\hspace{0pt}}
+\renewcommand{\subsubsection}{\ERROR}
+\renewcommand{\paragraph}[1]{\@startsection {paragraph}{3}{\z@ }{-\smallskipamount}{-1sp}{\normalfont \bfseries }{#1}\hspace{0pt}}
 \makeatother
 %%% Sorry the next two lines are a bit horrible
 %\renewcommand{\paragraph}[1]{\par\noindent\textbf{#1}}
@@ -195,7 +199,7 @@
 
 
 
-\section{Lie algebras and groups}
+\section[Lie algebras and groups]{Lie algebras and groups (dimension${}<\infty$)}
 
 \subsection{Simple Lie (super)algebras}
 
@@ -365,18 +369,36 @@ and $\lie{D}^p(2,1,\alpha=1)=\lie{osp}(4-p,p|2)$.
 
 \subsection{Simple Lie (super)groups}
 
+% todo: say Lie subgroups can be horrible, such as irrational line in $T^2$
+
 % todo: Name "\Lie{USp}(2n)=\Lie{Sp}(n)" the compact symplectic group
+
 % todo: Ph. Spindel, A. Sevrin, W. Troost, A. Van Proeyen (1988), D. Joyce (1992) construct (all) left-invariant hypercomplex structures on (simply-connected?) compact (reductive?) Lie groups: any simple Lie groups become ``left-invariantly hypercomplex'' once multiplied by an appropriate torus.
+
+% todo: more on homotopy groups of Lie (super)groups
+
+Every (connected) Lie group deformation-retracts onto its maximal compact subgroup.
+
+For any connected Lie group~$G$, $\pi_1(G)$ is finitely-generated abelian, $\pi_2(G)=0$, $\pi_3(G)\sim\ZZ^{\text{finite}}$ (Iwasawa).
+
+Simple Lie groups~$G$ have $\pi_3(G)=\ZZ$.
+
+Any connected compact Lie group~$G$ is a quotient of $\RR^q\times\prod_i G_i$ by a finite central subgroup, where the compact simple Lie groups~$G_i$ can be taken to be simply-connected (and connected).  Then $\pi_n(G)=\prod_i \pi_n(G_i)$ for $n\geq 2$.
+
+For a rank~$r$ Lie group~$G$, there exists $\prod_{i=1}^r S^{2k_i+1}\to G$ which induces an isomorphism of rational homotopy (or of cohomology) groups:
+\begin{gather*}
+  S^3\times S^5\times\cdots\times S^{2n-1} \simeq_{\QQ} SU(n) \\
+  S^3\times S^7\times\cdots\times S^{4n-1} \simeq_{\QQ} USp(2n) \simeq_{\QQ} SO(2n+1) \\
+  S^{2n+1} \times SO(2n+1) \simeq_{\QQ} SO(2n+2)
+\end{gather*}
+% todo: understand rational homotopy groups, can I really factor what's given in http://www.math.binghamton.edu/somnath/Notes/GSS5.pdf ?
+
+However, this is not true of integer homotopy groups.  For instance, $\pi_4(SU(2))=\mathbb{Z}_2$.
 
 \subsection{Representations of Lie (super)algebras/groups}
 
 % todo: representations of complex Lie algebras
 % todo: representations of real Lie algebras
-
-\subsection{Homotopy groups $\pi_n$ of Lie (super)groups}
-
-% todo: many things
-$\pi_4(SU(2))=\mathbb{Z}_2$
 
 
 \section{Spinors}
@@ -862,6 +884,12 @@ free electric $1/\bigl(R\log(R\Lambda)\bigr)$,
 free magnetic $\log(R\Lambda)/R$,
 Higgs (constant),
 confining $\sigma R$.
+
+\subsection{Homotopy groups \(\pi\sb n\)}
+
+\paragraph{Topological groups have abelian \(\pi\sb 1(G)\)}
+% http://mathoverflow.net/questions/35868/fundamental-group-of-lie-groups
+The multiplication in~$G$ (point-wise) and concatenation of loops are two compatible group structures, hence (Eckmann--Hilton) coincide and are commutative.  Explicitly, for $\alpha_1,\alpha_2\in\pi_1(G)$ loops, $(t_1,t_2)\mapsto\alpha_1(t_1)\alpha_2(t_2)\in G$ is a homotopy between $\alpha_1\star\alpha_2$ (concatenation) along bottom and right edges, $\alpha_1\cdot\alpha_2$ (point-wise multiplication) along the diagonal, and $\alpha_2\star\alpha_1$ along left and top edges.
 
 \subsection{K\"ahler \(4\)-manifolds}
  % see 1206.1070 for detailed exposition
