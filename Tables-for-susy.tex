@@ -3,6 +3,7 @@
 \usepackage[margin=1.2cm]{geometry}
 \usepackage{xcolor}
 \usepackage{microtype}
+\usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amssymb}
 \usepackage{mathtools}
@@ -122,6 +123,7 @@
 \newcommand{\PP}{\mathbb{P}} % projective
 \DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
 \DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Tr}{Tr}
 \DeclareMathOperator{\plexp}{plexp}
 
 \ExplSyntaxOn
@@ -554,6 +556,14 @@ $\Nsusy=2$ $\to$ 2d $\Nsusy=(2,2)$.
 
 \subsection{Supersymmetric gauge theories}
 
+\paragraph{4d $\Nsusy=1$:}
+
+\paragraph{Superpotential term} $\int\dd[^2]\theta W$ gives a potential for scalars and Yukawa-type interactions.  $W$~is holomorphic in chiral fields and in couplings seen as background fields.  Example: the kinetic term $\Im \int\dd[^2]\theta[\tau W_\alpha^2]$ of an abelian gauge field: $W_\alpha^2$ is a chiral field.
+
+\paragraph{Wess-Zumino model:} chiral multiplet~$\phi$ with $W=m\phi^2+g\phi^3$.
+
+\paragraph{Pure supersymmetric Yang--Mills (SYM)} classically has $U(1)_R$ symmetry, broken by instantons to $\ZZ_{2h}$ with $h=C_2(\text{adj})$.  It confines, is mass-gapped, and has $C_2(A)$ vacua associated to breaking $\ZZ_{2h}$ to $\ZZ_2$ by gaugino condensation $\langle\lambda\lambda\rangle$.  Witten index $\Tr(-1)^F=h$.
+
 \paragraph{3d $\Nsusy=4$:} complex reductive group~$G$ and
 finite-dimensional symplectic representation~$\repr{M}$ of~$G$.
 %% according to Kodera-Nakajima 1608.00875
@@ -842,9 +852,16 @@ In this table ``type~IIA'' \etc{} refer to string theories not supergravities
   M-theory on K3\footnote{Apparently there is also a similar F-theory/heterotic duality.} & type~IIA on $T^3/\cyclic{2}$\\
 \end{tab}
 
-\appendix
+\section{Misc}
 
-\section{Appendix}
+\subsection{Physics of gauge theories}
+
+\paragraph{Phases characterized by potential} $V(R)$ between quarks (up to a constant):
+Coulomb phase $1/R$,
+free electric $1/\bigl(R\log(R\Lambda)\bigr)$,
+free magnetic $\log(R\Lambda)/R$,
+Higgs (constant),
+confining $\sigma R$.
 
 \subsection{K\"ahler \(4\)-manifolds}
  % see 1206.1070 for detailed exposition
