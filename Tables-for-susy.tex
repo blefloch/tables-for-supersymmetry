@@ -388,20 +388,35 @@ Every compact connected Lie group~$K$ is a quotient of $\Lie{U}(1)^n\times\prod_
 \paragraph{Homotopy.} A connected Lie group deformation-retracts onto (hence is homotopic to) its maximal compact subgroup~$K$.
 All $\pi_{j\geq 1}(K)$ are abelian and finitely generated, $\pi_2(K)=0$, $\pi_3(K)=\ZZ^m$ where $m$~counts simple factors in a finite cover $\Lie{U}(1)^n\times\prod_{i=1}^m K_i\twoheadrightarrow K$, and $\pi_j(K)=\prod_{i=1}^m\pi_j(K_i)$ for $j\geq 2$.
 
-% todo: more on homotopy groups of Lie (super)groups
-
-For any~$G$ there exists $\prod_{i=1}^{\rank G} S^{2k_i+1}\to G$ which induces isomorphisms of rational (\ie, torsion-free part of) homotopy/\allowbreak cohomology groups:
-\begin{align*}
-  S^3\times S^5\times\cdots\times S^{2n-1} & \simeq_{\QQ} \Lie{SU}(n) \\
-  S^3\times S^7\times\cdots\times S^{4n-1} & \simeq_{\QQ} \Lie{USp}(2n) \simeq_{\QQ} \Lie{SO}(2n+1) \\
-  \Lie{SO}(2n-1) \times S^{2n-1} & \simeq_{\QQ} \Lie{SO}(2n) \,.
-\end{align*}
+For any~$G$ there exists $\prod_{i=1}^{\rank G} S^{2k_i+1}\to G$ which induces isomorphisms of rational (\ie, torsion-free part of) homotopy/\allowbreak cohomology groups.  For compact simple~$K$, these spheres are
+\begin{center}
+\vspace{-1.3\baselineskip}
+\begin{minipage}[t]{.5\linewidth}%
+\begin{tab}{@{}>{$}l<{$}@{ }>{$}l<{$}@{}}
+  \text{Group} & (2k_i+1) \\\midrule
+  \Lie{A}_n & 3,5,\ldots,2n+1\\
+  \Lie{B}_n,\Lie{C}_n & 3,7,\ldots,4n-1\\
+  \Lie{D}_n & 3,7,\ldots,4n-5,2n-1\\
+\end{tab}
+\end{minipage}%
+\begin{minipage}[t]{.5\linewidth}
+\begin{tab}{@{}>{$}l<{$}@{ }>{$}l<{$}@{}}
+  \Lie{E}_6 & 3,9,11,??,??,??\\
+  \Lie{E}_7 & 3,11,??,??,??,??,??\\
+  \Lie{E}_8 & 3,??,??,??,??,??,??,??\\
+  \Lie{F}_4 & 3,11,??,??\\
+  \Lie{G}_2 & 3,11\\
+\end{tab}
+\end{minipage}
+\end{center}
+\vspace{-.6\baselineskip}
 $\pi_{j\geq 2}(G)$ has a factor~$\ZZ$ for each~$S^j$ above, and some torsion.
-Explicitly, $\pi_j(\Lie{SU}(n))$ is $\ZZ$~for odd~$j<2n$, $0$~for even~$j<2n$, and pure torsion for $j\geq 2n$.
-Similarly, for $j<4n$, $\pi_j(\Lie{USp}(2n))$ is $\ZZ$~for $j\equiv 3,7\bmod{8}$, $\ZZ_2$~for $j\equiv 4,5\bmod{8}$, and $0$~otherwise.
-
+Explicitly, $\pi_j(\Lie{SU}(n))$ is $\ZZ$~for odd~$j<2n$, $0$~for even~$j<2n$, and is pure torsion for $j\geq 2n$.
+Similarly, for $j<4n+2$, $\pi_j(\Lie{USp}(2n))$ is $\ZZ$~for $j\equiv 3,7\bmod{8}$, $\ZZ_2$~for $j\equiv 4,5\bmod{8}$, and $0$~otherwise.
 
 % http://felix.physics.sunysb.edu/~abanov/Teaching/Spring2009/Notes/abanov-cpA1-upload.pdf
+
+% todo: find the product of sphere to which each compact exceptional group is rational homotopic.
 
 % todo: say somewhere $SU(2)$ is $S^3$.
 
