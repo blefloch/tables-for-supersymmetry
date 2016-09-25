@@ -887,9 +887,28 @@ confining $\sigma R$.
 
 \subsection{Homotopy groups \(\pi\sb n\)}
 
-\paragraph{Topological groups have abelian \(\pi\sb 1(G)\)}
+\paragraph{Basic properties.} $\pi_0(X,x)$ is the set of connected components.  $\pi_1(X,x)$ is the fundamental group.  For $k\geq 1$, $\pi_k(X,x)$ only depends on the connected component of~$x$.  $\pi_k(X\times Y,(x,y))=\pi_k(X,x)\times\pi_k(Y,y)$.
+
+\paragraph{Quotient.}  If $\pi_0(X)=\pi_1(X)=0$ and $G\actson X$ then $\pi_1(X/G)=\pi_0(G)$ ($=G$ for $G$~discrete).
+
+\paragraph{Long exact sequence for a fiber bundle} $F\hookrightarrow E\twoheadrightarrow B$: $\cdots\to\pi_i(F)\to\pi_i(E)\to\pi_i(B)\to\pi_{i-1}(F)\to\cdots$
+
+\paragraph{Homotopy groups of spheres} are finite except $\pi_n(S^n)=\ZZ$ and $\pi_{4n-1}(S^{2n})=\ZZ\times\text{finite}$.  For $k<n$, $\pi_k(S^n)=0$, and $\pi_{n+k}(S^n)$ is independent of~$n$ for $n\geq k+2$.  All $\pi_k(S^0)=0$, $\pi_k(S^1)=0$ for $k\neq 1$, and $\pi_k(S^3)=\pi_k(S^2)$ for $k\neq 2$.
+\begin{tab}{*9{>{$}c<{$}}}
+  & \pi_1 & \pi_2 & \pi_3 & \pi_4 & \pi_5 & \pi_6 & \pi_7 & \pi_8 \\\midrule
+  S^0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+  S^1 & \ZZ & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+  S^2 & 0 & \ZZ & \ZZ & \ZZ_2 & \ZZ_2 & \ZZ_{12} & \ZZ_2 & \ZZ_2 \\
+  S^3 & 0 & 0 & \ZZ & \ZZ_2 & \ZZ_2 & \ZZ_{12} & \ZZ_2 & \ZZ_2 \\
+  S^4 & 0 & 0 & 0 & \ZZ & \ZZ_2 & \ZZ_2 & \ZZ\times \ZZ_{12} & \ZZ_2^2 \\
+  S^5 & 0 & 0 & 0 & 0 & \ZZ & \ZZ_2 & \ZZ_2 & \ZZ_{24} \\
+\end{tab}
+% data of the table found on Wikipedia page
+
+
+\paragraph{Topological groups have abelian \(\pi\sb 1(G)\).}
 % http://mathoverflow.net/questions/35868/fundamental-group-of-lie-groups
-The multiplication in~$G$ (point-wise) and concatenation of loops are two compatible group structures, hence (Eckmann--Hilton) coincide and are commutative.  Explicitly, for $\alpha_1,\alpha_2\in\pi_1(G)$ loops, $(t_1,t_2)\mapsto\alpha_1(t_1)\alpha_2(t_2)\in G$ is a homotopy between $\alpha_1\star\alpha_2$ (concatenation) along bottom and right edges, $\alpha_1\cdot\alpha_2$ (point-wise multiplication) along the diagonal, and $\alpha_2\star\alpha_1$ along left and top edges.
+Proofs.  1.\@ The multiplication in~$G$ (point-wise) and concatenation of loops are two compatible group structures, hence (by Eckmann--Hilton theorem) coincide and are commutative.  2.\@ Explicitly, for $\alpha_1,\alpha_2\in\pi_1(G)$ loops, $(t_1,t_2)\mapsto\alpha_1(t_1)\alpha_2(t_2)\in G$ is a homotopy between $\alpha_1\star\alpha_2$ (concatenation) along bottom and right edges, $\alpha_1\cdot\alpha_2$ (point-wise multiplication) along the diagonal, and $\alpha_2\star\alpha_1$ along left and top edges.
 
 \subsection{K\"ahler \(4\)-manifolds}
  % see 1206.1070 for detailed exposition
