@@ -383,21 +383,29 @@ and $\lie{D}^p(2,1,\alpha=1)=\lie{osp}(4-p,p|2)$.
 
 \paragraph{Basics.}  The identity component~$G_0$ is a normal subgroup: $G/G_0$ is the group of components.  The maximal compact subgroup~$K$ is unique up to conjugation.
 
-Every compact connected Lie group~$K$ is a quotient of $U(1)^n\times\prod_{i=1}^m K_i$ by a finite subgroup of its center, where~$K_i$ are simple, compact, simply-connected, connected Lie groups.
+Every compact connected Lie group~$K$ is a quotient of $\Lie{U}(1)^n\times\prod_{i=1}^m K_i$ by a finite subgroup of its center, where~$K_i$ are simple, compact, simply-connected, connected Lie groups.
 
 \paragraph{Homotopy.} A connected Lie group deformation-retracts onto (hence is homotopic to) its maximal compact subgroup~$K$.
-All $\pi_{j\geq 1}(K)$ are abelian and finitely generated, $\pi_2(K)=0$, $\pi_3(K)=\ZZ^m$ where $m$~counts simple factors in a finite cover $U(1)^n\times\prod_{i=1}^m K_i\twoheadrightarrow K$, and $\pi_j(K)=\prod_{i=1}^m\pi_j(K_i)$ for $j\geq 2$.
+All $\pi_{j\geq 1}(K)$ are abelian and finitely generated, $\pi_2(K)=0$, $\pi_3(K)=\ZZ^m$ where $m$~counts simple factors in a finite cover $\Lie{U}(1)^n\times\prod_{i=1}^m K_i\twoheadrightarrow K$, and $\pi_j(K)=\prod_{i=1}^m\pi_j(K_i)$ for $j\geq 2$.
 
 % todo: more on homotopy groups of Lie (super)groups
 
-Any Lie group~$G$ is rational homotopic to a product of odd-dimensional spheres: there exists $\prod_{i=1}^{\rank G} S^{2k_i+1}\to G$ which induces isomorphisms of rational (\ie, modulo torsion) homotopy/cohomology groups:
+For any~$G$ there exists $\prod_{i=1}^{\rank G} S^{2k_i+1}\to G$ which induces isomorphisms of rational (\ie, torsion-free part of) homotopy/\allowbreak cohomology groups:
 \begin{align*}
-  S^3\times S^5\times\cdots\times S^{2n-1} & \simeq_{\QQ} SU(n) \\
-  S^3\times S^7\times\cdots\times S^{4n-1} & \simeq_{\QQ} USp(2n) \simeq_{\QQ} SO(2n+1) \\
-  S^{2n+1} \times SO(2n+1) & \simeq_{\QQ} SO(2n+2)
+  S^3\times S^5\times\cdots\times S^{2n-1} & \simeq_{\QQ} \Lie{SU}(n) \\
+  S^3\times S^7\times\cdots\times S^{4n-1} & \simeq_{\QQ} \Lie{USp}(2n) \simeq_{\QQ} \Lie{SO}(2n+1) \\
+  \Lie{SO}(2n-1) \times S^{2n-1} & \simeq_{\QQ} \Lie{SO}(2n) \,.
 \end{align*}
-% see http://www.math.binghamton.edu/somnath/Notes/GSS5.pdf ?
-This fails for integer homotopy groups: $\pi_4(SU(2))=\mathbb{Z}_2$ \etc.
+$\pi_{j\geq 2}(G)$ has a factor~$\ZZ$ for each~$S^j$ above, and some torsion.
+Explicitly, $\pi_j(\Lie{SU}(n))$ is $\ZZ$~for odd~$j<2n$, $0$~for even~$j<2n$, and pure torsion for $j\geq 2n$.
+Similarly, for $j<4n$, $\pi_j(\Lie{USp}(2n))$ is $\ZZ$~for $j\equiv 3,7\bmod{8}$, $\ZZ_2$~for $j\equiv 4,5\bmod{8}$, and $0$~otherwise.
+
+
+% http://felix.physics.sunysb.edu/~abanov/Teaching/Spring2009/Notes/abanov-cpA1-upload.pdf
+
+% todo: say somewhere $SU(2)$ is $S^3$.
+
+% todo: fundamental groups.  Include $\pi_1(\Lie{U}(n))=\ZZ$.
 
 \subsection{Representations of Lie (super)algebras/groups}
 
@@ -588,7 +596,7 @@ $\Nsusy=2$ $\to$ 2d $\Nsusy=(2,2)$.
 
 \paragraph{Wess-Zumino model:} chiral multiplet~$\phi$ with $W=m\phi^2+g\phi^3$.
 
-\paragraph{Pure supersymmetric Yang--Mills (SYM)} classically has $U(1)_R$ symmetry, broken by instantons to $\ZZ_{2h}$ with $h=C_2(\text{adj})$.  It confines, is mass-gapped, and has $C_2(A)$ vacua associated to breaking $\ZZ_{2h}$ to $\ZZ_2$ by gaugino condensation $\langle\lambda\lambda\rangle$.  Witten index $\Tr(-1)^F=h$.
+\paragraph{Pure supersymmetric Yang--Mills (SYM)} classically has $\Lie{U}(1)_R$ symmetry, broken by instantons to $\ZZ_{2h}$ with $h=C_2(\text{adj})$.  It confines, is mass-gapped, and has $C_2(A)$ vacua associated to breaking $\ZZ_{2h}$ to $\ZZ_2$ by gaugino condensation $\langle\lambda\lambda\rangle$.  Witten index $\Tr(-1)^F=h$.
 
 \paragraph{3d $\Nsusy=4$:} complex reductive group~$G$ and
 finite-dimensional symplectic representation~$\repr{M}$ of~$G$.
@@ -966,6 +974,9 @@ orbifold singularities of K3~surfaces.
 % todo: vortices, monopoles, instantons (Abrikosov--Nielsen--Olesen
 % vortex, 't~Hooft--Polyakov monopole, \ldots{}).
 
+% =============================
+% Other interesting things to talk about
+% https://en.wikipedia.org/wiki/Genus_of_a_multiplicative_sequence
 
 \bigskip
 \vfill
