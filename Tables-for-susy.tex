@@ -75,7 +75,11 @@
 \renewcommand{\section}{\pagebreak[1]\@startsection {section}{1}{\z@ }{-\medskipamount}{\smallskipamount}{\normalfont \large \bfseries }}
 \renewcommand{\subsection}{\pagebreak[0]\@startsection {subsection}{2}{\z@ }{-\smallskipamount}{1sp}{\normalfont \bfseries }}
 \renewcommand{\subsubsection}{\ERROR}
-\renewcommand{\paragraph}[1]{\@startsection {paragraph}{3}{\z@ }{-\smallskipamount}{-1sp}{\normalfont \bfseries }{#1}\hspace{0pt}}
+\newcommand{\@@ignorespaces}{}
+\let\@@ignorespaces\ignorespaces
+\renewcommand{\paragraph}{%
+ \def\ignorespaces{\leavevmode\let\ignorespaces\@@ignorespaces}%
+ \@startsection {paragraph}{3}{\z@ }{-\smallskipamount}{-1sp}{\normalfont \bfseries }}
 \makeatother
 %%% Sorry the next two lines are a bit horrible
 %\renewcommand{\paragraph}[1]{\par\noindent\textbf{#1}}
