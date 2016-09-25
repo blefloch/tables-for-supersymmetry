@@ -369,7 +369,7 @@ and $\lie{su}(2|1)=\lie{osp}(2^*|2,0)$
 and $\lie{D}^p(2,1,\alpha=1)=\lie{osp}(4-p,p|2)$.
 % todo: complete this list
 
-\subsection{Simple Lie (super)groups}
+\subsection{Lie (super)groups}
 
 % todo: say Lie subgroups can be horrible, such as irrational line in $T^2$
 
@@ -377,15 +377,14 @@ and $\lie{D}^p(2,1,\alpha=1)=\lie{osp}(4-p,p|2)$.
 
 % todo: Ph. Spindel, A. Sevrin, W. Troost, A. Van Proeyen (1988), D. Joyce (1992) construct (all) left-invariant hypercomplex structures on (simply-connected?) compact (reductive?) Lie groups: any simple Lie groups become ``left-invariantly hypercomplex'' once multiplied by an appropriate torus.
 
-\paragraph[Identity component]{The identity component~$G_0$} is the connected component of~$G$ containing the identity.
+\paragraph{Basics.}  The identity component~$G_0$ is a normal subgroup: $G/G_0$ is the group of components.  The maximal compact subgroup~$K$ is unique up to conjugation.
 
-Any compact connected Lie group~$G$ is a quotient of $\torus^q\times\prod_i G_i$ by a finite subgroup of its center, with Lie groups~$G_i$ that are simple, compact, simply-connected and connected.
+Every compact connected Lie group~$K$ is a quotient of $U(1)^n\times\prod_{i=1}^m K_i$ by a finite subgroup of its center, where~$K_i$ are simple, compact, simply-connected, connected Lie groups.
 
-\paragraph{Homotopy.} Every (connected?) Lie group~$G$ deformation-retracts onto its maximal compact subgroup (hence is homotopic to it), has $\pi_1(G)$ abelian and finitely-generated, $\pi_2(G)=0$, and $\pi_3(G)\sim\ZZ^{\text{finite}}$ (Iwasawa).  Simple Lie groups~$G$ have $\pi_3(G)=\ZZ$.
+\paragraph{Homotopy.} A connected Lie group deformation-retracts onto (hence is homotopic to) its maximal compact subgroup~$K$.
+All $\pi_{j\geq 1}(K)$ are abelian and finitely generated, $\pi_2(K)=0$, $\pi_3(K)=\ZZ^m$ where $m$~counts simple factors in a finite cover $U(1)^n\times\prod_{i=1}^m K_i\twoheadrightarrow K$, and $\pi_j(K)=\prod_{i=1}^m\pi_j(K_i)$ for $j\geq 2$.
 
 % todo: more on homotopy groups of Lie (super)groups
-
-Then $\pi_n(G)=\prod_i \pi_n(G_i)$ for $n\geq 2$.
 
 Any Lie group~$G$ is rational homotopic to a product of odd-dimensional spheres: there exists $\prod_{i=1}^{\rank G} S^{2k_i+1}\to G$ which induces isomorphisms of rational (\ie, modulo torsion) homotopy/cohomology groups:
 \begin{align*}
