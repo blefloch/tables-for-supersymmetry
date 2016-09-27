@@ -129,18 +129,20 @@
 \newcommand{\CC}{\mathbb{C}} % complex
 \newcommand{\HH}{\mathbb{H}} % quaternions
 \newcommand{\PP}{\mathbb{P}} % projective
+\newcommand{\FF}{\mathbb{F}} % finite field
 \newcommand{\torus}{\mathbf{T}} % torus
 \DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
 \DeclareMathOperator{\End}{End}
 \DeclareMathOperator{\Tr}{Tr}
 \DeclareMathOperator{\plexp}{plexp}
 \DeclareMathOperator{\rank}{rank}
+\newcommand{\one}{\mathbbm{1}}
 
 \ExplSyntaxOn
 \newcommand{\Lie}[1]{
   \mathrm {
     \clist_if_in:nnF
-      { GL , SL , SO , SU , U , O , Sp , USp , OSp , Spin , A , B , C , D , E , F , G , P , Q , UQ , W , S , \tilde S , \tilde{S} , H }
+      { GL , SL , SO , SU , U , O , Sp , USp , OSp , Spin , A , B , C , D , E , F , G , P , Q , UQ , W , S , \tilde S , \tilde{S} , H , PSp }
       {#1} { \UnknownLie }
     #1
   }
@@ -225,10 +227,51 @@ dimensions
   \lie{A}_n & n(n+2) & \lie{sl}(n+1,\CC) =\{\text{traceless}\} \\
   \lie{B}_n & n(2n+1) & \lie{so}(2n+1,\CC) =\{\text{antisymmetric}\} \\
   \lie{C}_n & n(2n+1) & \lie{sp}(2n,\CC)
-	=\left\{\left(\begin{smallmatrix}0&\mathbbm{1}_n\\-\mathbbm{1}_n&0\end{smallmatrix}\right)\times\text{symmetric}\right\}
+	=\left\{\left(\begin{smallmatrix}0&\one_n\\-\one_n&0\end{smallmatrix}\right)\times\text{symmetric}\right\}
   \\
   \lie{D}_n & n(2n-1) & \lie{so}(2n,\CC) =\{\text{antisymmetric}\} \\
 \end{tab}
+
+\paragraph{Roots and Weyl group.} The Weyl group has $\prod_i d_i$ elements where $d_i$~are degrees of fundamental invariants.
+(Below, $\one_i$~denotes the $i$-th unit vector in $\ZZ^n$ and $1\leq i\neq j\leq n$.)
+
+\begin{description}[topsep=0pt,parsep=0pt,partopsep=0pt,itemsep=0pt,leftmargin=1em]
+\item[$\lie{A}_{n-1}$:] (note shifted rank) roots $\one_i-\one_j$, simple roots $\one_i-\one_{i+1}$.
+The Weyl group~$S_n$ permutes the~$\one_i$.
+Fundamental invariants: $x_1^k+\cdots+x_n^k$ for $2\leq k\leq n$.
+
+\item[$\lie{B}_n$:] roots $\pm\one_i$ and $\pm\one_i\pm\one_j$, simple roots $\one_i-\one_{i+1}$ and $\one_n$.
+The Weyl group $\{\pm 1\}^n\rtimes S_n$ permutes and changes signs of the~$\one_i$.
+Fundamental invariants: $x_1^{2k}+\cdots+x_n^{2k}$ for $2\leq 2k\leq 2n$.
+
+\item[$\lie{C}_n$:] roots $\pm2\one_i$ and $\pm\one_i\pm\one_j$, simple roots $\one_i-\one_{i+1}$ and $2\one_n$.
+Same Weyl group and invariants as~$\lie{B}_n$.
+
+\item[$\lie{D}_n$:] roots $\pm\one_i\pm\one_j$, simple roots $\one_i-\one_{i+1}$ and $\one_{n-1}+\one_n$.
+The Weyl group $\{\pm 1\}^{n-1}\rtimes S_n$ permutes the~$\one_i$ and changes an even number of signs.
+Fundamental invariants $x_1\cdots x_n$ and $x_1^{2k}+\cdots+x_n^{2k}$ for $2\leq 2k\leq 2n-2$.
+
+\item[$\lie{E}_8$:] $\{\pm\one_i\pm\one_j\}\cup \{\frac{1}{2}\sum_{k=1}^8\epsilon_k\one_k\mid \epsilon_k=\pm 1, \prod_{k=1}^8\epsilon_k=-1\}$,
+simple roots $\one_i-\one_{i+1}$ and $\frac{1}{2}(-\one_1-\cdots-\one_5+\one_6+\one_7+\one_8)$.
+The $2^{14}\,3^5\,5^2\,7=696729600$-element Weyl group is $O_8^+(\FF_2)$.
+Degrees of invariants are $\{d_i\}=\{2,8,12,14,18,20,24,30\}$, with mnemonic $1+(\text{primes from $7$ to $29$})$.
+
+\item[$\lie{E}_7$:] roots $\sum_{i=1}^8 a_i \one_i$ of $\lie{E}_8$ with $a_1=\sum_{i=2}^8 a_i$,
+simple roots are those of~$\lie{E}_8$ except $\one_1-\one_2$.
+The $2^{10}\times 3^4\times 5\times 7=2903040$-element Weyl group is $\ZZ_2\times \Lie{PSp}_6(\FF_2)$.  Degrees of invariants are $\{d_i\}=\{2,6,8,10,12,14,18\}$.
+
+\item[$\lie{E}_6$:] roots $\sum_{i=1}^8 a_i \one_i$ of $\lie{E}_8$ with $a_1=a_2$ and $\sum_{i=3}^8 a_i=0$,
+simple roots are those of~$\lie{E}_8$ except $\one_1-\one_2$ and $\one_2-\one_3$.
+The $2^7\,3^4\,5=51840$-element Weyl group is $\operatorname{Aut}(\Lie{PSp}_4(\FF_3))$.  Degrees of invariants are $\{d_i\}=\{2,5,6,8,9,12\}$.
+
+\item[$\lie{F}_4$:] roots $\pm\one_i$, $\pm\one_i\pm\one_j$, $\frac{1}{2}(\pm\one_1\pm\one_2\pm\one_3\pm\one_4)$,
+simple roots $\one_1-\one_2$, $\one_2-\one_3$, $\one_3$, $-\frac{1}{2}(\one_1+\one_2+\one_3+\one_4)$.
+It has an $1152$-element Weyl group and $\{d_i\}=\{2,6,8,12\}$.
+
+\item[$\lie{G}_2$:] $12$~roots $e^{2\pi\I k/6},e^{2\pi\I (2k+1)/12}\sqrt{3}\in\CC$ for $0\leq k< 6$, simple roots~$1$ and $e^{5\pi\I/6}\sqrt{3}$.
+The $12$-element Weyl group is the dihedral group~$D_6$, and $\{d_i\}=\{2,6\}$.
+\end{description}
+
 
 \paragraph{Real case.}\hspace{0pt minus 1pt}  Let
 $\lie{sl}(n)=\lie{sl}(n,\RR)$,
@@ -457,7 +500,7 @@ In even~$d$, Weyl (or chiral) spinors $\Gamma^{(d)}\lambda=\pm\lambda$ have $2^{
 Let $B$~be defined by $\Gamma_a^*=-\eta(-1)^t B\Gamma_a B^{-1}$.
 Majorana spinors $\lambda^*=B\lambda$ exist for $s-t\equiv 0,\pm 1,\pm 2\bmod{8}$;
 the case $s-t\equiv\pm 2$ requires $\eta=\mp (-1)^{d/2}$.
-When $s-t\equiv 3,4,5$, a set of $2n$ spinors can be symplectic Majorana: $(\lambda^I)^*=B\Omega_{IJ}\lambda^J$ for $\Omega=((0,\mathbbm{1}_n);(-\mathbbm{1}_n,0))$.
+When $s-t\equiv 3,4,5$, a set of $2n$ spinors can be symplectic Majorana: $(\lambda^I)^*=B\Omega_{IJ}\lambda^J$ for $\Omega=((0,\one_n);(-\one_n,0))$.
 (Symplectic) Majorana--Weyl spinors exist for $s-t\equiv 0,4\bmod{8}$.
 The table also includes the real dimension of the minimal spinor.
 \begin{tab}{c*{4}{>{ }l@{ }r<{ }}}
