@@ -136,6 +136,7 @@
 \DeclareMathOperator{\Tr}{Tr}
 \DeclareMathOperator{\plexp}{plexp}
 \DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\gr}{gr}
 \newcommand{\one}{\mathbbm{1}}
 
 \ExplSyntaxOn
@@ -174,6 +175,7 @@
         { \tilde S } { \tilde s }
         { \tilde{S} } { \tilde{s} }
         { H } { h }
+        { T } { t }
       } { \ERROR #1 }
   }
 }
@@ -285,7 +287,7 @@ In $\lie{E}_{r(s)}$, $s$ is the number of $(\text{non-compact})-(\text{compact})
 \midrule
 \multirow{4}{*}{\rotatebox{90}{$sl(n)$}}
 & $\lie{su}(n)$ & compact & \\
-& $\lie{sl}(n)$ & $\lie{so}(n)$ & \\
+& $\lie{sl}(n,\RR)$ & $\lie{so}(n)$ & \\
 & $\lie{su}(n-p,p)$ & $\lie{su}(n-p)\oplus \lie{su}(p)\oplus \lie{u}(1)$ & $0<p<n$ \\
 & $\lie{su}^*(n)$ & $\lie{usp}(n)$ & $n$ even \\
 \midrule
@@ -334,10 +336,10 @@ In $\lie{E}_{r(s)}$, $s$ is the number of $(\text{non-compact})-(\text{compact})
 \begin{align*}
 \lie{so}(2)&= \lie{u}(1), \quad \lie{so}(1,1)=\RR\\
 \lie{so}(3)&= \lie{su}(2)=\lie{su}^*(2)=\lie{usp}(2)\\
-\lie{so}(2,1) &=\lie{su}(1,1)=\lie{sl}(2)=\lie{sp}(2,\RR)\\
+\lie{so}(2,1) &=\lie{su}(1,1)=\lie{sl}(2,\RR)=\mathrlap{\lie{sp}(2,\RR)}\\
 \lie{so}(4)&=\lie{su}(2)\oplus \lie{su}(2)\\
 \lie{so}(3,1)&=\lie{sl}(2,\CC)=\lie{sp}(2,\CC)\\
-\lie{so}(2,2)&=\lie{sl}(2)\oplus \lie{sl}(2)\\
+\lie{so}(2,2)&=\lie{sl}(2,\RR)\oplus \lie{sl}(2,\RR)\\
 \lie{so}^*(4)&=\lie{su}(1,1)\oplus \lie{su}(2)\\
 \lie{so}(5)&=\lie{usp}(4)
 \end{align*}
@@ -349,7 +351,7 @@ In $\lie{E}_{r(s)}$, $s$ is the number of $(\text{non-compact})-(\text{compact})
 \lie{so}(6)&=\lie{su}(4)\\
 \lie{so}(5,1)&=\lie{su}^*(4)\\
 \lie{so}(4,2)&=\lie{su}(2,2)\\
-\lie{so}(3,3)&=\lie{sl}(4)\\
+\lie{so}(3,3)&=\lie{sl}(4,\RR)\\
 \lie{so}^*(6)&=\lie{su}(3,1)\\
 \lie{so}^*(8)&=\lie{so}(6,2)
 \end{align*}
@@ -676,7 +678,7 @@ finite-dimensional symplectic representation~$\repr{M}$ of~$G$.
 
 \paragraph{Liouville CFT} has $c=1+6(b+1/b)^2$ and primary operators with $h(\alpha)=\alpha(b+1/b-\alpha)$ for ``momentum'' $\alpha\in \frac{1}{2}(b+1/b)+i\RR$.
 
-\paragraph{Minimal model} $\mathcal{M}_{p,q}$ for $p>q$ coprime is a quotient of $b=i\sqrt{p/q}$ Liouville CFT.  It has $c=1-\frac{6(p-q)^2}{pq}$ and primary operators with $h_{r,s}=\frac{(pr-qs)^2-(p-q)^2}{4pq}$ for $0<r<q$ and $0<s<p$.
+\paragraph{Minimal model} $\mathcal{M}_{p,q}$ for $p>q$ coprime is a quotient of $b=i\sqrt{p/q}$ Liouville CFT.  It has $c=1-\frac{6(p-q)^2}{pq}$ and primary operators with $h_{r,s}=\frac{(ps-qr)^2-(p-q)^2}{4pq}$ for $0<r<p$ and $0<s<q$; no degeneracy besides $h_{r,s}=h_{p-r,q-s}$.  Example: Ising model~$\mathcal{M}_{4,3}$, tricritical Ising model~$\mathcal{M}_{5,4}$, Yang--Lee singularity~$\mathcal{M}_{5,2}$.
 
 \paragraph{Unitary minimal model} $\mathcal{M}_{k+2,k+1}$ is coset $\frac{\hat{\lie{su}}(2)_{k-1}\times\hat{\lie{su}}(2)_1}{\hat{\lie{su}}(2)_k}$
 
@@ -713,6 +715,10 @@ where $x\in\RR^{p,1}$ and $y\in\RR^{10-p}$.  In the near horizon $y\to 0$ these 
 \paragraph{Relativistic quantum Toda chain.} $H = \sum_{n=1}^N \bigl(\cos(2\eta\hat{p}_n)+g^2\cos(\eta\hat{p}_n+\eta\hat{p}_{n+1})e^{x_{n+1}-x_n}\bigr)$.  Its non-relativistic limit is $\eta\to 0$ imaginary with $g/(i\eta\sqrt{2})=c$ fixed.
 % http://arxiv.org/abs/1609.07385 ``Exact solution of the relativistic quantum Toda chain''
 
+
+\subsection{Localization results}
+
+\paragraph{3d $\Nsusy=2$:} $Z = \int_{\lie{T}} \dd{u} \frac{\prod_{\alpha\,\text{root}} (2\sinh(\alpha u/2))^2}{\prod_{w\in\mathcal{R}}\cosh(wu/2)} e^{\I k\Tr u^2/(4\pi)}$.
 
 \section{Manifolds}
 
@@ -1061,6 +1067,14 @@ orbifold singularities of K3~surfaces.
 % todo: vortices, monopoles, instantons (Abrikosov--Nielsen--Olesen
 % vortex, 't~Hooft--Polyakov monopole, \ldots{}).
 
+\subsection{Strange algebraic constructions}
+
+\paragraph{Reduction of a Lie (super)algebra}~$\lie{G}$.  If $\lie{G}=V_1\oplus V_2$ with $[V_1,V_2]\subseteq V_2$ then the bracket of~$\lie{G}$ restricted and projected to~$V_1$ defines a Lie (super)algebra.
+
+\paragraph{$S$-expansion of a Lie (super)algebra}~$\lie{G}$ by an abelian multiplicative semigroup~$S$: Lie (super)algebra $\lie{G}\times S$ with bracket $[(x,\alpha),(y,\beta)]=([x,y],\alpha\beta)$.  If $S=S_1\cup S_2$ with $S_1 S_2\subseteq S_2$ (in particular if there is a zero element $0_S=0_S\alpha=\alpha 0_S$) then by reduction we get a Lie (super)algebra structure on $\lie{G}\times S_1$.
+
+\paragraph{A color (super)algebra} is a graded vector space with a bracket such that (for $X$, $Y$, $Z$ with definite grading) $\gr [X,Y] = \gr X+\gr Y$ and $[X,Y]=-(-1)^{(\gr X,\gr Y)}[Y,X]$ and $[X,[Y,Z]](-1)^{(\gr Z,\gr X)}+[Y,[Z,X]](-1)^{(\gr X,\gr Y)}+[Z,[X,Y]](-1)^{(\gr Y,\gr Z)}=0$, where $(\bullet,\bullet)$ is some bilinear mapping into $\CC/(2\ZZ)$.
+
 % =============================
 % Other interesting things to talk about
 % https://en.wikipedia.org/wiki/Genus_of_a_multiplicative_sequence
@@ -1080,6 +1094,10 @@ orbifold singularities of K3~surfaces.
 
 [3] Various ncatlab.org articles.
 
+
+% todo: http://www.math.u-psud.fr/~smilga/Lie_group_tables/tables.html
+% todo: real-quaternionic indicator
+% todo: https://en.wikipedia.org/wiki/Frobenius%E2%80%93Schur_indicator
 \end{document}
 
 % Local Variables:
