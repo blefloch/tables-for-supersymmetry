@@ -59,7 +59,7 @@
 
 \hypersetup{unicode}
 \hypersetup{linktoc = all}                % hyperref settings
-\hypersetup{hidelinks = true}
+\hypersetup{hidelinks}
 \pdfstringdefDisableCommands{%
   \def\({}%
   \def\){}%
@@ -133,11 +133,15 @@
 \newcommand{\FF}{\mathbb{F}} % finite field
 \newcommand{\torus}{\mathbf{T}} % torus
 \DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
+\renewcommand{\Im}{}\renewcommand{\Re}{}\let\Im\relax\let\Re\relax
+\DeclareMathOperator{\Im}{Im}
+\DeclareMathOperator{\Re}{Re}
 \DeclareMathOperator{\End}{End}
 \DeclareMathOperator{\Tr}{Tr}
 \DeclareMathOperator{\plexp}{plexp}
 \DeclareMathOperator{\rank}{rank}
 \DeclareMathOperator{\gr}{gr}
+\DeclareMathOperator{\diag}{diag}
 \newcommand{\one}{\mathbbm{1}}
 
 \ExplSyntaxOn
@@ -271,10 +275,10 @@ The $2^7\,3^4\,5=51840$-element Weyl group is $\operatorname{Aut}(\Lie{PSp}_4(\F
 simple roots $\one_1-\one_2$, $\one_2-\one_3$, $\one_3$, $-\frac{1}{2}(\one_1+\one_2+\one_3+\one_4)$.
 It has an $1152$-element Weyl group and $\{d_i\}=\{2,6,8,12\}$.
 
-\item[$\lie{G}_2$:] $12$~roots $e^{2\pi\I k/6},e^{2\pi\I (2k+1)/12}\sqrt{3}\in\CC$ for $0\leq k< 6$, simple roots~$1$ and $e^{5\pi\I/6}\sqrt{3}$.
+\item[$\lie{G}_2$:] $12$~roots $\E^{2\pi\I k/6},\E^{2\pi\I (2k+1)/12}\sqrt{3}\in\CC$ for $0\leq k< 6$, simple roots~$1$ and $\E^{5\pi\I/6}\sqrt{3}$.
 The $12$-element Weyl group is the dihedral group~$D_6$, and $\{d_i\}=\{2,6\}$.
 \end{description}
-
+The Coxeter number $h(\lie{G})=(\dim\lie{G}/\rank\lie{G})-1$ is the largest~$d_i$.  A Coxeter element is the product of all simple reflections, in any order.  Its eigenvalues $\E^{2\pi\I(d_i-1)/h}$ come in conjugate pairs.
 
 \paragraph{Real case.}\hspace{0pt minus 1pt}  Let
 $\lie{sl}(n)=\lie{sl}(n,\RR)$,
@@ -418,6 +422,16 @@ $\lie{su}(1,1|1)=\lie{sl}(2|1)=\lie{osp}(2|2)$
 and $\lie{su}(2|1)=\lie{osp}(2^*|2,0)$
 and $\lie{D}^p(2,1,\alpha=1)=\lie{osp}(4-p,p|2)$.
 % todo: complete this list
+
+\paragraph{ADE classification} of simply laced simple Lie algebras, of integers $1\leq p\leq q\leq r$ with $1/p+1/q+1/r>1$, of singularities, \etc.
+\begin{tab}{*{3}{>{$}l<{$}}}
+  \lie{G} & (p,q,r) & \text{polynomial} \\
+  \lie{A}_k & (1,q,1+k-q) & x^2+y^{k+1} \\
+  \lie{D}_k & (2,2,k-2) & x^2y+y^{k-1} \\
+  \lie{E}_6 & (2,3,3) & x^3+y^4 \\
+  \lie{E}_7 & (2,3,4) & x^3+xy^3 \\
+  \lie{E}_8 & (2,3,5) & x^3+y^5 \\
+\end{tab}\label{page:ADE-polynomial}
 
 \subsection{Lie (super)groups}
 
@@ -637,21 +651,44 @@ $\Nsusy=2$ $\to$ 2d $\Nsusy=(2,2)$.
 
 \subsection{Spin \(\leq 1\) supermultiplets}
 
-\paragraph{For $16$ supercharges}, there is only the vector.
+\paragraph{For \(16\) supercharges}, there is only the vector.
 
-\paragraph{For $8$ supercharges}, vector and hyper.
+\paragraph{For \(8\) supercharges}, vector and hyper.
 
-\paragraph{For $4$ supercharges}, vector, chiral, linear multiplets.
+\paragraph{For \(4\) supercharges}, vector, chiral, linear multiplets.
 
-\paragraph{For $2$ supercharges}, vector, chiral, linear, Fermi, \ldots{}
+\paragraph{For \(2\) supercharges}, vector, chiral, linear, Fermi, \ldots{}
+
+\subsection{Other supermultiplets}
+
+6d $\Nsusy=(1,0)$ tensor multiplet (contains one scalar), reduces to 4d $\Nsusy=2$ vector.
+
+6d $\Nsusy=(1,0)$ supergravity multiplet, reduces to 4d $\Nsusy=2$ supergravity multiplet and two vectors.
 
 
+\section{Supersymmetric gauge theories}
 
-\section{List of theories}
+\subsection{Maximal super Yang--Mills}
 
-\subsection{Supersymmetric gauge theories}
+\paragraph{Data:} semisimple gauge Lie group.
 
-\paragraph{4d $\Nsusy=1$:}
+\paragraph{Lorentzian} 10d $\Nsusy=1$ SYM is anomalous unless the gauge group is abelian.  Its dimensional reductions are anomaly-free and have one gauge field, $10-d$ scalars and $\Nsusy$ (symplectic or Majorana, and Weyl or not) spinors.  The Lagrangian's $R$-symmetry $\Lie{Spin}(10-d)$ is contained in the automorphism group of the superalgebra (they coincide for $d\geq 5$).
+\begin{tab}{rr@{ }lr@{}l}
+  dim.& \multicolumn{2}{c}{$\Nsusy$ spinors} & autom.\@ & ${}\supset\text{$R$-sym.\@}$ \\\midrule
+  10d & $(1,0)$  & MW & \\
+  9d  & $1$      & M  & \\
+  8d  & $1$      & M  & $\Lie{U}(1)$ & ${}=\Lie{Spin}(2)$ \\
+  7d  & $1$      & s  & $\Lie{USp}(2)$ & ${}=\Lie{Spin}(3)$ \\
+  6d  & $(1,1)$  & sW & $\Lie{USp}(2)^2$ & ${}=\Lie{Spin}(4)$ \\
+  5d  & $2$      & s  & $\Lie{USp}(4)$ & ${}=\Lie{Spin}(5)$ \\
+  4d  & $4$      & M  & $\Lie{U}(4)$ & ${}\supset\Lie{Spin}(6)$ \\
+  3d  & $8$      & M  & $\Lie{Spin}(8)$ & ${}\supset\Lie{Spin}(7)$ \\
+  2d  & $(8,8)$  & MW & $\Lie{Spin}(8)^2$ & ${}\supset\Lie{Spin}(8)$ \\
+  1d  & $16$     & M  & $\Lie{Spin}(16)$ & ${}\supset\Lie{Spin}(9)$ \\
+\end{tab}
+% todo: discrete $R$-symmetries?
+
+\subsection{4d \(\Nsusy=1\)}
 
 \paragraph{Superpotential term} $\int\dd[^2]\theta W$ gives a potential for scalars and Yukawa-type interactions.  $W$~is holomorphic in chiral fields and in couplings seen as background fields.  Example: the kinetic term $\Im \int\dd[^2]\theta[\tau W_\alpha^2]$ of an abelian gauge field: $W_\alpha^2$ is a chiral field.
 
@@ -659,7 +696,7 @@ $\Nsusy=2$ $\to$ 2d $\Nsusy=(2,2)$.
 
 \paragraph{Pure supersymmetric Yang--Mills (SYM)} classically has $\Lie{U}(1)_R$ symmetry, broken by instantons to $\ZZ_{2h}$ with $h=C_2(\text{adj})$.  It confines, is mass-gapped, and has $C_2(A)$ vacua associated to breaking $\ZZ_{2h}$ to $\ZZ_2$ by gaugino condensation $\langle\lambda\lambda\rangle$.  Witten index $\Tr(-1)^F=h$.
 
-\paragraph{4d $\Nsusy=2$:}
+\subsection{4d \(\Nsusy=2\)}
 
 % todo: Hitchin system
 
@@ -671,11 +708,19 @@ Supersymmetric vacua $\leftrightarrow$ eigenstates.
 
 Lift to $\RR^4\times S^1$ gives $K$-theoretic Nekrasov partition function.  The 5d theory $\leftrightarrow$ relativistic version of the integrable system.
 
-\paragraph{3d $\Nsusy=4$:} complex reductive group~$G$ and
+\paragraph{\((G,G')\) Argyres--Douglas theories} (with $G$ and~$G'$ among $\Lie{A}_k$, $\Lie{D}_k$, $\Lie{E}_{6,7,8}$) are engineered as IIB strings on three-fold singularity $f_G(x_1,x_2)+f_{G'}(x_3,x_4)=0$ where $f_{A_k}(x,y)=x^2+y^{k+1}$ \etc{} (see \autopageref{page:ADE-polynomial}).
+
+\subsection{3d \(\Nsusy=4\)}
+
+Complex reductive group~$G$ and
 finite-dimensional symplectic representation~$\repr{M}$ of~$G$.
 %% according to Kodera-Nakajima 1608.00875
 
+\section{Other theories}
+
 \subsection[Two-dimensional CFT]{Two-dimensional conformal field theories}
+
+\paragraph[bc and beta-gamma systems]{$bc$ system, $\beta\gamma$ system}
 
 \paragraph{Liouville CFT} has $c=1+6(b+1/b)^2$ and primary operators with $h(\alpha)=\alpha(b+1/b-\alpha)$ for ``momentum'' $\alpha\in \frac{1}{2}(b+1/b)+i\RR$.
 
@@ -684,6 +729,9 @@ finite-dimensional symplectic representation~$\repr{M}$ of~$G$.
 \paragraph{Unitary minimal model} $\mathcal{M}_{k+2,k+1}$ is coset $\frac{\hat{\lie{su}}(2)_{k-1}\times\hat{\lie{su}}(2)_1}{\hat{\lie{su}}(2)_k}$
 
 \subsection{Supergravity and strings}
+
+\paragraph{String actions}
+Polyakov action $L_{\text{P}}=\lambda^{mn}[(\partial_m X)(\partial_n X)-g_{mn}]+\frac{1}{\alpha'}\sqrt{-g}$.  Using equations of motion get Nambu--Goto action $L_{\text{NG}}=\frac{1}{\alpha'}\sqrt{-\det[(\partial_m X)(\partial_n X)]}$ or Brink--di Veccia--Howe--Deser--Zumino action $L_{\text{BdVHDZ}}=\frac{1}{2\alpha'}\sqrt{-g}[g^{mn}(\partial_m X)(\partial_n X)-(d-2)]$ with $d=2$ the world-sheet dimension.
 
 \paragraph{Pure supergravities} in $4\leq d\leq 11$.  Gravity is topological in $d=3$.  The maximum number of supercharges $Q=32$ forbids $d>11$.  A priori, all $Q=4k$ are possible.  Focus on $32, 16, 8, 4$.
 \begin{tab}{lcccc}
@@ -713,13 +761,13 @@ where $x\in\RR^{p,1}$ and $y\in\RR^{10-p}$.  In the near horizon $y\to 0$ these 
 
 % todo: quantum Toda chain
 
-\paragraph{Relativistic quantum Toda chain.} $H = \sum_{n=1}^N \bigl(\cos(2\eta\hat{p}_n)+g^2\cos(\eta\hat{p}_n+\eta\hat{p}_{n+1})e^{x_{n+1}-x_n}\bigr)$.  Its non-relativistic limit is $\eta\to 0$ imaginary with $g/(i\eta\sqrt{2})=c$ fixed.
+\paragraph{Relativistic quantum Toda chain.} $H = \sum_{n=1}^N \bigl(\cos(2\eta\hat{p}_n)+g^2\cos(\eta\hat{p}_n+\eta\hat{p}_{n+1})\E^{x_{n+1}-x_n}\bigr)$.  Its non-relativistic limit is $\eta\to 0$ imaginary with $g/(i\eta\sqrt{2})=c$ fixed.
 % http://arxiv.org/abs/1609.07385 ``Exact solution of the relativistic quantum Toda chain''
 
 
 \subsection{Localization results}
 
-\paragraph{3d $\Nsusy=2$:} $Z = \int_{\lie{T}} \dd{u} \frac{\prod_{\alpha\,\text{root}} (2\sinh(\alpha u/2))^2}{\prod_{w\in\mathcal{R}}\cosh(wu/2)} e^{\I k\Tr u^2/(4\pi)}$.
+\paragraph{3d \(\Nsusy=2\):} $Z = \int_{\lie{T}} \dd{u} \frac{\prod_{\alpha\,\text{root}} (2\sinh(\alpha u/2))^2}{\prod_{w\in\mathcal{R}}\cosh(wu/2)} \E^{\I k\Tr u^2/(4\pi)}$.
 
 \section{Manifolds}
 
@@ -745,7 +793,7 @@ structure.  Similar definitions for Riemannian manifolds \etc:
   \rlap{$\Lie{U}^*(n/2)\Lie{USp}(2)$} & \hspace{1.5em}\rlap{Almost quaternionic\tabfoot{3}} & $\HH\actson TX$ \\
   $\Lie{U}^*(n/2)$ & Almost hypercomplex\tabfoot{3} & $J_1,J_2,J_3\actson TX$ \\
   \rlap{$\Lie{USp}(n/2)\Lie{USp}(2)$} & \hspace{1.5em}\rlap{Almost quaternion-Hermitian} & $(g,\HH,\omega_{1,2,3})$ \\
-  $\Lie{USp}(n/2)$ & Almost hyper-Hermitian & $(g,J_{1,2,3},\omega_{1,2,3})$ \\
+  $\Lie{USp}(n/2)$ & Almost hyperHermitian & $(g,J_{1,2,3},\omega_{1,2,3})$ \\
 \end{tab}
 \noindent\tabfoot{1}
 All sections are global.  For instance an almost complex structure is a
@@ -836,7 +884,7 @@ Equivalently, it is $1$-integrable: $\dd{\omega}=0$.  Altogether,
 defined by replacing~$J$ by a 3d~subbundle of $\End TX$ or by global
 sections $J_1,J_2,J_3$ as in the table of $G$-structures.
 % ref: math/0307118 classification of "Almost Hermitian Structures and Quaternionic Geometries" (Francisco Martín Cabrera and Andrew Swann)
-% ref: math/0105206 useful definitions in "Hyper-Hermitian quaternionic Kähler manifolds" (Bogdan Alexandrov)
+% ref: math/0105206 useful definitions in "HyperHermitian quaternionic Kähler manifolds" (Bogdan Alexandrov)
 
 \noindent\tabfoot{1}
 Since $\Lie{GL}(n,\RR)/\Lie{O}(n)$ is contractible, any manifold admits
@@ -898,6 +946,8 @@ In general, quaternionic-K\"ahler manifolds are not K\"ahler.
 % with respect to the induced Riemannian metric (due to
 % $\Lie{G}_2\subset \Lie{SO}(7)$.  Equivalently it is a Riemannian $7$-manifold
 % with holonomy group~$\subseteq\Lie{G}_2$.
+%
+% Example: Aloff--Wallach space $X_{k,l}=\Lie{SU}(3)/\Lie{U}(1)_{k,l}$ where $\Lie{U}(1)\contains\E^{\I\theta}\mapsto\diag(\E^{\I k\theta},\E^{\I l\theta},\E^{\I(-k-l)\theta})\in\Lie{SU}(3)$ have many $\lie{G}_2$-structures.
 
 A \href{http://en.wikipedia.org/wiki/Calabi-Yau_manifold}{Calabi--Yau
   manifold} is a K\"ahler manifold such that (equivalently) some
@@ -923,7 +973,7 @@ with trivial holomorphic canonical bundle.
 
 % todo: every hyperKähler manifold is Calabi--Yau
 
-% todo: ``Calabi proved a partial converse which says that a compact holomorphically symplectic Kähler manifold admits a unique hyper-Kähler metric with respect to any of its Kähler forms.'' (Mathworld)
+% todo: ``Calabi proved a partial converse which says that a compact holomorphically symplectic Kähler manifold admits a unique hyperKähler metric with respect to any of its Kähler forms.'' (Mathworld)
 
 % todo: more on http://mathworld.wolfram.com/Hyper-KaehlerManifold.html
 
@@ -945,7 +995,7 @@ with trivial holomorphic canonical bundle.
 
 % Every quaternionic-K\"ahler manifold is Einstein
 
-% A quaternionic-K\"ahler with zero scalar curvature is locally hyper-K\"ahler
+% A quaternionic-K\"ahler with zero scalar curvature is locally hyperK\"ahler
 
 % Compact hyperHermitian $4$-manifolds are conformal to tori, Hopf or K3. [ DOI: 10.2307/2046051 , Stable URL: http://www.jstor.org/stable/2046051 ]
 
@@ -968,6 +1018,7 @@ K\"ahler form whose metric is Ricci flat.
 % \subsection{Misc properties of manifolds}
 
 % todo \paragraph{Rokhlin's theorem}
+
 
 \section{Dualities}
 
@@ -1042,15 +1093,24 @@ to be CY$_n$ when the restricted holonomy group is $\Lie{SU}(n)$ but the
 global holonomy group is disconnected.  For example an Enriques surface
 K3$/\cyclic{2}$ has a non-trivial canonical bundle.
 
-\paragraph{Gravitational instantons.}  Ricci-flat metrics on hk$_4$ have
-self-dual curvature and are called gravitational instantons.
+\paragraph[Gravitational instantons]{A gravitational instanton} is a
+metric with (anti-)self-dual curvature.  A simply-connected Riemannian
+4-manifold is hyperK\"ahler if and only if it is a gravitational instanton.
 % todo: only type of grav inst?
 Compact hK$_4$ are K3 and~$T^4$.  Non-compact hK$_4$ are asymptotically
 locally Euclidean (ALE) spaces asymptotic to $\HH/\Gamma$ for a finite
 subgroup $\Gamma<\Lie{USp}(2)$.  Many such ALE spaces are local resolutions of
 orbifold singularities of K3~surfaces.
 
-\paragraph{} \todo{Taub-NUT spaces, multi-Taub-NUT spaces,
+\paragraph{ALE hyperK\"ahler \(4\)-manifolds} $X$ are
+diffeomorphic to the minimal resolution of $\HH/\Gamma$ for some finite
+$\Gamma\subset SU(2)$.  The metric is fixed (up to isometry) by
+cohomology classes $\alpha_1,\alpha_2,\alpha_3\in H^2(X,\RR)$ such that
+there is no two-cycle~$\Sigma$ such that $\Sigma\cdot\Sigma=-2$ and all
+$\alpha_i(\Sigma)=0$.
+% todo: cite Kronheimer, The construction of ALE spaces as hyper-Kähler quotients
+
+\todo{Taub-NUT spaces, multi-Taub-NUT spaces,
   Eguchi--Hanson spaces, Gibbons--Hawking multicenter spaces.  Write
   metric.}  \todo{Non-explicitly: Atiyah--Hitchin space (moduli space of
   two $\Lie{SU}(2)$ 't~Hooft-Polyakov monopoles in~4d).}
@@ -1068,13 +1128,17 @@ orbifold singularities of K3~surfaces.
 % todo: vortices, monopoles, instantons (Abrikosov--Nielsen--Olesen
 % vortex, 't~Hooft--Polyakov monopole, \ldots{}).
 
-\subsection{Strange algebraic constructions}
+\subsection{Some algebraic constructions}
 
 \paragraph{Reduction of a Lie (super)algebra}~$\lie{G}$.  If $\lie{G}=V_1\oplus V_2$ with $[V_1,V_2]\subseteq V_2$ then the bracket of~$\lie{G}$ restricted and projected to~$V_1$ defines a Lie (super)algebra.
 
-\paragraph{$S$-expansion of a Lie (super)algebra}~$\lie{G}$ by an abelian multiplicative semigroup~$S$: Lie (super)algebra $\lie{G}\times S$ with bracket $[(x,\alpha),(y,\beta)]=([x,y],\alpha\beta)$.  If $S=S_1\cup S_2$ with $S_1 S_2\subseteq S_2$ (in particular if there is a zero element $0_S=0_S\alpha=\alpha 0_S$) then by reduction we get a Lie (super)algebra structure on $\lie{G}\times S_1$.
+\paragraph{\(S\)-expansion of a Lie (super)algebra}~$\lie{G}$ by an abelian multiplicative semigroup~$S$: Lie (super)algebra $\lie{G}\times S$ with bracket $[(x,\alpha),(y,\beta)]=([x,y],\alpha\beta)$.  If $S=S_1\cup S_2$ with $S_1 S_2\subseteq S_2$ (in particular if there is a zero element $0_S=0_S\alpha=\alpha 0_S$) then by reduction we get a Lie (super)algebra structure on $\lie{G}\times S_1$.
 
 \paragraph{A color (super)algebra} is a graded vector space with a bracket such that (for $X$, $Y$, $Z$ with definite grading) $\gr [X,Y] = \gr X+\gr Y$ and $[X,Y]=-(-1)^{(\gr X,\gr Y)}[Y,X]$ and $[X,[Y,Z]](-1)^{(\gr Z,\gr X)}+[Y,[Z,X]](-1)^{(\gr X,\gr Y)}+[Z,[X,Y]](-1)^{(\gr Y,\gr Z)}=0$, where $(\bullet,\bullet)$ is some bilinear mapping into $\CC/(2\ZZ)$.
+
+\subsection{Other}
+
+\paragraph[Fuzzy spaces]{A fuzzy space} is $d$~Hermitian matrices~$X^a$ (``coordinates'') acting on some Hilbert space~$H$.  The dispersion of $\psi\in H$ is $\delta_\psi=\sum_a\bigl(\langle\psi\rvert (X^a)^2\lvert\psi\rangle-\langle\psi\rvert X^a\lvert\psi\rangle^2\bigr)$.
 
 % =============================
 % Other interesting things to talk about
@@ -1095,8 +1159,4 @@ orbifold singularities of K3~surfaces.
 
 [3] Various ncatlab.org articles.
 
-
-% todo: http://www.math.u-psud.fr/~smilga/Lie_group_tables/tables.html
-% todo: real-quaternionic indicator
-% todo: https://en.wikipedia.org/wiki/Frobenius%E2%80%93Schur_indicator
 \end{document}
