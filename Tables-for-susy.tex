@@ -157,6 +157,7 @@
   \mathfrak {
     \str_case:nnF {#1}
       {
+        { gl } { gl }
         { sl } { sl }
         { so } { so }
         { su } { su }
@@ -281,8 +282,7 @@ The $12$-element Weyl group is the dihedral group~$D_6$, and $\{d_i\}=\{2,6\}$.
 The Coxeter number $h(\lie{G})=(\dim\lie{G}/\rank\lie{G})-1$ is the largest~$d_i$.  A Coxeter element is the product of all simple reflections, in any order.  Its eigenvalues $\E^{2\pi\I(d_i-1)/h}$ come in conjugate pairs.
 
 \paragraph{Real case.}\hspace{0pt minus 1pt}  Let
-$\lie{sl}(n)=\lie{sl}(n,\RR)$,
-$\lie{su}^*(2n)=\lie{sl}(n,\HH)$,
+$\lie{su}^*(2n)=\lie{gl}(n,\HH)/\RR$,
 $\lie{so}^*(2n)=\lie{o}(n,\HH)$,
 $\lie{sp}(m,n)=\lie{usp}(2m,2n)=\lie{u}(m,n,\HH)$.
 A Lie algebra is compact if it exponentiates to a compact Lie group.
@@ -290,18 +290,18 @@ In $\lie{E}_{r(s)}$, $s$ is the number of $(\text{non-compact})-(\text{compact})
 \begin{tab}{@{}c@{ }lll}
 & Real form & \hspace{-1em}Max compact subalgebra & Range \\
 \midrule
-\multirow{4}{*}{\rotatebox{90}{$sl(n)$}}
+\multirow{4}{*}{\rotatebox{90}{$\lie{sl}(n,\CC)$}}
 & $\lie{su}(n)$ & compact & \\
 & $\lie{sl}(n,\RR)$ & $\lie{so}(n)$ & \\
 & $\lie{su}(n-p,p)$ & $\lie{su}(n-p)\oplus \lie{su}(p)\oplus \lie{u}(1)$ & $0<p<n$ \\
 & $\lie{su}^*(n)$ & $\lie{usp}(n)$ & $n$ even \\
 \midrule
-\multirow{3}{*}{\rotatebox{90}{$\lie{so}(n)$}}
+\multirow{3}{*}{\rotatebox{90}{$\lie{so}(n,\CC)$}}
 & $\lie{so}(n)$& compact & \\
 & $\lie{so}(p,n-p)$& $\lie{so}(p)\oplus \lie{so}(n-p)$ & $0<p<n$ \\
 & $\lie{so}^*(n)$   & $\lie{u}(n/2)$ & $n$ even \\
 \midrule
-\multirow{3}{*}{\rotatebox{90}{$\lie{sp}(2n)$}}
+\multirow{3}{*}{\rotatebox{90}{$\lie{sp}(2n,\CC)\!\!$}}
 & $\lie{usp}(2n)$ & compact & \\
 & $\lie{sp}(2n,\RR)$  & $\lie{u}(n)$ & \\
 & $\lie{usp}(2n-2p,2p)$ & $\lie{usp}(2n-2p)\oplus \lie{usp}(2p)$ & $0<p<n$ \\
@@ -309,19 +309,19 @@ In $\lie{E}_{r(s)}$, $s$ is the number of $(\text{non-compact})-(\text{compact})
 \multicolumn{4}{c}{%
   \begin{tabular}[c]{ll}
   $\lie{E}_{6(-78)}$ & compact \\
-  $\lie{E}_{6(-26)}$ & $\Lie{F}_4$ \\
+  $\lie{E}_{6(-26)}$ & $\lie{F}_4$ \\
   $\lie{E}_{6(-14)}$ & $\lie{so}(10)\oplus \lie{so}(2)$\\
   $\lie{E}_{6(2)}$ & $\lie{su}(6)\oplus \lie{su}(2)$\\
   $\lie{E}_{6(6)}$ & $\lie{usp}(8)$\\
   \midrule
   $\lie{E}_{7(-133)}$& compact \\
-  $\lie{E}_{7(-25)}$& $\lie{E}_{6,-78}\oplus \lie{so}(2)$ \\
+  $\lie{E}_{7(-25)}$& $\lie{E}_6\oplus \lie{so}(2)$ \\
   $\lie{E}_{7(-5)}$& $\lie{so}(12)\oplus \lie{su}(2)$ \\
   $\lie{E}_{7(7)}$& $\lie{su}(8)$
   \end{tabular}\quad
   \begin{tabular}[c]{ll}
   $\lie{E}_{8(-248)}$& compact\\
-  $\lie{E}_{8(-24)}$&$\lie{E}_{7,-133}\oplus \lie{su}(2)$\\
+  $\lie{E}_{8(-24)}$&$\lie{E}_7\oplus \lie{su}(2)$\\
   $\lie{E}_{8(8)}$&$\lie{so}(16)$\\
   \midrule
   $\lie{G}_{2(-14)}$ & compact \\
@@ -345,7 +345,7 @@ In $\lie{E}_{r(s)}$, $s$ is the number of $(\text{non-compact})-(\text{compact})
 \lie{so}(4)&=\lie{su}(2)\oplus \lie{su}(2)\\
 \lie{so}(3,1)&=\lie{sl}(2,\CC)=\lie{sp}(2,\CC)\\
 \lie{so}(2,2)&=\lie{sl}(2,\RR)\oplus \lie{sl}(2,\RR)\\
-\lie{so}^*(4)&=\lie{su}(1,1)\oplus \lie{su}(2)\\
+\lie{so}^*(4)&=\lie{sl}(2,\RR)\oplus \lie{su}(2)\\
 \lie{so}(5)&=\lie{usp}(4)
 \end{align*}
 \end{minipage}%
@@ -386,24 +386,24 @@ The forms $\lie{su}^*$, $\lie{osp}^*$, $\lie{Q}^*$ only exist for even rank; $\l
 \begin{tab}{*{2}{>{$}l<{$}}}
 \text{Real form} & \text{Bosonic algebra}  \\ \midrule
 \lie{su}(m-p,p|n-q,q) & \lie{su}(m-p,p)\oplus \lie{su}(n-q,q)\oplus \lie{u}(1)\tabfoot{1}\\
-\lie{sl}(m|n) & \lie{sl}(m)\oplus \lie{sl}(n)\oplus \lie{so}(1,1)\tabfoot{1} \\
+\lie{sl}(m|n) & \lie{sl}(m,\RR)\oplus \lie{sl}(n,\RR)\oplus \lie{so}(1,1)\tabfoot{1} \\
 \lie{sl}'(n|n) \quad\, (m=n)& \lie{sl}(n,\CC)\\
 \lie{su}^*(m|n) \:\: (m,n \text{ even}) & \lie{su}^*(m)\oplus \lie{su}^*(n)\oplus \lie{so}(1,1)\tabfoot{1}\\
 \midrule
 \lie{osp}(m-p,p|2n) & \lie{so}(m-p,p)\oplus \lie{sp}(2n,\RR) \\
 \multicolumn{2}{l}{$\lie{osp}^*(m|2n-2q,2q)$ ($m$ even)\quad $\lie{so}^*(m)\oplus \lie{usp}(2n-2q,2q)$} \\
 \midrule
-\lie{D}^p(2,1,\alpha) \;\tabfoot{2} & \lie{so}(4-p,p)\oplus \lie{sl}(2)\quad (p=0,1,2)\\
+\lie{D}^p(2,1,\alpha) \;\tabfoot{2} & \lie{so}(4-p,p)\oplus \lie{sl}(2,\RR)\ (p=0,1,2)\\
 \midrule
-\lie{F}^p(4) \text{ for $p=0,3$} & \lie{so}(7-p,p)\oplus \lie{sl}(2) \\
+\lie{F}^p(4) \text{ for $p=0,3$} & \lie{so}(7-p,p)\oplus \lie{sl}(2,\RR) \\
 \lie{F}^p(4) \text{ for $p=1,2$} & \lie{so}(7-p,p)\oplus \lie{su}(2) \\
 \midrule
-\lie{G}_s(3) \text{ for $s=-14,2$} & \lie{G}_{2(s)}\oplus sl(2) \\
+\lie{G}_s(3) \text{ for $s=-14,2$} & \lie{G}_{2(s)}\oplus \lie{sl}(2,\RR) \\
 \midrule
-\lie{P}(m) & \lie{sl}(m+1) \\
+\lie{P}(m) & \lie{sl}(m+1,\RR) \\
 \midrule
 \lie{UQ}(m-p,p) & \lie{su}(m+1-p,p) \\
-\lie{Q}(m) & \lie{sl}(m+1) \\
+\lie{Q}(m) & \lie{sl}(m+1,\RR) \\
 \lie{Q}^*(m) \quad (m \text{ odd}) & \lie{su}^*(m+1) \\
 \end{tab}
 
@@ -420,18 +420,26 @@ For $\lie{D}^0$ and $\lie{D}^2$, $\alpha$ is real.  For $\lie{D}^1$, $\alpha=1+i
 \paragraph{Some isomorphisms:}
 $\lie{su}(1,1|1)=\lie{sl}(2|1)=\lie{osp}(2|2)$
 and $\lie{su}(2|1)=\lie{osp}(2^*|2,0)$
-and $\lie{D}^p(2,1,\alpha=1)=\lie{osp}(4-p,p|2)$.
+and $\lie{D}^p(2,1,\alpha=1)=\lie{osp}(4-p,p|2)$
+and $\lie{osp}(6,2|4)=\lie{osp}^*(8|4)$.
 % todo: complete this list
 
-\paragraph{ADE classification} of simply laced simple Lie algebras, of integers $1\leq p\leq q\leq r$ with $1/p+1/q+1/r>1$, of singularities, \etc.
-\begin{tab}{*{3}{>{$}l<{$}}}
-  \lie{G} & (p,q,r) & \text{polynomial} \\
-  \lie{A}_k & (1,q,1+k-q) & x^2+y^{k+1} \\
-  \lie{D}_k & (2,2,k-2) & x^2y+y^{k-1} \\
-  \lie{E}_6 & (2,3,3) & x^3+y^4 \\
-  \lie{E}_7 & (2,3,4) & x^3+xy^3 \\
-  \lie{E}_8 & (2,3,5) & x^3+y^5 \\
-\end{tab}\label{page:ADE-polynomial}
+\paragraph{ADE classification}
+of symmetric matrices with eigenvalues in $(-2,2)$ and $\ZZ_{\geq 0}$ entries (adjacency matrices of ADE diagrams),
+of simply laced simple Lie algebras,
+of binary polyhedral groups~$\Gamma$ (discrete subgroups of $\Lie{SU}(2)$) and du~Val singularities $\CC^2/\Gamma\simeq$(zeros of Kleinian polynomial),
+of integers $1\leq p\leq q\leq r$ with $1/p+1/q+1/r>1$,
+of singularities with no moduli (Arnold) hence of $\Nsusy=2$ minimal models ($c<3$),
+of $\Nsusy=0$ unitary minimal models ($c<1$),
+of quivers of finite type,\ldots{}
+\begin{tab}{*{3}{>{$}l<{$}}}\label{page:ADE-polynomial}
+  \lie{G} & (p,q,r) & \multicolumn{1}{p{3cm}}{Kleinian polynomial} \\
+  \lie{A}_k & (1,q,1+k-q) & w^2+x^2+y^{k+1} \\
+  \lie{D}_k & (2,2,k-2) & w^2+x^2y+y^{k-1} \\
+  \lie{E}_6 & (2,3,3) & w^2+x^3+y^4 \\
+  \lie{E}_7 & (2,3,4) & w^2+x^3+xy^3 \\
+  \lie{E}_8 & (2,3,5) & w^2+x^3+y^5 \\
+\end{tab}
 
 \subsection{Lie (super)groups}
 
