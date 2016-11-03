@@ -207,12 +207,37 @@
 
 % todo: Euler's Gamma function, elliptic Gamma function, hyperbolic Gamma function, Barnes' double-Gamma function, multiple sine, Upsilon, Dedekind eta function, Jacobi theta functions,
 
-\paragraph{Plethystic exponential.}  Let $\mathbf{m}\subset R[[x_1,\ldots,x_n]]$ be series with no constant term over a ring~$R$.  Then $\plexp:\mathbf{m}\to 1+\mathbf{m}$ obeys $\plexp[x_i^p]=1/(1-x_i^p)$ and $\plexp[\lambda f]=\plexp[f]^\lambda$ for $\lambda\in R$.  It maps an index of single-particle states $f(x)$ to that of multiparticle states $\plexp f(x)=\exp\sum_{k\geq 1}\frac{1}{k}f(x_1^k,\ldots,x_n^k)$.
+\paragraph{Multiple gamma function.}  For $a_i\in\CC$ with $\Re a_i>0$,
+$\Gamma_N(x|\vec{a})=\prod_{\vec{n}}^{\text{reg.}}(x+\vec{n}\cdot\vec{a})^{-1}=\exp(\partial_s\sum_{\vec{n}}(x+\vec{n}\cdot\vec{a})^{-s}|_{s=0})$,
+where $\vec{n}\in\ZZ_{\geq 0}^N$.  Here, we zeta-regularized the product; the sum is analytically continued from $\Re s>N$.  The meromorphic $x\mapsto\Gamma_N(x|\vec{a})$ has no zero and poles at $x=-\vec{n}\cdot\vec{a}$ (simple poles for generic~$\vec{a}$).
+$\Gamma_0(x|)=1/x$, $\Gamma_1(x|a)=a^{x/a-1/2}\Gamma(x/a)/\sqrt{2\pi}$, $\Gamma_N(x|\vec{a})=\Gamma_{N-1}(x|a_1,\ldots,a_{N-1})\Gamma_N(x+a_N|\vec{a})$ and it is invariant under permutations of~$\vec{a}$.
 
-\paragraph{Dedekind eta function.}  Modular form of weight~$\frac{1}{2}$ given by $\eta(\tau)=q^{1/24}\prod_{k\geq 1} (1-q^k)=q^{1/24}\plexp[\frac{-q}{1-q}]$ where $q=\E^{2\pi\I\tau}$.
+\paragraph{Plethystic exponential.}  Let $\mathbf{m}\subset R[[x_1,\ldots,x_n]]$ be series with no constant term over a ring~$R$.  Then $\plexp:\mathbf{m}\to 1+\mathbf{m}$ obeys $\plexp[x_i^p]=1/(1-x_i^p)$, $\plexp[f+g]=\plexp[f]\plexp[g]$ and $\plexp[\lambda f]=\plexp[f]^\lambda$ for $\lambda\in R$.  It maps an index of single-particle states $f(x)$ to that of multiparticle states $\plexp f(x)=\exp\sum_{k\geq 1}\frac{1}{k}f(x_1^k,\ldots,x_n^k)$.
 
-\paragraph{Theta function.}  $\vartheta_1(x;q)=-\I x^{1/2}q^{1/8}\plexp[-\frac{q+xq+1/x}{1-q}]=-\I x^{1/2}q^{1/8}\prod_{k\geq 1} (1-q^k)(1-xq^k)(1-q^{k-1}/x)$.
+\paragraph{q-Pochhammer} $(a;q)_\infty=\plexp\frac{-a}{1-q}=\prod_{k=0}^{\infty}(1-aq^k)$
+and finite version $(a;q)_n=(a;q)_\infty/(aq^n;q)_\infty$.
+Products are often denoted $(a_1,\ldots,a_N;q)_n=(a_1;q)_n\cdots(a_N;q)_n$.
+Properties:
+$(a;q)_{-n}(q/a;q)_{n}=(-q/a)^{n}q^{n(n-1)/2}$
+and q-binomial theorem $(ax;q)_\infty/(x;q)_\infty=\sum_{n=0}^{\infty}x^n (a;q)_n/(q;q)_n$.
 
+\paragraph{q-gamma (or basic gamma) function} for $\abs{q}<1$,
+$\Gamma_q(x)=(1-q)^{1-x}(q;q)_\infty/(q^x;q)_\infty$
+obeys $\Gamma_q(x+1)=\frac{1-q^x}{1-q}\Gamma_q(x)$
+and $\Gamma_q(x)\xrightarrow{q\to 1}\Gamma(x)$.
+It has simple poles at $x\in\ZZ_{\leq 0}$ and no zero.
+
+\paragraph{q-theta function} $\theta(z;q)=(z;q)_\infty(q/z;q)_\infty$ obeys $\theta(z;q)=\theta(q/z;q)=-z\theta(1/z;q)$.
+
+\paragraph{Dedekind eta function.}  Modular form of weight~$\frac{1}{2}$ given by $\eta(\tau)=q^{1/24}(q;q)_\infty$ where $q=\E^{2\pi\I\tau}$.
+
+\paragraph{Theta function}  $\vartheta_1(x;q)=-\I x^{1/2}q^{1/8}(q;q)_\infty(qx;q)_\infty(\frac{1}{x};q)_\infty$.
+
+\paragraph{Elliptic gamma function}
+$\Gamma(z;p,q)=\plexp\frac{z-pq/z}{(1-p)(1-q)}=\prod_{m=0}^{\infty}\prod_{n=0}^{\infty}(1-p^{m+1}q^{m+1}z^{-1})/(1-p^mq^nz)$.
+Obeys $\Gamma(z;p,q)=\Gamma(z;q,p)=1/\Gamma(pq/z;p,q)$
+and $\Gamma(pz;p,q)=\theta(z;q)\Gamma(z;p,q)$
+and $\Gamma(z;0,q)=1/(z;q)_\infty$.
 
 
 \section[Lie algebras and groups]{Lie algebras and groups (dimension${}<\infty$)}
