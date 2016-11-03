@@ -1,6 +1,7 @@
 ## Specific to this project
 Old/
-SupportingMaterial/
+refs/
+todo
 
 ## Core latex/pdflatex auxiliary files:
 *.aux
