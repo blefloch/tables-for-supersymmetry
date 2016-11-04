@@ -92,6 +92,7 @@
   }
 \cs_generate_variant:Nn \__my_strip_punct:nn { xV }
 \cs_generate_variant:Nn \use:nn { nx }
+\cs_generate_variant:Nn \tl_upper_case:n { f }
 \cs_set_eq:NN \__my_strip:w ?
 \cs_new_eq:NN \__my_old_sect:w \@sect
 \msg_new:nnn { my } { unexpected } { "#1" }
@@ -114,6 +115,11 @@
               {
                 \tl_set:Nx \l__my_title_tl
                   { \exp_after:wN \__my_rest_words:w \l__my_title_tl \q_stop }
+                \tl_set:Nx \l__my_title_tl
+                  {
+                    \tl_upper_case:f { \tl_head:N \l__my_title_tl }
+                    \tl_tail:N \l__my_title_tl
+                  }
               }
           }
         \__my_strip_punct:xV { \tl_item:Nn \l__my_title_tl {-1} }
