@@ -73,6 +73,57 @@
 
 \setcounter{secnumdepth}{2}
 \makeatletter
+\ExplSyntaxOn
+\cs_generate_variant:Nn \str_head:n { o }
+\cs_generate_variant:Nn \clist_if_in:nnT { nx }
+\tl_new:N \l__my_main_tl
+\tl_new:N \l__my_title_tl
+\cs_set:Npn \__my_first_word:w #1 ~ #2 \q_stop { \exp_not:n {#1} }
+\cs_set:Npn \__my_rest_words:w #1 ~ #2 \q_stop { \exp_not:n {#2} }
+\cs_set_protected:Npn \__my_strip_punct:nn #1#2
+  {
+    \tl_if_in:nnT { . : , ; } {#1}
+      {
+        \cs_set_protected:Npn \__my_strip:w ##1 #1 \q_nil
+          { \tl_set:Nn \l__my_title_tl {##1} }
+        \tl_if_in:nnT { #2 \q_nil } { #1 \q_nil } % being paranoid
+          { \__my_strip:w #2 \q_nil }
+      }
+  }
+\cs_generate_variant:Nn \__my_strip_punct:nn { xV }
+\cs_generate_variant:Nn \use:nn { nx }
+\cs_set_eq:NN \__my_strip:w ?
+\cs_new_eq:NN \__my_old_sect:w \@sect
+\msg_new:nnn { my } { unexpected } { "#1" }
+\cs_set:Npn \@sect #1 #2 #3 #4 #5 #6 [#7] #8
+  {
+    \bool_if:nF
+      {
+        \tl_if_head_eq_meaning_p:nN {#8} \Sectionformat
+        && \int_compare_p:n { \tl_count:n {#8} == 3 }
+      }
+      { \msg_error:nnn { my } { unexpected } {#8} }
+    \tl_set:Nx \l__my_main_tl { \tl_item:nn {#8} {2} }
+    \tl_set:Nn \l__my_title_tl {#7}
+    \tl_if_eq:NNT \l__my_main_tl \l__my_title_tl
+      {
+        \tl_if_in:NnT \l__my_title_tl { ~ }
+          {
+            \clist_if_in:nxT { A , The }
+              { \exp_after:wN \__my_first_word:w \l__my_title_tl \q_stop }
+              {
+                \tl_set:Nx \l__my_title_tl
+                  { \exp_after:wN \__my_rest_words:w \l__my_title_tl \q_stop }
+              }
+          }
+        \__my_strip_punct:xV { \tl_item:Nn \l__my_title_tl {-1} }
+          \l__my_title_tl
+      }
+    \use:nx
+      { \__my_old_sect:w {#1} {#2} {#3} {#4} {#5} {#6} }
+      { [{ \exp_not:V \l__my_title_tl }] } {#8}
+  }
+\ExplSyntaxOff
 \renewcommand{\section}{\pagebreak[1]\@startsection {section}{1}{\z@ }{-\medskipamount}{\smallskipamount}{\normalfont \large \bfseries }}
 \renewcommand{\subsection}{\pagebreak[0]\@startsection {subsection}{2}{\z@ }{-\smallskipamount}{1sp}{\normalfont \bfseries }}
 \renewcommand{\subsubsection}{\ERROR}
@@ -214,7 +265,8 @@ $\Gamma_0(x|)=1/x$, $\Gamma_1(x|a)=a^{x/a-1/2}\Gamma(x/a)/\sqrt{2\pi}$, $\Gamma_
 
 \paragraph{Plethystic exponential.}  Let $\mathbf{m}\subset R[[x_1,\ldots,x_n]]$ be series with no constant term over a ring~$R$.  Then $\plexp:\mathbf{m}\to 1+\mathbf{m}$ obeys $\plexp[x_i^p]=1/(1-x_i^p)$, $\plexp[f+g]=\plexp[f]\plexp[g]$ and $\plexp[\lambda f]=\plexp[f]^\lambda$ for $\lambda\in R$.  It maps an index of single-particle states $f(x)$ to that of multiparticle states $\plexp f(x)=\exp\sum_{k\geq 1}\frac{1}{k}f(x_1^k,\ldots,x_n^k)$.
 
-\paragraph{q-Pochhammer} $(a;q)_\infty=\plexp\frac{-a}{1-q}=\prod_{k=0}^{\infty}(1-aq^k)$
+\paragraph[q-Pochhammer symbol]{q-Pochhammer}
+$(a;q)_\infty=\plexp\frac{-a}{1-q}=\prod_{k=0}^{\infty}(1-aq^k)$
 and finite version $(a;q)_n=(a;q)_\infty/(aq^n;q)_\infty$.
 Products are often denoted $(a_1,\ldots,a_N;q)_n=(a_1;q)_n\cdots(a_N;q)_n$.
 Properties:
@@ -244,12 +296,10 @@ and $\Gamma(z;0,q)=1/(z;q)_\infty$.
 
 \subsection{Simple Lie (super)algebras}
 
-\paragraph{Complex case.}
+\paragraph{Complex simple Lie algebras.}
 Infinite series $\lie{A}_{n\geq 1}$, $\lie{B}_{n\geq 1}$, $\lie{C}_{n\geq 1}$, $\lie{D}_{n\geq 2}$ with
 $\lie{A}_1=\lie{B}_1=\lie{C}_1$, $\lie{B}_2=\lie{C}_2$, $\lie{D}_2=\lie{A}_1\oplus \lie{A}_1$, $\lie{D}_3=\lie{A}_3$.
-Five exceptions with
-%
-dimensions
+Five exceptions with dimensions
 \begin{tabular}{|ccccc|}
  $\lie{E}_6$ & $\lie{E}_7$ & $\lie{E}_8$ & $\lie{F}_4$ & $\lie{G}_2$ \\
  $78$ & $133$ & $248$ & $52$ & $14$ \\[-1ex]
@@ -306,7 +356,8 @@ The $12$-element Weyl group is the dihedral group~$D_6$, and $\{d_i\}=\{2,6\}$.
 \end{description}
 The Coxeter number $h(\lie{G})=(\dim\lie{G}/\rank\lie{G})-1$ is the largest~$d_i$.  A Coxeter element is the product of all simple reflections, in any order.  Its eigenvalues $\E^{2\pi\I(d_i-1)/h}$ come in conjugate pairs.
 
-\paragraph{Real case.}\hspace{0pt minus 1pt}  Let
+\paragraph[Real simple Lie algebras]{A real simple Lie algebra} can be the complex algebras above or their real forms.
+Let
 $\lie{su}^*(2n)=\lie{gl}(n,\HH)/\RR$,
 $\lie{so}^*(2n)=\lie{o}(n,\HH)$,
 $\lie{sp}(m,n)=\lie{usp}(2m,2n)=\lie{u}(m,n,\HH)$.
