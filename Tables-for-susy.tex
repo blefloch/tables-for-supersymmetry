@@ -146,6 +146,7 @@
 %\newcommand{\proposition}{\par\noindent\textbf{Prop.} \ignorespaces}
 \setlength{\parskip}{2pt plus 2pt minus 2pt}
 \setlength{\baselineskip}{10pt}
+\setlength{\parindent}{10pt}
 
 \newcommand{\tabfoot}[1]{\leavevmode\ensuremath{{}^{\tabfootsymb{#1}}}}
 \makeatletter
@@ -206,7 +207,7 @@
 \newcommand{\Lie}[1]{
   \mathrm {
     \clist_if_in:nnF
-      { GL , SL , SO , SU , U , O , Sp , USp , OSp , Spin , A , B , C , D , E , F , G , P , Q , UQ , W , S , \tilde S , \tilde{S} , H , PSp }
+      { GL , PGL , SL , PSL , SO , PSO , SU , PSU , U , PU , O , PO , Sp , PSp , USp , PUSp , OSp , POSp , Spin , PSpin , P , PS , A , B , C , D , E , F , G , Q , UQ , W , S , \tilde S , \tilde{S} , H }
       {#1} { \UnknownLie }
     #1
   }
@@ -240,6 +241,7 @@
         { \tilde{S} } { \tilde{s} }
         { H } { h }
         { T } { t }
+        { g } { g }
       } { \ERROR #1 }
   }
 }
@@ -301,7 +303,7 @@ and $\Gamma(z;0,q)=1/(z;q)_\infty$.
 
 \section[Lie algebras and groups]{Lie algebras and groups (dimension${}<\infty$)}
 
-\subsection{Simple Lie algebras}
+\subsection{Lie algebras}
 
 \paragraph{Complex simple Lie algebras.}
 Infinite series $\lie{A}_{n\geq 1}$, $\lie{B}_{n\geq 1}$, $\lie{C}_{n\geq 1}$, $\lie{D}_{n\geq 2}$ with
@@ -363,10 +365,10 @@ The $12$-element Weyl group is the dihedral group~$D_6$, and $\{d_i\}=\{2,6\}$.
 \end{description}
 The Coxeter number $h(\lie{G})=(\dim\lie{G}/\rank\lie{G})-1$ is the largest~$d_i$.  A Coxeter element is the product of all simple reflections, in any order.  Its eigenvalues $\E^{2\pi\I(d_i-1)/h}$ come in conjugate pairs.
 
-\paragraph[Real simple Lie algebras]{A real simple Lie algebra} is a complex algebra (see above) or a real form thereof.
+\paragraph[Real simple Lie algebras]{A real simple Lie algebra} is a complex algebra (see above) or a real form of it.
 Let
 $\lie{sp}(m,n)=\lie{usp}(2m,2n)=\lie{u}(m,n,\HH)$,
-$\lie{su}^*(2n)=\lie{gl}(n,\HH)/\RR$,
+$\lie{su}^*(2n)=\lie{sl}(n,\HH)=\{\Re\Tr M=0\text{ in }\lie{gl}(n,\HH)\}\simeq\lie{gl}(n,\HH)/\RR$,
 $\lie{so}^*(2n)=\lie{o}(n,\HH)$.
 A Lie algebra is called compact if it exponentiates to a compact Lie group.
 In $\lie{E}_{r(s)}$, $s$ is the number of $(\text{non-compact})-(\text{compact})$ generators.
@@ -456,6 +458,7 @@ of $\Nsusy=0$ unitary minimal models ($c<1$),
 of quivers of finite type,\ldots{}
 \begin{tab}{*{3}{>{$}l<{$}}}\label{page:ADE-polynomial}
   \lie{G} & (p,q,r) & \text{Kleinian polynomial} \\
+  \midrule
   \lie{A}_k & (1,q,1+k-q) & w^2+x^2+y^{k+1} \\
   \lie{D}_k & (2,2,k-2) & w^2+x^2y+y^{k-1} \\
   \lie{E}_6 & (2,3,3) & w^2+x^3+y^4 \\
@@ -467,13 +470,125 @@ of quivers of finite type,\ldots{}
 
 % todo: say Lie subgroups can be horrible, such as irrational line in $T^2$
 
-% todo: Name "\Lie{USp}(2n)=\Lie{Sp}(n)" the compact symplectic group
-
 % todo: Ph. Spindel, A. Sevrin, W. Troost, A. Van Proeyen (1988), D. Joyce (1992) construct (all) left-invariant hypercomplex structures on (simply-connected?) compact (reductive?) Lie groups: any simple Lie groups become ``left-invariantly hypercomplex'' once multiplied by an appropriate torus.
 
 \paragraph{Basics.}  The identity component~$G_0$ is a normal subgroup: $G/G_0$ is the group of components.  The maximal compact subgroup~$K$ is unique up to conjugation.
 
-Every compact connected Lie group~$K$ is a quotient of $\Lie{U}(1)^n\times\prod_{i=1}^m K_i$ by a finite subgroup of its center, where~$K_i$ are simple, compact, simply-connected, connected Lie groups.
+% todo: is every compact connected Lie group reductive?
+
+\paragraph[Compact connected Lie groups]{Every compact connected Lie group}~$K$
+is a quotient of $\Lie{U}(1)^n\times\prod_{i=1}^m K_i$ by a finite subgroup~$\Gamma$ of its center,
+where~$K_i$ are simple, compact, simply-connected, connected.
+Then $\pi_1(K)/\ZZ^n\simeq\Gamma$ for some embedding $\ZZ^n\hookrightarrow\pi_1(K)$,
+and the center of~$K$ is $Z(K)=\bigl(U(1)^n\times\prod_{i=1}^m Z(K_i)\bigr)/\Gamma$.
+
+Center of all such~$K_i$:
+\hspace{0pt plus 10pt}$Z(\Lie{SU}(n))=\ZZ_n$,
+\hspace{0pt plus 10pt}$Z(\Lie{USp}(2n))=\ZZ_2$,
+\hspace{0pt plus 10pt}$Z(\Lie{Spin}(n\geq 3))=(\ZZ_2$ for $n$ odd, $\ZZ_4$ for $n/2$ odd, $\ZZ_2^2$ otherwise),
+\hspace{0pt plus 10pt}$Z(\widetilde{\Lie{E}}_{6(-78)})=\ZZ_3$,
+\hspace{0pt plus 10pt}$Z(\widetilde{\Lie{E}}_{7(-133)})=\ZZ_2$,
+while $\Lie{E}_{8(-248)}$, $\Lie{F}_{4(-52)}$, $\Lie{G}_{2(-14)}$ have no center.
+
+Named quotients: $\Lie{SO}(n)=\Lie{Spin}(n)/\ZZ_2$ and $\Lie{P}G=G/Z(G)$ for $G=\Lie{SU},\Lie{USp},\Lie{SO}$ (also $\Lie{U},\Lie{GL},\Lie{SL}$).
+The other two quotients $\Lie{Spin}(4n)/\ZZ_2$ have no name.
+
+
+\paragraph[Real simple Lie groups]{Real simple Lie groups}
+are the simply-connected~$G$ (classified by simple Lie algebras)
+and their quotients by a subgroup $\Gamma\subset Z(G)$.
+One has $Z(G/\Gamma)=Z(G)/\Gamma$ and $\pi_1(G/\Gamma)=\Gamma$.
+All $G/\Gamma$ are covers of the center-free $G_{\text{cf}}=G/Z(G)$,
+and are classified by quotients of $\pi_1(G_{\text{cf}})=\pi_1(K)$
+where $K\subset G_{\text{cf}}$ is the maximal compact subgroup.
+
+For each real simple Lie algebra~$\lie{g}$, we write: $G_{\text{cf}}$~as a quotient of its algebraic universal cover~$\widetilde{G}_{\text{alg}}$ (largest embeddable in $\Lie{GL}(N<\infty)$) by the algebraic~$\pi_1$; the (topological)~$\pi_1$; the real rank~$r_{\Re}$; and~$K$.
+Below, $\iota(l)=(1$ for $l$~odd, $2$ otherwise), $p+q=n$ with $p,q\geq 1$, and $2k=n$ when $n$ is even.
+For $\lie{sl}(2)$ use $\Lie{SU}(2)=\Lie{Sp}(2)$, $\Lie{SL}(2,\RR)=\Lie{Sp}(2,\RR)$, $\Lie{SL}(2,\CC)=\Lie{Sp}(2,\CC)$.
+\begin{tab}{@{}c@{ }llcr}
+& $\widetilde{G}_{\text{alg}}/\pi_1^{\text{alg}}(G_{\text{cf}})$ & $K$ & $\pi_1$ & $r_{\Re}$ \\
+\midrule
+\multirow{5}{*}{\rotatebox{90}{$\lie{sl}(n\geq 3)$}}
+& $\Lie{SU}(n)/\ZZ_n$ & $\Lie{SU}(n)/\ZZ_n$ & $\ZZ_n$ & $0$ \\
+& $\Lie{SL}(n,\RR)/\ZZ_{\iota(n)}$ & $\Lie{PSpin}(n)$\tabfoot{1}\tabfoot{2} & \clap{$Z(\Lie{Spin}(n))$\tabfoot{1}\tabfoot{2}} & $n-1$ \\
+& $\Lie{SU}(p,q)/\ZZ_{p+q}$ & $\frac{\Lie{SU}(p)\times\Lie{SU}(q)\times\Lie{U}(1)}{\ZZ_{pq/\gcd(p,q)}}$\tabfoot{3} & $\ZZ$ & $\min(p,q)$ \\
+& $\Lie{SU}^*(2k)/\ZZ_2$ & $\Lie{USp}(2k)/\ZZ_2$ & $\ZZ_2$ & $k-1$ \\
+& $\Lie{SL}(n,\CC)/\ZZ_n$ & $\Lie{SU}(n)/\ZZ_n$ & $\ZZ_n$ & $n-1$ \\
+\midrule
+\multirow{4}{*}{\rotatebox{90}{$\lie{so}(n\geq 3)$}}
+& $\Lie{PSpin}(n)$\tabfoot{1} & $\Lie{PSpin}(n)$ & \clap{$Z(\Lie{Spin}(n))$\tabfoot{1}} & $0$ \\
+& $\Lie{PSpin}(p,q)$\tabfoot{1} & \rlap{$\frac{\Lie{SO}(p){\times}\Lie{SO}(q)}{\ZZ_2\text{ if $p$, $q$ even}}$} & $\Gamma$\tabfoot{4} & $\min(p,q)$ \\
+& $\Lie{SO}^*(2k)/\ZZ_2$ & $\Lie{U}(k)/\ZZ_2$ & \clap{$\ZZ_{\iota(k)}\times\ZZ$} & $\lfloor k/2\rfloor$ \\
+& $\Lie{PSpin}(n,\CC)$ & $\Lie{PSpin}(n)$ & \clap{$Z(\Lie{Spin}(n))$\tabfoot{1}} & $\lfloor n/2\rfloor$ \\
+\midrule
+\multirow{4}{*}{\rotatebox{90}{$\lie{sp}(2n\geq 2)$}}
+& $\Lie{USp}(2n)/\ZZ_2$    & $\Lie{USp}(2n)/\ZZ_2$ & $\ZZ_2$ & $0$         \\
+& $\Lie{Sp}(2n,\RR)/\ZZ_2$ & $\Lie{U}(n)/\ZZ_2$ & \clap{$\ZZ_{\iota(n)}\times\ZZ$} & $n$         \\
+& $\Lie{USp}(2p,2q)/\ZZ_2$ & $\frac{\Lie{USp}(2p)\times \Lie{USp}(2q)}{\ZZ_2}$ & $\ZZ_2$ & $\min(p,q)$ \\
+& $\Lie{Sp}(2n,\CC)/\ZZ_2$ & $\Lie{USp}(2n)/\ZZ_2$ & $\ZZ_2$ & $n$         \\
+\end{tab}
+
+\tabfoot{1}
+For $r+s\geq 3$,
+$\Lie{PSpin}(r,s)=\Lie{Spin}(r,s)/Z(\Lie{Spin}(r,s))$ and
+$Z(\Lie{Spin}(r,s))=(\ZZ_2$ if $r$ or $s$ odd, $\ZZ_4$ if $\frac{r+s}{2}$ odd, else~$\ZZ_2^2$).
+
+\tabfoot{2}
+Exception: for $n=2$, $K=\Lie{SO}(2)/\ZZ_2$ and $\pi_1=\ZZ$.
+
+\tabfoot{3}
+$K\ni\overline{(A,B,\lambda)}\mapsto\setlength{\arraycolsep}{0pt}\begin{pmatrix}\lambda^{q/(p+q)}A&0\\0&\lambda^{-p/(p+q)}B\end{pmatrix}\in\Lie{PSU}(p,q)$.
+
+\tabfoot{4}
+$\Gamma=\pi_1(\Lie{SO}(p))\times\pi_1(\Lie{SO}(q))$ for $p$ or $q$ odd (each factor is~$\ZZ_2$ except $\pi_1(\Lie{SO}(1))=0$ and $\pi_1(\Lie{SO}(2))=\ZZ$);
+otherwise $\Gamma\subset\pi_1(\Lie{SO}(p)/\ZZ_2)\times\pi_1(\Lie{SO}(q)/\ZZ_2)$ consists of $(\gamma_p,\gamma_q)$ such that both or neither~$\gamma$ is in the corresponding $\pi_1(\Lie{SO})\subset\pi_1(\Lie{SO}/\ZZ_2)$.
+
+\begin{tab}{@{}c@{ }llcr}
+& $\widetilde{G}_{\text{alg}}/\pi_1^{\text{alg}}(G_{\text{cf}})$ & $K$ & $\pi_1$ & $r_{\Re}$ \\
+\midrule
+& $\widetilde{\Lie{E}}_{6(-78)}/\ZZ_3$ & $=\Lie{E}_{6(-78)}$ & $\ZZ_3$ & $0$ \\
+& $\Lie{E}_{6(-26)}$ & $\Lie{F}_{4(-52)}$ & $1$ & $2$ \\
+& $\widetilde{\Lie{E}}_{6(-14)}/\ZZ$ & $\Lie{Spin}(10)\times\Lie{U}(1)/?$ & $\ZZ$ & $2$ \\
+& $\widetilde{\Lie{E}}_{6(2)}/\ZZ_6$ & $(\Lie{SU}(6)/\ZZ_6)\times\Lie{SU}(2)$ & $\ZZ_6$ & $4$ \\
+& $\widetilde{\Lie{E}}_{6(6)}/\ZZ_2$ & $\Lie{USp}(8)/\ZZ_2$ & $\ZZ_2$ & $6$ \\
+& $\widetilde{\Lie{E}}^{\CC}_{6}/\ZZ_3$ & $\Lie{E}_{6(-78)}$ & $\ZZ_3$ & $6$ \\
+\midrule
+& $\widetilde{\Lie{E}}_{7(-133)}/\ZZ_2$ & $=\Lie{E}_{7(-133)}$ & $\ZZ_2$ & $0$ \\
+& $\widetilde{\Lie{E}}_{7(-25)}/\ZZ$ & $\Lie{E}_{6(-78)}\times\Lie{U}(1)/?$ & $\ZZ$ & $3$ \\
+& $\widetilde{\Lie{E}}_{7(-5)}/\ZZ_2^2$ & $\Lie{Spin}(12)\times\Lie{SU}(2)/\ZZ_2^2$ & $\ZZ_2^2$ & $4$ \\
+& $\widetilde{\Lie{E}}_{7(7)}/\ZZ_4$ & $\Lie{SU}(8)/\ZZ_4$ & $\ZZ_4$ & $7$ \\
+& $\widetilde{\Lie{E}}^{\CC}_{7}/\ZZ_2$ & $\Lie{E}_{7(-133)}$ & $\ZZ_2$ & $7$ \\
+\midrule
+& $\Lie{E}_{8(-248)}$ & $\Lie{E}_{8(-248)}$ & $1$ & $0$ \\
+& $\widetilde{\Lie{E}}_{8(-24)}/\ZZ_2$ & $\widetilde{\Lie{E}}_{7(-133)}\times\Lie{SU}(2)/\ZZ_2$ & $\ZZ_2$ & $4$ \\
+& $\widetilde{\Lie{E}}_{8(8)}/\ZZ_2$ & $\Lie{SO}(16)/\ZZ_2$ & $\ZZ_2$ & $8$ \\
+& $\Lie{E}^{\CC}_{8}$ & $\Lie{E}_{8(-248)}$ & $1$ & $8$ \\
+\midrule
+& $\Lie{F}_{4(-52)}$ & $\Lie{F}_{4(-52)}$ & $1$ & $0$ \\
+& $\widetilde{\Lie{F}}_{4(-20)}/\ZZ_2$ & $\Lie{Spin}(9)/\ZZ_2$ & $\ZZ_2$ & $1$ \\
+& $\widetilde{\Lie{F}}_{4(4)}$ & $\Lie{USp}(6)\times\Lie{SU}(2)/\ZZ_2$ & $\ZZ_2$ & $4$ \\
+& $\Lie{F}^{\CC}_{4}$ & $\Lie{F}_{4(-52)}$ & $1$ & $4$ \\
+\midrule
+& $\Lie{G}_{2(-14)}$ & $\Lie{G}_{2(-14)}$ & $1$ & $0$ \\
+& $\widetilde{\Lie{G}}_{2(2)}/\ZZ_2$ & $\Lie{SU}(2)\times\Lie{SU}(2)/\ZZ_2$ & $\ZZ_2$ & $4$ \\
+& $\Lie{G}^{\CC}_{2}$ & $\Lie{G}_{2(-14)}$ & $1$ & $4$ \\
+\end{tab}
+\qquad\llap{\rotatebox{90}{\mbox{}\rlap{\qquad\qquad\textbf{Discrete groups in this table should not be trusted.}}}}
+
+% todo: outer automorphism groups
+
+
+\paragraph{Classical Lie groups}
+$\pi_0(\Lie{O}(p,q))=\pi_0(\Lie{O}(p))\times\pi_0(\Lie{O}(q))$ is $\ZZ_2^2$ for $p,q\geq 1$;
+the identity component $\Lie{SO}_+(p,q)$ has a double cover $\Lie{Spin}(p,q)$.
+
+% todo: give a construction of all real forms of classical Lie groups
+% todo: Name "\Lie{USp}(2n)=\Lie{Sp}(n)" the compact symplectic group
+
+\paragraph{Accidental isomorphisms} (low-rank real reductive Lie groups)
+$\RR/\ZZ=\Lie{U}(1)$; $\Lie{SU}(2)=\Lie{Spin}(3)\twoheadrightarrow\Lie{SO}(3)$; \ldots{}
+
+% todo: complete list of isomorphisms, perhaps describe embeddings e.g. of SO(1,3)=SL(2,C) in Spin(4,C)=SL(2,C)xSL(2,C)?
 
 \paragraph{Homotopy.} Any connected Lie group is homeomorphic to its maximal compact subgroup~$K$ times a Euclidean space~$\RR^p$.
 All $\pi_{j\geq 1}(K)$ are abelian and finitely generated, $\pi_2(K)=0$, $\pi_3(K)=\ZZ^m$ where $m$~counts simple factors in a finite cover $\Lie{U}(1)^n\times\prod_{i=1}^m K_i\twoheadrightarrow K$, and $\pi_j(K)=\prod_{i=1}^m\pi_j(K_i)$ for $j\geq 2$.
@@ -503,14 +618,13 @@ For any~$G$ there exists $\prod_{i=1}^{\rank G} S^{2d_i-1}\to G$ which induces i
 \vspace{-.6\baselineskip}
 $\pi_{j\geq 2}(G)$ has a factor~$\ZZ$ for each~$S^j$ above, and some torsion.
 Explicitly, $\pi_j(\Lie{SU}(n))$ is $\ZZ$~for odd~$j<2n$, $0$~for even~$j<2n$, and is pure torsion for $j\geq 2n$.
-Similarly, for $j<4n+2$, $\pi_j(\Lie{USp}(2n))$ is $\ZZ$~for $j\equiv 3,7\bmod{8}$, $\ZZ_2$~for $j\equiv 4,5\bmod{8}$, and $0$~otherwise.
+Similarly, $\pi_{j<4n+2}(\Lie{USp}(2n))$ is $\ZZ$~for $j\equiv 3,7\bmod{8}$, $\ZZ_2$~for $j\equiv 4,5\bmod{8}$, and $0$~otherwise.
 
 % http://www.maths.ed.ac.uk/~aar/surgery/uicc/mimura.pdf claims the table is the "well-known Hopf theorem"
 % See Abanov's http://felix.physics.sunysb.edu/~abanov/Teaching/Spring2009/Notes/abanov-cpA1-upload.pdf
 
-% todo: say somewhere $SU(2)$ is $S^3$.
+% todo: say somewhere $SU(2)$ is homeomorphic to $S^3$.
 
-% todo: fundamental groups.  Include $\pi_1(\Lie{U}(n))=\ZZ$.
 
 \subsection{Simple Lie superalgebras}
 
