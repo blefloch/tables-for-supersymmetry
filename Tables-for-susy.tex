@@ -929,6 +929,28 @@ finite-dimensional symplectic representation~$\repr{M}$ of~$G$.
 
 \subsection[Two-dimensional CFT]{Two-dimensional conformal field theories}
 
+\paragraph{Virasoro algebra} $[L_m,L_n]=(m-n)L_{m+n}+\frac{c}{12}(m^3-m)\delta_{m+n,0}$ where $m\in\ZZ$.  Adjoint $L_n^\dagger=L_{-n}$ and $c^\dagger=c$.
+
+\paragraph{\(\Nsusy=1\) super-Virasoro algebra} additionally $[L_m,G_r]=(m/2-r)G_{m+r}$ and $\{G_r,G_s\}=2L_{r+s}+\frac{c}{3}(r^2-1/4)\delta_{r+s,0}$ where either $r\in\ZZ$ (Ramond algebra) or $r\in\ZZ+1/2$ (Neveu--Schwarz algebra).  Adjoint $G_r^\dagger=G_{-r}$.
+
+\paragraph{\(\Nsusy=2\) super-Virasoro algebra}
+% $[L_m,L_n]=(m-n)L_{m+n}+\frac{c}{12}(m^3-m)\delta_{m+n,0}$,
+$[L_m,J_n]=-nJ_{m+n}$, \hfil\break
+$[J_m,J_n]=\frac{c}{3}m\delta_{m+n,0}$,
+$[L_m,G_r^{\pm}]=(m/2-r)G_{m+r}^{\pm}$, \hfil\break
+$[J_m,G_r^{\pm}]=\pm G_{m+r}^{\pm}$,
+$\{G_r^+,G_s^+\}=\{G_r^-,G_s^-\}=0$, \hfil\break
+$\{G_r^+,G_s^-\}=L_{r+s}+\frac{1}{2}(r-s)J_{r+s}+\frac{c}{6}(r^2-1/4)\delta_{r+s,0}$. \hfil\break
+Adjoint $L_m^\dagger=L_{-m}$, $J_m^\dagger=J_{-m}$, $(G_r^{\pm})^\dagger=G_{-r}^{\mp}$, $c^\dagger=c$.
+The algebras with $r\in\ZZ$ (Ramond) or $r\in\ZZ+1/2$ (Neveu--Schwarz) are isomorphic under spectral shift~$\alpha_{\pm 1/2}$ where
+$\alpha_{\eta}(L_n)=L_n+\eta J_n+\frac{c}{6}\eta^2\delta_{n,0}$,
+$\alpha_{\eta}(J_n)=J_n+\frac{c}{3}\eta\delta_{n}$,
+$\alpha_{\eta}(G_r^{\pm})=G_{r\pm\eta}^{\pm}$.
+Another automorphism is $G_r^+\leftrightarrow G_r^-$, $J_m\mapsto-J_m-\frac{c}{3}\delta_{m,0}$.
+We get a $\ZZ\rtimes\ZZ_2$ automorphism group.
+
+\paragraph{\(SW(3/2,2)\) super-Virasoro algebra} has $L$, $G$, $W$, $U$
+
 \paragraph[bc and beta-gamma systems]{$bc$ system, $\beta\gamma$ system}
 
 \paragraph{Liouville CFT} has $c=1+6(b+1/b)^2$ and primary operators with $h(\alpha)=\alpha(b+1/b-\alpha)$ for ``momentum'' $\alpha\in \frac{1}{2}(b+1/b)+i\RR$.
