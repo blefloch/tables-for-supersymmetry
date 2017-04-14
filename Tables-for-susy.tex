@@ -288,11 +288,17 @@ obeys $\Gamma_q(x+1)=\frac{1-q^x}{1-q}\Gamma_q(x)$
 and $\Gamma_q(x)\xrightarrow{q\to 1}\Gamma(x)$.
 It has simple poles at $x\in\ZZ_{\leq 0}$ and no zero.
 
-\paragraph{Dedekind eta function.}  Modular form of weight~$\frac{1}{2}$ given by $\eta(\tau)=q^{1/24}(q;q)_\infty$ where $q=\E^{2\pi\I\tau}$.
+\paragraph{Modular form} of weight $k$: holomorphic on $\mathbf{H}=\{\Im\tau>0\}$ and as $\tau\to\I\infty$ and obeys $f(\frac{a\tau+b}{c\tau+d})=(c\tau+d)^kf(\tau)$.
+
+\paragraph{Dedekind eta function:} $\eta(\tau)=q^{1/24}(q;q)_\infty$ for $q=\E^{2\pi\I\tau}$. $\Delta=\eta^{24}$ is a modular form of weight~$12$.
 
 \paragraph{Theta functions:} q-theta $\theta(z;q)=(z;q)_\infty(q/z;q)_\infty$ obeys $\theta(z;q)=\theta(q/z;q)=-z\theta(1/z;q)$.
 Variant $\theta_1(z;q)=\theta_1(\tau|u)=\I z^{-1/2}q^{1/12}\eta(\tau)\theta(z;q)=-\I z^{1/2}q^{1/8}(q;q)_\infty(qz;q)_\infty(\frac{1}{z};q)_\infty$
 with $z=\E^{2\pi\I u}$.
+
+\paragraph{Eisenstein series} ($k\geq 1$) $E_{2k}=1+\frac{2}{\zeta(1-2k)}\sum_{n=1}^{\infty}n^{2k-1}\frac{q^n}{1-q^n}$ obeys
+$E_{2k}(\frac{a\tau+b}{c\tau+d})=(c\tau+d)^{2k}E_{2k}(\tau)+\frac{6}{\pi\I}c(c\tau+d)\delta_{k=1}$.
+For $k\geq 2$ it is a modular form and $E_{2k}=\frac{1}{2\zeta(2k)}\sum_{0\neq\lambda\in\mathbb{Z}+\tau\mathbb{Z}} \lambda^{-2k}$.
 
 \paragraph{Elliptic gamma function}
 $\Gamma(z;p,q)=\plexp\frac{z-pq/z}{(1-p)(1-q)}=\prod_{m=0}^{\infty}\prod_{n=0}^{\infty}(1-p^{m+1}q^{m+1}z^{-1})/(1-p^mq^nz)$.
