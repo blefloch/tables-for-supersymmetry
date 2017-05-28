@@ -202,6 +202,8 @@
 \DeclareMathOperator{\gr}{gr}
 \DeclareMathOperator{\diag}{diag}
 \newcommand{\one}{\mathbbm{1}}
+\newcommand{\pullback}[2]{#1^*#2}
+\newcommand{\bundle}{\mathcal}
 
 \ExplSyntaxOn
 \newcommand{\Lie}[1]{
@@ -883,7 +885,8 @@ $\Nsusy=2$ $\to$ 2d $\Nsusy=(2,2)$.
 
 \section{Supersymmetric gauge theories}
 
-A gauge group is a compact reductive Lie group, \eg, $(SU(3)\times SU(2)\times U(1))/\ZZ_6$.
+A gauge group is a compact reductive Lie group~$G$ such as $(SU(3)\times SU(2)\times U(1))/\ZZ_6$.
+Gauge couplings are one real parameter per simple factor in~$\lie{g}$.
 
 \subsection{Maximal super Yang--Mills}
 
@@ -905,15 +908,13 @@ A gauge group is a compact reductive Lie group, \eg, $(SU(3)\times SU(2)\times U
 \end{tab}
 % todo: discrete $R$-symmetries?
 
-\subsection{4d \(\Nsusy=1\)}
+\subsection{4d \(\Nsusy=4\)}
 
-\paragraph{Superpotential term} $\int\dd[^2]\theta W$ gives a potential for scalars and Yukawa-type interactions.  $W$~is holomorphic in chiral fields and in couplings seen as background fields.  Example: the kinetic term $\Im \int\dd[^2]\theta[\tau W_\alpha^2]$ of an abelian gauge field: $W_\alpha^2$ is a chiral field.
-
-\paragraph{Wess-Zumino model:} chiral multiplet~$\phi$ with $W=m\phi^2+g\phi^3$.
-
-\paragraph{Pure supersymmetric Yang--Mills (SYM)} classically has $\Lie{U}(1)_R$ symmetry, broken by instantons to $\ZZ_{2h}$ with $h=C_2(\text{adj})$.  It confines, is mass-gapped, and has $C_2(A)$ vacua associated to breaking $\ZZ_{2h}$ to $\ZZ_2$ by gaugino condensation $\langle\lambda\lambda\rangle$.  Witten index $\Tr(-1)^F=h$.
+Data: gauge group, and for each simple fact a gauge coupling and theta angle: $\tau=\theta/(2\pi)+4\pi i/g^2$.
 
 \subsection{4d \(\Nsusy=2\)}
+
+Data: gauge group, representation for half-hypermultiplets. % todo: symplectic rep?
 
 There can be no continuous flavor symmetry enhancement.
 
@@ -929,6 +930,14 @@ Lift to $\RR^4\times S^1$ gives $K$-theoretic Nekrasov partition function.  The 
 
 \paragraph{\((G,G')\) Argyres--Douglas theories} (with $G$ and~$G'$ among $\Lie{A}_k$, $\Lie{D}_k$, $\Lie{E}_{6,7,8}$) are engineered as IIB strings on three-fold singularity $f_G(x_1,x_2)+f_{G'}(x_3,x_4)=0$ where $f_{A_k}(x,y)=x^2+y^{k+1}$ \etc{} (see \autopageref{page:ADE-polynomial}).
 
+\subsection{4d \(\Nsusy=1\)}
+
+\paragraph{Superpotential term} $\int\dd[^2]\theta W$ gives a potential for scalars and Yukawa-type interactions.  $W$~is holomorphic in chiral fields and in couplings seen as background fields.  Example: the kinetic term $\Im \int\dd[^2]\theta[\tau W_\alpha^2]$ of an abelian gauge field: $W_\alpha^2$ is a chiral field.
+
+\paragraph{Wess-Zumino model:} chiral multiplet~$\phi$ with $W=m\phi^2+g\phi^3$.
+
+\paragraph{Pure supersymmetric Yang--Mills (SYM)} classically has $\Lie{U}(1)_R$ symmetry, broken by instantons to $\ZZ_{2h}$ with $h=C_2(\text{adj})$.  It confines, is mass-gapped, and has $C_2(A)$ vacua associated to breaking $\ZZ_{2h}$ to $\ZZ_2$ by gaugino condensation $\langle\lambda\lambda\rangle$.  Witten index $\Tr(-1)^F=h$.
+
 \subsection{3d \(\Nsusy=4\)}
 
 Gauge group~$G$ and
@@ -938,8 +947,39 @@ finite-dimensional symplectic representation~$\repr{M}$ of~$G$.
 \subsection{3d \(\Nsusy=2\)}
 
 Data: gauge group~$G$, quantized trace on $\lie{g}$ for the
-Chern--Simons term, representation~$R$ of~$G$ for chiral multiplets,
-gauge-invariant superpotential (may break $R$-symmetry).
+Chern--Simons term, representation~$V$ of~$G$ for chiral multiplets,
+$G$-invariant superpotential (may break $R$-symmetry).
+
+\subsection{1d \(\Nsusy=4\)}
+
+%% 1407.2567
+Data: gauge group~$G$, representation~$V$ of~$G$ for chiral multiplets.
+Gauge couplings, FI parameters, superpotential~$W$.
+Flavour Wilson line, twisted and real masses $v,m_1+im_2,m_3\in\lie{g}_F$ that commute.
+
+$R$-symmetry: $SU(2)$, times $U(1)$ if $W$~has charge~$2$.  Mixing with flavour symmetries not fixed by superconformal algebra.
+
+
+\subsection{1d \(\Nsusy=2\)}
+
+%% 1407.2567
+Discrete data: gauge group~$G$, chiral multiplets in a representation~$V$ of~$G$,
+Wilson line in a unitary representation $M=M_0\oplus M_1$ of~$\lie{g}$,
+flavour symmetry group $G_F\subseteq U(V)\times U(M_0)\times U(M_1)$ commuting with~$G$.
+Gauge anomaly cancellation: $M\otimes\det^{1/2}V$ must be a representation of~$G$.
+
+Continuous data: gauge couplings, FI parameters, flavor Wilson line and real mass $v,\sigma\in\lie{g}_F$ that commute, $\lie{g}$-equivariant holomorphic odd map $Q\colon V\to \End M$ with $Q^2=0$ describing how supercharges act on~$M$.
+
+Special case: Fermi multiplets in representation~$V_{\text{f}}$ of~$G$ with $G$-equivariant holomorphic maps $E\colon V\to V_{\text{f}}$ and $J\colon V\to V_{\text{f}}^{\vee}$ obeying $J\cdot E=0$ are equivalent to Wilson line in $M=\wedge V_{\text{f}}\otimes\det^{-1/2}V_{\text{f}}$ with $Q=E\wedge{}+J\lrcorner{}$.
+
+$R$-symmetry: $U(1)$ if $Q\colon V\to \End M$ has charge~$1$.  Mixing with flavour symmetries not fixed by superconformal algebra.
+
+\paragraph{NLSM}
+Chiral multiplet: scalar~$\phi$ in a K\"ahler target~$X$ and fermion in holomorphic bundle~$\pullback{\phi}{T_X}$.
+Wilson line depends on a complex of vector bundles~$\bundle{F}$.
+Fermi multiplet takes values in a holomorphic vector bundle~$\bundle{E}$ with hermitian metric,
+equivalent to Wilson line with $\bundle{F}=\det^{-1/2}\bundle{E}\otimes\wedge\bundle{E}$.
+Anomaly cancellation: $\sqrt{K_X}\otimes\wedge T_X\otimes\det^{-1/2}\bundle{E}\otimes\wedge\bundle{E}\otimes\bundle{F}$ is a well-defined vector bundle on~$X$.
 
 \section{Other theories}
 
