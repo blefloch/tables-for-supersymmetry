@@ -210,7 +210,7 @@
 \newcommand{\Lie}[1]{
   \mathrm {
     \clist_if_in:nnF
-      { GL , PGL , SL , PSL , SO , PSO , SU , PSU , U , PU , O , PO , Sp , PSp , USp , PUSp , OSp , POSp , Spin , PSpin , P , PS , A , B , C , D , E , F , G , Q , UQ , W , S , \tilde S , \tilde{S} , H }
+      { GL , PGL , SL , PSL , SO , PSO , SU , PSU , U , PU , O , PO , Sp , PSp , USp , PUSp , OSp , POSp , Spin , PSpin , Pin, P , PS , A , B , C , D , E , F , G , Q , UQ , W , S , \tilde S , \tilde{S} , H }
       {#1} { \UnknownLie }
     #1
   }
@@ -1080,24 +1080,30 @@ $n=\dim_{\RR}X$) is a $G$-subbundle of the
 $\Lie{GL}(n,\RR)$-principal bundle $\Lie{GL}(TX)$ of tangent
 frames, namely a global section of $\Lie{GL}(TX)/G$.
 
-A manifold is oriented if it has a $\Lie{GL}^+(n,\RR)=\{\det>0\}$
+A manifold is oriented if it has a $\Lie{GL}_+(n,\RR)=\{\det>0\}$
 structure.  Similar definitions for Riemannian manifolds \etc:
 \begin{tab}{@{ }l@{ \ }l@{\hspace{-2em}}r@{ }}
-  $G$-structure & Manifold type & Other characterization\tabfoot{1} \\
+  $G$-structure \ & Manifold type & \quad \ Other characterization\tabfoot{1} \\
   \midrule
-  $\Lie{O}(n)$ & Riemannian & Symmetric metric $g>0$ \\
+  $\Lie{O}(n)$ & \hspace{-1.5em} Riemannian & metric $g>0$ \\
+  $\Lie{SO}(n)$ & \hspace{-1.5em} oriented, Riemannian & \\
+  $\Lie{O}(p,q)$ & \hspace{-1.5em} pseudo-Riemannian & metric of signature $(p,q)$ \\
+  $\Lie{SO}_+(p,q)$ & \hspace{-1.5em} pseudo-Riemannian, \rlap{oriented, time-oriented} & \\
+  $\Lie{Pin}_{\pm}$ or \rlap{$\Lie{Spin}$} & (pseudo)-Riemannian \rlap{pin$_{\pm}$ or spin manifold} & \\
+  \midrule
   $\Lie{GL}(n/2,\CC)$ & Almost complex & $\CC\actson TX$ (\ie, $J^2=-1$) \\
   $\Lie{Sp}(2n/2,\RR)$ & Almost symplectic & Non-degenerate $\omega\in\Omega^2X$\\
   $\Lie{U}(n/2)$ & Almost Hermitian & Two compatible $(g,J,\omega)$\tabfoot{2} \\
   \midrule
-  \rlap{$\Lie{U}^*(n/2)\Lie{USp}(2)$} & \hspace{1.5em}\rlap{Almost quaternionic\tabfoot{3}} & $\HH\actson TX$ \\
   $\Lie{U}^*(n/2)$ & Almost hypercomplex\tabfoot{3} & $J_1,J_2,J_3\actson TX$ \\
-  \rlap{$\Lie{USp}(n/2)\Lie{USp}(2)$} & \hspace{1.5em}\rlap{Almost quaternion-Hermitian} & $(g,\HH,\omega_{1,2,3})$ \\
   $\Lie{USp}(n/2)$ & Almost hyperHermitian & $(g,J_{1,2,3},\omega_{1,2,3})$ \\
+  \rlap{$\Lie{U}^*(n/2)\Lie{USp}(2)$} & \hspace{1.5em}\rlap{Almost quaternionic\tabfoot{3}} & $\HH\actson TX$ \\
+  \rlap{$\Lie{USp}(n/2)\Lie{USp}(2)$} & \hspace{1.5em}\rlap{Almost quaternion-Hermitian} & $(g,\HH,\omega_{1,2,3})$ \\
 \end{tab}
 \noindent\tabfoot{1}
-All sections are global.  For instance an almost complex structure is a
-global section $J$~of $\End TX$ with $J^2=-1$.
+All sections are global.
+For instance, an almost complex structure is a global section $J$~of $\End TX$ with $J^2=-1$.
+A metric is a global section $g$~of $S^2(T^*X)$.
 
 % [http://mathoverflow.net/a/52510/36972] second Stiefel-Whitney class of an almost quaternionic manifold of real dimension 8n vanishes
 
