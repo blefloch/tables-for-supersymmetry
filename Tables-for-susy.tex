@@ -489,7 +489,7 @@ of quivers of finite type,\ldots{}
 is a quotient of $\Lie{U}(1)^n\times\prod_{i=1}^m K_i$ by a finite subgroup~$\Gamma$ of its center,
 where~$K_i$ are simple, compact, simply-connected, connected.
 Then $\pi_1(K)/\ZZ^n\simeq\Gamma$ for some embedding $\ZZ^n\hookrightarrow\pi_1(K)$,
-and the center of~$K$ is $Z(K)=\bigl(U(1)^n\times\prod_{i=1}^m Z(K_i)\bigr)/\Gamma$.
+and the center of~$K$ is $Z(K)=\bigl(\Lie{U}(1)^n\times\prod_{i=1}^m Z(K_i)\bigr)/\Gamma$.
 
 Center of all such~$K_i$:
 \hspace{0pt plus 10pt}$Z(\Lie{SU}(n))=\ZZ_n$,
@@ -632,7 +632,7 @@ Similarly, $\pi_{j<4n+2}(\Lie{USp}(2n))$ is $\ZZ$~for $j\equiv 3,7\bmod{8}$, $\Z
 % http://www.maths.ed.ac.uk/~aar/surgery/uicc/mimura.pdf claims the table is the "well-known Hopf theorem"
 % See Abanov's http://felix.physics.sunysb.edu/~abanov/Teaching/Spring2009/Notes/abanov-cpA1-upload.pdf
 
-% todo: say somewhere $SU(2)$ is homeomorphic to $S^3$.
+% todo: say somewhere $\Lie{SU}(2)$ is homeomorphic to $S^3$.
 
 
 \subsection{Simple Lie superalgebras}
@@ -963,7 +963,7 @@ Data: gauge group~$G$, representation~$V$ of~$G$ for chiral multiplets.
 Gauge couplings, FI parameters, superpotential~$W$.
 Flavour Wilson line, twisted and real masses $v,m_1+im_2,m_3\in\lie{g}_F$ that commute.
 
-R-symmetry: $SU(2)$, times $U(1)$ if $W$~has charge~$2$.  Mixing with flavour symmetries not fixed by superconformal algebra.
+R-symmetry: $\Lie{SU}(2)$, times $\Lie{U}(1)$ if $W$~has charge~$2$.  Mixing with flavour symmetries not fixed by superconformal algebra.
 
 
 \subsection{1d \(\Nsusy=2\)}
@@ -971,14 +971,14 @@ R-symmetry: $SU(2)$, times $U(1)$ if $W$~has charge~$2$.  Mixing with flavour sy
 %% 1407.2567
 Discrete data: gauge group~$G$, chiral multiplets in a representation~$V$ of~$G$,
 Wilson line in a unitary representation $M=M_0\oplus M_1$ of~$\lie{g}$,
-flavour symmetry group $G_F\subseteq U(V)\times U(M_0)\times U(M_1)$ commuting with~$G$.
+flavour symmetry group $G_F\subseteq\Lie{U}(V)\times\Lie{U}(M_0)\times\Lie{U}(M_1)$ commuting with~$G$.
 Gauge anomaly cancellation: $M\otimes\det^{1/2}V$ must be a representation of~$G$.
 
 Continuous data: gauge couplings, FI parameters, flavor Wilson line and real mass $v,\sigma\in\lie{g}_F$ that commute, $\lie{g}$-equivariant holomorphic odd map $Q\colon V\to \End M$ with $Q^2=0$ describing how supercharges act on~$M$.
 
 Special case: Fermi multiplets in representation~$V_{\text{f}}$ of~$G$ with $G$-equivariant holomorphic maps $E\colon V\to V_{\text{f}}$ and $J\colon V\to V_{\text{f}}^{\vee}$ obeying $J\cdot E=0$ are equivalent to Wilson line in $M=\wedge V_{\text{f}}\otimes\det^{-1/2}V_{\text{f}}$ with $Q=E\wedge{}+J\lrcorner{}$.
 
-R-symmetry: $U(1)$ if $Q\colon V\to \End M$ has charge~$1$.  Mixing with flavour symmetries not fixed by superconformal algebra.
+R-symmetry: $\Lie{U}(1)$ if $Q\colon V\to \End M$ has charge~$1$.  Mixing with flavour symmetries not fixed by superconformal algebra.
 
 \paragraph{NLSM}
 Chiral multiplet: scalar~$\phi$ in a K\"ahler target~$X$ and fermion in holomorphic bundle~$\pullback{\phi}{T_X}$.
@@ -1448,7 +1448,7 @@ orbifold singularities of K3~surfaces.
 
 \paragraph{ALE hyperK\"ahler \(4\)-manifolds} $X$ are
 diffeomorphic to the minimal resolution of $\HH/\Gamma$ for some finite
-$\Gamma\subset SU(2)$.  The metric is fixed (up to isometry) by
+$\Gamma\subset\Lie{SU}(2)$.  The metric is fixed (up to isometry) by
 cohomology classes $\alpha_1,\alpha_2,\alpha_3\in H^2(X,\RR)$ such that
 there is no two-cycle~$\Sigma$ such that $\Sigma\cdot\Sigma=-2$ and all
 $\alpha_i(\Sigma)=0$.
