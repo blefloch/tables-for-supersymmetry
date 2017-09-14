@@ -131,8 +131,8 @@
       { [{ \exp_not:V \l__my_title_tl }] } {#8}
   }
 \ExplSyntaxOff
-\renewcommand{\section}{\pagebreak[1]\@startsection {section}{1}{\z@ }{-\medskipamount}{\smallskipamount}{\normalfont \large \bfseries }}
-\renewcommand{\subsection}{\pagebreak[0]\@startsection {subsection}{2}{\z@ }{-\smallskipamount}{1sp}{\normalfont \bfseries }}
+\renewcommand{\section}{\pagebreak[1]\@startsection {section}{1}{\z@ }{-\medskipamount}{\smallskipamount}{\normalfont \large \bfseries \noindent\S}}
+\renewcommand{\subsection}{\pagebreak[0]\@startsection {subsection}{2}{\z@ }{-\smallskipamount}{1sp}{\normalfont \large \bfseries \noindent\S}}
 \renewcommand{\subsubsection}{\ERROR}
 \newcommand{\@@ignorespaces}{}
 \let\@@ignorespaces\ignorespaces
@@ -700,7 +700,7 @@ and $\lie{osp}(6,2|4)=\lie{osp}^*(8|4)$.
 
 \subsection{Lie supergroups}
 
-\subsection{Representations of Lie (super)algebras/groups}
+\subsection{Representations}
 
 % todo: representations of complex Lie algebras
 % todo: representations of real Lie algebras
@@ -989,7 +989,7 @@ Anomaly cancellation: $\sqrt{K_X}\otimes\wedge T_X\otimes\det^{-1/2}\bundle{E}\o
 
 \section{Other theories}
 
-\subsection[Two-dimensional CFT]{Two-dimensional conformal field theories}
+\subsection[Two-dimensional CFT]{2d conformal field theories}
 
 \paragraph{Virasoro algebra} $[L_m,L_n]=(m-n)L_{m+n}+\frac{c}{12}(m^3-m)\delta_{m+n,0}$ where $m\in\ZZ$.  Adjoint $L_n^\dagger=L_{-n}$ and $c^\dagger=c$.
 
@@ -1072,7 +1072,7 @@ where $x\in\RR^{p,1}$ and $y\in\RR^{10-p}$.  In the near horizon $y\to 0$ these 
 
 \subsection{Riemannian geometry}
 
-\subsection{Types of manifolds: G-structures, holonomy}
+\subsection{G-structures, holonomy}
 
 \paragraph{Structure group.} A $G$-structure on a manifold~$X$ (with
 $n=\dim_{\RR}X$) is a $G$-subbundle of the
