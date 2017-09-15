@@ -503,15 +503,15 @@ Named quotients: $\Lie{SO}(n)=\Lie{Spin}(n)/\ZZ_2$ and $\Lie{P}G=G/Z(G)$ for $G=
 The other two quotients $\Lie{Spin}(4n)/\ZZ_2$ have no name.
 
 
-\paragraph[Real simple Lie groups]{Real simple Lie groups}
-are the simply-connected~$G$ (classified by simple Lie algebras)
-and their quotients by a subgroup $\Gamma\subset Z(G)$.
-One has $Z(G/\Gamma)=Z(G)/\Gamma$ and $\pi_1(G/\Gamma)=\Gamma$.
-All $G/\Gamma$ are covers of the center-free $G_{\text{cf}}=G/Z(G)$,
-and are classified by quotients of $\pi_1(G_{\text{cf}})=\pi_1(K)$
-where $K\subset G_{\text{cf}}$ is the maximal compact subgroup.
-
-For each real simple Lie algebra~$\lie{g}$, we write: $G_{\text{cf}}$~as a quotient of its algebraic universal cover~$\widetilde{G}_{\text{alg}}$ (largest embeddable in $\Lie{GL}(N<\infty)$) by the algebraic~$\pi_1$; the (topological)~$\pi_1$; the real rank~$r_{\Re}$; and~$K$.
+\paragraph{Real connected simple Lie groups}
+are the simply-con\-nected~$\widetilde{G}$ (classified by simple Lie algebras)
+and their quotients by a subgroup $\Gamma\subset Z(\widetilde{G})$ of the center;
+equivalently, covers of the center-free $G_{\text{cf}}=\widetilde{G}/Z(\widetilde{G})$.
+One has $\pi_1(\widetilde{G}/\Gamma)=\Gamma$ and $Z(\widetilde{G}/\Gamma)=Z(\widetilde{G})/\Gamma$.
+The algebraic universal cover~$\widetilde{G}_{\text{alg}}$ (largest with a faithful finite-dimensional representation) may be a quotient of~$\widetilde{G}$.
+We define $\pi_1^{\text{alg}}(\widetilde{G}_{\text{alg}}/\Gamma)=\Gamma$.
+For each real simple Lie algebra~$\lie{g}$, we tabulate: $G_{\text{cf}}$~as a quotient of $\widetilde{G}_{\text{alg}}$; the (topological)~$\pi_1$; the real rank~$r_{\Re}$; and
+the maximal compact subgroup $K\subset G_{\text{cf}}$.
 Below, $\iota(l)=(1$ for $l$~odd, $2$ otherwise), $p+q=n$ with $p,q\geq 1$, and $2k=n$ when $n$ is even.
 For $\lie{sl}(2)$ use $\Lie{SU}(2)=\Lie{Sp}(2)$, $\Lie{SL}(2,\RR)=\Lie{Sp}(2,\RR)$, $\Lie{SL}(2,\CC)=\Lie{Sp}(2,\CC)$.
 \begin{tab}{@{}c@{ }llcr}
@@ -586,13 +586,18 @@ otherwise $\Gamma\subset\pi_1(\Lie{SO}(p)/\ZZ_2)\times\pi_1(\Lie{SO}(q)/\ZZ_2)$ 
 
 % todo: outer automorphism groups
 
-
-\paragraph{Classical Lie groups}
-$\pi_0(\Lie{O}(p,q))=\pi_0(\Lie{O}(p))\times\pi_0(\Lie{O}(q))$ is $\ZZ_2^2$ for $p,q\geq 1$;
-the identity component $\Lie{SO}_+(p,q)$ has a double cover $\Lie{Spin}(p,q)$.
-
+% \paragraph{Classical Lie groups}
 % todo: give a construction of all real forms of classical Lie groups
-% todo: Name "\Lie{USp}(2n)=\Lie{Sp}(n)" the compact symplectic group
+% todo: Check we used consistently the name "\Lie{USp}(2n)=\Lie{Sp}(n)" for the compact symplectic group of rank n.
+
+\paragraph{Spin and Pin groups.}
+$\Lie{SO}(n)$ has a double cover $\Lie{Spin}(n)$.
+Since $\pi_0(\Lie{O}(n))=\ZZ_2$ there are two double covers:
+$\Lie{Pin}_+(n)$ in which a reflection~$R$ obeys~$R^2=1$,
+and $\Lie{Pin}_-(n)$ in which $R^2=(-1)^F$.
+For $p,q\geq 1$, $\pi_0(\Lie{O}(p,q))=\pi_0(\Lie{O}(p))\times\pi_0(\Lie{O}(q))=\ZZ_2^2$;
+the identity component $\Lie{SO}_+(p,q)$ has a double cover $\Lie{Spin}(p,q)$.
+The eight double covers of $\Lie{O}(p,q)$ differ in whether $R^2$, $T^2$ and $(RT)^2$ are $+1$ or $(-1)^F$.
 
 \paragraph{Accidental isomorphisms} (low-rank real reductive Lie groups)
 $\RR/\ZZ=\Lie{U}(1)$; $\Lie{SU}(2)=\Lie{Spin}(3)\twoheadrightarrow\Lie{SO}(3)$; \ldots{}
