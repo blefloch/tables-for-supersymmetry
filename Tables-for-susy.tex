@@ -203,6 +203,7 @@
 \DeclareMathOperator{\rank}{rank}
 \DeclareMathOperator{\gr}{gr}
 \DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\Li}{Li}
 \newcommand{\one}{\mathbbm{1}}
 \newcommand{\pullback}[2]{#1^*#2}
 \newcommand{\bundle}{\mathcal}
@@ -312,10 +313,14 @@ and $\Gamma(pz;p,q)=\theta(z;q)\Gamma(z;p,q)$
 and $\Gamma(z;0,q)=1/(z;q)_\infty$.
 
 \paragraph{Polylogarithm and Riemann zeta}
-$\zeta(s)=\operatorname{Li}_s(1)$ where
-$\operatorname{Li}_s(z)=\sum_{k\geq 1}z^k/k^s=\bigl(1/\Gamma(s)\bigr)\int_0^\infty t^{s-1}\mathrm{d}t/(e^t/z-1)$ obeys
-$\operatorname{Li}_{s+1}(z)=\int_0^z\operatorname{Li}_s(t)\mathrm{d}t/t$ and
-$\operatorname{Li}_1(z)=-\log(1-z)$.
+$\zeta(s)=\Li_s(1)$ where
+$\Li_s(z)=\sum_{k\geq 1}z^k/k^s=\bigl(1/\Gamma(s)\bigr)\int_0^\infty t^{s-1}\mathrm{d}t/(e^t/z-1)$ obeys
+$\Li_{s+1}(z)=\int_0^z\Li_s(t)\mathrm{d}t/t$ and
+$\Li_1(z)=-\log(1-z)$.
+The dilogarithm obeys
+$\Li_2(x)+\Li_2(1-x)=\pi^2/6-\log(x)\log(1-x)$ (reflection formula) and
+$\Li_2(x)+\Li_2(y)-\Li_2(xy)=\Li_2(t)+\Li_2(u)+\log(1-t)\log(1-u)$ where $x=t/(1-u)$ and $y=u/(1-t)$ (pentagon formula).
+
 
 \section[Lie algebras and groups]{Lie algebras and groups (dimension${}<\infty$)}
 
