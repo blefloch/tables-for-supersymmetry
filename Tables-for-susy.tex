@@ -75,10 +75,10 @@
 \makeatletter
 \ExplSyntaxOn
 \cs_generate_variant:Nn \str_head:n { o }
-\cs_generate_variant:Nn \clist_if_in:nnT { nx }
+\cs_generate_variant:Nn \clist_if_in:NnT { Nx }
 \tl_new:N \l__my_main_tl
 \tl_new:N \l__my_title_tl
-\cs_set:Npn \__my_first_word:w #1 ~ #2 \q_stop { \exp_not:n {#1} }
+\cs_set:Npn \__my_first_word_string:w #1 ~ #2 \q_stop { \tl_to_str:n {#1} }
 \cs_set:Npn \__my_rest_words:w #1 ~ #2 \q_stop { \exp_not:n {#2} }
 \cs_set_protected:Npn \__my_strip_punct:nn #1#2
   {
@@ -96,6 +96,8 @@
 \cs_generate_variant:Nn \tl_upper_case:n { f }
 \cs_set_eq:NN \__my_strip:w ?
 \cs_new_eq:NN \__my_old_sect:w \@sect
+\clist_new:N \g_my_omitted_first_words_clist
+\clist_gset:Nn \g_my_omitted_first_words_clist { A , The }
 \msg_new:nnn { my } { unexpected } { "#1" }
 \cs_set:Npn \@sect #1 #2 #3 #4 #5 #6 [#7] #8
   {
@@ -111,8 +113,8 @@
       {
         \tl_if_in:NnT \l__my_title_tl { ~ }
           {
-            \clist_if_in:nxT { A , The }
-              { \exp_after:wN \__my_first_word:w \l__my_title_tl \q_stop }
+            \clist_if_in:NxT \g_my_omitted_first_words_clist
+              { \exp_after:wN \__my_first_word_string:w \l__my_title_tl \q_stop }
               {
                 \tl_set:Nx \l__my_title_tl
                   { \exp_after:wN \__my_rest_words:w \l__my_title_tl \q_stop }
