@@ -323,6 +323,20 @@ The dilogarithm obeys
 $\Li_2(x)+\Li_2(1-x)=\pi^2/6-\log(x)\log(1-x)$ (reflection formula) and
 $\Li_2(x)+\Li_2(y)-\Li_2(xy)=\Li_2(t)+\Li_2(u)+\log(1-t)\log(1-u)$ where $x=t/(1-u)$ and $y=u/(1-t)$ (pentagon formula).
 
+\paragraph{Gauss hypergeometric function} is given by
+$_2F_1(a,b;c;z)=\sum_{n\geq 0}z^n(a)_n(b)_n/\bigl(n!(c)_n\bigr)$
+where $(a)_n=a(a+1)\dots(a+n-1)$,
+converging for $\abs{z}<1$, continued to $\CC\setminus[1,\infty)$ with branch cut.
+
+\paragraph{Generalized hypergeometric functions:} let $a_i,b_i\not\in\ZZ_{\leq 0}$.
+Then $_{j}F_{k}(a;b;z)=\sum_{n\geq 0} z^n (a_1)_n\dots(a_j)_n/\bigl(n!(b_1)_n\dots(b_k)_n\bigr)$
+converges if $j=k+1$ and $\abs{z}<1$, or if $j\leq k$.
+Differential equation $z\prod_{i=1}^j (z\partial_z+a_i)F(z)=z\partial_z\prod_{i=1}^k(z\partial_z+b_i-1)F(z)$.
+Physically: vortex partition function of the 2d $\Nsusy=(2,2)$ $\Lie{U}(1)$ theory with $j$ charge $+1$ and $k+1$ charge $-1$ chiral multiplets.
+Fox--Wright, Appell, Kamp\'e de F\'eriet and Lauricella functions are vortex partition functions of specific $\Lie{U}(1)^n$ theories.
+
+\paragraph{Basic hypergeometric series} in terms of q-Pochhammer
+$_j\phi_k(a;b;q,z)=\sum_{n\geq 0} \bigl(-q^{(n-1)/2} \bigr)^{n(1+k-j)} z^n (a_1,\dots,a_j;q)_n/ \allowbreak (b_1,\dots,b_k;q)_n$ .
 
 \section[Lie algebras and groups]{Lie algebras and groups (dimension${}<\infty$)}
 
