@@ -753,7 +753,9 @@ and $\lie{osp}(6,2|4)=\lie{osp}^*(8|4)$.
 % todo: representations of real Lie algebras
 
 
-\section{Spinors}
+\section{Spinors and anomalies}
+
+\subsection{Spinors}
 
 \paragraph{Clifford algebra.}  Let $h_{ab}$ be diagonal with $s$~`$+1$' and $t$~`$-1$', and $d=s+t$.  The Clifford algebra $\{\Gamma_a,\Gamma_b\}=2h_{ab}$ has real dimension~$2^d$ and is isomorphic to a matrix algebra $M_{2^{\#}}(\bullet)$ with
 \begin{tab}{>{$}r<{$}*{8}{>{$}c<{$}}}
@@ -841,6 +843,45 @@ $\begin{aligned}[t]
 S^2(\mathcal{S}_{+}\oplus\mathcal{S}_{-})&=S^2\mathcal{S}_{+}\oplus(\mathcal{S}_{+}\otimes\mathcal{S}_{-})\oplus S^2\mathcal{S}_{-}\\
 \Wedge^2(\mathcal{S}_{+}\oplus\mathcal{S}_{-})&=\Wedge^2\mathcal{S}_{+}\oplus(\mathcal{S}_{+}\otimes\mathcal{S}_{-})\oplus \Wedge^2\mathcal{S}_{-}
 \end{aligned}$
+
+\subsection{Anomalies}
+
+\paragraph{Continuous anomalies} in $d=2n$,
+in $(n+1)$-point functions of currents: $(n+1)$-gon fermion loop, summed over fermions.
+Forbid simultaneous nontrivial backgrounds for all $n+1$ symmetries.
+Anomaly with $(n+1)$ gauge currents $\implies$ theory is sick.
+Anomaly with $n$ gauge, one flavour $\implies$ classical flavour symmetry fails at one-loop, $D_\mu J^\mu \sim \Tr(\mathrm{d}A_1\wedge\dots\wedge \mathrm{d}A_n)+O(A^{n+1})$.
+
+\paragraph{Anomaly polynomial:}
+formal $(d+2)$-form built from field strengths~$F$ and Riemann~$R$ two-forms, traced.
+
+% \paragraph{Degrees of Casimir invariants.}
+% $\Lie{G}_2$: $2,6$. $\Lie{F}_4$: $2,6,8,12$.
+% \begin{center}
+% \vspace{-1.3\baselineskip}
+% \begin{minipage}[t]{.5\linewidth}%
+% \begin{tab}{@{}>{$}l<{$}@{ }>{$}l<{$}@{}}
+%   \Lie{A}_n & 2,3,\ldots,n+1\\
+%   \Lie{B}_n,\Lie{C}_n & 2,4,\ldots,2n\\
+%   \Lie{D}_n & 2,4,\ldots,2n-2,n\\
+% \end{tab}
+% \end{minipage}%
+% \begin{minipage}[t]{.5\linewidth}
+% \begin{tab}{@{}>{$}l<{$}@{ }>{$}l<{$}@{}}
+%   \Lie{E}_6 & 2,5,6,8,9,12\\
+%   \Lie{E}_7 & 2,6,8,10,12,14,18\\
+%   \Lie{E}_8 & 2,8,12,14,18,20,24,30\\
+% \end{tab}
+% \end{minipage}
+% \end{center}
+% \vspace{-.6\baselineskip}
+% Quadratic Casimir is always $\Tr F\wedge F$.
+% Among simple groups, only $\Lie{SU}(N)$ has a triangle anomaly (cubic invariant),
+% but don't forget mixed anomalies.
+
+\paragraph{Gravitational anomaly} in $4k+2$ dimensions for Weyl fermions (spin $\tfrac{1}{2}$ or $\tfrac{3}{2}$) or self-dual $2k+1$ form.
+In 10d, unique theory with anomaly cancellation between fields of different spins: IIB supergravity.
+Above 10d, only same spins can cancel.
 
 \section{Supersymmetry algebras}
 
