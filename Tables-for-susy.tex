@@ -14,7 +14,7 @@
 \usepackage{bbm}
 \usepackage{hyperref}
 \usepackage{latexsym}
-\usepackage{expl3}
+\usepackage{expl3,xparse}
 \usepackage{tikz}
 \usetikzlibrary{matrix}
 \usepackage{stackengine}
@@ -212,7 +212,7 @@
 \newcommand{\Nf}{N_f}
 
 \ExplSyntaxOn
-\newcommand{\Lie}[1]{
+\NewDocumentCommand{\Lie}{m}{
   \mathrm {
     \clist_if_in:nnF
       { GL , PGL , SL , PSL , SO , PSO , SU , PSU , U , PU , O , PO , Sp , PSp , USp , PUSp , OSp , POSp , Spin , PSpin , Pin, P , PS , A , B , C , D , E , F , G , Q , UQ , W , S , \tilde S , \tilde{S} , H , T }
@@ -220,7 +220,7 @@
     #1
   }
 }
-\newcommand{\lie}[1]{
+\NewDocumentCommand{\lie}{m}{
   \mathfrak {
     \str_case:nnF {#1}
       {
