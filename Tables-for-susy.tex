@@ -99,6 +99,14 @@
 \clist_new:N \g_my_omitted_first_words_clist
 \clist_gset:Nn \g_my_omitted_first_words_clist { A , The }
 \msg_new:nnn { my } { unexpected } { "#1" }
+\cs_new:Npn \__my_alphanumeric:N #1
+  {
+    \quark_if_recursion_tail_stop:N #1
+    \int_compare:nF { `a <= `#1 <= `z }
+      { \int_compare:nF { `A <= `#1 <= `Z } { \int_compare:nT { `0 <= `#1 <= `9 } } } #1
+    \__my_alphanumeric:N
+  }
+\tl_new:N \l__my_label_tl
 \cs_set:Npn \@sect #1 #2 #3 #4 #5 #6 [#7] #8
   {
     \bool_if:nF
@@ -128,9 +136,15 @@
         \__my_strip_punct:xV { \tl_item:Nn \l__my_title_tl {-1} }
           \l__my_title_tl
       }
+    \tl_set:Nx \l__my_label_tl
+      {
+        \exp_last_unbraced:Nf \__my_alphanumeric:N
+          { \tl_to_str:N \l__my_title_tl }
+        \q_recursion_tail \q_recursion_stop
+      }
     \use:nx
       { \__my_old_sect:w {#1} {#2} {#3} {#4} {#5} {#6} }
-      { [{ \exp_not:V \l__my_title_tl }] } {#8}
+      { [{ \exp_not:V \l__my_title_tl }] } {\label{\l__my_label_tl}#8}
   }
 \ExplSyntaxOff
 \renewcommand{\section}{\pagebreak[1]\@startsection {section}{1}{\z@ }{-\medskipamount}{\smallskipamount}{\normalfont \large \bfseries \noindent\S}}
