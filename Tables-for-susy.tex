@@ -23,6 +23,7 @@
 \usepackage{graphicx}
 \usepackage{enumitem}
 \usepackage{etoc}
+\usepackage{slashed}
 
 \newcommand*{\myetocenumeratesetup}{}
 \protected\def\myetocenumeratesetup{%
@@ -184,6 +185,7 @@
 %\newcommand{\defined}[1]{\textsl{#1}}
 \newcommand{\actson}{\mathrel{\reflectbox{$\righttoleftarrow$}}}
 \newcommand{\dd}[2][]{\mathop{\mathrm{d}\mkern0mu\relax#1#2}\nolimits}%\mkern avoids \mathop{d} (vertical placement issue)
+\newcommand{\DD}[2][]{\mathop{\mathrm{D}\mkern0mu\relax#1#2}\nolimits}%\mkern avoids \mathop{d} (vertical placement issue)
 \newcommand{\ie}{i.e.\@}
 \newcommand{\eg}{e.g.\@}
 \newcommand{\Eg}{E.g.\@}
@@ -852,6 +854,8 @@ Forbid simultaneous nontrivial backgrounds for all $n+1$ symmetries.
 Anomaly with $(n+1)$ gauge currents $\implies$ theory is sick.
 Anomaly with $n$ gauge, one flavour $\implies$ classical flavour symmetry fails at one-loop, $D_\mu J^\mu \sim \Tr(\mathrm{d}A_1\wedge\dots\wedge \mathrm{d}A_n)+O(A^{n+1})$.
 
+\paragraph{Fermion effective action} $\Gamma[A]$ defined by $\exp(-\Gamma[A])=\int\DD{\bar{\chi}}\DD{\psi}\exp(-\int\dd[^4]{x}\bar{\chi}i\slashed{D}\gamma_-\psi)$ always has gauge-invariant and diffeomorphism-invariant real part but varies by the imaginary $D_\mu(\delta\Gamma/\delta A_\mu)=D_\mu\langle J^\mu\rangle$ and $D_\mu(\delta\Gamma/\delta g_{\mu\nu})=\frac{1}{2}D_\mu\langle T^{\mu\nu}\rangle$, non-zero in case of anomaly.
+
 \paragraph{Anomaly polynomial:}
 formal $(d+2)$-form built from field strengths~$F$ and Riemann~$R$ two-forms, traced.
 
@@ -879,9 +883,21 @@ formal $(d+2)$-form built from field strengths~$F$ and Riemann~$R$ two-forms, tr
 % Among simple groups, only $\Lie{SU}(N)$ has a triangle anomaly (cubic invariant),
 % but don't forget mixed anomalies.
 
-\paragraph{Gravitational anomaly} in $4k+2$ dimensions for Weyl fermions (spin $\tfrac{1}{2}$ or $\tfrac{3}{2}$) or self-dual $2k+1$ form.
+\paragraph{Continuous gravitational anomaly.}
+$\Lie{Spin}(1,d-1)$ plus CPT only has complex representations for $d=4k+2$:
+for other even~$d$, CPT exchanges chirality so we cannot have a single Weyl spinor.
+Focus on $d=1+(4k+1)$, Weyl fermions of spin $\tfrac{1}{2}$ and $\tfrac{3}{2}$ and self-dual $2k+1$ form.
 In 10d, unique theory with anomaly cancellation between fields of different spins: IIB supergravity.
 Above 10d, only same spins can cancel.
+
+\paragraph{Discrete gravitational anomaly.}
+In $d=8k$ and $d=8k+1$, single Majorana spinors cannot be given mass (but pairs can).
+It turns out that coupling an odd number of spin~$\frac{1}{2}$ Majorana fermions to gravity is inconsistent.
+
+%\paragraph{Parity anomaly} can occur in any dimension(?)  Example: In $d=1+2$, the $\Lie{SU}(2)$ gauge theory with single spin $\frac{1}{2}$ Majorana $\Lie{SU}(2)$ doublet must have half-integer Chern--Simons level.
+
+\paragraph{Mixed gauge-gravity anomaly} (or flavour-gravity)
+corresponds to $(\frac{1}{2}d+1)$-gons fermion loops with an even number of stress-tensors and some currents.
 
 \section{Supersymmetry algebras}
 
