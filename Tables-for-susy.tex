@@ -962,13 +962,23 @@ The 1d column gives the number of real supercharges.
 \end{tab}
 % todo: Euclidean case
 
-\paragraph{Explicit supersymmetry algebras}
-4d $\Nsusy=2$ $\{Q_\alpha^A,\overline{Q}_{\dot{\alpha}}^B\} =
-\epsilon^{AB}P_{\alpha\dot{\alpha}}$
-
 \paragraph{Supersymmetry on symmetric curved spaces}
 4d $\Nsusy=2$ supersymmetry on~$S^4$ is $\lie{osp}(2|4)$.
 2d $\Nsusy=(2,2)$ supersymmetry on~$S^2$ is $\lie{osp}(2|2)$.
+
+\subsection{Explicit supersymmetry algebras}
+
+\paragraph{4d \(\Nsusy=2\).}
+$\{Q_\alpha^A,\overline{Q}_{\dot{\alpha}}^B\} =
+\epsilon^{AB}P_{\alpha\dot{\alpha}}$;
+$0 = \{Q_\alpha^A,Q_\beta^B\} =
+\{\overline{Q}_{\dot{\alpha}}^A,\overline{Q}_{\dot{\beta}}^B\}$.
+
+\paragraph{3d \(\Nsusy=2\).}
+$\{Q_\alpha,\overline{Q}_{\beta}\} =
+2\sigma^\mu_{\alpha\beta}P_\mu+2i\epsilon_{\alpha\beta}Z$ with $Z=P_3$ a central charge;
+$0 = \{Q_\alpha,Q_\beta\} =
+\{\overline{Q}_{\alpha},\overline{Q}_{\beta}\}$.
 
 \section{Supermultiplets}
 
@@ -979,7 +989,9 @@ The 1d column gives the number of real supercharges.
 \paragraph{For \(8\) supercharges}, vector multiplet and hypermultiplet; in 3d and lower also twisted vector multiplet and twisted hypermultiplet.
 % todo: 4d N=2 chiral superfield $\Phi$ then $\int\dd{^4\theta}F(\Phi)$
 
-\paragraph{For \(4\) supercharges}, vector, chiral, linear multiplets; in 2d $\Nsusy=(2,2)$ also twisted vector, twisted chirals, semichirals, \ldots{}
+\paragraph{For \(4\) supercharges}, vector ($V=V^\dagger$) and chiral ($\overline{D}_{\dot{\alpha}}X=0$) multiplets;
+in 3d $\Nsusy=2$ also linear multiplets ($\epsilon^{\alpha\beta} D_\alpha D_\beta\Sigma=0=\epsilon^{\alpha\beta}\overline{D}_\alpha\overline{D}_\beta\Sigma$);
+in 2d $\Nsusy=(2,2)$ also twisted vector, twisted chirals, semichirals, \ldots{}
 
 \paragraph{For \(2\) supercharges}, vector, chiral, linear, Fermi, \ldots{}
 
@@ -1015,15 +1027,19 @@ Canonical kinetic term for bosons: $D_\mu\phi_i D^\mu\phi_i$.
 
 \paragraph{An accidental symmetry} is a flavour symmetry of the IR but not of the UV.
 
-\paragraph{R-symmetry mixing.}
+\paragraph{R-symmetry.}
 In 2d and higher, the superconformal algebra contains the IR R-symmetry.
 The UV R-symmetry can be a mixture of the IR R-symmetry and of a flavour symmetry:  $R_{\text{UV}}\subset R_{\text{IR}}\times F$.
 For nonabelian R-symmetry that flavour symmetry must be accidental as it does not commute with~$R_{\text{UV}}$.
 For abelian R-symmetry the mixing is continuous; assuming no accidental flavour symmetries it is fixed
 in 4d $\Nsusy=1$ by $a$-extremization, in 3d $\Nsusy=2$ by $Z_{S^3}$-extremization, in 2d $\Nsusy=(0,2)$ by $c$-extremization.
 
+The vector multiplet scalars and gauge field are $U(1)_R$ neutral.
+
+For chirals, $\Delta\geq\frac{1}{2}(d-1)\abs{R}$ at the fixed point.
+
 \paragraph{Classical vacua:} Coulomb, Higgs and mixed branches.
-Coulomb branch ($\lie{g}$~modulo conjugation by~$G$) parametrized by vector multiplet scalars, can be lifted by quantum effects, larger in 3d due to monopoles.
+Cou\-l\-omb branch ($\lie{g}$~modulo conjugation by~$G$) parametrized by vector multiplet scalars, larger in 3d due to monopoles, can be lifted by quantum effects.
 For $4$~supercharges, Higgs branch parametrized by chiral multiplet scalars: K\"ahler quotient $R//G$.
 For $8$~supercharges, Higgs branch parametrized by hypermultiplet scalars: hyper-K\"ahler quotient $\widetilde{R}///G$.
 The Higgs branch has flavour symmetry $\{x\in F\mid xG=Gx\}/G$ normalizer of $G$ in $F=\Lie{U}(R)$ or $F=\Lie{USp}(\widetilde{R})$ modulo~$G$.
@@ -1101,9 +1117,17 @@ likewise $D_\alpha$ is conjugate to $Q_\alpha$.
 
 \paragraph{4d \(\Nsusy=1\) pure SYM} classically has $\Lie{U}(1)_R$ symmetry, broken by instantons to $\ZZ_{2h}$ with $h=C_2(\text{adj})$.  It confines, is mass-gapped, and has $C_2(A)$ vacua associated to breaking $\ZZ_{2h}$ to $\ZZ_2$ by gaugino condensation $\langle\lambda\lambda\rangle$.  Witten index $\Tr(-1)^F=h$.
 
+Field strength $W_\alpha=-\frac{1}{4}\overline{D}\overline{D}e^{-V}D_\alpha e^V$ and $\overline{W}_\alpha=-\frac{1}{4}DDe^{-V}\overline{D}_\alpha e^V$.
+
 \paragraph{Wess-Zumino model:} chiral multiplet~$\phi$ with superpotential $W=m\phi^2+g\phi^3$.
 
-\paragraph{3d \(\Nsusy=2\)}
+\paragraph{3d \(\Nsusy=2\)} \href{http://arXiv.org/abs/hep-th/9703110}{[hep-th/9703110]}
+
+In Abelian theories or (only approximately) deep in the Coulomb branch,
+the dual photon $\gamma$ (a periodic real scalar) is defined by $\dd\gamma=J_T=\star F$ where $J_T$ is the topological current.
+Chiral superfield $\Phi=\phi+i\gamma$ where $\phi$ is the vector multiplet scalar.
+
+Field strength $\Sigma=\epsilon^{\alpha\beta}\overline{D}_\alpha D_\beta V$.
 
 \paragraph{2d \(\Nsusy=(2,2)\).}
 Classical $\Lie{U}(1)\times\Lie{U}(1)$ R-symmetry.
