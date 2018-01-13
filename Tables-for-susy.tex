@@ -1365,7 +1365,34 @@ In this table ``type~IIA'' \etc{} refer to string theories not supergravities
 
 \section{Manifolds}
 
-\subsection{Riemannian geometry}
+\subsection{(Pseudo-)Riemannian geometry}
+
+$T_{\dots\lambda[\mu_1\dots\mu_m]\nu\dots}=m!^{-1}\sum_{\sigma\in S_m}\epsilon(\sigma)T_{\dots\lambda\mu_{\sigma(1)}\dots\mu_{\sigma(m)}\nu\dots}$ antisymmetrization,
+where $\epsilon(\sigma)=\pm 1$ is the signature of the permutation; symmetrization $T_{\dots\lambda(\mu_1\dots\mu_m)\nu\dots}$ is without $\epsilon$.
+Derivatives: $\partial_\mu=\partial/\partial x^\mu$ and $T^{\nu_1\dots\nu_n}_{\rho_1\dots\rho_r}{}_{,\mu_1\dots\mu_m}=\partial_{\mu_1}\cdots\partial_{\mu_m} T^{\nu_1\dots\nu_n}_{\rho_1\dots\rho_r}$
+and $T^{\nu_1\dots\nu_n}_{\rho_1\dots\rho_r}{}_{;\mu_1\dots\mu_m}=\nabla_{\mu_1}\cdots\nabla_{\mu_m} T^{\nu_1\dots\nu_n}_{\rho_1\dots\rho_r}$ (namely ``;'' is $\nabla$).
+
+\paragraph{Connection} $\nabla=\partial+\Gamma$ in terms of Christoffel symbols~$\Gamma$.
+$T^{\nu_1\dots}_{\rho_1\dots}{}_{;\mu} = T^{\nu_1\dots}_{\rho_1\dots}{}_{,\mu}
++ (T^{\lambda\nu_2\dots}_{\rho_1\dots} \Gamma^{\nu_1}{}_{\lambda\mu} + \cdots)
+- (T^{\nu_1\dots}_{\lambda\rho_2\dots} \Gamma^\lambda{}_{\rho_1\mu} + \cdots)$
+for a tensor.  In particular,
+$\nabla_\mu v^\nu = \partial_\mu v^\nu + v^\lambda\Gamma^\nu{}_{\lambda\mu}$ for a vector and
+$\nabla_\mu \omega_\nu = \partial_\mu \omega_\nu - \omega_\lambda\Gamma^\lambda{}_{\nu\mu}$
+for a one-form.
+  Extra $-w(\log\Omega)_{,\mu}T^{\nu_1\dots}_{\rho_1\dots}$
+for a weight~$w$ tensor density, where $\Omega$ is the volume factor ($\abs{\det g}^{1/2}$ for a metric).
+
+
+\paragraph{The Levi-Civita connection} of a metric~$g$ is $\nabla=\partial+\Gamma$ with
+$\Gamma^\lambda{}_{\nu\rho}=\tfrac{1}{2}g^{\lambda\mu}(\partial_\rho g_{\mu\nu}+\partial_\nu g_{\mu\rho}-\partial_\mu g_{\nu\rho})$.
+It is the only torsion-free connection ($\Gamma^\lambda_{[\mu\nu]}=0$) that kills the metric.
+Note that $\Gamma^\lambda{}_{\lambda\rho}=\tfrac{1}{2}g^{\lambda\mu}\partial_\rho g_{\lambda\mu}=\tfrac{1}{2}\partial_\rho\log\abs{\det g}$.
+Denote $\sqrt{g}=\abs{\det g}^{1/2}$.
+Then $\sqrt{g}\,\nabla_\nu v^\nu =\partial_\nu(v^\nu\sqrt{g})$ and $\sqrt{g}\,\nabla_\nu F^{[\nu\rho]}=\partial_\nu(F^{[\nu\rho]}\sqrt{g})$ are total derivatives.
+
+\paragraph{Killing vector} $k_\mu$ such that $\nabla_{(\mu} k_{\nu)}=0$.
+For a symmetric conserved stress-tensor~$T$ we have $\nabla_\mu(k_\nu T^{\mu\nu})=0$, giving conserved quantities.
 
 \subsection{G-structures, holonomy}
 
