@@ -1311,14 +1311,17 @@ Has AdS/CFT dual with linear dilaton background.
 
 \subsection{4d $\Nsusy=1$ dualities}
 
+\paragraph{Evidence:} global symmetries, 't~Hooft anomaly matching, moduli space of vacua, chiral rings, behaviour of these under F-term deformations,
+superconformal index ($S^3_b\times S^1$ partition function).
+
 \paragraph[Seiberg duality: \(\Lie{SU}(C)\) with \(F\) flavours]{Seiberg duality} \href{http://arXiv.org/abs/hep-th/9411149}{[hep-th/9411149]}
-\mathtikz[inner sep=1pt]{
+\smash{\mathtikz[inner sep=1pt]{
   \node (A) at (0,0) [rectangle,draw] {$\Lie{SU}(F)$};
   \node (B) at (1.5,0) [rounded rectangle,draw] {$\Lie{SU}(C)$};
   \node (C) at (3,0) [rectangle,draw] {$\Lie{SU}(F)$};
   \draw[->-=.6] (A) -- (B) node [midway,above] {$Q$};
   \draw[->-=.6] (B) -- (C) node [midway,above] {$\tilde{Q}$};
-}
+}}
 dual to
 \mathtikz[inner sep=1pt]{
   \node (A) at (0,0) [rectangle,draw] {$\Lie{SU}(F)$};
@@ -1417,6 +1420,41 @@ $ and $C'=F-C-2$.
 \paragraph{Self-duality}
 in the $\Lie{SU}$, $\Lie{SO}$, $\Lie{USp}$ cases for $F=2C,2C-4,2C+2$ respectively,
 namely $C(R_{\text{chirals}})=2C(\text{adj})$; adding an adjoint gives $\Nsusy=2$ SCFTs.
+
+\paragraph[\(\Lie{SU}(C)\) with flavours and adjoint]{Kutasov--Schwimmer--Seiberg duality} \href{http://arXiv.org/abs/hep-th/9510222}{[hep-th/9510222]}
+For $W=\Tr P(X)=\sum_{j=1}^{k+1}s_{k+1-j}\Tr X^j/j$ (with $s_1=0$)
+\unskip\vspace{-1ex}
+\mathtikz[inner sep=1pt]{
+  \node (A) at (0,0) [rectangle,draw] {$\Lie{SU}(F)$};
+  \node (B) at (1.5,0) [rounded rectangle,draw] {$\Lie{SU}(C)$};
+  \draw[->-=.6] (B) to [loop,distance=3ex,in=75,out=140] node [pos=.85,right] {$X$} (B);
+  \node (C) at (3,0) [rectangle,draw] {$\Lie{SU}(F)$};
+  \draw[->-=.6] (A) -- (B) node [midway,above] {$Q$};
+  \draw[->-=.6] (B) -- (C) node [midway,above] {$\tilde{Q}$};
+}
+dual to
+\mathtikz[inner sep=1pt]{
+  \node (A) at (0,0) [rectangle,draw] {$\Lie{SU}(F)$};
+  \node (B) at (1.5,0) [rounded rectangle,draw] {$\Lie{SU}(C')$};
+  \node (C) at (3,0) [rectangle,draw] {$\Lie{SU}(F)$};
+  \draw[->-=.4] (B) -- (A) node [midway,above] {$\tilde{q}$};
+  \draw[->-=.4] (C) -- (B) node [midway,above] {$q$};
+  \draw[->-=.6] (A) to [bend right=20] node [pos=.05,below,anchor=north east] {\scriptsize\clap{$M_1,\dots,M_k$}\qquad\qquad} (C);
+  \draw[->-=.6] (A) to [bend right=17.5] (C);
+  \draw[->-=.6] (A) to [bend right=15] (C);
+  \draw[->-=.6] (B) to [loop,distance=3ex,in=75,out=140] node [pos=.85,right] {$x$} (B);
+}
+with $W_{\text{mag}}=\alpha(s)-\Tr P(x)+\frac{1}{\mu^2}\sum_{1\leq i\leq j\leq k} s_{k-j}M_i\tilde{q}x^{j-i}q$
+for some function~$\alpha$ and mass~$\mu$, and $C'=kF-C\geq 0$.
+Gauge-invariants: mesons $M_j=\tilde{Q}X^{j-1}Q$;
+for $\cardinal{\Acal}=C$ in $\llbracket 1,F\rrbracket\times\llbracket 1,k\rrbracket$,
+baryons $B_\Acal=\Wedge_{(i,j)\in\Acal}(X^{j-1}Q_i)\leftrightarrow\Wedge_{(i,j)\not\in\Acal}(x^{j-1}q_i)$
+and antibaryons $\tilde{B}_\Acal=\Wedge_{(i,j)\in\Acal}(\tilde{Q}_iX^{j-1})\leftrightarrow\Wedge_{(i,j)\not\in\Acal}(\tilde{q}_ix^{j-1})$;
+and $\Tr X^j/j=\partial W/\partial s_{k+1-j}=\partial W_{\text{mag}}/\partial s_{k+1-j}$ expressed in terms of $\Tr x^i$ (here $\alpha(s)$ matters).
+
+Global symmetries $\lie{su}(F)^2\times\lie{u}(1)_B\times\lie{u}(1)_R$
+where $(Q,\tilde{Q})$, $X$, $(q,\tilde{q})$, $x$ have $\lie{u}(1)_B$ charges $\pm\frac{1}{C}$, $0$, $\pm\frac{1}{C'}$, $0$
+and $\lie{u}(1)_R$ charges $1-\frac{2C}{(k+1)F}$, $\frac{2}{k+1}$, $1-\frac{2C'}{(k+1)F}$, $\frac{2}{k+1}$.
 
 \paragraph{Other 4d \(\Nsusy=1\) dualities}
 Kutasov--Schwimmer--Seiberg, Brodie, Intriligator--Pouliot, Argyres--Intriligator--Leigh--Strassler, Klebanov cascade, Intriligator--Leigh--Strassler, Kutasov--Lin.
