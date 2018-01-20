@@ -13,10 +13,16 @@
 \usepackage{multirow}
 \usepackage{bbm}
 \usepackage{hyperref}
+\usepackage[only, llbracket, rrbracket]{stmaryrd}
 \usepackage{latexsym}
 \usepackage{expl3,xparse}
 \usepackage{tikz}
-\usetikzlibrary{matrix}
+\usetikzlibrary{automata, arrows, calc, decorations.markings, decorations.pathreplacing, intersections,
+  matrix, patterns, positioning, shapes, shapes.geometric, shapes.misc, topaths}
+\tikzset{->-/.style = {
+    decoration = {markings, mark = at position #1 with {\arrow{>}}},
+    postaction = {decorate}}}
+\newcommand{\mathtikz}[2][]{\begin{tikzpicture}[baseline=\the\dimexpr-\fontdimen22\textfont2\relax,#1]#2\end{tikzpicture}}
 \usepackage{stackengine}
 \usepackage{etoolbox}
 %\usepackage{mathabx}
@@ -195,6 +201,8 @@
 \newcommand{\I}{\mathrm{i}}
 \newcommand{\rme}{\mathrm{e}}
 \newcommand{\Wedge}{\bigwedge}
+\newcommand{\Acal}{\mathcal{A}}
+\newcommand{\Chargeconjugation}{\mathcal{C}}
 \newcommand{\del}{\partial}
 \newcommand{\delbar}{\overline{\partial}}
 \newcommand{\Nsusy}{{\mathcal{N}}}
@@ -229,6 +237,7 @@
 \newcommand{\thetafunction}{\theta}
 \newcommand{\thetaangle}{\theta}
 \newcommand{\thetacoordinate}{\theta}
+\newcommand{\cardinal}[1]{\abs{#1}}
 
 \ExplSyntaxOn
 \NewDocumentCommand{\Lie}{m}{
@@ -1302,19 +1311,115 @@ Has AdS/CFT dual with linear dilaton background.
 
 \subsection{4d $\Nsusy=1$ dualities}
 
-\paragraph{\texorpdfstring{$\Lie{SU}(K)$ with $N\square+N\overline{\square}$}{SU(K) with N flavours}} chiral multiplets (``electric theory'')
-is dual (Seiberg duality) to $\Lie{SU}(N-K)$ with $N\square+N\overline{\square}$ and $N^2$ gauge-invariant chiral multiplets $Q_\alpha$, $\widetilde{Q}_\beta$, $M^{\alpha\beta}$ with superpotential $W=\Tr\widetilde{Q}QM$ (``magnetic theory'').  RG flow:
-\begin{itemize}\setlength{\itemsep}{0pt}
-\item for $2\leq K\leq N/3$ the original theory is IR-free;
-\item for $N/3<K<2N/3$ flow to SCFT;
-\item for $2N/3\leq K\leq N-2$ the dual theory is IR-free.
+\paragraph[Seiberg duality: \(\Lie{SU}(C)\) with \(F\) flavours]{Seiberg duality} \href{http://arXiv.org/abs/hep-th/9411149}{[hep-th/9411149]}
+\mathtikz[inner sep=1pt]{
+  \node (A) at (0,0) [rectangle,draw] {$\Lie{SU}(F)$};
+  \node (B) at (1.5,0) [rounded rectangle,draw] {$\Lie{SU}(C)$};
+  \node (C) at (3,0) [rectangle,draw] {$\Lie{SU}(F)$};
+  \draw[->-=.6] (A) -- (B) node [midway,above] {$Q$};
+  \draw[->-=.6] (B) -- (C) node [midway,above] {$\tilde{Q}$};
+}
+dual to
+\mathtikz[inner sep=1pt]{
+  \node (A) at (0,0) [rectangle,draw] {$\Lie{SU}(F)$};
+  \node (B) at (1.5,0) [rounded rectangle,draw] {$\Lie{SU}(C')$};
+  \node (C) at (3,0) [rectangle,draw] {$\Lie{SU}(F)$};
+  \draw[->-=.4] (B) -- (A) node [midway,above] {$\tilde{q}$};
+  \draw[->-=.4] (C) -- (B) node [midway,above] {$q$};
+  \draw[->-=.6] (A) to [bend right=15] node [pos=.95,below] {\scriptsize $M$} (C);
+}
+with $W=\Tr(M\tilde{q}q)$ and $C'=F-C\geq 0$ (here $\Lie{SU}(1)=\Lie{SU}(0)=\{1\}$).
+Non-anomalous global symmetries $\lie{su}(F)^2\times\lie{u}(1)_B\times\lie{u}(1)_R$ coincide,
+where $(Q,\tilde{Q})$, $M$, $(\tilde{q},q)$ have $\lie{u}(1)_B$ charges $\pm\frac{1}{C}$, $0$, $\pm\frac{1}{F-C}$
+and $\lie{u}(1)_R$ charges $\frac{F-C}{F}$, $2\frac{F-C}{F}$, $\frac{C}{F}$.
+RG flow:
+\vspace{-1ex}
+\begin{itemize}\setlength{\itemsep}{-1ex}
+\item for $0\leq C\leq F/3$ the $\Lie{SU}(C)$ theory is IR-free;
+\item for $F/3<C<2F/3$ flow to SCFT;
+\item for $2F/3\leq C\leq F$ the $\Lie{SU}(C')$ theory is IR-free;
+\item for $0<F<C$ supersymmetry is broken.
 \end{itemize}
+\undovskip
+Gauge-invariants match: mesons $M^j{}_i=\tilde{Q}^j Q_i$ and,
+for $\Acal\subset\llbracket 1,F\rrbracket$ with $\cardinal{\Acal}=C$,
+baryons $B_\Acal=\Wedge_{i\in\Acal} Q_i=\Lambda^{?}\Wedge_{i\not\in\Acal} \tilde{q}^i$ and
+antibaryons $\tilde{B}_\Acal=\Wedge_{j\in\Acal} \tilde{Q}^j=\Lambda^{?}\Wedge_{j\not\in\Acal} q_j$.
+Relation $\tilde{B}_{\Acal'} B_\Acal=\det(M^j{}_i)_{i\in\Acal}^{j\in\Acal'}$
+of $\Lie{SU}(C)$ theory only holds quantumly in $\Lie{SU}(C')$ theory.
+A mass term $W=m\tilde{Q}_FQ_F$ decouples a flavour ($F\to F-1$) and Higgses $\Lie{SU}(C')$ to $\Lie{SU}(C'-1)$.
+Dually, Higgsing $\Lie{SU}(C)$ to $\Lie{SU}(C-1)$ using $\langle\tilde{Q}_FQ_F\rangle\to\infty$ (so $F\to F-1$) gives mass to $q_F$, $\tilde{q}_F$ and leaves $\Lie{SU}(C')$ fixed.
 
-% \paragraph{\texorpdfstring{$\Lie{SO}(K)$ with $N\square+N\overline{\square}$}{SO(K) with N flavours}} is dual to $\Lie{SO}(N-K+4)$ with $N\square+N\overline{\square}$ and extra neutral coupled by cubic~$W$
-% Check if both fundamental and antifundamental!
+
+
+\paragraph[\(\Lie{SO}(C)\) with \(F\) flavours]{SO:}
+\mathtikz[inner sep=1pt]{
+  \node (A) at (0,0) [rectangle,draw] {$\Lie{SU}(F)$};
+  \node (B) at (1.5,0) [rounded rectangle,draw] {$\Lie{SO}(C)$};
+  \draw[->-=.6] (A) -- (B) node [midway,above] {$Q$};
+}
+dual to
+\mathtikz[inner sep=1pt]{
+  \node (A) at (0,0) [rectangle,draw] {$\Lie{SU}(F)$};
+  \node (B) at (1.5,0) [rounded rectangle,draw] {$\Lie{SO}(C')$};
+  \draw[->-=.5] (B) -- (A) node [midway,above] {$q$};
+  \draw[decoration = {markings, mark = at position .73 with {\arrow{<}}, mark = at position .33 with {\arrow{>}}},
+  postaction = {decorate}] (A) to [loop,distance=3ex,in=160,out=-160] node [midway,left] {$M$} (A);
+}
+with $C'=F-C+4$ and $W=Mqq$ (we assume $C,C'\geq 4$).
+Non-anomalous flavour symmetry $(\Lie{SU}(F)\times\ZZ_{2F})/\ZZ_{F,\text{diag}}$;
+$Q$, $M$, $q$ are $\overline{\square}$, $\operatorname{sym}^2\overline{\square}$, $\square$ under $\Lie{SU}(F)$
+and have $\lie{u}(1)_R$ charges $\frac{F-C+2}{F}$, $2\frac{F-C+2}{F}$, $\frac{C-2}{F}$;
+while $\ZZ_{2F}$ acts by $Q\to\rme^{\pi\I/F}Q$, $q\to\Chargeconjugation\rme^{-\pi\I/F}q$ with $\Chargeconjugation$ charge conjugation.
+RG flow:
+\vspace{-1ex}
+\begin{itemize}\setlength{\itemsep}{-1ex}
+% \item for $0\leq C\leq F/3$ the $\Lie{SU}(C)$ theory is IR-free;
+% \item for $F/3<C<2F/3$ flow to SCFT;
+% \item for $2F/3\leq C\leq F$ the $\Lie{SU}(C')$ theory is IR-free;
+% \item for $0<F<C$
+\item $F/3<C-2<2F/3$ flow to SCFT;
+\item $2F/3\leq C-2\leq F-2$ the $\Lie{SU}(C')$ theory is IR-free;
+\item for $F+5\leq C$ supersymmetry is broken.
+\end{itemize}
+\undovskip
+Gauge-invariants match: mesons $M_{(ij)}=Q_i Q_j$;
+field strength $W_{\Acal,\alpha}=W_\alpha\wedge\Wedge_{i\in\Acal}Q_i\leftrightarrow W_\alpha\wedge\Wedge_{i\not\in\Acal}q^i$
+for $\cardinal{\Acal}=C-2$ flavours;
+baryons $B_{\Acal}=\Wedge_{i\in\Acal}Q_i\leftrightarrow W_\alpha\wedge W_\alpha\wedge\Wedge_{i\not\in\Acal}q^i$
+for $\cardinal{\Acal}=C$ and
+$b_{\Acal}=W_\alpha\wedge W_\alpha\wedge\Wedge_{i\in\Acal}Q_i\leftrightarrow\Wedge_{i\not\in\Acal}q^i$
+for $\cardinal{\Acal}=C-4$.
+
+\paragraph[\(\Lie{USp}(2C)\) with \(F\) flavours]{USp:}
+\mathtikz[inner sep=1pt]{
+  \node (A) at (0,0) [rectangle,draw] {$?(2F)$};
+  \node (B) at (1.8,0) [rounded rectangle,draw] {$\Lie{USp}(2C)$};
+  \draw[->-=.6] (A) -- (B) node [midway,above] {$Q$};
+}
+dual to
+\mathtikz[inner sep=1pt]{
+  \node (A) at (0,0) [rectangle,draw] {$?(2F)$};
+  \node (B) at (1.8,0) [rounded rectangle,draw] {$\Lie{USp}(2C')$};
+  \draw[->-=.4] (B) -- (A) node [midway,above] {$\tilde{q}$};
+  \draw[->-=.6] (A) to [loop,distance=3ex,in=160,out=-160] node [midway,left] {$M$} (A);
+  % \draw[
+  % decoration = {markings, mark = at position .6 with {\arrow{>}}, mark = at position .4 with {\arrow{>}}},
+  % postaction = {decorate}] (A) to [loop,distance=3ex,in=160,out=-160] node [midway,left] {$M$} (A);
+}
+with $W=% \Tr(M\tilde{q}q)
+$ and $C'=F-C-2$.
+
 
 % \paragraph{\texorpdfstring{$\Lie{USp}(2K)$ with $2N\square+2N\overline{\square}$}{USp(2K) with 2N flavours}} is dual to $\Lie{USp}(2N-2K-4)$ with $2N\square+2N\overline{\square}$ and extra neutral coupled by cubic~$W$
 % Check if both fundamental and antifundamental!
+
+\paragraph{Self-duality}
+in the $\Lie{SU}$, $\Lie{SO}$, $\Lie{USp}$ cases for $F=2C,2C-4,2C+2$ respectively,
+namely $C(R_{\text{chirals}})=2C(\text{adj})$; adding an adjoint gives $\Nsusy=2$ SCFTs.
+
+\paragraph{Other 4d \(\Nsusy=1\) dualities}
+Kutasov--Schwimmer--Seiberg, Brodie, Intriligator--Pouliot, Argyres--Intriligator--Leigh--Strassler, Klebanov cascade, Intriligator--Leigh--Strassler, Kutasov--Lin.
 
 \subsection{Field theory dualities}
 
@@ -1332,24 +1437,9 @@ is dual (Seiberg duality) to $\Lie{SU}(N-K)$ with $N\square+N\overline{\square}$
 
 3d $\Nsusy=2$ and $\Nsusy=4$ mirror symmetry exchanging Coulomb and Higgs branches (IR).
 
-4d $\Nsusy=1$ Seiberg, Kutasov--Schwimmer, Brodie, Intriligator--Pouliot, Argyres--Intriligator--Leigh--Strassler, Klebanov cascade, Intriligator--Leigh--Strassler, duality (IR).
-
 S-duality of 4d $\Nsusy=2$ gauge theories (exact).
 
 S-duality of 4d $\Nsusy=4$ SYM (exact).
-
-\subsection{4d \(\Nsusy=1\) dualities}
-
-Seiberg: $\Lie{SU}(N_c)$, $N_f\square$, $N_f\overline{\square}$ $\Leftrightarrow$
-$\Lie{SU}(N_f-N_c)$, $N_f\square$, $N_f\overline{\square}$, $N_f^2$~free, with $W=M\tilde{Q}Q$.
-
-Seiberg: $\Lie{SO}(N_c)$, $N_f\square$ $\Leftrightarrow$
-$\Lie{SO}(N_f-N_c+4)$, $N_f\square$, $\#?$~free, $W=?$
-
-Seiberg: $\Lie{USp}(2N_c)$, $2N_f\square$ $\Leftrightarrow$
-$\Lie{USp}(2N_f-2N_c-4)$, $2N_f\square$, $\#?$~free, $W=?$
-
-These three cases are self-dual when $C(R_{\text{chirals}})=2C(\text{adj})$, namely $N_f=2N_c$, $N_f=2(N_c-2)$ and $N_f=2(N_c+1)$ respectively; adding an adjoint gives $\Nsusy=2$ SCFTs.
 
 \subsection{String theory dualities}
 
