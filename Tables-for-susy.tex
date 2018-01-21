@@ -31,6 +31,7 @@
 \usepackage{etoc}
 \usepackage{slashed}
 
+\setlist[itemize]{nosep}
 \newcommand*{\myetocenumeratesetup}{}
 \protected\def\myetocenumeratesetup{%
   \setlist[enumerate]{label=\etocnumber,
@@ -202,6 +203,7 @@
 \newcommand{\rme}{\mathrm{e}}
 \newcommand{\Wedge}{\bigwedge}
 \newcommand{\Acal}{\mathcal{A}}
+\newcommand{\Operator}{\mathcal{O}}
 \newcommand{\Chargeconjugation}{\mathcal{C}}
 \newcommand{\del}{\partial}
 \newcommand{\delbar}{\overline{\partial}}
@@ -287,6 +289,7 @@
 \newcommand{\undovskip}{\relax\ifvmode\ifdim\lastskip>0pt\relax\vskip-\lastskip\fi\fi}
 \newenvironment{tab}[1]{\center\undovskip\vspace{.1\baselineskip}\tabular{#1}\toprule}{\crcr\bottomrule\endtabular\endcenter\undovskip\vspace{.1\baselineskip plus .3\baselineskip}}
 
+\newcommand{\hepth}[1]{\href{http://arXiv.org/abs/hep-th/#1}{[hep-th/#1]}}
 
 
 \begin{document}
@@ -1144,7 +1147,7 @@ Field strength $W_\alpha=-\frac{1}{4}\overline{D}\overline{D}\rme^{-V}D_\alpha \
 
 \paragraph{Wess-Zumino model:} chiral multiplet~$\phi$ with superpotential $W=m\phi^2+g\phi^3$.
 
-\paragraph{3d \(\Nsusy=2\)} \href{http://arXiv.org/abs/hep-th/9703110}{[hep-th/9703110]}
+\paragraph{3d \(\Nsusy=2\)} \hepth{9703110}
 
 In Abelian theories or (only approximately) deep in the Coulomb branch,
 the dual photon $\gamma$ (a periodic real scalar) is defined by $\dd\gamma=J_T=\star F$ where $J_T$ is the topological current.
@@ -1311,10 +1314,16 @@ Has AdS/CFT dual with linear dilaton background.
 
 \subsection{4d $\Nsusy=1$ dualities}
 
-\paragraph{Evidence:} global symmetries, 't~Hooft anomaly matching, moduli space of vacua, chiral rings, behaviour of these under F-term deformations,
+\paragraph{IR duality:} the ``electric'' theory A has the same IR limit as the ``magnetic'' theory B\@:
+TQFT\@, SCFT\@, free theory, infinite flow, or sum of products thereof.
+
+Gauge-invariant chirals $\Operator$ of trial R-charge $\leq 2/3$ are free and of true IR R-charge $2/3$ thanks to mixing with accidental $\lie{u}(1)$ acting on~$\Operator$.
+Other view: given a term $\delta W$, trial R-charge obeys $R(\delta W)=2$ but true R-charge maybe $R(\delta W)>2$; then $\delta W$ is irrelevant and leaves some chiral free.
+
+Typical evidence: global symmetries, 't~Hooft anomaly matching, moduli space of vacua, chiral rings, behaviour of these under F-term deformations,
 superconformal index ($S^3_b\times S^1$ partition function).
 
-\paragraph[Seiberg duality: \(\Lie{SU}(C)\) with \(F\) flavours]{Seiberg duality} \href{http://arXiv.org/abs/hep-th/9411149}{[hep-th/9411149]}
+\paragraph[Seiberg duality: \(\Lie{SU}\) with flavours]{Seiberg duality} \hepth{9411149}
 \smash{\mathtikz[inner sep=1pt]{
   \node (A) at (0,0) [rectangle,draw] {$\Lie{SU}(F)$};
   \node (B) at (1.5,0) [rounded rectangle,draw] {$\Lie{SU}(C)$};
@@ -1332,30 +1341,29 @@ dual to
   \draw[->-=.6] (A) to [bend right=15] node [pos=.95,below] {\scriptsize $M$} (C);
 }
 with $W=\Tr(M\tilde{q}q)$ and $C'=F-C\geq 0$ (here $\Lie{SU}(1)=\Lie{SU}(0)=\{1\}$).
+
 Non-anomalous global symmetries $\lie{su}(F)^2\times\lie{u}(1)_B\times\lie{u}(1)_R$ coincide,
 where $(Q,\tilde{Q})$, $M$, $(\tilde{q},q)$ have $\lie{u}(1)_B$ charges $\pm\frac{1}{C}$, $0$, $\pm\frac{1}{F-C}$
-and $\lie{u}(1)_R$ charges $\frac{F-C}{F}$, $2\frac{F-C}{F}$, $\frac{C}{F}$.
-RG flow:
-\vspace{-1ex}
-\begin{itemize}\setlength{\itemsep}{-1ex}
-\item for $0\leq C\leq F/3$ the $\Lie{SU}(C)$ theory is IR-free;
-\item for $F/3<C<2F/3$ flow to SCFT;
-\item for $2F/3\leq C\leq F$ the $\Lie{SU}(C')$ theory is IR-free;
-\item for $0<F<C$ supersymmetry is broken.
+and trial $\lie{u}(1)_R$ charges $\frac{F-C}{F}$, $2\frac{F-C}{F}$, $\frac{C}{F}$.
+\begin{itemize}
+\item For $0\leq C\leq F/3$ the $\Lie{SU}(C)$ theory is IR-free.
+\item For $F/3<C<2F/3$ flow to SCFT.
+\item For $2F/3\leq C\leq F$ the $\Lie{SU}(C')$ theory is IR-free.
+\item For $0<F<C$ supersymmetry is broken.
 \end{itemize}
-\undovskip
-Gauge-invariants match: mesons $M^j{}_i=\tilde{Q}^j Q_i$ and,
-for $\Acal\subset\llbracket 1,F\rrbracket$ with $\cardinal{\Acal}=C$,
-baryons $B_\Acal=\Wedge_{i\in\Acal} Q_i=\Lambda^{?}\Wedge_{i\not\in\Acal} \tilde{q}^i$ and
-antibaryons $\tilde{B}_\Acal=\Wedge_{j\in\Acal} \tilde{Q}^j=\Lambda^{?}\Wedge_{j\not\in\Acal} q_j$.
+Gauge-invariants match: mesons $M^j{}_i=\tilde{Q}^j Q_i$;
+(anti)baryons $B_\Acal=\Wedge_{i\in\Acal} Q_i\leftrightarrow\Wedge_{i\not\in\Acal} \tilde{q}^i$ and
+$\tilde{B}_\Acal=\Wedge_{j\in\Acal} \tilde{Q}^j\leftrightarrow\Wedge_{j\not\in\Acal} q_j$
+for $\Acal\subset\llbracket 1,F\rrbracket$ with $\cardinal{\Acal}=C$.
 Relation $\tilde{B}_{\Acal'} B_\Acal=\det(M^j{}_i)_{i\in\Acal}^{j\in\Acal'}$
 of $\Lie{SU}(C)$ theory only holds quantumly in $\Lie{SU}(C')$ theory.
+
 A mass term $W=m\tilde{Q}_FQ_F$ decouples a flavour ($F\to F-1$) and Higgses $\Lie{SU}(C')$ to $\Lie{SU}(C'-1)$.
 Dually, Higgsing $\Lie{SU}(C)$ to $\Lie{SU}(C-1)$ using $\langle\tilde{Q}_FQ_F\rangle\to\infty$ (so $F\to F-1$) gives mass to $q_F$, $\tilde{q}_F$ and leaves $\Lie{SU}(C')$ fixed.
 
 
 
-\paragraph[\(\Lie{SO}(C)\) with \(F\) flavours]{SO:}
+\paragraph[\(\Lie{SO}\) with fundamentals]{\(\Lie{SO}\):}
 \mathtikz[inner sep=1pt]{
   \node (A) at (0,0) [rectangle,draw] {$\Lie{SU}(F)$};
   \node (B) at (1.5,0) [rounded rectangle,draw] {$\Lie{SO}(C)$};
@@ -1370,22 +1378,21 @@ dual to
   postaction = {decorate}] (A) to [loop,distance=3ex,in=160,out=-160] node [midway,left] {$M$} (A);
 }
 with $C'=F-C+4$ and $W=Mqq$ (we assume $C,C'\geq 4$).
-Non-anomalous flavour symmetry $(\Lie{SU}(F)\times\ZZ_{2F})/\ZZ_{F,\text{diag}}$;
-$Q$, $M$, $q$ are $\overline{\square}$, $\operatorname{sym}^2\overline{\square}$, $\square$ under $\Lie{SU}(F)$
-and have $\lie{u}(1)_R$ charges $\frac{F-C+2}{F}$, $2\frac{F-C+2}{F}$, $\frac{C-2}{F}$;
+
+Non-anomalous global symmetry $\lie{u}(1)_R\times(\Lie{SU}(F)\times\ZZ_{2F})/\ZZ_{F,\text{diag}}$;
+$Q$, $M$, $q$
+have trial $\lie{u}(1)_R$ charges $\frac{F-C+2}{F}$, $2\frac{F-C+2}{F}$, $\frac{C-2}{F}$ and
+are $\overline{\square}$, $\operatorname{sym}^2\overline{\square}$, $\square$ under $\Lie{SU}(F)$,
 while $\ZZ_{2F}$ acts by $Q\to\rme^{\pi\I/F}Q$, $q\to\Chargeconjugation\rme^{-\pi\I/F}q$ with $\Chargeconjugation$ charge conjugation.
-RG flow:
-\vspace{-1ex}
-\begin{itemize}\setlength{\itemsep}{-1ex}
+\begin{itemize}
 % \item for $0\leq C\leq F/3$ the $\Lie{SU}(C)$ theory is IR-free;
 % \item for $F/3<C<2F/3$ flow to SCFT;
 % \item for $2F/3\leq C\leq F$ the $\Lie{SU}(C')$ theory is IR-free;
 % \item for $0<F<C$
-\item $F/3<C-2<2F/3$ flow to SCFT;
-\item $2F/3\leq C-2\leq F-2$ the $\Lie{SU}(C')$ theory is IR-free;
-\item for $F+5\leq C$ supersymmetry is broken.
+\item For $F/3<C-2<2F/3$ flow to SCFT.
+\item For $2F/3\leq C-2\leq F-2$ the $\Lie{SU}(C')$ theory is IR-free.
+\item For $F+5\leq C$ supersymmetry is broken.
 \end{itemize}
-\undovskip
 Gauge-invariants match: mesons $M_{(ij)}=Q_i Q_j$;
 field strength $W_{\Acal,\alpha}=W_\alpha\wedge\Wedge_{i\in\Acal}Q_i\leftrightarrow W_\alpha\wedge\Wedge_{i\not\in\Acal}q^i$
 for $\cardinal{\Acal}=C-2$ flavours;
@@ -1394,7 +1401,7 @@ for $\cardinal{\Acal}=C$ and
 $b_{\Acal}=W_\alpha\wedge W_\alpha\wedge\Wedge_{i\in\Acal}Q_i\leftrightarrow\Wedge_{i\not\in\Acal}q^i$
 for $\cardinal{\Acal}=C-4$.
 
-\paragraph[\(\Lie{USp}(2C)\) with \(F\) flavours]{USp:}
+\paragraph[\(\Lie{USp}\) with fundamentals]{\(\Lie{USp}\):}
 \mathtikz[inner sep=1pt]{
   \node (A) at (0,0) [rectangle,draw] {$?(2F)$};
   \node (B) at (1.8,0) [rounded rectangle,draw] {$\Lie{USp}(2C)$};
@@ -1405,24 +1412,19 @@ dual to
   \node (A) at (0,0) [rectangle,draw] {$?(2F)$};
   \node (B) at (1.8,0) [rounded rectangle,draw] {$\Lie{USp}(2C')$};
   \draw[->-=.4] (B) -- (A) node [midway,above] {$\tilde{q}$};
-  \draw[->-=.6] (A) to [loop,distance=3ex,in=160,out=-160] node [midway,left] {$M$} (A);
-  % \draw[
-  % decoration = {markings, mark = at position .6 with {\arrow{>}}, mark = at position .4 with {\arrow{>}}},
-  % postaction = {decorate}] (A) to [loop,distance=3ex,in=160,out=-160] node [midway,left] {$M$} (A);
+  \draw[decoration = {markings, mark = at position .73 with {\arrow{<}}, mark = at position .33 with {\arrow{>}}},
+  postaction = {decorate}] (A) to [loop,distance=3ex,in=160,out=-160] node [midway,left] {$M$} (A);
 }
 with $W=% \Tr(M\tilde{q}q)
 $ and $C'=F-C-2$.
 
-
-% \paragraph{\texorpdfstring{$\Lie{USp}(2K)$ with $2N\square+2N\overline{\square}$}{USp(2K) with 2N flavours}} is dual to $\Lie{USp}(2N-2K-4)$ with $2N\square+2N\overline{\square}$ and extra neutral coupled by cubic~$W$
-% Check if both fundamental and antifundamental!
+% TODO: incomplete
 
 \paragraph{Self-duality}
-in the $\Lie{SU}$, $\Lie{SO}$, $\Lie{USp}$ cases for $F=2C,2C-4,2C+2$ respectively,
+in the $\Lie{SU}$, $\Lie{SO}$, $\Lie{USp}$ dualities for $F=2C,2C-4,2C+2$ respectively,
 namely $C(R_{\text{chirals}})=2C(\text{adj})$; adding an adjoint gives $\Nsusy=2$ SCFTs.
 
-\paragraph[\(\Lie{SU}(C)\) with flavours and adjoint]{Kutasov--Schwimmer--Seiberg duality} \href{http://arXiv.org/abs/hep-th/9510222}{[hep-th/9510222]}
-For $W=\Tr P(X)=\sum_{j=1}^{k+1}s_{k+1-j}\Tr X^j/j$ (with $s_1=0$)
+\paragraph[\(\Lie{SU}\) with flavours and adjoint]{Kutasov--Schwimmer--Seiberg duality} \hepth{9510222}
 \unskip\vspace{-1ex}
 \mathtikz[inner sep=1pt]{
   \node (A) at (0,0) [rectangle,draw] {$\Lie{SU}(F)$};
@@ -1444,20 +1446,37 @@ dual to
   \draw[->-=.6] (A) to [bend right=15] (C);
   \draw[->-=.6] (B) to [loop,distance=3ex,in=75,out=140] node [pos=.85,right] {$x$} (B);
 }
-with $W_{\text{mag}}=\alpha(s)-\Tr P(x)+\frac{1}{\mu^2}\sum_{1\leq i\leq j\leq k} s_{k-j}M_i\tilde{q}x^{j-i}q$
-for some function~$\alpha$ and mass~$\mu$, and $C'=kF-C\geq 0$.
-Gauge-invariants: mesons $M_j=\tilde{Q}X^{j-1}Q$;
-for $\cardinal{\Acal}=C$ in $\llbracket 1,F\rrbracket\times\llbracket 1,k\rrbracket$,
-baryons $B_\Acal=\Wedge_{(i,j)\in\Acal}(X^{j-1}Q_i)\leftrightarrow\Wedge_{(i,j)\not\in\Acal}(x^{j-1}q_i)$
-and antibaryons $\tilde{B}_\Acal=\Wedge_{(i,j)\in\Acal}(\tilde{Q}_iX^{j-1})\leftrightarrow\Wedge_{(i,j)\not\in\Acal}(\tilde{q}_ix^{j-1})$;
-and $\Tr X^j/j=\partial W/\partial s_{k+1-j}=\partial W_{\text{mag}}/\partial s_{k+1-j}$ expressed in terms of $\Tr x^i$ (here $\alpha(s)$ matters).
+for $W_{\text{el}}=\Tr P(X)=\sum_{j=1}^{k+1}s_{k+1-j}\Tr X^j/j$ (with $s_1=0$) and
+$W_{\text{mag}}=\alpha(s)-\Tr P(x)+\frac{1}{\mu^2}\sum_{1\leq i\leq j\leq k} s_{k-j}M_i\tilde{q}x^{j-i}q$,
+for some function $\alpha$ and mass $\mu$.  Here, $C'=kF-C\geq 0$.
 
-Global symmetries $\lie{su}(F)^2\times\lie{u}(1)_B\times\lie{u}(1)_R$
+Non-anomalous global symmetries $\lie{su}(F)^2\times\lie{u}(1)_B\times\lie{u}(1)_R$
 where $(Q,\tilde{Q})$, $X$, $(q,\tilde{q})$, $x$ have $\lie{u}(1)_B$ charges $\pm\frac{1}{C}$, $0$, $\pm\frac{1}{C'}$, $0$
 and $\lie{u}(1)_R$ charges $1-\frac{2C}{(k+1)F}$, $\frac{2}{k+1}$, $1-\frac{2C'}{(k+1)F}$, $\frac{2}{k+1}$.
 
+% \begin{itemize}
+% \item For $2\leq k<C\leq F/2$ the $\Lie{SU}(C)$ theory is IR free.
+% \item
+% \item For $2\leq k<C'\leq F/2$ the $\Lie{SU}(C')$ theory is IR free.
+% \end{itemize}
+Gauge-invariants: mesons $M_j=\tilde{Q}X^{j-1}Q$;
+baryons $B_\Acal=\Wedge_{(i,j)\in\Acal}(X^{j-1}Q_i)\leftrightarrow\Wedge_{(i,j)\not\in\Acal}(x^{j-1}q_i)$
+and antibaryons $\tilde{B}_\Acal=\Wedge_{(i,j)\in\Acal}(\tilde{Q}_iX^{j-1})\leftrightarrow\Wedge_{(i,j)\not\in\Acal}(\tilde{q}_ix^{j-1})$
+for $\Acal\subset\llbracket 1,F\rrbracket\times\llbracket 1,k\rrbracket$ with $\cardinal{\Acal}=C$;
+and $\Tr X^j/j=\partial W/\partial s_{k+1-j}=\partial W_{\text{mag}}/\partial s_{k+1-j}$ expressed in terms of $\Tr x^i$ (for this, $\alpha(s)$ matters);
+\ldots{}
+
+\paragraph[\(\Lie{SU}\) mixing two \(W\)]{Aharony--Sonnenschein--Yankielowicz} \hspace{0pt plus 2ex}\hepth{9504113}
+$\Lie{SU}(C)$ with $F$~flavours $(Q,\tilde{Q})$, $F'$ flavours $(Z,\tilde{Z})$ and an adjoint~$X$,
+with $W_{\text{el}}=\tilde{Z}XZ+\Tr X^3/3$ is dual to
+$\Lie{SU}(2F+F'-C)$ with $F+F'$ flavours $q,\tilde{q},z,\tilde{z}$, an adjoint~$x$,
+gauge singlets $M_j$, $N$, $\tilde{N}$ and
+$W_{\text{mag}}=\tilde{z}xz+\Tr x^3/3+M_1\tilde{q}xq+M_2\tilde{q}q+N\tilde{z}q+\tilde{N}\tilde{q}z$.
+Duality likely generalizes to $W=\Tr P(X)+\sum_i\tilde{Z}_iX^{k_i}Z_i$
+with an $\Lie{SU}(F\deg P+\sum_ik_i-C)$ dual.
+
 \paragraph{Other 4d \(\Nsusy=1\) dualities}
-Kutasov--Schwimmer--Seiberg, Brodie, Intriligator--Pouliot, Argyres--Intriligator--Leigh--Strassler, Klebanov cascade, Intriligator--Leigh--Strassler, Kutasov--Lin.
+Brodie, Intriligator--Pouliot, Argyres--Intriligator--Leigh--Strassler, Klebanov cascade, Intriligator--Leigh--Strassler, Kutasov--Lin.
 
 \subsection{Field theory dualities}
 
