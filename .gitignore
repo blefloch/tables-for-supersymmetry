@@ -1,7 +1,8 @@
 ## Specific to this project
 Old/
 refs/
-todo
+todo.org
+todo.org~
 
 ## Core latex/pdflatex auxiliary files:
 *.aux
