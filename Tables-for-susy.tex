@@ -146,7 +146,7 @@
       }
     \tl_set:Nx \l__my_label_tl
       {
-        \exp_last_unbraced:Nf \__my_alphanumeric:N
+        \exp_args:NNf \use:nn \__my_alphanumeric:N % exp_last_unbraced unsafe if empty title
           { \tl_to_str:N \l__my_title_tl }
         \q_recursion_tail \q_recursion_stop
       }
@@ -232,6 +232,7 @@
 \DeclareMathOperator{\gr}{gr}
 \DeclareMathOperator{\diag}{diag}
 \DeclareMathOperator{\Li}{Li}
+\DeclareMathOperator{\sign}{sign}
 \newcommand{\one}{\mathbbm{1}}
 \newcommand{\pullback}[2]{#1^*#2}
 \newcommand{\bundle}{\mathcal}
@@ -243,7 +244,8 @@
 
 \ExplSyntaxOn
 \NewDocumentCommand{\Lie}{m}{
-  \mathrm {
+  \texorpdfstring { \textup } { \use:n }
+  {
     \clist_if_in:nnF
       { GL , PGL , SL , PSL , SO , PSO , SU , PSU , U , PU , O , PO , Sp , PSp , USp , PUSp , OSp , POSp , Spin , PSpin , Pin, P , PS , A , B , C , D , E , F , G , Q , UQ , W , S , \tilde S , \tilde{S} , H , T }
       {#1} { \UnknownLie }
@@ -251,7 +253,8 @@
   }
 }
 \NewDocumentCommand{\lie}{m}{
-  \mathfrak {
+  \texorpdfstring { \mathfrak } { \use:n }
+  {
     \str_case:nnF {#1}
       {
         { gl } { gl }
@@ -290,6 +293,7 @@
 \newenvironment{tab}[1]{\center\undovskip\vspace{.1\baselineskip}\tabular{#1}\toprule}{\crcr\bottomrule\endtabular\endcenter\undovskip\vspace{.1\baselineskip plus .3\baselineskip}}
 
 \newcommand{\hepth}[1]{\href{http://arXiv.org/abs/hep-th/#1}{[hep-th/#1]}}
+\newcommand{\arxiv}[1]{\href{http://arXiv.org/abs/#1}{[#1]}}
 
 
 \begin{document}
@@ -297,7 +301,11 @@
 
 \noindent\textbf{\Large Tables for supersymmetry.}
 
-\noindent Bruno Le Floch, Princeton University, \today.
+\noindent{\scriptsize Bruno Le Floch, Princeton University, 2018.\\
+Very sparse references, not always to original papers.\\
+Help welcome at
+\url{https://github.com/blefloch/tables-for-supersymmetry}
+\par}
 
 \let\contentsname\empty
 {\tiny\tableofcontents\par}\undovskip
@@ -773,7 +781,7 @@ and $\lie{osp}(6,2|4)=\lie{osp}^*(8|4)$.
 
 \section{Spinors and anomalies}
 
-\subsection{Spinors}
+\subsection[Spinors]{Spinors \normalsize\textnormal{(e.g.\@ \hepth{9910030})}}
 
 \paragraph{Clifford algebra.}  Let $h_{ab}$ be diagonal with $s$~`$+1$' and $t$~`$-1$', and $d=s+t$.  The Clifford algebra $\{\Gamma_a,\Gamma_b\}=2h_{ab}$ has real dimension~$2^d$ and is isomorphic to a matrix algebra $M_{2^{\#}}(\bullet)$ with
 \begin{tab}{>{$}r<{$}*{8}{>{$}c<{$}}}
@@ -787,11 +795,11 @@ s-t \bmod{8} & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 \\
 Let $\Gamma^{(n)}=\Gamma_{a_1\ldots a_n}$.
 Using $\left(\mathcal{C}\Gamma^{(n)}\right) ^T= -\epsilon(-)^{n(n-1)/2}(-\eta)^n \mathcal{C}\Gamma^{(n)}$ find which $n\bmod{4}$ give symmetric $\mathcal{C}\Gamma^{(n)}$.  The sum of $\binom{d}{n}$ must be $2^{\lfloor d/2\rfloor} (2^{\lfloor d/2\rfloor} + 1) / 2$.  This fixes $\epsilon, \eta$.  Odd $d$ require $\eta=(-1)^{d(d+1)/2}$ to preserve $\Gamma^{(d)}$.  Even~$d$ allow two choices of signs: consult the rows $d\pm 1$.
 \begin{tab}{rccc}
-$d\bmod 8$ & $n$ & $\epsilon$ & $\eta$ \\\midrule\addlinespace[7pt]
-\multirow{2}{*}[11pt]{\rlap{0$\langle$}}\multirow{2}{*}{2$\langle$}1   & 0, 1 & $-1$ & $-1$\\
+$d\bmod 8$ & $n$ & $\epsilon$ & $\eta$ \\\midrule
+0---\llap{\multirow{2}{*}{2$\langle$}}1   & 0, 1 & $-1$ & $-1$\\
 \multirow{2}{*}{4$\langle$}3   & 1, 2 & $+1$ & $+1$\\
 \multirow{2}{*}{6$\langle$}5   & 2, 3 & $+1$ & $-1$\\
-\phantom{0$\langle$}7   & 0, 3 & $-1$ & $+1$\\
+0---7   & 0, 3 & $-1$ & $+1$\\
 \end{tab}
 
 \paragraph{Reduced spinors.}
@@ -1024,13 +1032,13 @@ Ferrara--Zumino supercurrent $\overline{D}^{\dot{\alpha}}J_{\alpha\dot{\alpha}}=
 R-symmetry multiplet $\overline{D}^{\dot{\alpha}}R_{\alpha\dot{\alpha}}=\chi_\alpha$,
 $\overline{D}_{\dot{\alpha}}\chi_\alpha=0$, $D^\alpha\chi_\alpha=\overline{D}_{\dot{\alpha}}\overline{\chi}^{\dot{\alpha}}$
 contains (conserved) R-symmetry current; sources new minimal supergravity.
-Komargodski--Seiberg multiplet \href{https://arxiv.org/abs/1002.2228}{[1002.2228]}
+Komargodski--Seiberg multiplet \arxiv{1002.2228}
 $\overline{D}^{\dot{\alpha}}S_{\alpha\dot{\alpha}}=\chi_\alpha+D_\alpha X$, with $\chi_\alpha$ and $X$ as above,
 contains both stress tensor and R-symmetry current and sources 16/16 supergravity.
 
 
 
-\section{Supersymmetric gauge theories}
+\section{Supersymmetric (gauge) theories}
 
 \subsection{Generalities}
 
@@ -1143,7 +1151,7 @@ likewise $D_\alpha$ is conjugate to $Q_\alpha$.
 
 \paragraph{4d \(\Nsusy=1\) pure SYM} classically has $\Lie{U}(1)_R$ symmetry, broken by instantons to $\ZZ_{2h}$ with $h=C_2(\text{adj})$.  It confines, is mass-gapped, and has $C_2(A)$ vacua associated to breaking $\ZZ_{2h}$ to $\ZZ_2$ by gaugino condensation $\langle\lambda\lambda\rangle$.  Witten index $\Tr(-1)^F=h$.
 
-Field strength $W_\alpha=-\frac{1}{4}\overline{D}\overline{D}\rme^{-V}D_\alpha \rme^V$ and $\overline{W}_\alpha=-\frac{1}{4}DD\rme^{-V}\overline{D}_\alpha \rme^V$.
+$W_\alpha=-\frac{1}{4}\overline{D}\overline{D}\rme^{-V}D_\alpha \rme^V$ and $\overline{W}_\alpha=-\frac{1}{4}DD\rme^{-V}\overline{D}_\alpha \rme^V$ field strength.
 
 \paragraph{Wess-Zumino model:} chiral multiplet~$\phi$ with superpotential $W=m\phi^2+g\phi^3$.
 
@@ -1154,6 +1162,8 @@ the dual photon $\gamma$ (a periodic real scalar) is defined by $\dd\gamma=J_T=\
 Chiral superfield $\Phi=\phi+i\gamma$ where $\phi$ is the vector multiplet scalar.
 
 Field strength $\Sigma=\epsilon^{\alpha\beta}\overline{D}_\alpha D_\beta V$.
+
+$Z_{S^3} = \int_{\lie{T}} \dd{u} \frac{\prod_{\alpha\,\text{root}} (2\sinh(\alpha u/2))^2}{\prod_{w\in\mathcal{R}}\cosh(wu/2)} \rme^{\I k\Tr u^2/(4\pi)}$
 
 \paragraph{2d \(\Nsusy=(2,2)\).}
 Classical $\Lie{U}(1)\times\Lie{U}(1)$ R-symmetry.
@@ -1206,9 +1216,12 @@ Anomaly cancellation: $\sqrt{K_X}\otimes\wedge T_X\otimes\det^{-1/2}\bundle{E}\o
 
 \section{Other theories}
 
+Chern--Simons $(2m-1)$-form $m\Tr\bigl(A\int_0^1\dd{t}(t\mathrm{d}A+t^2A^2)^{m-1}\bigr)$.
+
 \subsection[Two-dimensional CFT]{2d conformal field theories}
 
-\paragraph{Virasoro algebra} $[L_m,L_n]=(m-n)L_{m+n}+\frac{c}{12}(m^3-m)\delta_{m+n,0}$ where $m\in\ZZ$.  Adjoint $L_n^\dagger=L_{-n}$ and $c^\dagger=c$.
+\paragraph{Virasoro algebra} $\text{Vir}_c$, $c\in\RR$: generators $L_m$, $m\in\ZZ$ obey
+$[L_m,L_n]=(m-n)L_{m+n}+\frac{c}{12}(m^3-m)\delta_{m+n,0}$ and $L_n^\dagger=L_{-n}$.
 
 \paragraph{\(\Nsusy=1\) super-Virasoro algebra} additionally $[L_m,G_r]=(m/2-r)G_{m+r}$ and $\{G_r,G_s\}=2L_{r+s}+\frac{c}{3}(r^2-1/4)\delta_{r+s,0}$ where either $r\in\ZZ$ (Ramond algebra) or $r\in\ZZ+1/2$ (Neveu--Schwarz algebra).  Adjoint $G_r^\dagger=G_{-r}$.
 
@@ -1303,12 +1316,8 @@ Has AdS/CFT dual with linear dilaton background.
 % todo: quantum Toda chain
 
 \paragraph{Relativistic quantum Toda chain.} $H = \sum_{n=1}^N \bigl(\cos(2\eta\hat{p}_n)+g^2\cos(\eta\hat{p}_n+\eta\hat{p}_{n+1})\rme^{x_{n+1}-x_n}\bigr)$.  Its non-relativistic limit is $\eta\to 0$ imaginary with $g/(i\eta\sqrt{2})=c$ fixed.
-% http://arxiv.org/abs/1609.07385 ``Exact solution of the relativistic quantum Toda chain''
+% \arxiv{1609.07385} ``Exact solution of the relativistic quantum Toda chain''
 
-
-\subsection{Localization results}
-
-\paragraph{3d \(\Nsusy=2\):} $Z = \int_{\lie{T}} \dd{u} \frac{\prod_{\alpha\,\text{root}} (2\sinh(\alpha u/2))^2}{\prod_{w\in\mathcal{R}}\cosh(wu/2)} \rme^{\I k\Tr u^2/(4\pi)}$.
 
 \section{Dualities}
 
@@ -1379,7 +1388,7 @@ dual to
 }
 with $C'=F-C+4$ and $W=Mqq$ (we assume $C,C'\geq 4$).
 
-Non-anomalous global symmetry $\lie{u}(1)_R\times(\Lie{SU}(F)\times\ZZ_{2F})/\ZZ_{F,\text{diag}}$;
+Non-anomalous global symm.\@ $\lie{u}(1)_R\times(\Lie{SU}(F)\times\ZZ_{2F})/\ZZ_{F,\text{diag}}$;
 $Q$, $M$, $q$
 have trial $\lie{u}(1)_R$ charges $\frac{F-C+2}{F}$, $2\frac{F-C+2}{F}$, $\frac{C-2}{F}$ and
 are $\overline{\square}$, $\operatorname{sym}^2\overline{\square}$, $\square$ under $\Lie{SU}(F)$,
@@ -1874,7 +1883,7 @@ ALE spaces are resolutions of $\HH/\Gamma$ for a finite subgroup
 $\Gamma<\Lie{USp}(2)$.  The quotient $\HH/\Gamma$ can appear as a local
 model of an orbifold singularity in a K3~surface.
 
-% https://arxiv.org/pdf/1505.01790
+% \arxiv{1505.01790}
 
 \paragraph{ALE hyperK\"ahler \(4\)-manifolds} $X$ are
 diffeomorphic to the minimal resolution of $\HH/\Gamma$ for some finite
@@ -1921,16 +1930,5 @@ $\alpha_i(\Sigma)=0$.
 \bigskip
 \vfill
 \setlength{\parindent}{0pt}
-
-%\begin{itemize}
-%\item Say that only abelian R-symmetries can mix with global symmetries along the RG-flow.
-%\end{itemize}
-
-
-[1] \href{http://arxiv.org/abs/hep-th/9910030}{Tools for supersymmetry} by Antoine Van Proeyen
-
-[2] Various Wikipedia articles.
-
-[3] Various ncatlab.org articles.
 
 \end{document}
