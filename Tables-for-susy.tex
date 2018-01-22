@@ -1255,8 +1255,32 @@ We get a $\ZZ\rtimes\ZZ_2$ automorphism group.
 
 \paragraph{\texorpdfstring{$\mathcal{N}=2$}{N=2} minimal models} have an ADE classification; the $\Lie{A}_k$ has $c/3=1-2/(k+2)$ and is the IR limit of a Landau--Ginzburg model with $W=\Phi^{k+2}$ superpotential.
 
-\subsection{Chern--Simons}
-Chern--Simons $(2m-1)$-form $m\Tr\bigl(A\int_0^1\dd{t}(tdA+t^2A^2)^{m-1}\bigr)$.
+\subsection{3d gauge theories}
+
+\paragraph{Chern--Simons term}
+$S_{\text{CS}}=\frac{1}{2\pi}\int_M\mathrm{d}^3x\Tr\bigl(A\mathrm{d}A+2A^3/3)\bigr)$ for a trivial $G$-bundle;
+otherwise realize $A$ as boundary of an $A_{\text{4d}}$ on some 4d manifold~$X$ with $M=\partial X$ and use $S_{\text{CS}}=\frac{1}{8\pi}\int_X\mathrm{d}^4x\Tr(F\wedge F)$.
+%well-defined up to $2\pi\ZZ$ shifts (for spin manifolds, $4\pi\ZZ$).
+This gives a TQFT (topological quantum field theory).
+
+% TODO: Need choice of framing of the 3d manifold.
+
+\paragraph{Magnetic global symmetry} $G_{\text{mag}}=\Hom(\pi_1(G),\Lie{U}(1))$.
+Gauging discrete $\Gamma\subset G_{\text{mag}}$ enlarges gauge group $G$ to a covering with $\tilde{G}/\Gamma=G$.
+Explicit ``topological'' current $J={\star\mathrm{d}A}/(2\pi)$ for $G=\Lie{U}(1)$.
+
+\paragraph{Contact term in \texorpdfstring{$\langle JJ\rangle$}{<JJ>}}
+where $J$ is a conserved current in 3d:
+$\langle J_\mu(x)J_\nu(y)\rangle = \cdots + \frac{w}{2\pi}\epsilon_{\mu\nu\rho}\partial_{x^\rho}\delta^3(x-y)$
+for some~$w$.
+
+\paragraph{Action of \(\Lie{SL}(2,\ZZ)\)} \hepth{0307041} on 3d CFTs with $\Lie{U}(1)$ flavour symmetry (current~$J$).
+$S=\bigl(\begin{smallmatrix}0&1\\-1&0\end{smallmatrix}\bigr)$ gauges the $\Lie{U}(1)$ but gives no kinetic energy to~$A$;
+$T^k=\bigl(\begin{smallmatrix}1&k\\0&1\end{smallmatrix}\bigr)$ shifts background Chern--Simons level by~$k$,
+equivalently adds contact term to $\langle JJ\rangle$,
+where $k\in 2\ZZ$ if the manifold has no spin structure.
+Relations: $S^2\colon J\to -J$ simply, while $(ST)^3$ multiplies path integral by theory-indepedent topological invariant of $M$.
+
 
 \subsection{Supergravity and strings}
 
@@ -1486,6 +1510,43 @@ with an $\Lie{SU}(F\deg P+\sum_ik_i-C)$ dual.
 
 \paragraph{Other 4d \(\Nsusy=1\) dualities}
 Brodie, Intriligator--Pouliot, Argyres--Intriligator--Leigh--Strassler, Klebanov cascade, Intriligator--Leigh--Strassler, Kutasov--Lin.
+
+\subsection{3d dualities}
+
+We recall $\Lie{Sp}(n)=\Lie{USp}(2n)$.
+
+% TODO: check, find refs, what about Spin?
+\paragraph{Level-rank duality} of Chern--Simons TQFTs (proven).
+For $k,N\geq 0$, have
+$\Lie{U}(k)_{\pm N}\leftrightarrow\Lie{SU}(N)_{\mp k}$,
+$\Lie{SO}(k)_{\pm N}\leftrightarrow\Lie{SO}(N)_{\mp k}$,
+$\Lie{Sp}(k)_{\pm N}\leftrightarrow\Lie{Sp}(N)_{\mp k}$
+but subtleties \arxiv{1607.07457}.
+
+\paragraph{Chern--Simons matter dualities} \arxiv{1706.08755}
+where scalars and fermions are in $\CC^N$ for $\Lie{U}(N)$, $\RR^N$ for $\Lie{SO}(N)$, $?^{2N}$ for $\Lie{Sp}(N)$,
+and scalars have quartic coupling.
+Assuming $N$, $k$, $F$, $\pm$ obey $N\in\ZZ_{\geq 0}$, $F/2\pm k\in\ZZ_{\geq 0}$ and
+an unknown upper bound $F<N_*$ greater than $2|k|$,
+conjectured dualities (modified for $\Lie{SO}(1)$ and $\Lie{SO}(2)$, see reference):
+\begin{itemize}
+\item $\Lie{SU}(N)_k$ \& $F$ fermions $\leftrightarrow$ $\Lie{U}(F/2\pm k)_{\mp N}$ \& $F$ scalars;
+\item $\Lie{SO}(N)_k$ \& $F$ fermions $\leftrightarrow$ $\Lie{SO}(F/2\pm k)_{\mp N}$ \& $F$ scalars;
+\item $\Lie{Sp}(N)_k$ \& $F$ fermions $\leftrightarrow$ $\Lie{Sp}(F/2\pm k)_{\mp N}$ \& $F$ scalars.
+\end{itemize}
+Denote $X=\Lie{SU},\Lie{SO},\Lie{Sp}$ and $X'=\Lie{U},\Lie{SO},\Lie{Sp}$ to uniformize cases.
+Turn on equal mass~$m$ for all fermions.
+For $\mp m\gg g^2$ the theory flows to $X(N)_{k\mp F/2}\leftrightarrow X'(|k\mp F/2|)_{-\sign(k\mp F/2)N}$.
+If $F\leq 2|k|$ the (only) bosonic dual has the same two phases.
+If $2|k|<F<N_*$ a confining phase sits between these phases; each bosonic dual describes two of the three phases.
+In the confining phase the global symmetry breaks to $Y(F/2+k)\times Y(F/2-k)\subset Y(F)$,
+giving an NLSM on the quotient and $N$ times the Wess--Zumino term.
+Here $Y$ is $\Lie{Sp}$ for $\Lie{SU}(2)$ and otherwise $\tilde{X}$.
+
+Integrating out one fermion of large mass~$m$ shifts $F\to F-1$.
+For $\mp m>0$ get $k\to k+1/2$; the dual scalar becomes massive and $k+F/2$ is unchanged.
+For $\pm m>0$ get $k\to k-1/2$; the dual scalar has Mexican potential so $k+F/2\to k+F/2-1$.
+
 
 \subsection{Field theory dualities}
 
