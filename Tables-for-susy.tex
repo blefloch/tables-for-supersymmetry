@@ -295,9 +295,23 @@
 \newcommand{\undovskip}{\relax\ifvmode\ifdim\lastskip>0pt\relax\vskip-\lastskip\fi\fi}
 \newenvironment{tab}[1]{\center\undovskip\vspace{.1\baselineskip}\tabular{#1}\toprule}{\crcr\bottomrule\endtabular\endcenter\undovskip\vspace{.1\baselineskip plus .3\baselineskip}}
 
-\newcommand{\hepth}[1]{\href{http://arXiv.org/abs/hep-th/#1}{[hep-th/#1]}}
-\newcommand{\arxiv}[1]{\href{http://arXiv.org/abs/#1}{[#1]}}
-\newcommand{\inspire}[1]{\href{http://inspirehep.net/record/#1}{[inspire:#1]}}
+\ExplSyntaxOn
+\seq_new:N \l__my_tmpa_seq
+\cs_new_protected:Npn \__my_link_clist:Nn #1#2
+  {
+    [
+    \seq_set_from_clist:Nn \l__my_tmpa_seq {#2}
+    \seq_set_map:NNn \l__my_tmpa_seq \l__my_tmpa_seq { \exp_not:n { #1 {##1} } }
+    \seq_use:Nn \l__my_tmpa_seq { , ~ }
+    ]
+  }
+\newcommand{\hepth}{ \__my_link_clist:Nn \hepthaux }
+\newcommand{\hepthaux}[1]{\href{http://arXiv.org/abs/hep-th/#1}{hep-th/#1}}
+\newcommand{\arxiv}{ \__my_link_clist:Nn \arxivaux }
+\newcommand{\arxivaux}[1]{\href{http://arXiv.org/abs/#1}{#1}}
+\newcommand{\inspire}{ \__my_link_clist:Nn \inspireaux }
+\newcommand{\inspireaux}[1]{\href{http://inspirehep.net/record/#1}{inspire:#1}}
+\ExplSyntaxOff
 
 \begin{document}
 \twocolumn\raggedbottom
