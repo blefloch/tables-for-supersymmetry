@@ -174,6 +174,7 @@
 \makeatletter
 \newcommand{\tabfootsymb}[1]{\ensuremath{\scriptstyle\@fnsymbol{\the\numexpr(#1)+2\relax}}}
 \makeatother
+\newcommand{\caution}[1]{{\scriptsize\mathtikz{\draw (0,-.15)--(.3,-.15)--(.15,.2)--cycle;\node at (.15,0) {!};} #1}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % http://tex.stackexchange.com/questions/14386/importing-a-single-symbol-from-a-different-font
@@ -755,7 +756,7 @@ The forms $\lie{su}^*$, $\lie{osp}^*$, $\lie{Q}^*$ only exist for even rank; $\l
 \lie{su}^*(m|n) \:\: (m,n \text{ even}) & \lie{su}^*(m)\oplus \lie{su}^*(n)\oplus \lie{so}(1,1)\tabfoot{1}\\
 \midrule
 \lie{osp}(m-p,p|2n) & \lie{so}(m-p,p)\oplus \lie{sp}(2n,\RR) \\
-\multicolumn{2}{l}{$\lie{osp}^*(m|2n-2q,2q)$ ($m$ even)\quad $\lie{so}^*(m)\oplus \lie{usp}(2n-2q,2q)$} \\
+\multicolumn{2}{l}{$\lie{osp}^*(m|2n-2q,2q)$ ($m$ even)\quad $\lie{so}^*(m)\oplus \lie{usp}(2n-2q,2q)$\tabfoot{3}} \\
 \midrule
 \lie{D}^p(2,1,\alpha) \;\tabfoot{2} & \lie{so}(4-p,p)\oplus \lie{sl}(2,\RR)\ (p=0,1,2)\\
 \midrule
@@ -774,6 +775,9 @@ The forms $\lie{su}^*$, $\lie{osp}^*$, $\lie{Q}^*$ only exist for even rank; $\l
 \tabfoot{1}
 For $m=n$, $\lie{u}(1)$ and $\lie{so}(1,1)$ factors are absent.
 Additionally, one can project down to a single bosonic factor.
+
+\tabfoot{3}
+\caution{}A real form of $\lie{osp}(2|2,\CC)=\lie{sl}(2|1,\CC)$ is missing.
 
 \tabfoot{2}
 The three $\lie{sl}(2)$ bosonic factors of $\lie{D}(2,1,\alpha)$ appear with weights $1$, $\alpha$ and $-1-\alpha$ in fermion anticommutators.
