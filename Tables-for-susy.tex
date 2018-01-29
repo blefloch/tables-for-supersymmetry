@@ -328,73 +328,6 @@ Help welcome at
 \let\contentsname\empty
 {\tiny\tableofcontents\par}\undovskip
 
-\section{Special functions}
-
-% todo: Euler's Gamma function, elliptic Gamma function, hyperbolic Gamma function, Barnes' double-Gamma function, multiple sine, Upsilon, Jacobi theta functions,
-
-\paragraph{Multiple gamma function.}  For $a_i\in\CC$ with $\Re a_i>0$,
-$\Gamma_N(x|\vec{a})=\prod_{\vec{n}}^{\text{reg.}}(x+\vec{n}\cdot\vec{a})^{-1}=\exp(\partial_s\sum_{\vec{n}}(x+\vec{n}\cdot\vec{a})^{-s}|_{s=0})$,
-where $\vec{n}\in\ZZ_{\geq 0}^N$.  Here, we zeta-regularized the product; the sum is analytically continued from $\Re s>N$.  The meromorphic $x\mapsto\Gamma_N(x|\vec{a})$ has no zero and poles at $x=-\vec{n}\cdot\vec{a}$ (simple poles for generic~$\vec{a}$).
-$\Gamma_0(x|)=1/x$, $\Gamma_1(x|a)=a^{x/a-1/2}\Gamma(x/a)/\sqrt{2\pi}$, $\Gamma_N(x|\vec{a})=\Gamma_{N-1}(x|a_1,\ldots,a_{N-1})\Gamma_N(x+a_N|\vec{a})$ and it is invariant under permutations of~$\vec{a}$.
-
-\paragraph{Plethystic exponential.}  Let $\mathbf{m}\subset R[[x_1,\ldots,x_n]]$ be series with no constant term over a ring~$R$.  Then $\plexp:\mathbf{m}\to 1+\mathbf{m}$ obeys $\plexp[x_i^p]=1/(1-x_i^p)$, $\plexp[f+g]=\plexp[f]\plexp[g]$ and $\plexp[\lambda f]=\plexp[f]^\lambda$ for $\lambda\in R$.  It maps an index of single-particle states $f(x)$ to that of multiparticle states $\plexp f(x)=\exp\sum_{k\geq 1}\frac{1}{k}f(x_1^k,\ldots,x_n^k)$.
-
-\paragraph[q-Pochhammer symbol]{q-Pochhammer}
-$(a;q)_\infty=\plexp\frac{-a}{1-q}=\prod_{k=0}^{\infty}(1-aq^k)$
-and finite version $(a;q)_n=(a;q)_\infty/(aq^n;q)_\infty$.
-Products are often denoted $(a_1,\ldots,a_N;q)_n=(a_1;q)_n\cdots(a_N;q)_n$.
-Properties:
-$(a;q)_{-n}(q/a;q)_{n}=(-q/a)^{n}q^{n(n-1)/2}$
-and q-binomial theorem $(ax;q)_\infty/(x;q)_\infty=\sum_{n=0}^{\infty}x^n (a;q)_n/(q;q)_n$.
-
-\paragraph{q-gamma (or basic gamma) function} for $\abs{q}<1$,
-$\Gamma_q(x)=(1-q)^{1-x}(q;q)_\infty/(q^x;q)_\infty$
-obeys $\Gamma_q(x+1)=\frac{1-q^x}{1-q}\Gamma_q(x)$
-and $\Gamma_q(x)\xrightarrow{q\to 1}\Gamma(x)$.
-It has simple poles at $x\in\ZZ_{\leq 0}$ and no zero.
-
-\paragraph{Modular form} of weight $k$: holomorphic on $\mathbf{H}=\{\Im\tau>0\}$ and as $\tau\to\I\infty$ and obeys $f(\frac{a\tau+b}{c\tau+d})=(c\tau+d)^kf(\tau)$.
-
-\paragraph{Dedekind eta function:} $\eta(\tau)=q^{1/24}(q;q)_\infty$ for $q=\rme^{2\pi\I\tau}$. $\Delta=\eta^{24}$ is a modular form of weight~$12$.
-
-\paragraph{Theta functions:} q-theta $\thetafunction(z;q)=(z;q)_\infty(q/z;q)_\infty$ obeys $\thetafunction(z;q)=\thetafunction(q/z;q)=-z\thetafunction(1/z;q)$.
-Variant $\thetafunction_1(z;q)=\thetafunction_1(\tau|u)=\I z^{-1/2}\,q^{1/12}\,\eta(\tau)\,\thetafunction(z;q)=-\I z^{1/2}q^{1/8}(q;q)_\infty(qz;q)_\infty(1/z;q)_\infty$
-with $z=\rme^{2\pi\I u}$.
-
-\paragraph{Eisenstein series} ($k\geq 1$) $E_{2k}=1+\frac{2}{\zeta(1-2k)}\sum_{n=1}^{\infty}n^{2k-1}\frac{q^n}{1-q^n}$ obeys
-$E_{2k}(\frac{a\tau+b}{c\tau+d})=(c\tau+d)^{2k}E_{2k}(\tau)+\frac{6}{\pi\I}c(c\tau+d)\delta_{k=1}$.
-For $k\geq 2$ it is a modular form and $E_{2k}=\frac{1}{2\zeta(2k)}\sum_{0\neq\lambda\in\mathbb{Z}+\tau\mathbb{Z}} \lambda^{-2k}$.
-
-\paragraph{Elliptic gamma function}
-$\Gamma(z;p,q)=\plexp\frac{z-pq/z}{(1-p)(1-q)}=\prod_{m=0}^{\infty}\prod_{n=0}^{\infty}(1-p^{m+1}q^{m+1}z^{-1})/(1-p^mq^nz)$
-obeys $\Gamma(z;p,q)=\Gamma(z;q,p)=1/\Gamma(pq/z;p,q)$
-and $\Gamma(pz;p,q)=\thetafunction(z;q)\Gamma(z;p,q)$
-and $\Gamma(z;0,q)=1/(z;q)_\infty$.
-
-\paragraph{Polylogarithm and Riemann zeta}
-$\zeta(s)=\Li_s(1)$ where
-$\Li_s(z)=\sum_{k\geq 1}z^k/k^s=\bigl(1/\Gamma(s)\bigr)\int_0^\infty t^{s-1}\mathrm{d}t/(\rme^t/z-1)$ obeys
-$\Li_{s+1}(z)=\int_0^z\Li_s(t)\mathrm{d}t/t$ and
-$\Li_1(z)=-\log(1-z)$.
-The dilogarithm obeys
-$\Li_2(x)+\Li_2(1-x)=\pi^2/6-\log(x)\log(1-x)$ (reflection formula) and
-$\Li_2(x)+\Li_2(y)-\Li_2(xy)=\Li_2(t)+\Li_2(u)+\log(1-t)\log(1-u)$ where $x=t/(1-u)$ and $y=u/(1-t)$ (pentagon formula).
-
-\paragraph{Gauss hypergeometric function} is given by
-$_2F_1(a,b;c;z)=\sum_{n\geq 0}z^n(a)_n(b)_n/\bigl(n!(c)_n\bigr)$
-converging for $\abs{z}<1$, continued to $\CC\setminus[1,\infty)$ with branch cut.
-Here $(a)_n=a(a+1)\dots(a+n-1)$.
-
-\paragraph{Generalized hypergeometric functions:} let $a_i,b_i\not\in\ZZ_{\leq 0}$.
-Then $_{j}F_{k}(a;b;z)=\sum_{n\geq 0} z^n (a_1)_n\dots(a_j)_n/\bigl(n!(b_1)_n\dots(b_k)_n\bigr)$
-converges if $j=k+1$ and $\abs{z}<1$, or if $j\leq k$.
-Differential equation $z\prod_{i=1}^j (z\partial_z+a_i)F(z)=z\partial_z\prod_{i=1}^k(z\partial_z+b_i-1)F(z)$.
-Physically: vortex partition function of the 2d $\Nsusy=(2,2)$ $\Lie{U}(1)$ theory with $j$ charge $+1$ and $k+1$ charge $-1$ chiral multiplets.
-Fox--Wright, Appell, Kamp\'e de F\'eriet and Lauricella functions are vortex partition functions of specific $\Lie{U}(1)^n$ theories.
-
-\paragraph{Basic hypergeometric series} in terms of q-Pochhammer
-$_j\phi_k(a;b;q,z)=\sum_{n\geq 0} \bigl(-q^{(n-1)/2} \bigr)^{n(1+k-j)} z^n (a_1,\dots,a_j;q)_n/ \allowbreak (b_1,\dots,b_k;q)_n$ .
-
 \section[Lie algebras and groups]{Lie algebras and groups (dimension${}<\infty$)}
 
 \subsection{Lie algebras}
@@ -1910,6 +1843,73 @@ K\"ahler form whose metric is Ricci flat.
 
 
 \section{Misc}
+
+\subsection{Special functions}
+
+% todo: Euler's Gamma function, elliptic Gamma function, hyperbolic Gamma function, Barnes' double-Gamma function, multiple sine, Upsilon, Jacobi theta functions,
+
+\paragraph{Multiple gamma function.}  For $a_i\in\CC$ with $\Re a_i>0$,
+$\Gamma_N(x|\vec{a})=\prod_{\vec{n}}^{\text{reg.}}(x+\vec{n}\cdot\vec{a})^{-1}=\exp(\partial_s\sum_{\vec{n}}(x+\vec{n}\cdot\vec{a})^{-s}|_{s=0})$,
+where $\vec{n}\in\ZZ_{\geq 0}^N$.  Here, we zeta-regularized the product; the sum is analytically continued from $\Re s>N$.  The meromorphic $x\mapsto\Gamma_N(x|\vec{a})$ has no zero and poles at $x=-\vec{n}\cdot\vec{a}$ (simple poles for generic~$\vec{a}$).
+$\Gamma_0(x|)=1/x$, $\Gamma_1(x|a)=a^{x/a-1/2}\Gamma(x/a)/\sqrt{2\pi}$, $\Gamma_N(x|\vec{a})=\Gamma_{N-1}(x|a_1,\ldots,a_{N-1})\Gamma_N(x+a_N|\vec{a})$ and it is invariant under permutations of~$\vec{a}$.
+
+\paragraph{Plethystic exponential.}  Let $\mathbf{m}\subset R[[x_1,\ldots,x_n]]$ be series with no constant term over a ring~$R$.  Then $\plexp:\mathbf{m}\to 1+\mathbf{m}$ obeys $\plexp[x_i^p]=1/(1-x_i^p)$, $\plexp[f+g]=\plexp[f]\plexp[g]$ and $\plexp[\lambda f]=\plexp[f]^\lambda$ for $\lambda\in R$.  It maps an index of single-particle states $f(x)$ to that of multiparticle states $\plexp f(x)=\exp\sum_{k\geq 1}\frac{1}{k}f(x_1^k,\ldots,x_n^k)$.
+
+\paragraph[q-Pochhammer symbol]{q-Pochhammer}
+$(a;q)_\infty=\plexp\frac{-a}{1-q}=\prod_{k=0}^{\infty}(1-aq^k)$
+and finite version $(a;q)_n=(a;q)_\infty/(aq^n;q)_\infty$.
+Products are often denoted $(a_1,\ldots,a_N;q)_n=(a_1;q)_n\cdots(a_N;q)_n$.
+Properties:
+$(a;q)_{-n}(q/a;q)_{n}=(-q/a)^{n}q^{n(n-1)/2}$
+and q-binomial theorem $(ax;q)_\infty/(x;q)_\infty=\sum_{n=0}^{\infty}x^n (a;q)_n/(q;q)_n$.
+
+\paragraph{q-gamma (or basic gamma) function} for $\abs{q}<1$,
+$\Gamma_q(x)=(1-q)^{1-x}(q;q)_\infty/(q^x;q)_\infty$
+obeys $\Gamma_q(x+1)=\frac{1-q^x}{1-q}\Gamma_q(x)$
+and $\Gamma_q(x)\xrightarrow{q\to 1}\Gamma(x)$.
+It has simple poles at $x\in\ZZ_{\leq 0}$ and no zero.
+
+\paragraph{Modular form} of weight $k$: holomorphic on $\mathbf{H}=\{\Im\tau>0\}$ and as $\tau\to\I\infty$ and obeys $f(\frac{a\tau+b}{c\tau+d})=(c\tau+d)^kf(\tau)$.
+
+\paragraph{Dedekind eta function:} $\eta(\tau)=q^{1/24}(q;q)_\infty$ for $q=\rme^{2\pi\I\tau}$. $\Delta=\eta^{24}$ is a modular form of weight~$12$.
+
+\paragraph{Theta functions:} q-theta $\thetafunction(z;q)=(z;q)_\infty(q/z;q)_\infty$ obeys $\thetafunction(z;q)=\thetafunction(q/z;q)=-z\thetafunction(1/z;q)$.
+Variant $\thetafunction_1(z;q)=\thetafunction_1(\tau|u)=\I z^{-1/2}\,q^{1/12}\,\eta(\tau)\,\thetafunction(z;q)=-\I z^{1/2}q^{1/8}(q;q)_\infty(qz;q)_\infty(1/z;q)_\infty$
+with $z=\rme^{2\pi\I u}$.
+
+\paragraph{Eisenstein series} ($k\geq 1$) $E_{2k}=1+\frac{2}{\zeta(1-2k)}\sum_{n=1}^{\infty}n^{2k-1}\frac{q^n}{1-q^n}$ obeys
+$E_{2k}(\frac{a\tau+b}{c\tau+d})=(c\tau+d)^{2k}E_{2k}(\tau)+\frac{6}{\pi\I}c(c\tau+d)\delta_{k=1}$.
+For $k\geq 2$ it is a modular form and $E_{2k}=\frac{1}{2\zeta(2k)}\sum_{0\neq\lambda\in\mathbb{Z}+\tau\mathbb{Z}} \lambda^{-2k}$.
+
+\paragraph{Elliptic gamma function}
+$\Gamma(z;p,q)=\plexp\frac{z-pq/z}{(1-p)(1-q)}=\prod_{m=0}^{\infty}\prod_{n=0}^{\infty}(1-p^{m+1}q^{m+1}z^{-1})/(1-p^mq^nz)$
+obeys $\Gamma(z;p,q)=\Gamma(z;q,p)=1/\Gamma(pq/z;p,q)$
+and $\Gamma(pz;p,q)=\thetafunction(z;q)\Gamma(z;p,q)$
+and $\Gamma(z;0,q)=1/(z;q)_\infty$.
+
+\paragraph{Polylogarithm and Riemann zeta}
+$\zeta(s)=\Li_s(1)$ where
+$\Li_s(z)=\sum_{k\geq 1}z^k/k^s=\bigl(1/\Gamma(s)\bigr)\int_0^\infty t^{s-1}\mathrm{d}t/(\rme^t/z-1)$ obeys
+$\Li_{s+1}(z)=\int_0^z\Li_s(t)\mathrm{d}t/t$ and
+$\Li_1(z)=-\log(1-z)$.
+The dilogarithm obeys
+$\Li_2(x)+\Li_2(1-x)=\pi^2/6-\log(x)\log(1-x)$ (reflection formula) and
+$\Li_2(x)+\Li_2(y)-\Li_2(xy)=\Li_2(t)+\Li_2(u)+\log(1-t)\log(1-u)$ where $x=t/(1-u)$ and $y=u/(1-t)$ (pentagon formula).
+
+\paragraph{Gauss hypergeometric function} is given by
+$_2F_1(a,b;c;z)=\sum_{n\geq 0}z^n(a)_n(b)_n/\bigl(n!(c)_n\bigr)$
+converging for $\abs{z}<1$, continued to $\CC\setminus[1,\infty)$ with branch cut.
+Here $(a)_n=a(a+1)\dots(a+n-1)$.
+
+\paragraph{Generalized hypergeometric functions:} let $a_i,b_i\not\in\ZZ_{\leq 0}$.
+Then $_{j}F_{k}(a;b;z)=\sum_{n\geq 0} z^n (a_1)_n\dots(a_j)_n/\bigl(n!(b_1)_n\dots(b_k)_n\bigr)$
+converges if $j=k+1$ and $\abs{z}<1$, or if $j\leq k$.
+Differential equation $z\prod_{i=1}^j (z\partial_z+a_i)F(z)=z\partial_z\prod_{i=1}^k(z\partial_z+b_i-1)F(z)$.
+Physically: vortex partition function of the 2d $\Nsusy=(2,2)$ $\Lie{U}(1)$ theory with $j$ charge $+1$ and $k+1$ charge $-1$ chiral multiplets.
+Fox--Wright, Appell, Kamp\'e de F\'eriet and Lauricella functions are vortex partition functions of specific $\Lie{U}(1)^n$ theories.
+
+\paragraph{Basic hypergeometric series} in terms of q-Pochhammer
+$_j\phi_k(a;b;q,z)=\sum_{n\geq 0} \bigl(-q^{(n-1)/2} \bigr)^{n(1+k-j)} z^n (a_1,\dots,a_j;q)_n/ \allowbreak (b_1,\dots,b_k;q)_n$ .
 
 \subsection{Physics of gauge theories}
 
