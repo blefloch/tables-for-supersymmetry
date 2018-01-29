@@ -733,7 +733,110 @@ and $\lie{osp}(6,2|4)=\lie{osp}^*(8|4)$.
 % todo: representations of real Lie algebras
 
 
-\section{Spinors and anomalies}
+\section{Gauge theory generalities}
+
+\subsection{Generalities}
+
+\paragraph{Yang--Mills term.} A gauge group is a compact reductive Lie group~$G$ such as $(\Lie{SU}(3)\times\Lie{SU}(2)\times\Lie{U}(1))/\ZZ_6$.
+The gauge kinetic term is $\mathcal{L}_{\text{SYM}}=g^{-2}\Tr F\wedge\star F$, with one real gauge coupling~$g$ per simple factor.
+
+\paragraph{Theta term} in even dimension: $\thetaangle\Tr F^{\wedge(d/2)}$ with~$\thetaangle$ periodic.
+In 4d, $\thetaangle$ and $g$ combine to $\tau=\thetaangle/(2\pi)+4\pi i/g^2$.
+
+\paragraph{Chern--Simons term} in 3d: $k\Tr\bigl(A\wedge\dd{A}+\frac{2}{3}A\wedge A\wedge A\bigr)$ with $k$~quantized (normalization missing).
+
+\paragraph{Boundaries and gauge redundancies.}
+On a non-compact spacetime one can consider the group of gauge redundancies with various boundary conditions.
+Let $H\subset F$ be the constant transformations included as gauge redundancies (including constant gauge transformations by $H\cap G$).
+The Higgs branch flavour symmetry is then $\{x\in F\mid xG=Gx,xH=Hx\}/H$.
+
+\subsection{Anomalies}
+
+\paragraph{Continuous anomalies} in $d=2n$,
+in $(n+1)$-point functions of currents: $(n+1)$-gon fermion loop, summed over fermions.
+Forbid simultaneous nontrivial backgrounds for all $n+1$ symmetries.
+Anomaly with $(n+1)$ gauge currents $\implies$ theory is sick.
+Anomaly with $n$ gauge, one flavour $\implies$ classical flavour symmetry fails at one-loop, $D_\mu J^\mu \sim \Tr(\mathrm{d}A_1\wedge\dots\wedge \mathrm{d}A_n)+O(A^{n+1})$.
+
+\paragraph{Fermion effective action} $\Gamma[A]$ defined by $\exp(-\Gamma[A])=\int\DD{\bar{\chi}}\DD{\psi}\exp(-\int\dd[^4]{x}\bar{\chi}i\slashed{D}\gamma_-\psi)$ always has gauge-invariant and diffeomorphism-invariant real part but varies by the imaginary $D_\mu(\delta\Gamma/\delta A_\mu)=D_\mu\langle J^\mu\rangle$ and $D_\mu(\delta\Gamma/\delta g_{\mu\nu})=\frac{1}{2}D_\mu\langle T^{\mu\nu}\rangle$, non-zero in case of anomaly.
+
+\paragraph{Anomaly polynomial:}
+formal $(d+2)$-form built from field strengths~$F$ and Riemann~$R$ two-forms, traced.
+
+% \paragraph{Degrees of Casimir invariants.}
+% $\Lie{G}_2$: $2,6$. $\Lie{F}_4$: $2,6,8,12$.
+% \begin{center}
+% \vspace{-1.3\baselineskip}
+% \begin{minipage}[t]{.5\linewidth}%
+% \begin{tab}{@{}>{$}l<{$}@{ }>{$}l<{$}@{}}
+%   \Lie{A}_n & 2,3,\ldots,n+1\\
+%   \Lie{B}_n,\Lie{C}_n & 2,4,\ldots,2n\\
+%   \Lie{D}_n & 2,4,\ldots,2n-2,n\\
+% \end{tab}
+% \end{minipage}%
+% \begin{minipage}[t]{.5\linewidth}
+% \begin{tab}{@{}>{$}l<{$}@{ }>{$}l<{$}@{}}
+%   \Lie{E}_6 & 2,5,6,8,9,12\\
+%   \Lie{E}_7 & 2,6,8,10,12,14,18\\
+%   \Lie{E}_8 & 2,8,12,14,18,20,24,30\\
+% \end{tab}
+% \end{minipage}
+% \end{center}
+% \vspace{-.6\baselineskip}
+% Quadratic Casimir is always $\Tr F\wedge F$.
+% Among simple groups, only $\Lie{SU}(N)$ has a triangle anomaly (cubic invariant),
+% but don't forget mixed anomalies.
+
+\paragraph{Continuous gravitational anomaly.}
+$\Lie{Spin}(1,d-1)$ plus CPT only has complex representations for $d=4k+2$:
+for other even~$d$, CPT exchanges chirality so we cannot have a single Weyl spinor.
+Focus on $d=1+(4k+1)$, Weyl fermions of spin $\tfrac{1}{2}$ and $\tfrac{3}{2}$ and self-dual $2k+1$ form.
+In 10d, unique theory with anomaly cancellation between fields of different spins: IIB supergravity.
+Above 10d, only same spins can cancel.
+
+\paragraph{Discrete gravitational anomaly.}
+In $d=8k$ and $d=8k+1$, single Majorana spinors cannot be given mass (but pairs can).
+It turns out that coupling an odd number of spin~$\frac{1}{2}$ Majorana fermions to gravity is inconsistent.
+
+%\paragraph{Parity anomaly} can occur in any dimension(?)  Example: In $d=1+2$, the $\Lie{SU}(2)$ gauge theory with single spin $\frac{1}{2}$ Majorana $\Lie{SU}(2)$ doublet must have half-integer Chern--Simons level.
+
+\paragraph{Mixed gauge-gravity anomaly} (or flavour-gravity)
+corresponds to $(\frac{1}{2}d+1)$-gons fermion loops with an even number of stress-tensors and some currents.
+
+
+\subsection{Supersymmetric theories}
+
+\paragraph{Vector.} Yang--Mills, theta, Chern--Simons terms have supersymmetric completion.
+Additionally, FI parameter, real for $4$ supercharges, triplet for $8$ supercharges.
+Dimensionless in 2d, the FI parameter combines with the theta angle.
+
+\paragraph{Matter.} For $16$~supercharges, none.
+For $8$~supercharges, symplectic representation $V\simeq\HH^n$ namely $G\to F=\Lie{USp}(2n)$.
+For $4$~supercharges, unitary representation $V\simeq\CC^n$ namely $G\to F=\Lie{U}(n)$.
+Canonical kinetic term for bosons: $D_\mu\phi_i D^\mu\phi_i$.
+
+\paragraph{Superpotential term.} For $4$ supercharges, $\int\dd[^2]\thetacoordinate W$ gives a potential for scalars and Yukawa-type interactions.  $W$~is holomorphic in chiral fields and in couplings seen as background fields.  Example: the kinetic term $\Im \int\dd[^2]\thetacoordinate[\tau W_\alpha^2]$ of an abelian gauge field: $W_\alpha^2$ is a chiral field so $\tau$ is the background value of a chiral field.
+
+\paragraph{An accidental symmetry} is a flavour symmetry of the IR but not of the UV.
+
+\paragraph{R-symmetry.}
+In 2d and higher the IR R-symmetry is part of the superconformal algebra, rather than an outer automorphism of it.
+The manifest (UV) R-symmetry can be a mixture of the IR R-symmetry and of a flavour symmetry:  $R_{\text{UV}}\subset R_{\text{IR}}\times F$.
+For nonabelian R-symmetry that flavour symmetry must be accidental as it does not commute with~$R_{\text{UV}}$.
+For abelian R-symmetry the mixing is continuous; assuming no accidental flavour symmetries it is fixed
+in 4d $\Nsusy=1$ by $a$-extremization, in 3d $\Nsusy=2$ by $Z_{S^3}$-extremization, in 2d $\Nsusy=(0,2)$ by $c$-extremization.
+
+Vector multiplet scalars and gauge field are $U(1)_R$ neutral.
+
+For chirals, $\Delta\geq\frac{1}{2}(d-1)\abs{R}$ at the fixed point.
+
+\paragraph{Classical vacua:} Coulomb, Higgs and mixed branches.
+Cou\-l\-omb branch ($\lie{g}$~modulo conjugation by~$G$) parametrized by vector multiplet scalars, larger in 3d due to monopoles, can be lifted by quantum effects.
+For $4$~supercharges, Higgs branch parametrized by chiral multiplet scalars: K\"ahler quotient $R//G$.
+For $8$~supercharges, Higgs branch parametrized by hypermultiplet scalars: hyper-K\"ahler quotient $\widetilde{R}///G$.
+The Higgs branch has flavour symmetry $\{x\in F\mid xG=Gx\}/G$ normalizer of $G$ in $F=\Lie{U}(R)$ or $F=\Lie{USp}(\widetilde{R})$ modulo~$G$.
+Background vector multiplet scalars (real/twisted masses) reduce the Higgs and mixed branches to fixed points of corresponding flavour symmetries.
+
 
 \subsection[Spinors]{Spinors \normalsize\textnormal{(e.g.\@ \hepth{9910030})}}
 
@@ -824,60 +927,8 @@ S^2(\mathcal{S}_{+}\oplus\mathcal{S}_{-})&=S^2\mathcal{S}_{+}\oplus(\mathcal{S}_
 \Wedge^2(\mathcal{S}_{+}\oplus\mathcal{S}_{-})&=\Wedge^2\mathcal{S}_{+}\oplus(\mathcal{S}_{+}\otimes\mathcal{S}_{-})\oplus \Wedge^2\mathcal{S}_{-}
 \end{aligned}$
 
-\subsection{Anomalies}
 
-\paragraph{Continuous anomalies} in $d=2n$,
-in $(n+1)$-point functions of currents: $(n+1)$-gon fermion loop, summed over fermions.
-Forbid simultaneous nontrivial backgrounds for all $n+1$ symmetries.
-Anomaly with $(n+1)$ gauge currents $\implies$ theory is sick.
-Anomaly with $n$ gauge, one flavour $\implies$ classical flavour symmetry fails at one-loop, $D_\mu J^\mu \sim \Tr(\mathrm{d}A_1\wedge\dots\wedge \mathrm{d}A_n)+O(A^{n+1})$.
-
-\paragraph{Fermion effective action} $\Gamma[A]$ defined by $\exp(-\Gamma[A])=\int\DD{\bar{\chi}}\DD{\psi}\exp(-\int\dd[^4]{x}\bar{\chi}i\slashed{D}\gamma_-\psi)$ always has gauge-invariant and diffeomorphism-invariant real part but varies by the imaginary $D_\mu(\delta\Gamma/\delta A_\mu)=D_\mu\langle J^\mu\rangle$ and $D_\mu(\delta\Gamma/\delta g_{\mu\nu})=\frac{1}{2}D_\mu\langle T^{\mu\nu}\rangle$, non-zero in case of anomaly.
-
-\paragraph{Anomaly polynomial:}
-formal $(d+2)$-form built from field strengths~$F$ and Riemann~$R$ two-forms, traced.
-
-% \paragraph{Degrees of Casimir invariants.}
-% $\Lie{G}_2$: $2,6$. $\Lie{F}_4$: $2,6,8,12$.
-% \begin{center}
-% \vspace{-1.3\baselineskip}
-% \begin{minipage}[t]{.5\linewidth}%
-% \begin{tab}{@{}>{$}l<{$}@{ }>{$}l<{$}@{}}
-%   \Lie{A}_n & 2,3,\ldots,n+1\\
-%   \Lie{B}_n,\Lie{C}_n & 2,4,\ldots,2n\\
-%   \Lie{D}_n & 2,4,\ldots,2n-2,n\\
-% \end{tab}
-% \end{minipage}%
-% \begin{minipage}[t]{.5\linewidth}
-% \begin{tab}{@{}>{$}l<{$}@{ }>{$}l<{$}@{}}
-%   \Lie{E}_6 & 2,5,6,8,9,12\\
-%   \Lie{E}_7 & 2,6,8,10,12,14,18\\
-%   \Lie{E}_8 & 2,8,12,14,18,20,24,30\\
-% \end{tab}
-% \end{minipage}
-% \end{center}
-% \vspace{-.6\baselineskip}
-% Quadratic Casimir is always $\Tr F\wedge F$.
-% Among simple groups, only $\Lie{SU}(N)$ has a triangle anomaly (cubic invariant),
-% but don't forget mixed anomalies.
-
-\paragraph{Continuous gravitational anomaly.}
-$\Lie{Spin}(1,d-1)$ plus CPT only has complex representations for $d=4k+2$:
-for other even~$d$, CPT exchanges chirality so we cannot have a single Weyl spinor.
-Focus on $d=1+(4k+1)$, Weyl fermions of spin $\tfrac{1}{2}$ and $\tfrac{3}{2}$ and self-dual $2k+1$ form.
-In 10d, unique theory with anomaly cancellation between fields of different spins: IIB supergravity.
-Above 10d, only same spins can cancel.
-
-\paragraph{Discrete gravitational anomaly.}
-In $d=8k$ and $d=8k+1$, single Majorana spinors cannot be given mass (but pairs can).
-It turns out that coupling an odd number of spin~$\frac{1}{2}$ Majorana fermions to gravity is inconsistent.
-
-%\paragraph{Parity anomaly} can occur in any dimension(?)  Example: In $d=1+2$, the $\Lie{SU}(2)$ gauge theory with single spin $\frac{1}{2}$ Majorana $\Lie{SU}(2)$ doublet must have half-integer Chern--Simons level.
-
-\paragraph{Mixed gauge-gravity anomaly} (or flavour-gravity)
-corresponds to $(\frac{1}{2}d+1)$-gons fermion loops with an even number of stress-tensors and some currents.
-
-\section{Supersymmetry algebras}
+\section{Supersymmetry}
 
 \subsection{Generalities}
 
@@ -959,7 +1010,6 @@ $\{Q_\alpha,\overline{Q}_{\beta}\} =
 $0 = \{Q_\alpha,Q_\beta\} =
 \{\overline{Q}_{\alpha},\overline{Q}_{\beta}\}$.
 
-\section{Supermultiplets}
 
 \subsection{Spin \(\leq 1\) supermultiplets}
 
@@ -995,50 +1045,6 @@ contains both stress tensor and R-symmetry current and sources 16/16 supergravit
 
 
 \section{Supersymmetric (gauge) theories}
-
-\subsection{Generalities}
-
-\paragraph{Super Yang--Mills (SYM).} A gauge group is a compact reductive Lie group~$G$ such as $(\Lie{SU}(3)\times\Lie{SU}(2)\times\Lie{U}(1))/\ZZ_6$.
-The SYM term is $\mathcal{L}_{\text{SYM}}=g^{-2}\Tr F\wedge\star F+\text{superpartners}$, with one real gauge coupling~$g$ per simple factor.
-
-\paragraph{Theta term} in even dimension: $\thetaangle\Tr F^{\wedge(d/2)}$ with~$\thetaangle$ periodic.
-In 4d, $\thetaangle$ and $g$ combine to $\tau=\thetaangle/(2\pi)+4\pi i/g^2$.
-
-\paragraph{Chern--Simons term} in 3d: $k\Tr\bigl(A\wedge\dd{A}+\frac{2}{3}A\wedge A\wedge A\bigr)$ with $k$~quantized (normalization missing).
-
-% \paragraph{FI parameter.} Real for 4d $\Nsusy=1$ or 2d $\Nsusy=(2,2)$.  Triplet for 2d $\Nsusy=(4,4)$, breaks $\Lie{SU}(2)_R$.
-
-\paragraph{Matter.} For $16$~supercharges, none.
-For $8$~supercharges, symplectic representation $V\simeq\HH^n$ namely $G\to F=\Lie{USp}(2n)$.
-For $4$~supercharges, unitary representation $V\simeq\CC^n$ namely $G\to F=\Lie{U}(n)$.
-Canonical kinetic term for bosons: $D_\mu\phi_i D^\mu\phi_i$.
-
-\paragraph{Superpotential term.} For $4$ supercharges, $\int\dd[^2]\thetacoordinate W$ gives a potential for scalars and Yukawa-type interactions.  $W$~is holomorphic in chiral fields and in couplings seen as background fields.  Example: the kinetic term $\Im \int\dd[^2]\thetacoordinate[\tau W_\alpha^2]$ of an abelian gauge field: $W_\alpha^2$ is a chiral field so $\tau$ is the background value of a chiral field.
-
-\paragraph{An accidental symmetry} is a flavour symmetry of the IR but not of the UV.
-
-\paragraph{R-symmetry.}
-In 2d and higher the IR R-symmetry is part of the superconformal algebra, rather than an outer automorphism of it.
-The manifest (UV) R-symmetry can be a mixture of the IR R-symmetry and of a flavour symmetry:  $R_{\text{UV}}\subset R_{\text{IR}}\times F$.
-For nonabelian R-symmetry that flavour symmetry must be accidental as it does not commute with~$R_{\text{UV}}$.
-For abelian R-symmetry the mixing is continuous; assuming no accidental flavour symmetries it is fixed
-in 4d $\Nsusy=1$ by $a$-extremization, in 3d $\Nsusy=2$ by $Z_{S^3}$-extremization, in 2d $\Nsusy=(0,2)$ by $c$-extremization.
-
-Vector multiplet scalars and gauge field are $U(1)_R$ neutral.
-
-For chirals, $\Delta\geq\frac{1}{2}(d-1)\abs{R}$ at the fixed point.
-
-\paragraph{Classical vacua:} Coulomb, Higgs and mixed branches.
-Cou\-l\-omb branch ($\lie{g}$~modulo conjugation by~$G$) parametrized by vector multiplet scalars, larger in 3d due to monopoles, can be lifted by quantum effects.
-For $4$~supercharges, Higgs branch parametrized by chiral multiplet scalars: K\"ahler quotient $R//G$.
-For $8$~supercharges, Higgs branch parametrized by hypermultiplet scalars: hyper-K\"ahler quotient $\widetilde{R}///G$.
-The Higgs branch has flavour symmetry $\{x\in F\mid xG=Gx\}/G$ normalizer of $G$ in $F=\Lie{U}(R)$ or $F=\Lie{USp}(\widetilde{R})$ modulo~$G$.
-Background vector multiplet scalars (real/twisted masses) reduce the Higgs and mixed branches to fixed points of corresponding flavour symmetries.
-
-\paragraph{Boundaries and gauge redundancies.}
-On a non-compact spacetime one can consider the group of gauge redundancies with various boundary conditions.
-Let $H\subset F$ be the constant transformations included as gauge redundancies (including constant gauge transformations by $H\cap G$).
-The Higgs branch flavour symmetry is then $\{x\in F\mid xG=Gx,xH=Hx\}/H$.
 
 \subsection{Maximal super Yang--Mills}
 
