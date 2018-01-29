@@ -1063,9 +1063,13 @@ The Higgs branch flavour symmetry is then $\{x\in F\mid xG=Gx,xH=Hx\}/H$.
 \paragraph{4d \(\Nsusy=4\)} has exactly marginal parameter $\tau=\thetaangle/(2\pi)+4\pi i/g^2$.
 Lagrangian theories are characterized by~$G$ but non-Lagrangian theories are not ruled out.
 
-\subsection{Theories with \(12\) supercharges}
+\paragraph{3d \(\Nsusy=8\)} \arxiv{0806.1218} Bagger-Lambert, ABJM
+
+\subsection{Theories with \(9\) to \(12\) supercharges}
 
 \paragraph{4d \(\Nsusy=3\)} theories exist, always non-Lagrangian.
+
+\paragraph{3d \(\Nsusy=5,6\)} \arxiv{0806.1218, 0807.4924} ABJM, ABJ
 
 \subsection{Theories with \(8\) supercharges}
 
@@ -1100,6 +1104,21 @@ Lift to $\RR^4\times S^1$ gives $K$-theoretic Nekrasov partition function.  The 
 \paragraph{3d \(\Nsusy=4\)} has $\Lie{SU}(2)_C\times\Lie{SU}(2)_H$ R-symmetry acting on the Coulomb and Higgs branch.  Both branches are hyper-K\"ahler and the $\Lie{SU}(2)$ rotates their $\CC\PP^1$ worth of complex structures.  Denote $\Lie{T}\subset\Lie{G}$ the Cartan torus.  The Coulomb branch is a holomorphic Lagrangian fibration $\mathcal{M}_C\to\lie{T}_{\CC}/\Weyl$ with generic fiber $\Lie{T}_{\CC}^{\vee}\simeq(\CC^*)^{\rank\Lie{G}}$.  Its classical $\Hom(\pi_1(\Lie{G}),\Lie{U}(1))$ topological flavour symmetry can be enhanced quantum mechanically.
 
 % todo: What is the $\Lie{SU}(2)$ R-symmetry of mixed branches?
+
+Example:
+$\smash{\mathtikz[inner sep=1pt]{
+  \node (A) at (0,0) [rectangle,draw] {$\Lie{SU}(N)$};
+  \node (B) at (1.8,0) [rounded rectangle,draw] {$\Lie{U}(N-1)$};
+  \node (C) at (3.2,0) {${\cdots}$};
+  \node (D) at (4.2,0) [rounded rectangle,draw] {$\Lie{U}(2)$};
+  \node (E) at (5.5,0) [rounded rectangle,draw] {$\Lie{U}(1)$};
+  \draw (A) -- (B) -- (C) -- (D) -- (E);
+}}$
+(edges denote bifundamental hypermultiplets) is the $T[\Lie{SU}(N)]$ theory.
+Its manifest $\lie{su}(N)\times\lie{u}(1)^{N-1}$ flavour symmetry enhances to $\lie{su}(N)^2$.
+The $T[G]$ theory has flavour symmetry $G\times {}^LG$ acting on Higgs and Coulomb branch respectively.
+Mirror symmetry exchanges $G\leftrightarrow {}^LG$.
+Gauging $G$ and ${}^LG$ with two 4d vector multiplets realizes the S-duality domain wall of 4d $\Nsusy=4$ SYM \arxiv{0804.2902}.
 
 \paragraph{2d \(\Nsusy=(4,4)\) gauge theories.}
 Typically get in the IR a direct sum of 2d $\Nsusy=(4,4)$ SCFTs (from the Coulomb and Higgs branches) whose central charges are different.
