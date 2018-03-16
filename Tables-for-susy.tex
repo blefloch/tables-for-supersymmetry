@@ -733,7 +733,7 @@ and $\lie{osp}(6,2|4)=\lie{osp}^*(8|4)$.
 % todo: representations of real Lie algebras
 
 
-\section{Gauge theory generalities}
+\section{Quantum field theory}
 
 \subsection{Generalities}
 
@@ -749,6 +749,31 @@ In 4d, $\thetaangle$ and $g$ combine to $\tau=\thetaangle/(2\pi)+4\pi i/g^2$.
 On a non-compact spacetime one can consider the group of gauge redundancies with various boundary conditions.
 Let $H\subset F$ be the constant transformations included as gauge redundancies (including constant gauge transformations by $H\cap G$).
 The Higgs branch flavour symmetry is then $\{x\in F\mid xG=Gx,xH=Hx\}/H$.
+
+\paragraph{Loops.}
+A Polyakov loop is just a Wilson loop in the fundamental representation and wrapping the time direction.
+% Also describe Wilson, 't Hooft, dyonic, vortex loops
+
+\paragraph{A redundant operator}
+is $\Operator$ such that $\langle\Operator(p)\Operator(-p)\rangle$ is polynomial in the momentum~$p$;
+equivalently, $\langle\Operator(x)\Operator(y)\rangle$ vanishes at separated points.
+
+\paragraph{An abelian \(q\)-form symmetry} \arxiv{1412.5148}
+(for $q=0$ this is a standard flavor symmetry and can be nonabelian)
+is a $(q+1)$-form current $J$ such that $\mathrm{d}{\star J}=0$;
+it couples as $\int B\wedge{\star J}$ to a background $(q+1)$-form gauge field~$B$ with gauge transformation $B\to B+\mathrm{d}\Lambda$.
+
+The conserved charge $Q(\Sigma)=\int_\Sigma{\star J}$ is measured along a $(d-1-q)$-cycle $\Sigma$.
+Charged operators are supported on $q$-cycles linking~$\Sigma$; charged excitations are dynamical $q$-branes intersecting $\Sigma$ transversally.
+The symmetry is $\Lie{U}(1)$ rather than $\RR$ if all $Q(\Sigma)\in\ZZ$ so all $\int_{\Sigma'}\mathrm{d}\Lambda$ and $\int_{\Sigma''}\mathrm{d}B\in 2\pi\ZZ$.
+
+A $q$-form symmetry may emerge in the IR\@.
+The partition function $Z[B]$ may suffer shifts under $B\to B+\mathrm{d}\Lambda$: such a 't~Hooft anomaly prevents gauging (making $B$ dynamical);
+it is an RG invariant hence matches in UV and IR\@.
+
+\paragraph{Coleman--Mermin--Wagner} (see \arxiv{1802.07747} for $p$-forms)
+Spontaneous symmetry breaking of continuous $p$-form symmetry can only happen for $D>p+2$ ($p+1$ for discrete symmetries).
+The IR theory has massless $p$-form Nambu--Goldstone bosons.
 
 \subsection{Anomalies}
 
