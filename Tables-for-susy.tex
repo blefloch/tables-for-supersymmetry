@@ -1353,6 +1353,8 @@ Has AdS/CFT dual with linear dilaton background.
 
 \subsection{Integrable models}
 
+\paragraph{Sine-Gordon model} in 2d: $\mathcal{L}=\frac{1}{2}\del_\mu\phi\del^\mu\phi+m^2(\cos\phi-1)$ has eom $\square\phi+m^2\sin\phi=0$.
+
 % todo: classical Toda chain
 
 % todo: quantum Toda chain
@@ -1961,7 +1963,7 @@ Fox--Wright, Appell, Kamp\'e de F\'eriet and Lauricella functions are vortex par
 \paragraph{Basic hypergeometric series} in terms of q-Pochhammer
 $_j\phi_k(a;b;q,z)=\sum_{n\geq 0} \bigl(-q^{(n-1)/2} \bigr)^{n(1+k-j)} z^n (a_1,\dots,a_j;q)_n/ \allowbreak (b_1,\dots,b_k;q)_n$ .
 
-\subsection{Physics of gauge theories}
+\subsection{Physics of field theories}
 
 \paragraph{Phases characterized by potential} $V(R)$ (up to a constant) between quarks at distance~$R$:
 Coulomb $1/R$,
@@ -1970,12 +1972,24 @@ free magnetic $\log(R\Lambda)/R$,
 Higgs (constant),
 confining $\sigma R$.
 
+\paragraph[Solitons and solitary waves]{A solitary wave} is a solution (of some wave equation) whose energy density is localized in space and travels at some speed~$u$.
+A soliton additionally keeps its shape asymptotically after collisions.
+
 \paragraph{Instantons}
 are anti-self-dual ($F=-{\star F}$) connections on~$\RR^4$ that decay at infinity and extend to~$S^4$.
 The bundles are classified by $\pi_3(G)$ so an instanton number $k\in\ZZ$ for simple gauge groups;
 for fixed $k\geq 0$ ($k\leq 0$) (anti)instantons minimize the action.
 The $k$-instanton moduli space for $G=\Lie{SU}(N)$ is a $4Nk$-dimensional \inspire{128223} hyperK\"ahler manifold,
 in bijection with rank~$N$ framed locally free sheaves on~$\CC\PP^2$ \inspire{125044}.
+
+\paragraph['t Hooft--Polyakov monopoles]{A 't Hooft--Polyakov monopole}
+is a smooth codimension~$3$ topological soliton where the gauge group~$G$ is spontaneously broken by a Higgs field to~$H$, far from the soliton.  Monopole charge is in $\pi_2(G/H)=\operatorname{Ker}\bigl(\pi_1(H)\to\pi_1(G)\bigr)$ ``Dirac monopole of~$H$ trivialized in~$G$''.
+
+Example: $\Lie{SU}(2)$ gauge theory with adjoint scalar~$\phi$ of potential $(a^2-\Tr\phi^2)^2$.
+Residual $\Lie{U}(1)$ gauge field $F_{\Lie{U}(1)} = \Tr(\hat{\phi} F) - 2\Tr(\hat{\phi} D\hat{\phi} D\hat{\phi})$ with $\hat{\phi}=\phi/\sqrt{\Tr\phi^2}$ obeys $\mathrm{d}F_{\Lie{U}(1)}=\Tr(\mathrm{d}\hat{\phi})^3$, whose integral is the monopole charge.
+
+% todo: vortices, monopoles, instantons (Abrikosov--Nielsen--Olesen
+% vortex, 't~Hooft--Polyakov monopole, \ldots{}).
 
 \subsection{Homology and cohomology}
 
@@ -2063,9 +2077,6 @@ $\alpha_i(\Sigma)=0$.
 % todo: what is the (co)homology of $X\times Y$?
 
 % todo: In\"on\"u--Wigner contraction (for Lie superalgebras too)
-
-% todo: vortices, monopoles, instantons (Abrikosov--Nielsen--Olesen
-% vortex, 't~Hooft--Polyakov monopole, \ldots{}).
 
 \subsection{Some algebraic constructions}
 
