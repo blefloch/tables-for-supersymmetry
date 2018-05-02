@@ -936,30 +936,34 @@ sW & : \lie{usp}(2N_L)\times \lie{usp}(2N_R)\\
 For odd $d=2m+1$, let $\mathcal{S}$ be a spinor representation of complex dimension $2^{m}$.
 The symmetric product $S^2\mathcal{S}$ consists of $k$-forms with $k\equiv m\bmod{4}$.
 Since $k$-forms and $(d-k)$-forms are the same representation, other descriptions can be given.
-For the antisymmetric product $\Wedge^2\mathcal{S}$, take $k\equiv m-1\bmod{4}$.
+For the antisymmetric product $\Lambda^2\mathcal{S}$, take $k\equiv m-1\bmod{4}$.
 See the list of forms in the table.
 \begin{tab}{>{$}l<{$}*{6}{>{$}l<{$}}}
 d & 1 & 3 & 5 & 7 & 9 & 11\\
 \dim_{\CC}\mathcal{S} & 1 & 2 & 4 & 8 & 16 & 32\\\midrule
 S^2\mathcal{S} & 0 & 1 & 2 & 0,3 & 0,1,4 & 1,2,5\\
-\Wedge^2\mathcal{S} & . & 0 & 0,1 & 1,2 & 2,3 & 0,3,4\\
+\Lambda^2\mathcal{S} & . & 0 & 0,1 & 1,2 & 2,3 & 0,3,4\\
 \end{tab}
 For even $d=2m$, let $\mathcal{S}_{\pm}$ be the Weyl spinor representations of complex dimension $2^{m-1}$.
+Then
+\begin{center}
+\vspace{-.6\baselineskip}
+$\begin{aligned}[t]
+S^2(\mathcal{S}_{+}\oplus\mathcal{S}_{-})&=S^2\mathcal{S}_{+}\oplus(\mathcal{S}_{+}\otimes\mathcal{S}_{-})\oplus S^2\mathcal{S}_{-}\\
+\Lambda^2(\mathcal{S}_{+}\oplus\mathcal{S}_{-})&=\Lambda^2\mathcal{S}_{+}\oplus(\mathcal{S}_{+}\otimes\mathcal{S}_{-})\oplus \Lambda^2\mathcal{S}_{-}
+\end{aligned}$
+\end{center}
+\vspace{-.6\baselineskip}
 The tensor product $\mathcal{S}_{+}\otimes\mathcal{S}_{-}$ consists of $(m-1-2j)$-forms for $0\leq j\leq (m-1)/2$.
-The symmetric products $S^2\mathcal{S}_{\pm}$ decompose into the (anti)-self-dual $m$-forms and $(m-4j)$-forms for $0<j\leq m/4$.
-The antisymmetric products $\Wedge^2\mathcal{S}_{\pm}$ decompose into $(m-2-4j)$-forms for $0\leq j\leq (m-2)/4$.
+The symmetric products $S^2\mathcal{S}_{\pm}$ decompose into the (anti)-self-dual $m$-forms (denoted $m^{\dagger}$) and $(m-4j)$-forms for $0<j\leq m/4$.
+The antisymmetric products $\Lambda^2\mathcal{S}_{\pm}$ decompose into $(m-2-4j)$-forms for $0\leq j\leq (m-2)/4$.
 \begin{tab}{>{$}l<{$}*{6}{>{$}l<{$}}}
 d & 2 & 4 & 6 & 8 & 10 & 12\\
 \dim_{\CC}\mathcal{S}_{\pm} & 1 & 2 & 4 & 8 & 16 & 32\\\midrule
 S^2\mathcal{S}_{\pm} & 1^{\dagger} & 2^{\dagger} & 3^{\dagger} & 0,4^{\dagger} & 1,5^{\dagger} & 2,6^{\dagger}\\
-\Wedge^2\mathcal{S}_{\pm} & . & 0 & 1 & 2 & 3 & 0,4\\
+\Lambda^2\mathcal{S}_{\pm} & . & 0 & 1 & 2 & 3 & 0,4\\
 \mathcal{S}_{+}\otimes\mathcal{S}_{-} & 0 & 1 & 0,2 & 1,3 & 0,2,4 & 1,3,5\\
 \end{tab}
-Note that
-$\begin{aligned}[t]
-S^2(\mathcal{S}_{+}\oplus\mathcal{S}_{-})&=S^2\mathcal{S}_{+}\oplus(\mathcal{S}_{+}\otimes\mathcal{S}_{-})\oplus S^2\mathcal{S}_{-}\\
-\Wedge^2(\mathcal{S}_{+}\oplus\mathcal{S}_{-})&=\Wedge^2\mathcal{S}_{+}\oplus(\mathcal{S}_{+}\otimes\mathcal{S}_{-})\oplus \Wedge^2\mathcal{S}_{-}
-\end{aligned}$
 
 
 \section{Supersymmetry}
