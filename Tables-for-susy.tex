@@ -260,8 +260,11 @@
       {
         { gl } { gl }
         { sl } { sl }
+        { sl' } { sl\mspace{1mu}' }
+        { psl } { psl }
         { so } { so }
         { su } { su }
+        { psu } { psu }
         { u } { u }
         { o } { o }
         { sp } { sp }
@@ -454,18 +457,19 @@ The maximal compact subalgebra of a complex algebra is its compact real form.
 \vspace{-2.5\baselineskip}
 \begin{minipage}[t]{.6\linewidth}%
 \begin{align*}
-\lie{so}(2)&= \lie{u}(1), \quad \lie{so}(1,1)=\RR\\
+\lie{so}(2)&=\lie{so}^*(2)=\lie{u}(1)\\
+\lie{so}(1,1)&=\RR\\
 \lie{so}(3)&= \lie{su}(2)=\lie{su}^*(2)=\lie{usp}(2)\\
 \lie{so}(2,1) &=\lie{su}(1,1)=\lie{sl}(2,\RR)=\mathrlap{\lie{sp}(2,\RR)}\\
 \lie{so}(4)&=\lie{su}(2)\oplus \lie{su}(2)\\
 \lie{so}(3,1)&=\lie{sl}(2,\CC)=\lie{sp}(2,\CC)\\
 \lie{so}(2,2)&=\lie{sl}(2,\RR)\oplus \lie{sl}(2,\RR)\\
-\lie{so}^*(4)&=\lie{sl}(2,\RR)\oplus \lie{su}(2)\\
-\lie{so}(5)&=\lie{usp}(4)
+\lie{so}^*(4)&=\lie{sl}(2,\RR)\oplus \lie{su}(2)
 \end{align*}
 \end{minipage}%
 \begin{minipage}[t]{.4\linewidth}
 \begin{align*}
+\lie{so}(5)&=\lie{usp}(4)\\
 \lie{so}(4,1)&=\lie{usp}(2,2)\\
 \lie{so}(3,2)&=\lie{sp}(4,\RR)\\
 \lie{so}(6)&=\lie{su}(4)\\
@@ -669,28 +673,28 @@ In this table, $m,n\geq 1$ and we do not list purely bosonic Lie algebras.
 The factor $\CC$ of $\lie{sl}(m|n)$ must be removed if $m=n$.
 \begin{tab}{lll}
 & Bosonic algebra & Fermionic repr. \\\midrule
-$\lie{sl}(m|n)$ & $\lie{sl}(m,\CC)\oplus \lie{sl}(n,\CC)\oplus\CC$ & $(m,\overline{n})\oplus(\overline{m},n)$ \\
-$\lie{osp}(m|2n)$ & $\lie{so}(m,\CC) \oplus \lie{sp}(2n,\CC)$ & $(m,2n)$ \\
-$\lie{D}(2,1,\alpha)$ & $\lie{sl}(2,\CC)^3$ & $(2,2,2)$ \\
-$\lie{F}(4)$ & $\lie{so}(7,\CC)\oplus \lie{sl}(2,\CC)$ & $(8,2)$ \\
-$\lie{G}(3)$ & $\lie{G}_2\oplus \lie{sl}(2,\CC)$ & $(7,2)$ \\
-$\lie{P}(m)$ & $\lie{sl}(m+1,\CC)$ & $\text{sym}\oplus(\text{antisym})^*$ \\
-$\lie{Q}(m)$ & $\lie{sl}(m+1,\CC)$ & adjoint\\
+$\lie{sl}(m|n,\CC)$ & $\lie{sl}(m,\CC)\oplus \lie{sl}(n,\CC)\oplus\CC$ & $(m,\overline{n})\oplus(\overline{m},n)$ \\
+$\lie{osp}(m|2n,\CC)$ & $\lie{so}(m,\CC) \oplus \lie{sp}(2n,\CC)$ & $(m,2n)$ \\
+$\lie{D}(2,1,\alpha,\CC)$ & $\lie{sl}(2,\CC)^3$ & $(2,2,2)$ \\
+$\lie{F}(4,\CC)$ & $\lie{so}(7,\CC)\oplus \lie{sl}(2,\CC)$ & $(8,2)$ \\
+$\lie{G}(3,\CC)$ & $\lie{G}_2\oplus \lie{sl}(2,\CC)$ & $(7,2)$ \\
+$\lie{P}(m,\CC)$ & $\lie{sl}(m+1,\CC)$ & $\text{sym}\oplus\overline{\text{antisym}}$ \\
+$\lie{Q}(m,\CC)$ & $\lie{sl}(m+1,\CC)$ & adjoint\\
 \end{tab}
 
 \paragraph{Real forms of Lie superalgebras,}
 starting from their compact form ($p=q=0$).  $\lie{P}(m)$ has no compact form.
 Here, $m,n\geq 1$, $0\leq p\leq m/2$, $0\leq q\leq n/2$.
-The forms $\lie{su}^*$, $\lie{osp}^*$, $\lie{Q}^*$ only exist for even rank; $\lie{sl}'$ only if $m=n$.
+The forms $\lie{su}^*$, $\lie{osp}^*$, $\lie{Q}^*$ only exist for even rank; $\lie{sl'}$ only if $m=n$.
 \begin{tab}{*{2}{>{$}l<{$}}}
 \text{Real form} & \text{Bosonic algebra}  \\ \midrule
 \lie{su}(m-p,p|n-q,q) & \lie{su}(m-p,p)\oplus \lie{su}(n-q,q)\oplus \lie{u}(1)\tabfoot{1}\\
 \lie{sl}(m|n) & \lie{sl}(m,\RR)\oplus \lie{sl}(n,\RR)\oplus \lie{so}(1,1)\tabfoot{1} \\
-\lie{sl}'(n|n) \quad\, (m=n)& \lie{sl}(n,\CC)\\
+\lie{sl'}(n|n) \quad\, (m=n)& \lie{sl}(n,\CC)\\
 \lie{su}^*(m|n) \:\: (m,n \text{ even}) & \lie{su}^*(m)\oplus \lie{su}^*(n)\oplus \lie{so}(1,1)\tabfoot{1}\\
 \midrule
 \lie{osp}(m-p,p|2n) & \lie{so}(m-p,p)\oplus \lie{sp}(2n,\RR) \\
-\multicolumn{2}{l}{$\lie{osp}^*(m|2n-2q,2q)$ ($m$ even)\quad $\lie{so}^*(m)\oplus \lie{usp}(2n-2q,2q)$\tabfoot{3}} \\
+\multicolumn{2}{l}{$\lie{osp}^*(m|2n-2q,2q)$ ($m$ even)\quad $\lie{so}^*(m)\oplus \lie{usp}(2n-2q,2q)$} \\
 \midrule
 \lie{D}^p(2,1,\alpha) \;\tabfoot{2} & \lie{so}(4-p,p)\oplus \lie{sl}(2,\RR)\ (p=0,1,2)\\
 \midrule
@@ -707,11 +711,8 @@ The forms $\lie{su}^*$, $\lie{osp}^*$, $\lie{Q}^*$ only exist for even rank; $\l
 \end{tab}
 
 \tabfoot{1}
-For $m=n$, $\lie{u}(1)$ and $\lie{so}(1,1)$ factors are absent.
-Additionally, one can project down to a single bosonic factor.
-
-\tabfoot{3}
-\caution{}A real form of $\lie{osp}(2|2,\CC)=\lie{sl}(2|1,\CC)$ is missing.
+For $m=n$, omitting $\lie{u}(1)$ and $\lie{so}(1,1)$ factors defines $\lie{psu}$, $\lie{psl}$, $\lie{psu}^*$.
+One can also project down to a single bosonic factor.
 
 \tabfoot{2}
 The three $\lie{sl}(2)$ bosonic factors of $\lie{D}(2,1,\alpha)$ appear with weights $1$, $\alpha$ and $-1-\alpha$ in fermion anticommutators.
@@ -719,11 +720,30 @@ For $\lie{D}^0$ and $\lie{D}^2$, $\alpha$ is real.  For $\lie{D}^1$, $\alpha=1+i
 
 \smallskip
 
-\paragraph{Some isomorphisms:}
-$\lie{su}(1,1|1)=\lie{sl}(2|1)=\lie{osp}(2|2)$
-and $\lie{su}(2|1)=\lie{osp}^*(2|2,0)$
-and $\lie{D}^p(2,1,\alpha=1)=\lie{osp}(4-p,p|2)$
-and $\lie{osp}(6,2|4)=\lie{osp}^*(8|4)$.
+\paragraph{Accidental isomorphisms.}  Incomplete, may have errors.
+Exchanging $m\leftrightarrow n$ in $\lie{sl}(m|n,\CC)$, or the two sides of ``$|$'' in its real forms, or $p\leftrightarrow q$ or $r\leftrightarrow s$ in $\lie{su}(p,q|r,s)$ or $\lie{osp}(p,q|2n)$ or $\lie{osp}^*(2k|2p,2q)$ is an isomorphism.
+Exception: $\lie{UQ}(p-1,q)=\lie{UQ}(q-1,p)$.
+\begin{center}
+\vspace{-2.3\baselineskip}
+\begin{minipage}[t]{.45\linewidth}%
+\begin{align*}
+\lie{osp}(2|2,\CC)&=\lie{sl}(2|1,\CC)\\
+\lie{osp}^*(2|2)&=\lie{su}(2|1)\\
+\lie{osp}(2|2)&=\lie{su}(1,1|1)\\
+\lie{osp}(1,1|2)&=\lie{sl}(2|1)\\
+\lie{sl}(2|2)&=\lie{su}(1,1|1,1)\\
+\lie{su}^*(2|2)&=\lie{su}(2|2)
+\end{align*}
+\end{minipage}%
+\begin{minipage}[t]{.55\linewidth}
+\begin{align*}
+\lie{D}(2,1,\alpha=1,\CC)&=\lie{osp}(4|2,\CC)\\
+\lie{D}^p(2,1,\alpha=1)&=\lie{osp}(4-p,p|2)\\
+\lie{UQ}(1,0)&=\lie{Q}^*(1)\\
+\lie{UQ}(0,1)&=\lie{Q}(1)
+\end{align*}
+\end{minipage}
+\end{center}
 % TODO: complete this list
 
 \subsection{Lie supergroups}
