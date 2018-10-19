@@ -220,6 +220,10 @@
 \newcommand{\PP}{\mathbb{P}} % projective
 \newcommand{\FF}{\mathbb{F}} % finite field
 \newcommand{\torus}{\mathbf{T}} % torus
+\newcommand{\Abar}{\overline{A}}
+\newcommand{\Bbar}{\overline{B}}
+\newcommand{\Lbar}{\overline{L}}
+\newcommand{\Qbar}{\overline{Q}}
 \DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
 \renewcommand{\Im}{}\renewcommand{\Re}{}\let\Im\relax\let\Re\relax
 \DeclareMathOperator{\Im}{Im}
@@ -1115,6 +1119,74 @@ $\overline{D}^{\dot{\alpha}}S_{\alpha\dot{\alpha}}=\chi_\alpha+D_\alpha X$, with
 contains both stress tensor and R-symmetry current and sources 16/16 supergravity.
 
 
+\subsection{Unitary superconformal irreps}
+
+See \arxiv{1612.00809}, in Lorentzian signature;
+$[j_1,\dots]_\Delta^{(R_1,\dots)}$ denotes a conformal family whose primary has Dynkin labels $\vec{j}$ and $\vec{R}$ (in $\ZZ_{\geq 0}$) for Lorentz and R-symmetry, and dimension~$\Delta$;
+superconformal multiplets are long $L[\vec{j}]_\Delta^{(\vec{R})}$ with $\Delta\geq\Delta_A(\vec{j},\vec{R})$ or short $X_\ell[\vec{j}]_\Delta^{(\vec{R})}$ with $X\in\{A,B,C,D\}$ and $\Delta=\Delta_X(\vec{j},\vec{R})$ and $\ell=\ell_X(\vec{j},\vec{R})\in\ZZ_{\geq 0}$ and $\Delta_A>\Delta_B>\Delta_C>\Delta_D$.
+
+\paragraph{3d \(\Nsusy=1\) algebra \(\lie{osp}(1|4)\).}
+Supercharges $Q\in [1]_{1/2}$.
+Let $\Delta_A(0)=\frac{1}{2}$ and $\Delta_A(j\geq 1)=\frac{1}{2}j+1$.
+Multiplets: $L[j]_{\Delta>\Delta_A}$, $A_{1+\delta_{j0}}[j]_{\Delta_A}$, $B_1[0]_0$.
+Recombinations as $\Delta\to\Delta_A$:
+\vspace{-.5\baselineskip}
+\begin{align*}
+  L[0]_\Delta & \to A_2[0]_{\Delta_A}\oplus L[0]_{\Delta_A+1}, \\
+  L[j\geq 1]_\Delta & \to A_1[j]_{\Delta_A}\oplus L[j-1]_{\Delta_A+1/2}.
+\end{align*}
+\vspace{-1.5\baselineskip}
+
+Absolutely protected: $B_1[0]_0$ unit operator.
+
+
+\paragraph{3d \(\Nsusy=2\) algebra \(\lie{osp}(2|4)\).}
+Supercharges $Q\in[1]^{(-1)}_{1/2}$ and $\Qbar\in[1]^{(1)}_{1/2}$.
+Let $\Delta_A=\frac{1}{2}j-r+1$ and $\Delta_B=-r$ and $\Delta_{\Abar}=\frac{1}{2}j+r+1$ and $\Delta_{\Bbar}=r$.
+Multiplets $L\Lbar[j]^{(r)}_{\Delta>j/2+\abs{r}+1}$, one-sided short $L\Abar[j]^{(r>0)}_{\Delta_{\Abar}}$, $L\Bbar[0]^{(r>1/2)}_r$, $A\Lbar[j]^{(r<0)}_{\Delta_A}$, $B\Lbar[0]^{(r<-1/2)}_{-r}$, and two-sided $A\Abar[j]^{(0)}_{j/2+1}$, $A\Bbar[0]^{(1/2)}_{1/2}$, $B\Abar[0]^{(-1/2)}_{1/2}$, $B\Bbar[0]^{(0)}_0$.
+Here $(A,B,\Abar,\Bbar)$ mean $(A_\ell,B_1,\Abar_\ell,\Bbar_1)$ with $\ell=1+\delta_{j0}$.
+Recombinations as $\Delta\to j/2+\abs{r}+1$:
+\vspace{-.8\baselineskip}
+\begin{align*}
+  L\Lbar[j]^{(r<0)}_\Delta
+  & \to A\Lbar[j]^{(r)}_{\Delta_A} \oplus
+    \left\{ \begin{array}{@{}ll@{}}
+              B\Lbar[0]^{(r-2)}_{\Delta_A+1} & \text{if $j=0$} \\
+              A\Lbar[j-1]^{(r-1)}_{\Delta_A+1/2} & \text{if $j\geq 1$}
+            \end{array} \right\} ,
+  \\
+  L\Lbar[j]^{(r>0)}_\Delta
+  & \to L\Abar[j]^{(r)}_{\Delta_{\Abar}} \oplus \left\{ \begin{array}{@{}ll@{}}
+    L\Bbar[0]^{(r+2)}_{\Delta_{\Abar}+1} & \text{if $j=0$} \\
+    L\Abar[j-1]^{(r+1)}_{\Delta_{\Abar}+1/2} & \text{if $j\geq 1$} \\
+  \end{array} \right\} , \\
+  L\Lbar[j]^{(0)}_\Delta
+  & \to A\Abar[j]^{(0)} \oplus
+    \left\{\begin{array}{@{}l@{}}
+             B\Lbar[0]^{(-2)} \oplus L\Bbar[0]^{(2)} \ \text{if $j=0$}\\
+             A\Lbar[j-1]^{(-1)} \oplus L\Abar[j-1]^{(1)}
+           \end{array}\right\} .
+\end{align*}
+\vspace{-\baselineskip}
+
+Absolutely protected: $B\Bbar$ (unit operator).
+Absolutely protected if R-charges are quantized: free chiral $A\Bbar$, chirals $L\Bbar_1[0]^{(r)}_r$ with $\frac{1}{2}<r<2$, and their conjugates.
+
+\paragraph{3d \(\Nsusy\geq 3\) algebra \(\lie{osp}(\Nsusy|4)\).}
+Supercharges $Q\in[1]^{(R_Q)}_{1/2}$ with $R_Q=(1,0,\dots)$ for $\Nsusy\geq 5$, $R_Q=(1,1)$ for $\Nsusy=4$, $R_Q=(2)$ for $\Nsusy=3$.
+Let $\Delta_A=\frac{1}{2}j+h_1+1$ and $\Delta_B=h_1$ with
+$h_1=R_1+\dots+R_{k-2}+\frac{1}{2}R_{k-1}+\frac{1}{2}R_k$ for $\Nsusy=2k$
+and same with $R_k\to 0$ for $\Nsusy=2k-1$.
+Multiplets: $L[j]^{(R)}_{\Delta>\Delta_A}$, $A_{1+\delta_{j0}}[j]^{(R)}_{\Delta_A}$, $B_1[0]^{(R)}_{\Delta_B}$.
+Recombinations as $\Delta\to\Delta_A$:
+\vspace{-.5\baselineskip}
+\begin{align*}
+  L[0]^{(R)}_\Delta & \to A_2[0]^{(R)}_{\Delta_A}\oplus B_1[0]^{(R+2R_Q)}_{\Delta_A+1}, \\
+  L[j\geq 1]^{(R)}_\Delta & \to A_1[j]^{(R)}_{\Delta_A}\oplus A_{1+\delta_{j1}}[j-1]^{(R+R_Q)}_{\Delta_A+1/2},
+\end{align*}
+\vspace{-\baselineskip}
+
+Absolutely protected: $B_1[0]^{(R)}$ when $R-2R_Q$ has some negative components (is not a dominant weight).
 
 \section{Supersymmetric (gauge) theories}
 
