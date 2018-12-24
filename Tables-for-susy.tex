@@ -233,6 +233,8 @@
 \DeclareMathOperator{\End}{End}
 \DeclareMathOperator{\Tr}{Tr}
 \DeclareMathOperator{\plexp}{plexp}
+\DeclareMathOperator{\pllog}{pllog}
+\DeclareMathOperator{\id}{id}
 \DeclareMathOperator{\rank}{rank}
 \DeclareMathOperator{\gr}{gr}
 \DeclareMathOperator{\diag}{diag}
@@ -2047,7 +2049,12 @@ $\Gamma_N(x|\vec{a})=\prod_{\vec{n}}^{\text{reg.}}(x+\vec{n}\cdot\vec{a})^{-1}=\
 where $\vec{n}\in\ZZ_{\geq 0}^N$.  Here, we zeta-regularized the product; the sum is analytically continued from $\Re s>N$.  The meromorphic $x\mapsto\Gamma_N(x|\vec{a})$ has no zero and poles at $x=-\vec{n}\cdot\vec{a}$ (simple poles for generic~$\vec{a}$).
 $\Gamma_0(x|)=1/x$, $\Gamma_1(x|a)=a^{x/a-1/2}\Gamma(x/a)/\sqrt{2\pi}$, $\Gamma_N(x|\vec{a})=\Gamma_{N-1}(x|a_1,\ldots,a_{N-1})\Gamma_N(x+a_N|\vec{a})$ and it is invariant under permutations of~$\vec{a}$.
 
-\paragraph{Plethystic exponential.}  Let $\mathbf{m}\subset R[[x_1,\ldots,x_n]]$ be series with no constant term over a ring~$R$.  Then $\plexp:\mathbf{m}\to 1+\mathbf{m}$ obeys $\plexp[x_i^p]=1/(1-x_i^p)$, $\plexp[f+g]=\plexp[f]\plexp[g]$ and $\plexp[\lambda f]=\plexp[f]^\lambda$ for $\lambda\in R$.  It maps an index of single-particle states $f(x)$ to that of multiparticle states $\plexp f(x)=\exp\sum_{k\geq 1}\frac{1}{k}f(x_1^k,\ldots,x_n^k)$.
+\paragraph{Plethystic exponential.}  Let $\mathbf{m}\subset R[[x_1,\ldots,x_n]]$ be series with no constant term over a ring~$R$.  Then $\plexp\colon\mathbf{m}\to 1+\mathbf{m}$ obeys $\plexp[x_i^p]=1/(1-x_i^p)$, $\plexp[f+g]=\plexp[f]\plexp[g]$ and $\plexp[\lambda f]=\plexp[f]^\lambda$ for $\lambda\in R$.  It maps an index of single-particle states $f(x)$ to that of multiparticle states $\plexp[f]=\exp\sum_{k\geq 1}\frac{1}{k}f(x_1^k,\ldots,x_n^k)$.
+
+\paragraph{Plethystic logarithm} $\pllog$ defined by $\plexp\circ\pllog=\id$ and $\pllog\circ\plexp=\id$ hence
+$\pllog[1-x_i^p]=-x_i^p$ and $\pllog[fg]=\pllog[f]+\pllog[g]$ and $\pllog[f^\lambda]=\lambda\pllog[f]$ for $\lambda\in R$.
+More generally, $\pllog[f]=\sum_{k\geq 1}\frac{1}{k}\mu(k)\log f(x_1^k,\ldots,x_n^k)$ where
+$\mu$~is the M\"obius function: $\mu(a^2b)=0$ for integers $a>1$ and~$b$, and $\mu(p_1\dots p_m)=(-1)^m$ for distinct primes~$p_i$.
 
 \paragraph[q-Pochhammer symbol]{q-Pochhammer}
 $(a;q)_\infty=\plexp\frac{-a}{1-q}=\prod_{k=0}^{\infty}(1-aq^k)$
