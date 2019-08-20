@@ -1758,12 +1758,12 @@ In this table ``type~IIA'' \etc{} refer to string theories not supergravities
 
 \subsection{Pseudo-Riemannian geometry}
 
-$T_{\dots\lambda[\mu_1\dots\mu_m]\nu\dots}=m!^{-1}\sum_{\sigma\in S_m}\epsilon(\sigma)T_{\dots\lambda\mu_{\sigma(1)}\dots\mu_{\sigma(m)}\nu\dots}$ antisymmetrization,
-where $\epsilon(\sigma)=\pm 1$ is the signature of the permutation; symmetrization $T_{\dots\lambda(\mu_1\dots\mu_m)\nu\dots}$ is without $\epsilon$.
-Derivatives: $\partial_\mu=\partial/\partial x^\mu$ and $T^{\nu_1\dots\nu_n}_{\rho_1\dots\rho_r}{}_{,\mu_1\dots\mu_m}=\partial_{\mu_1}\cdots\partial_{\mu_m} T^{\nu_1\dots\nu_n}_{\rho_1\dots\rho_r}$
-and $T^{\nu_1\dots\nu_n}_{\rho_1\dots\rho_r}{}_{;\mu_1\dots\mu_m}=\nabla_{\mu_1}\cdots\nabla_{\mu_m} T^{\nu_1\dots\nu_n}_{\rho_1\dots\rho_r}$ (namely ``;'' is $\nabla$).
+$T_{\dots[\mu_1\dots\mu_m]\dots}^{\dots}=\sum_{\sigma\in S_m}T_{\dots\mu_{\sigma(1)}\dots\mu_{\sigma(m)}\dots}^{\dots}/m!$ symmetrization;
+antisymmetrization $T_{\dots[\mu_1\dots\mu_m]\dots}^{\dots}$ has extra $\epsilon(\sigma)=\pm 1$ (signature of the permutation).
+Derivatives: $\partial_\mu=\partial/\partial x^\mu$ and $T^{\nu_1\dots\nu_n}_{\rho_1\dots\rho_r\,,\mu_1\dots\mu_m}=\partial_{\mu_1}\cdots\partial_{\mu_m} T^{\nu_1\dots\nu_n}_{\rho_1\dots\rho_r}$
+while ``;'' stands for $\nabla$ as $T^{\nu_1\dots\nu_n}_{\rho_1\dots\rho_r\,;\mu_1\dots\mu_m}=\nabla_{\mu_1}\cdots\nabla_{\mu_m} T^{\nu_1\dots\nu_n}_{\rho_1\dots\rho_r}$.
 
-\paragraph{Connection} $\nabla=\partial+\Gamma$ in terms of Christoffel symbols~$\Gamma$.
+\paragraph{Connection\texorpdfstring{ $\nabla$}{}}${}=\partial+\Gamma$ in terms of Christoffel symbols~$\Gamma$.
 $T^{\nu_1\dots}_{\rho_1\dots}{}_{;\mu} = T^{\nu_1\dots}_{\rho_1\dots}{}_{,\mu}
 + (T^{\lambda\nu_2\dots}_{\rho_1\dots} \Gamma^{\nu_1}{}_{\lambda\mu} + \cdots)
 - (T^{\nu_1\dots}_{\lambda\rho_2\dots} \Gamma^\lambda{}_{\rho_1\mu} + \cdots)$
@@ -1773,17 +1773,62 @@ $\nabla_\mu \omega_\nu = \partial_\mu \omega_\nu - \omega_\lambda\Gamma^\lambda{
 for a one-form.
   Extra $-w(\log\Omega)_{,\mu}T^{\nu_1\dots}_{\rho_1\dots}$
 for a weight~$w$ tensor density, where $\Omega$ is the volume factor ($\abs{\det g}^{1/2}$ for a metric).
+Differences $\Gamma-\Gamma'$ of connections are tensors.
 
+\paragraph{Torsion of a connection:} $T^\lambda{}_{\mu\nu}=2\Gamma^\lambda{}_{[\mu\nu]}$
 
-\paragraph{The Levi-Civita connection} of a metric~$g$ is $\nabla=\partial+\Gamma$ with
-$\Gamma^\lambda{}_{\nu\rho}=\tfrac{1}{2}g^{\lambda\mu}(\partial_\rho g_{\mu\nu}+\partial_\nu g_{\mu\rho}-\partial_\mu g_{\nu\rho})$.
-It is the only torsion-free connection ($\Gamma^\lambda_{[\mu\nu]}=0$) that kills the metric.
-Note that $\Gamma^\lambda{}_{\lambda\rho}=\tfrac{1}{2}g^{\lambda\mu}\partial_\rho g_{\lambda\mu}=\tfrac{1}{2}\partial_\rho\log\abs{\det g}$.
-Denote $\sqrt{g}=\abs{\det g}^{1/2}$.
-Then $\sqrt{g}\,\nabla_\nu v^\nu =\partial_\nu(v^\nu\sqrt{g})$ and $\sqrt{g}\,\nabla_\nu F^{[\nu\rho]}=\partial_\nu(F^{[\nu\rho]}\sqrt{g})$ are total derivatives.
+\paragraph{Riemann tensor} $R(u,v)w=\nabla_u\nabla_vw-\nabla_v\nabla_uw-\nabla_{[u,v]}w$.
+For a torsion-free connection,
+$R^\lambda{}_{\mu\nu\rho}=2\del_{[\nu}\Gamma^\lambda{}_{\rho]\mu}+2\Gamma^\lambda{}_{\tau[\nu}\Gamma^\tau{}_{\rho]\mu}$
+obeys
+$R^\lambda{}_{\mu(\nu\rho)}=0$, $R^\lambda{}_{[\mu\nu\rho]}=0$ and $R^\lambda{}_{\mu[\nu\rho;\tau]}=0$ (``Bianchi'').
+
+\paragraph{Ricci tensor} $R_{\mu\nu}=R^\lambda{}_{\mu\lambda\nu}$
+
+\paragraph{Metric \texorpdfstring{$g$}{g}}${}\in S^2(T^*M)$,
+raise/lower indices as $v_\mu=g_{\mu\nu}v^\nu$ and $v^\nu=g^{\nu\rho}v_\rho$ using $g_{\mu\nu}$ and inverse metric $g^{\mu\nu}$.
+Notation $\abs{g}=\abs{\det g}$
+
+\paragraph{Levi-Civita connection of \texorpdfstring{$g$}{g}:}
+unique torsion-free connection with $\nabla g=0$.
+Given by $\Gamma^\lambda{}_{\nu\rho}=\tfrac{1}{2}g^{\lambda\mu}(\partial_\rho g_{\mu\nu}+\partial_\nu g_{\mu\rho}-\partial_\mu g_{\nu\rho})$.
+One can show $\sqrt{\abs{g}}\,\nabla_\nu T^{[\nu\mu_2\dots]} =\partial_\nu(T^{[\nu\mu_2\dots]}\sqrt{\abs{g}})$ is a total derivative (using $\Gamma^\lambda{}_{\lambda\rho}=\partial_\rho\log\sqrt{\abs{g}}$).
 
 \paragraph{Killing vector} $k_\mu$ such that $\nabla_{(\mu} k_{\nu)}=0$.
 For a symmetric conserved stress-tensor~$T$ we have $\nabla_\mu(k_\nu T^{\mu\nu})=0$, giving conserved quantities.
+
+\paragraph{Riemann and Ricci tensors} of the Levi-Civita connection
+obey $R_{\kappa\mu\nu\rho}=-R_{\mu\kappa\nu\rho}=R_{\nu\rho\kappa\mu}$ and $R_{\mu\nu}=R_{\nu\mu}$.
+Ricci scalar $R=R_{\mu\nu}g^{\mu\nu}$.
+Einstein tensor $G_{\mu\nu}=R_{\mu\nu}-Rg_{\mu\nu}/2$ obeys $\nabla_\mu G^{\mu\nu}=0$ (``contracted Bianchi identity'').
+Amusing formula $R_{\lambda\mu\nu\rho}=2\del_{[\nu|}\Gamma_{\lambda|\rho]\mu}-2\Gamma_{\tau\lambda[\nu}\Gamma^\tau{}_{\rho]\mu}$
+(used for Gauss' equation).
+
+\paragraph{Einstein equations} $G_{\mu\nu}+\Lambda g_{\mu\nu}=(8\pi G/c^4)T_{\mu\nu}$
+with cosmological constant~$\Lambda$.
+
+\paragraph{Wave gauge} sets $g^{\mu\nu}\nabla_\mu\nabla_\nu x^\lambda=\Gamma^\lambda{}_{\mu\nu}g^{\mu\nu}$ to $0$.
+Called harmonic gauge or harmonic coordinates in the Riemannian case.
+
+\paragraph{Submanifold \texorpdfstring{$\Sigma\subset M$}{Sigma in M}:}
+first fundamental form${}={}$induced metric $g_\Sigma(u,v)=g(u,v)$ for vectors $u,v\in T\Sigma\subset TM$;
+second fundamental form (read ``two'') $\mathrm{II}(u,v)=(\nabla_uv)^{\perp}=(\nabla_vu)^{\perp}$ is a quadratic form $T\Sigma\times T\Sigma\to N\Sigma$ valued in normal bundle.
+Components are $\Gamma_{nij}$ with $n\perp\Sigma$, $i,j\parallel\Sigma$.
+
+\paragraph{Submanifold given by \texorpdfstring{$f\colon\Sigma\to M$}{f:Sigma->M}} has $g^\Sigma_{ij}=\del_if^\mu\del_jf^\nu g_{\mu\nu}$
+and second fundamental form $\mathrm{II}_{\mu ij}=\Gamma_{\mu\nu\rho}\del_if^\nu\del_jf^\rho$.
+
+\paragraph{Gauss equation}
+$R_{ijkl}=R^\Sigma_{ijkl}+2\mathrm{II}_\mu{}_{i[k}\mathrm{II}^\mu{}_{l]j}$ (sign?).
+
+\paragraph{Hypersurfaces} also have a scalar-valued second fundamental form $K_{ij}=n^\mu\mathrm{II}_{\mu ij}$ with $n$ a unit normal (sign ambiguous).
+
+\paragraph{Codazzi--Mainardi equation} (for $\Sigma\subset M$ a hypersurface)
+$n^\mu R^\Sigma_{\mu ijk}=2K_{i[j;k]}$ (sign?).
+
+\paragraph{Einstein constraints}
+$R-K_{ij}K^{ij}+(K_i^i)^2=2\rho+2\Lambda$ and
+$\nabla^j K_{ij}-\del_i(K_j^j)=J_i$
 
 \subsection{G-structures, holonomy}
 
