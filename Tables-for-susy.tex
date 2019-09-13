@@ -770,147 +770,6 @@ Exception: $\lie{UQ}(p-1,q)=\lie{UQ}(q-1,p)$.
 \end{tab}
 
 
-\section{Quantum field theory}
-
-\subsection{Building blocks}
-
-\paragraph{Yang--Mills term.} A gauge group is a compact reductive Lie group~$G$ such as $(\Lie{SU}(3)\times\Lie{SU}(2)\times\Lie{U}(1))/\ZZ_6$.
-The gauge kinetic term is $\mathcal{L}_{\text{SYM}}=g^{-2}\Tr F\wedge\star F$, with one real gauge coupling~$g$ per simple factor.
-
-\paragraph{Theta term} in even dimension: $\thetaangle\Tr F^{\wedge(d/2)}$ with~$\thetaangle$ periodic.
-In 4d, $\thetaangle$ and $g$ combine to $\tau=\thetaangle/(2\pi)+4\pi i/g^2$.
-
-\paragraph{Chern--Simons term} in 3d: $k\Tr\bigl(A\wedge\dd{A}+\frac{2}{3}A\wedge A\wedge A\bigr)$ with $k$~quantized (normalization missing).
-
-\subsection{Symmetries}
-
-\paragraph{Global symmetries} include Poincar\'e or conformal, flavour symmetries, R-symmetries.
-Not always all manifest.  In a given QFT description, ``electric''  flavour symmetries act on matter.
-
-\paragraph{Topological/magnetic flavour symmetry} of a gauge field with gauge group~$\Lie{G}$:
-$\Hom(\pi_1(\Lie{G}),\Lie{U}(1))$.
-
-\paragraph{An emergent symmetry} is a flavour symmetry of an IR CFT, absent in some UV description.
-
-\paragraph{Boundaries and gauge redundancies.}
-On a non-compact spacetime one can consider the group of gauge redundancies with various boundary conditions.
-Let $H\subset F$ be the constant transformations included as gauge redundancies (including constant gauge transformations by $H\cap G$).
-The (electric) flavour symmetry is then $\{x\in F\mid xG=Gx,xH=Hx\}/H$.
-
-\paragraph{An abelian \(q\)-form symmetry} \arxiv{1412.5148}
-(for $q=0$ this is a standard flavour symmetry and can be nonabelian)
-is a $(q+1)$-form current $J$ such that $\mathrm{d}{\star J}=0$;
-it couples as $\int B\wedge{\star J}$ to a background $(q+1)$-form gauge field~$B$ with gauge transformation $B\to B+\mathrm{d}\Lambda$.
-
-The conserved charge $Q(\Sigma)=\int_\Sigma{\star J}$ is measured along a $(d-1-q)$-cycle $\Sigma$.
-Charged operators are supported on $q$-cycles linking~$\Sigma$; charged excitations are dynamical $q$-branes intersecting $\Sigma$ transversally.
-The symmetry is $\Lie{U}(1)$ rather than $\RR$ if all $Q(\Sigma)\in\ZZ$ so all $\int_{\Sigma'}\mathrm{d}\Lambda$ and $\int_{\Sigma''}\mathrm{d}B\in 2\pi\ZZ$.
-
-A $q$-form symmetry may emerge in the IR\@.
-The partition function $Z[B]$ may suffer shifts under $B\to B+\mathrm{d}\Lambda$: such a 't~Hooft anomaly prevents gauging (making $B$ dynamical);
-it is an RG invariant hence matches in UV and IR\@.
-
-\paragraph{Coleman--Mermin--Wagner} (see \arxiv{1802.07747} for $p$-forms)
-Spontaneous symmetry breaking of continuous $p$-form symmetry can only happen for $D>p+2$ ($p+1$ for discrete symmetries).
-The IR theory has massless $p$-form Nambu--Goldstone bosons.
-
-\subsection{Anomalies}
-
-\paragraph{Continuous anomalies} in $d=2n$,
-in $(n+1)$-point functions of currents: $(n+1)$-gon fermion loop, summed over fermions.
-Forbid simultaneous nontrivial backgrounds for all $n+1$ symmetries.
-Anomaly with $(n+1)$ gauge currents $\implies$ theory is sick.
-Anomaly with $n$ gauge, one flavour $\implies$ classical flavour symmetry fails at one-loop, $D_\mu J^\mu \sim \Tr(\mathrm{d}A_1\wedge\dots\wedge \mathrm{d}A_n)+O(A^{n+1})$.
-
-\paragraph{Fermion effective action} $\Gamma[A]$ defined by $\exp(-\Gamma[A])=\int\DD{\bar{\chi}}\DD{\psi}\exp(-\int\dd[^4]{x}\bar{\chi}i\slashed{D}\gamma_-\psi)$ always has gauge-invariant and diffeomorphism-invariant real part but varies by the imaginary $D_\mu(\delta\Gamma/\delta A_\mu)=D_\mu\langle J^\mu\rangle$ and $D_\mu(\delta\Gamma/\delta g_{\mu\nu})=\frac{1}{2}D_\mu\langle T^{\mu\nu}\rangle$, non-zero in case of anomaly.
-
-\paragraph{Anomaly polynomial:}
-formal $(d+2)$-form built from field strengths~$F$ and Riemann~$R$ two-forms, traced.
-
-% \paragraph{Degrees of Casimir invariants.}
-% $\Lie{G}_2$: $2,6$. $\Lie{F}_4$: $2,6,8,12$.
-% \begin{center}
-% \vspace{-1.3\baselineskip}
-% \begin{minipage}[t]{.5\linewidth}%
-% \begin{tab}{@{}>{$}l<{$}@{ }>{$}l<{$}@{}}
-%   \Lie{A}_n & 2,3,\ldots,n+1\\
-%   \Lie{B}_n,\Lie{C}_n & 2,4,\ldots,2n\\
-%   \Lie{D}_n & 2,4,\ldots,2n-2,n\\
-% \end{tab}
-% \end{minipage}%
-% \begin{minipage}[t]{.5\linewidth}
-% \begin{tab}{@{}>{$}l<{$}@{ }>{$}l<{$}@{}}
-%   \Lie{E}_6 & 2,5,6,8,9,12\\
-%   \Lie{E}_7 & 2,6,8,10,12,14,18\\
-%   \Lie{E}_8 & 2,8,12,14,18,20,24,30\\
-% \end{tab}
-% \end{minipage}
-% \end{center}
-% \vspace{-.6\baselineskip}
-% Quadratic Casimir is always $\Tr F\wedge F$.
-% Among simple groups, only $\Lie{SU}(N)$ has a triangle anomaly (cubic invariant),
-% but don't forget mixed anomalies.
-
-\paragraph{Continuous gravitational anomaly.}
-$\Lie{Spin}(1,d-1)$ plus CPT only has complex representations for $d=4k+2$:
-for other even~$d$, CPT exchanges chirality so we cannot have a single Weyl spinor.
-Focus on $d=1+(4k+1)$, Weyl fermions of spin $\tfrac{1}{2}$ and $\tfrac{3}{2}$ and self-dual $2k+1$ form.
-In 10d, unique theory with anomaly cancellation between fields of different spins: IIB supergravity.
-Above 10d, only same spins can cancel.
-
-\paragraph{Discrete gravitational anomaly.}
-In $d=8k$ and $d=8k+1$, single Majorana spinors cannot be given mass (but pairs can).
-It turns out that coupling an odd number of spin~$\frac{1}{2}$ Majorana fermions to gravity is inconsistent.
-
-%\paragraph{Parity anomaly} can occur in any dimension(?)  Example: In $d=1+2$, the $\Lie{SU}(2)$ gauge theory with single spin $\frac{1}{2}$ Majorana $\Lie{SU}(2)$ doublet must have half-integer Chern--Simons level.
-
-\paragraph{Mixed gauge-gravity anomaly} (or flavour-gravity)
-corresponds to $(\frac{1}{2}d+1)$-gons fermion loops with an even number of stress-tensors and some currents.
-
-
-\subsection{Supersymmetric theories}
-
-\paragraph{Vector.} Yang--Mills, theta, Chern--Simons terms have supersymmetric completion.
-Additionally, FI parameter, real for $4$ supercharges, triplet for $8$ supercharges.
-Dimensionless in 2d, the FI parameter combines with the theta angle.
-
-\paragraph{Matter.} For $16$~supercharges, none.
-For $8$~supercharges, symplectic representation $V\simeq\HH^n$ namely $G\to F=\Lie{USp}(2n)$.
-For $4$~supercharges, unitary representation $V\simeq\CC^n$ namely $G\to F=\Lie{U}(n)$.
-Canonical kinetic term for bosons: $D_\mu\phi_i D^\mu\phi_i$.
-
-\paragraph{Superpotential term.} For $4$ supercharges, $\int\dd[^2]\thetacoordinate W$ gives a potential for scalars and Yukawa-type interactions.  $W$~is holomorphic in chiral fields and in couplings seen as background fields.  Example: the kinetic term $\Im \int\dd[^2]\thetacoordinate[\tau W_\alpha^2]$ of an abelian gauge field: $W_\alpha^2$ is a chiral field so $\tau$ is the background value of a chiral field.
-
-\paragraph{R-symmetry.}
-In 2d and higher the IR R-symmetry is part of the superconformal algebra, rather than an outer automorphism of it.
-The manifest (UV) R-symmetry can be a mixture of the IR R-symmetry and of a flavour symmetry:  $R_{\text{UV}}\subset R_{\text{IR}}\times F$.
-For nonabelian R-symmetry that flavour symmetry must be emergent as it does not commute with~$R_{\text{UV}}$.
-For abelian R-symmetry the mixing is continuous; assuming no emergent flavour symmetries it is fixed
-in 4d $\Nsusy=1$ by $a$-extremization, in 3d $\Nsusy=2$ by $Z_{S^3}$-extremization, in 2d $\Nsusy=(0,2)$ by $c$-extremization.
-
-Vector multiplet scalars and gauge field are $U(1)_R$ neutral.
-
-For chirals, $\Delta\geq\frac{1}{2}(d-1)\abs{R}$ at the fixed point.
-
-\paragraph{Classical vacua:} Coulomb, Higgs and mixed branches.
-Cou\-l\-omb branch ($\lie{g}$~modulo conjugation by~$G$) parametrized by vector multiplet scalars, larger in 3d due to monopoles, can be lifted by quantum effects.
-For $4$~supercharges, Higgs branch parametrized by chiral multiplet scalars: K\"ahler quotient $R//G$.
-For $8$~supercharges, Higgs branch parametrized by hypermultiplet scalars: hyper-K\"ahler quotient $\widetilde{R}///G$.
-The Higgs branch has flavour symmetry $\{x\in F\mid xG=Gx\}/G$ normalizer of $G$ in $F=\Lie{U}(R)$ or $F=\Lie{USp}(\widetilde{R})$ modulo~$G$.
-Background vector multiplet scalars (real/twisted masses) reduce the Higgs and mixed branches to fixed points of corresponding flavour symmetries.
-
-\subsection{Other}
-
-\paragraph{Loops.}
-A Polyakov loop is just a Wilson loop in the fundamental representation and wrapping the time direction.
-% Also describe Wilson, 't Hooft, dyonic, vortex loops
-
-\paragraph{A redundant operator}
-is $\Operator$ such that $\langle\Operator(p)\Operator(-p)\rangle$ is polynomial in the momentum~$p$;
-equivalently, $\langle\Operator(x)\Operator(y)\rangle$ vanishes at separated points.
-
-\paragraph{Resurgence} see \arxiv{1909.05262} in supersymmetric theories.
-
 \section{Spinors, supersymmetry}
 
 \subsection[Spinors]{Spinors \normalsize\textnormal{(e.g.\@ \hepth{9910030})}}
@@ -1201,6 +1060,173 @@ Recombinations as $\Delta\to\Delta_A$:
 \vspace{-\baselineskip}
 
 Absolutely protected: $B_1[0]^{(R)}$ when $R-2R_Q$ has some negative components (is not a dominant weight).
+
+\section{Quantum field theory}
+
+\subsection{Building blocks}
+
+\paragraph{Yang--Mills term.} A gauge group is a compact reductive Lie group~$G$ such as $(\Lie{SU}(3)\times\Lie{SU}(2)\times\Lie{U}(1))/\ZZ_6$.
+The gauge kinetic term is $\mathcal{L}_{\text{SYM}}=g^{-2}\Tr F\wedge\star F$, with one real gauge coupling~$g$ per simple factor.
+
+\paragraph{Theta term} in even dimension: $\thetaangle\Tr F^{\wedge(d/2)}$ with~$\thetaangle$ periodic.
+In 4d, $\thetaangle$ and $g$ combine to $\tau=\thetaangle/(2\pi)+4\pi i/g^2$.
+
+\paragraph{Chern--Simons term} in 3d: $k\Tr\bigl(A\wedge\dd{A}+\frac{2}{3}A\wedge A\wedge A\bigr)$ with $k$~quantized (normalization missing).
+
+\subsection{Symmetries}
+
+\paragraph{Global symmetries} include Poincar\'e or conformal, flavour symmetries, R-symmetries.
+Not always all manifest.  In a given QFT description, ``electric''  flavour symmetries act on matter.
+
+\paragraph{Topological/magnetic flavour symmetry} of a gauge field with gauge group~$\Lie{G}$:
+$\Hom(\pi_1(\Lie{G}),\Lie{U}(1))$.
+
+\paragraph{An emergent symmetry} is a flavour symmetry of an IR CFT, absent in some UV description.
+
+\paragraph{Boundaries and gauge redundancies.}
+On a non-compact spacetime one can consider the group of gauge redundancies with various boundary conditions.
+Let $H\subset F$ be the constant transformations included as gauge redundancies (including constant gauge transformations by $H\cap G$).
+The (electric) flavour symmetry is then $\{x\in F\mid xG=Gx,xH=Hx\}/H$.
+
+\paragraph{An abelian \(q\)-form symmetry} \arxiv{1412.5148}
+(for $q=0$ this is a standard flavour symmetry and can be nonabelian)
+is a $(q+1)$-form current $J$ such that $\mathrm{d}{\star J}=0$;
+it couples as $\int B\wedge{\star J}$ to a background $(q+1)$-form gauge field~$B$ with gauge transformation $B\to B+\mathrm{d}\Lambda$.
+
+The conserved charge $Q(\Sigma)=\int_\Sigma{\star J}$ is measured along a $(d-1-q)$-cycle $\Sigma$.
+Charged operators are supported on $q$-cycles linking~$\Sigma$; charged excitations are dynamical $q$-branes intersecting $\Sigma$ transversally.
+The symmetry is $\Lie{U}(1)$ rather than $\RR$ if all $Q(\Sigma)\in\ZZ$ so all $\int_{\Sigma'}\mathrm{d}\Lambda$ and $\int_{\Sigma''}\mathrm{d}B\in 2\pi\ZZ$.
+
+A $q$-form symmetry may emerge in the IR\@.
+The partition function $Z[B]$ may suffer shifts under $B\to B+\mathrm{d}\Lambda$: such a 't~Hooft anomaly prevents gauging (making $B$ dynamical);
+it is an RG invariant hence matches in UV and IR\@.
+
+\paragraph{Coleman--Mermin--Wagner} (see \arxiv{1802.07747} for $p$-forms)
+Spontaneous symmetry breaking of continuous $p$-form symmetry can only happen for $D>p+2$ ($p+1$ for discrete symmetries).
+The IR theory has massless $p$-form Nambu--Goldstone bosons.
+
+\subsection{Anomalies}
+
+\paragraph{Continuous anomalies} in $d=2n$,
+in $(n+1)$-point functions of currents: $(n+1)$-gon fermion loop, summed over fermions.
+Forbid simultaneous nontrivial backgrounds for all $n+1$ symmetries.
+Anomaly with $(n+1)$ gauge currents $\implies$ theory is sick.
+Anomaly with $n$ gauge, one flavour $\implies$ classical flavour symmetry fails at one-loop, $D_\mu J^\mu \sim \Tr(\mathrm{d}A_1\wedge\dots\wedge \mathrm{d}A_n)+O(A^{n+1})$.
+
+\paragraph{Fermion effective action} $\Gamma[A]$ defined by $\exp(-\Gamma[A])=\int\DD{\bar{\chi}}\DD{\psi}\exp(-\int\dd[^4]{x}\bar{\chi}i\slashed{D}\gamma_-\psi)$ always has gauge-invariant and diffeomorphism-invariant real part but varies by the imaginary $D_\mu(\delta\Gamma/\delta A_\mu)=D_\mu\langle J^\mu\rangle$ and $D_\mu(\delta\Gamma/\delta g_{\mu\nu})=\frac{1}{2}D_\mu\langle T^{\mu\nu}\rangle$, non-zero in case of anomaly.
+
+\paragraph{Anomaly polynomial:}
+formal $(d+2)$-form built from field strengths~$F$ and Riemann~$R$ two-forms, traced.
+
+% \paragraph{Degrees of Casimir invariants.}
+% $\Lie{G}_2$: $2,6$. $\Lie{F}_4$: $2,6,8,12$.
+% \begin{center}
+% \vspace{-1.3\baselineskip}
+% \begin{minipage}[t]{.5\linewidth}%
+% \begin{tab}{@{}>{$}l<{$}@{ }>{$}l<{$}@{}}
+%   \Lie{A}_n & 2,3,\ldots,n+1\\
+%   \Lie{B}_n,\Lie{C}_n & 2,4,\ldots,2n\\
+%   \Lie{D}_n & 2,4,\ldots,2n-2,n\\
+% \end{tab}
+% \end{minipage}%
+% \begin{minipage}[t]{.5\linewidth}
+% \begin{tab}{@{}>{$}l<{$}@{ }>{$}l<{$}@{}}
+%   \Lie{E}_6 & 2,5,6,8,9,12\\
+%   \Lie{E}_7 & 2,6,8,10,12,14,18\\
+%   \Lie{E}_8 & 2,8,12,14,18,20,24,30\\
+% \end{tab}
+% \end{minipage}
+% \end{center}
+% \vspace{-.6\baselineskip}
+% Quadratic Casimir is always $\Tr F\wedge F$.
+% Among simple groups, only $\Lie{SU}(N)$ has a triangle anomaly (cubic invariant),
+% but don't forget mixed anomalies.
+
+\paragraph{Continuous gravitational anomaly.}
+$\Lie{Spin}(1,d-1)$ plus CPT only has complex representations for $d=4k+2$:
+for other even~$d$, CPT exchanges chirality so we cannot have a single Weyl spinor.
+Focus on $d=1+(4k+1)$, Weyl fermions of spin $\tfrac{1}{2}$ and $\tfrac{3}{2}$ and self-dual $2k+1$ form.
+In 10d, unique theory with anomaly cancellation between fields of different spins: IIB supergravity.
+Above 10d, only same spins can cancel.
+
+\paragraph{Discrete gravitational anomaly.}
+In $d=8k$ and $d=8k+1$, single Majorana spinors cannot be given mass (but pairs can).
+It turns out that coupling an odd number of spin~$\frac{1}{2}$ Majorana fermions to gravity is inconsistent.
+
+%\paragraph{Parity anomaly} can occur in any dimension(?)  Example: In $d=1+2$, the $\Lie{SU}(2)$ gauge theory with single spin $\frac{1}{2}$ Majorana $\Lie{SU}(2)$ doublet must have half-integer Chern--Simons level.
+
+\paragraph{Mixed gauge-gravity anomaly} (or flavour-gravity)
+corresponds to $(\frac{1}{2}d+1)$-gons fermion loops with an even number of stress-tensors and some currents.
+
+
+\subsection{Supersymmetric theories}
+
+\paragraph{Vector.} Yang--Mills, theta, Chern--Simons terms have supersymmetric completion.
+Additionally, FI parameter, real for $4$ supercharges, triplet for $8$ supercharges.
+Dimensionless in 2d, the FI parameter combines with the theta angle.
+
+\paragraph{Matter.} For $16$~supercharges, none.
+For $8$~supercharges, symplectic representation $V\simeq\HH^n$ namely $G\to F=\Lie{USp}(2n)$.
+For $4$~supercharges, unitary representation $V\simeq\CC^n$ namely $G\to F=\Lie{U}(n)$.
+Canonical kinetic term for bosons: $D_\mu\phi_i D^\mu\phi_i$.
+
+\paragraph{Superpotential term.} For $4$ supercharges, $\int\dd[^2]\thetacoordinate W$ gives a potential for scalars and Yukawa-type interactions.  $W$~is holomorphic in chiral fields and in couplings seen as background fields.  Example: the kinetic term $\Im \int\dd[^2]\thetacoordinate[\tau W_\alpha^2]$ of an abelian gauge field: $W_\alpha^2$ is a chiral field so $\tau$ is the background value of a chiral field.
+
+\paragraph{R-symmetry.}
+In 2d and higher the IR R-symmetry is part of the superconformal algebra, rather than an outer automorphism of it.
+The manifest (UV) R-symmetry can be a mixture of the IR R-symmetry and of a flavour symmetry:  $R_{\text{UV}}\subset R_{\text{IR}}\times F$.
+For nonabelian R-symmetry that flavour symmetry must be emergent as it does not commute with~$R_{\text{UV}}$.
+For abelian R-symmetry the mixing is continuous; assuming no emergent flavour symmetries it is fixed
+in 4d $\Nsusy=1$ by $a$-extremization, in 3d $\Nsusy=2$ by $Z_{S^3}$-extremization, in 2d $\Nsusy=(0,2)$ by $c$-extremization.
+
+Vector multiplet scalars and gauge field are $U(1)_R$ neutral.
+
+For chirals, $\Delta\geq\frac{1}{2}(d-1)\abs{R}$ at the fixed point.
+
+\paragraph{Classical vacua:} Coulomb, Higgs and mixed branches.
+Cou\-l\-omb branch ($\lie{g}$~modulo conjugation by~$G$) parametrized by vector multiplet scalars, larger in 3d due to monopoles, can be lifted by quantum effects.
+For $4$~supercharges, Higgs branch parametrized by chiral multiplet scalars: K\"ahler quotient $R//G$.
+For $8$~supercharges, Higgs branch parametrized by hypermultiplet scalars: hyper-K\"ahler quotient $\widetilde{R}///G$.
+The Higgs branch has flavour symmetry $\{x\in F\mid xG=Gx\}/G$ normalizer of $G$ in $F=\Lie{U}(R)$ or $F=\Lie{USp}(\widetilde{R})$ modulo~$G$.
+Background vector multiplet scalars (real/twisted masses) reduce the Higgs and mixed branches to fixed points of corresponding flavour symmetries.
+
+\subsection{Other}
+
+\paragraph{Loops.}
+A Polyakov loop is just a Wilson loop in the fundamental representation and wrapping the time direction.
+% Also describe Wilson, 't Hooft, dyonic, vortex loops
+
+\paragraph{A redundant operator}
+is $\Operator$ such that $\langle\Operator(p)\Operator(-p)\rangle$ is polynomial in the momentum~$p$;
+equivalently, $\langle\Operator(x)\Operator(y)\rangle$ vanishes at separated points.
+
+\paragraph{Resurgence} see \arxiv{1909.05262} in supersymmetric theories.
+
+\paragraph{Phases characterized by potential} $V(R)$ (up to a constant) between quarks at distance~$R$:
+Coulomb $1/R$,
+free electric $1/\bigl(R\log(R\Lambda)\bigr)$,
+free magnetic $\log(R\Lambda)/R$,
+Higgs (constant),
+confining $\sigma R$.
+
+\paragraph[Solitons and solitary waves]{A solitary wave} is a solution (of some wave equation) whose energy density is localized in space and travels at some speed~$u$.
+A soliton additionally keeps its shape asymptotically after collisions.
+
+\paragraph{Instantons}
+are anti-self-dual ($F=-{\star F}$) connections on~$\RR^4$ that decay at infinity and extend to~$S^4$.
+The bundles are classified by $\pi_3(G)$ so an instanton number $k\in\ZZ$ for simple gauge groups;
+for fixed $k\geq 0$ ($k\leq 0$) (anti)instantons minimize the action.
+The $k$-instanton moduli space for $G=\Lie{SU}(N)$ is a $4Nk$-dimensional \inspire{128223} hyperK\"ahler manifold,
+in bijection with rank~$N$ framed locally free sheaves on~$\CC\PP^2$ \inspire{125044}.
+
+\paragraph['t Hooft--Polyakov monopoles]{A 't Hooft--Polyakov monopole}
+is a smooth codimension~$3$ topological soliton where the gauge group~$G$ is spontaneously broken by a Higgs field to~$H$, far from the soliton.  Monopole charge is in $\pi_2(G/H)=\operatorname{Ker}\bigl(\pi_1(H)\to\pi_1(G)\bigr)$ ``Dirac monopole of~$H$ trivialized in~$G$''.
+
+Example: $\Lie{SU}(2)$ gauge theory with adjoint scalar~$\phi$ of potential $(a^2-\Tr\phi^2)^2$.
+Residual $\Lie{U}(1)$ gauge field $F_{\Lie{U}(1)} = \Tr(\hat{\phi} F) - 2\Tr(\hat{\phi} D\hat{\phi} D\hat{\phi})$ with $\hat{\phi}=\phi/\sqrt{\Tr\phi^2}$ obeys $\mathrm{d}F_{\Lie{U}(1)}=\Tr(\mathrm{d}\hat{\phi})^3$, whose integral is the monopole charge.
+
+% TODO: vortices, monopoles, instantons (Abrikosov--Nielsen--Olesen
+% vortex, 't~Hooft--Polyakov monopole, \ldots{}).
 
 \section{Supersymmetric (gauge) theories}
 
@@ -2111,108 +2137,6 @@ K\"ahler form whose metric is Ricci flat.
 % TODO \paragraph{Rokhlin's theorem}
 
 
-\section{Misc}
-
-\subsection{Special functions}
-
-% TODO: Euler's Gamma function, elliptic Gamma function, hyperbolic Gamma function, Barnes' double-Gamma function, multiple sine, Upsilon, Jacobi theta functions,
-
-\paragraph{Multiple gamma function.}  For $a_i\in\CC$ with $\Re a_i>0$,
-$\Gamma_N(x|\vec{a})=\prod_{\vec{n}}^{\text{reg.}}(x+\vec{n}\cdot\vec{a})^{-1}=\exp(\partial_s\sum_{\vec{n}}(x+\vec{n}\cdot\vec{a})^{-s}|_{s=0})$,
-where $\vec{n}\in\ZZ_{\geq 0}^N$.  Here, we zeta-regularized the product; the sum is analytically continued from $\Re s>N$.  The meromorphic $x\mapsto\Gamma_N(x|\vec{a})$ has no zero and poles at $x=-\vec{n}\cdot\vec{a}$ (simple poles for generic~$\vec{a}$).
-$\Gamma_0(x|)=1/x$, $\Gamma_1(x|a)=a^{x/a-1/2}\Gamma(x/a)/\sqrt{2\pi}$, $\Gamma_N(x|\vec{a})=\Gamma_{N-1}(x|a_1,\ldots,a_{N-1})\Gamma_N(x+a_N|\vec{a})$ and it is invariant under permutations of~$\vec{a}$.
-
-\paragraph{Plethystic exponential.}  Let $\mathbf{m}\subset R[[x_1,\ldots,x_n]]$ be series with no constant term over a ring~$R$.  Then $\plexp\colon\mathbf{m}\to 1+\mathbf{m}$ obeys $\plexp[x_i^p]=1/(1-x_i^p)$, $\plexp[f+g]=\plexp[f]\plexp[g]$ and $\plexp[\lambda f]=\plexp[f]^\lambda$ for $\lambda\in R$.  It maps an index of single-particle states $f(x)$ to that of multiparticle states $\plexp[f]=\exp\sum_{k\geq 1}\frac{1}{k}f(x_1^k,\ldots,x_n^k)$.
-
-\paragraph{Plethystic logarithm} $\pllog$ defined by $\plexp\circ\pllog=\id$ and $\pllog\circ\plexp=\id$ hence
-$\pllog[1-x_i^p]=-x_i^p$ and $\pllog[fg]=\pllog[f]+\pllog[g]$ and $\pllog[f^\lambda]=\lambda\pllog[f]$ for $\lambda\in R$.
-More generally, $\pllog[f]=\sum_{k\geq 1}\frac{1}{k}\mu(k)\log f(x_1^k,\ldots,x_n^k)$ where
-$\mu$~is the M\"obius function: $\mu(a^2b)=0$ for integers $a>1$ and~$b$, and $\mu(p_1\dots p_m)=(-1)^m$ for distinct primes~$p_i$.
-
-\paragraph[q-Pochhammer symbol]{q-Pochhammer}
-$(a;q)_\infty=\plexp\frac{-a}{1-q}=\prod_{k=0}^{\infty}(1-aq^k)$
-and finite version $(a;q)_n=(a;q)_\infty/(aq^n;q)_\infty$.
-Products are often denoted $(a_1,\ldots,a_N;q)_n=(a_1;q)_n\cdots(a_N;q)_n$.
-Properties:
-$(a;q)_{-n}(q/a;q)_{n}=(-q/a)^{n}q^{n(n-1)/2}$
-and q-binomial theorem $(ax;q)_\infty/(x;q)_\infty=\sum_{n=0}^{\infty}x^n (a;q)_n/(q;q)_n$.
-
-\paragraph{q-gamma (or basic gamma) function} for $\abs{q}<1$,
-$\Gamma_q(x)=(1-q)^{1-x}(q;q)_\infty/(q^x;q)_\infty$
-obeys $\Gamma_q(x+1)=\frac{1-q^x}{1-q}\Gamma_q(x)$
-and $\Gamma_q(x)\xrightarrow{q\to 1}\Gamma(x)$.
-It has simple poles at $x\in\ZZ_{\leq 0}$ and no zero.
-
-\paragraph{Modular form} of weight $k$: holomorphic on $\mathbf{H}=\{\Im\tau>0\}$ and as $\tau\to\I\infty$ and obeys $f(\frac{a\tau+b}{c\tau+d})=(c\tau+d)^kf(\tau)$.
-
-\paragraph{Dedekind eta function:} $\eta(\tau)=q^{1/24}(q;q)_\infty$ for $q=\rme^{2\pi\I\tau}$. $\Delta=\eta^{24}$ is a modular form of weight~$12$.
-
-\paragraph{Theta functions:} q-theta $\thetafunction(z;q)=(z;q)_\infty(q/z;q)_\infty$ obeys $\thetafunction(z;q)=\thetafunction(q/z;q)=-z\thetafunction(1/z;q)$.
-Variant $\thetafunction_1(z;q)=\thetafunction_1(\tau|u)=\I z^{-1/2}\,q^{1/12}\,\eta(\tau)\,\thetafunction(z;q)=-\I z^{1/2}q^{1/8}(q;q)_\infty(qz;q)_\infty(1/z;q)_\infty$
-with $z=\rme^{2\pi\I u}$.
-
-\paragraph{Eisenstein series} ($k\geq 1$) $E_{2k}=1+\frac{2}{\zeta(1-2k)}\sum_{n=1}^{\infty}n^{2k-1}\frac{q^n}{1-q^n}$ obeys
-$E_{2k}(\frac{a\tau+b}{c\tau+d})=(c\tau+d)^{2k}E_{2k}(\tau)+\frac{6}{\pi\I}c(c\tau+d)\delta_{k=1}$.
-For $k\geq 2$ it is a modular form and $E_{2k}=\frac{1}{2\zeta(2k)}\sum_{0\neq\lambda\in\mathbb{Z}+\tau\mathbb{Z}} \lambda^{-2k}$.
-
-\paragraph{Elliptic gamma function}
-$\Gamma(z;p,q)=\plexp\frac{z-pq/z}{(1-p)(1-q)}=\prod_{m=0}^{\infty}\prod_{n=0}^{\infty}(1-p^{m+1}q^{m+1}z^{-1})/(1-p^mq^nz)$
-obeys $\Gamma(z;p,q)=\Gamma(z;q,p)=1/\Gamma(pq/z;p,q)$
-and $\Gamma(pz;p,q)=\thetafunction(z;q)\Gamma(z;p,q)$
-and $\Gamma(z;0,q)=1/(z;q)_\infty$.
-
-\paragraph{Polylogarithm and Riemann zeta}
-$\zeta(s)=\Li_s(1)$ where
-$\Li_s(z)=\sum_{k\geq 1}z^k/k^s=\bigl(1/\Gamma(s)\bigr)\int_0^\infty t^{s-1}\mathrm{d}t/(\rme^t/z-1)$ obeys
-$\Li_{s+1}(z)=\int_0^z\Li_s(t)\mathrm{d}t/t$ and
-$\Li_1(z)=-\log(1-z)$.
-The dilogarithm obeys
-$\Li_2(x)+\Li_2(1-x)=\pi^2/6-\log(x)\log(1-x)$ (reflection formula) and
-$\Li_2(x)+\Li_2(y)-\Li_2(xy)=\Li_2(t)+\Li_2(u)+\log(1-t)\log(1-u)$ where $x=t/(1-u)$ and $y=u/(1-t)$ (pentagon formula).
-
-\paragraph{Gauss hypergeometric function} is given by
-$_2F_1(a,b;c;z)=\sum_{n\geq 0}z^n(a)_n(b)_n/\bigl(n!(c)_n\bigr)$
-converging for $\abs{z}<1$, continued to $\CC\setminus[1,\infty)$ with branch cut.
-Here $(a)_n=a(a+1)\dots(a+n-1)$.
-
-\paragraph{Generalized hypergeometric functions:} let $a_i,b_i\not\in\ZZ_{\leq 0}$.
-Then $_{j}F_{k}(a;b;z)=\sum_{n\geq 0} z^n (a_1)_n\dots(a_j)_n/\bigl(n!(b_1)_n\dots(b_k)_n\bigr)$
-converges if $j=k+1$ and $\abs{z}<1$, or if $j\leq k$.
-Differential equation $z\prod_{i=1}^j (z\partial_z+a_i)F(z)=z\partial_z\prod_{i=1}^k(z\partial_z+b_i-1)F(z)$.
-Physically: vortex partition function of the 2d $\Nsusy=(2,2)$ $\Lie{U}(1)$ theory with $j$ charge $+1$ and $k+1$ charge $-1$ chiral multiplets.
-Fox--Wright, Appell, Kamp\'e de F\'eriet and Lauricella functions are vortex partition functions of specific $\Lie{U}(1)^n$ theories.
-
-\paragraph{Basic hypergeometric series} in terms of q-Pochhammer
-$_j\phi_k(a;b;q,z)=\sum_{n\geq 0} \bigl(-q^{(n-1)/2} \bigr)^{n(1+k-j)} z^n (a_1,\dots,a_j;q)_n/ \allowbreak (b_1,\dots,b_k;q)_n$ .
-
-\subsection{Physics of field theories}
-
-\paragraph{Phases characterized by potential} $V(R)$ (up to a constant) between quarks at distance~$R$:
-Coulomb $1/R$,
-free electric $1/\bigl(R\log(R\Lambda)\bigr)$,
-free magnetic $\log(R\Lambda)/R$,
-Higgs (constant),
-confining $\sigma R$.
-
-\paragraph[Solitons and solitary waves]{A solitary wave} is a solution (of some wave equation) whose energy density is localized in space and travels at some speed~$u$.
-A soliton additionally keeps its shape asymptotically after collisions.
-
-\paragraph{Instantons}
-are anti-self-dual ($F=-{\star F}$) connections on~$\RR^4$ that decay at infinity and extend to~$S^4$.
-The bundles are classified by $\pi_3(G)$ so an instanton number $k\in\ZZ$ for simple gauge groups;
-for fixed $k\geq 0$ ($k\leq 0$) (anti)instantons minimize the action.
-The $k$-instanton moduli space for $G=\Lie{SU}(N)$ is a $4Nk$-dimensional \inspire{128223} hyperK\"ahler manifold,
-in bijection with rank~$N$ framed locally free sheaves on~$\CC\PP^2$ \inspire{125044}.
-
-\paragraph['t Hooft--Polyakov monopoles]{A 't Hooft--Polyakov monopole}
-is a smooth codimension~$3$ topological soliton where the gauge group~$G$ is spontaneously broken by a Higgs field to~$H$, far from the soliton.  Monopole charge is in $\pi_2(G/H)=\operatorname{Ker}\bigl(\pi_1(H)\to\pi_1(G)\bigr)$ ``Dirac monopole of~$H$ trivialized in~$G$''.
-
-Example: $\Lie{SU}(2)$ gauge theory with adjoint scalar~$\phi$ of potential $(a^2-\Tr\phi^2)^2$.
-Residual $\Lie{U}(1)$ gauge field $F_{\Lie{U}(1)} = \Tr(\hat{\phi} F) - 2\Tr(\hat{\phi} D\hat{\phi} D\hat{\phi})$ with $\hat{\phi}=\phi/\sqrt{\Tr\phi^2}$ obeys $\mathrm{d}F_{\Lie{U}(1)}=\Tr(\mathrm{d}\hat{\phi})^3$, whose integral is the monopole charge.
-
-% TODO: vortices, monopoles, instantons (Abrikosov--Nielsen--Olesen
-% vortex, 't~Hooft--Polyakov monopole, \ldots{}).
-
 \subsection{Homotopy, homology and cohomology}
 
 \paragraph{Basic properties.} $\pi_0(X,x)$ is the set of connected components.  $\pi_1(X,x)$ is the fundamental group.  For $k\geq 1$, $\pi_k(X,x)$ only depends on the connected component of~$x$.  $\pi_k(X\times Y,(x,y))=\pi_k(X,x)\times\pi_k(Y,y)$.
@@ -2296,6 +2220,80 @@ $\alpha_i(\Sigma)=0$.
 %   quaternion $\abs{q}>1$; it is diffeomorphic to $S^3\times S^1$).}
 
 % TODO: what is the (co)homology of $X\times Y$?
+
+\section{Misc}
+
+\subsection{Special functions}
+
+% TODO: Euler's Gamma function, elliptic Gamma function, hyperbolic Gamma function, Barnes' double-Gamma function, multiple sine, Upsilon, Jacobi theta functions,
+
+\paragraph{Multiple gamma function.}  For $a_i\in\CC$ with $\Re a_i>0$,
+$\Gamma_N(x|\vec{a})=\prod_{\vec{n}}^{\text{reg.}}(x+\vec{n}\cdot\vec{a})^{-1}=\exp(\partial_s\sum_{\vec{n}}(x+\vec{n}\cdot\vec{a})^{-s}|_{s=0})$,
+where $\vec{n}\in\ZZ_{\geq 0}^N$.  Here, we zeta-regularized the product; the sum is analytically continued from $\Re s>N$.  The meromorphic $x\mapsto\Gamma_N(x|\vec{a})$ has no zero and poles at $x=-\vec{n}\cdot\vec{a}$ (simple poles for generic~$\vec{a}$).
+$\Gamma_0(x|)=1/x$, $\Gamma_1(x|a)=a^{x/a-1/2}\Gamma(x/a)/\sqrt{2\pi}$, $\Gamma_N(x|\vec{a})=\Gamma_{N-1}(x|a_1,\ldots,a_{N-1})\Gamma_N(x+a_N|\vec{a})$ and it is invariant under permutations of~$\vec{a}$.
+
+\paragraph{Plethystic exponential.}  Let $\mathbf{m}\subset R[[x_1,\ldots,x_n]]$ be series with no constant term over a ring~$R$.  Then $\plexp\colon\mathbf{m}\to 1+\mathbf{m}$ obeys $\plexp[x_i^p]=1/(1-x_i^p)$, $\plexp[f+g]=\plexp[f]\plexp[g]$ and $\plexp[\lambda f]=\plexp[f]^\lambda$ for $\lambda\in R$.  It maps an index of single-particle states $f(x)$ to that of multiparticle states $\plexp[f]=\exp\sum_{k\geq 1}\frac{1}{k}f(x_1^k,\ldots,x_n^k)$.
+
+\paragraph{Plethystic logarithm} $\pllog$ defined by $\plexp\circ\pllog=\id$ and $\pllog\circ\plexp=\id$ hence
+$\pllog[1-x_i^p]=-x_i^p$ and $\pllog[fg]=\pllog[f]+\pllog[g]$ and $\pllog[f^\lambda]=\lambda\pllog[f]$ for $\lambda\in R$.
+More generally, $\pllog[f]=\sum_{k\geq 1}\frac{1}{k}\mu(k)\log f(x_1^k,\ldots,x_n^k)$ where
+$\mu$~is the M\"obius function: $\mu(a^2b)=0$ for integers $a>1$ and~$b$, and $\mu(p_1\dots p_m)=(-1)^m$ for distinct primes~$p_i$.
+
+\paragraph[q-Pochhammer symbol]{q-Pochhammer}
+$(a;q)_\infty=\plexp\frac{-a}{1-q}=\prod_{k=0}^{\infty}(1-aq^k)$
+and finite version $(a;q)_n=(a;q)_\infty/(aq^n;q)_\infty$.
+Products are often denoted $(a_1,\ldots,a_N;q)_n=(a_1;q)_n\cdots(a_N;q)_n$.
+Properties:
+$(a;q)_{-n}(q/a;q)_{n}=(-q/a)^{n}q^{n(n-1)/2}$
+and q-binomial theorem $(ax;q)_\infty/(x;q)_\infty=\sum_{n=0}^{\infty}x^n (a;q)_n/(q;q)_n$.
+
+\paragraph{q-gamma (or basic gamma) function} for $\abs{q}<1$,
+$\Gamma_q(x)=(1-q)^{1-x}(q;q)_\infty/(q^x;q)_\infty$
+obeys $\Gamma_q(x+1)=\frac{1-q^x}{1-q}\Gamma_q(x)$
+and $\Gamma_q(x)\xrightarrow{q\to 1}\Gamma(x)$.
+It has simple poles at $x\in\ZZ_{\leq 0}$ and no zero.
+
+\paragraph{Modular form} of weight $k$: holomorphic on $\mathbf{H}=\{\Im\tau>0\}$ and as $\tau\to\I\infty$ and obeys $f(\frac{a\tau+b}{c\tau+d})=(c\tau+d)^kf(\tau)$.
+
+\paragraph{Dedekind eta function:} $\eta(\tau)=q^{1/24}(q;q)_\infty$ for $q=\rme^{2\pi\I\tau}$. $\Delta=\eta^{24}$ is a modular form of weight~$12$.
+
+\paragraph{Theta functions:} q-theta $\thetafunction(z;q)=(z;q)_\infty(q/z;q)_\infty$ obeys $\thetafunction(z;q)=\thetafunction(q/z;q)=-z\thetafunction(1/z;q)$.
+Variant $\thetafunction_1(z;q)=\thetafunction_1(\tau|u)=\I z^{-1/2}\,q^{1/12}\,\eta(\tau)\,\thetafunction(z;q)=-\I z^{1/2}q^{1/8}(q;q)_\infty(qz;q)_\infty(1/z;q)_\infty$
+with $z=\rme^{2\pi\I u}$.
+
+\paragraph{Eisenstein series} ($k\geq 1$) $E_{2k}=1+\frac{2}{\zeta(1-2k)}\sum_{n=1}^{\infty}n^{2k-1}\frac{q^n}{1-q^n}$ obeys
+$E_{2k}(\frac{a\tau+b}{c\tau+d})=(c\tau+d)^{2k}E_{2k}(\tau)+\frac{6}{\pi\I}c(c\tau+d)\delta_{k=1}$.
+For $k\geq 2$ it is a modular form and $E_{2k}=\frac{1}{2\zeta(2k)}\sum_{0\neq\lambda\in\mathbb{Z}+\tau\mathbb{Z}} \lambda^{-2k}$.
+
+\paragraph{Elliptic gamma function}
+$\Gamma(z;p,q)=\plexp\frac{z-pq/z}{(1-p)(1-q)}=\prod_{m=0}^{\infty}\prod_{n=0}^{\infty}(1-p^{m+1}q^{m+1}z^{-1})/(1-p^mq^nz)$
+obeys $\Gamma(z;p,q)=\Gamma(z;q,p)=1/\Gamma(pq/z;p,q)$
+and $\Gamma(pz;p,q)=\thetafunction(z;q)\Gamma(z;p,q)$
+and $\Gamma(z;0,q)=1/(z;q)_\infty$.
+
+\paragraph{Polylogarithm and Riemann zeta}
+$\zeta(s)=\Li_s(1)$ where
+$\Li_s(z)=\sum_{k\geq 1}z^k/k^s=\bigl(1/\Gamma(s)\bigr)\int_0^\infty t^{s-1}\mathrm{d}t/(\rme^t/z-1)$ obeys
+$\Li_{s+1}(z)=\int_0^z\Li_s(t)\mathrm{d}t/t$ and
+$\Li_1(z)=-\log(1-z)$.
+The dilogarithm obeys
+$\Li_2(x)+\Li_2(1-x)=\pi^2/6-\log(x)\log(1-x)$ (reflection formula) and
+$\Li_2(x)+\Li_2(y)-\Li_2(xy)=\Li_2(t)+\Li_2(u)+\log(1-t)\log(1-u)$ where $x=t/(1-u)$ and $y=u/(1-t)$ (pentagon formula).
+
+\paragraph{Gauss hypergeometric function} is given by
+$_2F_1(a,b;c;z)=\sum_{n\geq 0}z^n(a)_n(b)_n/\bigl(n!(c)_n\bigr)$
+converging for $\abs{z}<1$, continued to $\CC\setminus[1,\infty)$ with branch cut.
+Here $(a)_n=a(a+1)\dots(a+n-1)$.
+
+\paragraph{Generalized hypergeometric functions:} let $a_i,b_i\not\in\ZZ_{\leq 0}$.
+Then $_{j}F_{k}(a;b;z)=\sum_{n\geq 0} z^n (a_1)_n\dots(a_j)_n/\bigl(n!(b_1)_n\dots(b_k)_n\bigr)$
+converges if $j=k+1$ and $\abs{z}<1$, or if $j\leq k$.
+Differential equation $z\prod_{i=1}^j (z\partial_z+a_i)F(z)=z\partial_z\prod_{i=1}^k(z\partial_z+b_i-1)F(z)$.
+Physically: vortex partition function of the 2d $\Nsusy=(2,2)$ $\Lie{U}(1)$ theory with $j$ charge $+1$ and $k+1$ charge $-1$ chiral multiplets.
+Fox--Wright, Appell, Kamp\'e de F\'eriet and Lauricella functions are vortex partition functions of specific $\Lie{U}(1)^n$ theories.
+
+\paragraph{Basic hypergeometric series} in terms of q-Pochhammer
+$_j\phi_k(a;b;q,z)=\sum_{n\geq 0} \bigl(-q^{(n-1)/2} \bigr)^{n(1+k-j)} z^n (a_1,\dots,a_j;q)_n/ \allowbreak (b_1,\dots,b_k;q)_n$ .
 
 % TODO: In\"on\"u--Wigner contraction (for Lie superalgebras too)
 
